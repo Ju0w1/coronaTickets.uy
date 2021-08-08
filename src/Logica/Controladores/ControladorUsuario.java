@@ -26,7 +26,7 @@ public class ControladorUsuario implements IControladorUsuario{
         this.servicioUsuarios = new UsuariosServicios();
     }
     
-     public static ControladorUsuario getInstance() {
+    public static ControladorUsuario getInstance() {
         if (instancia == null) {
             instancia = new ControladorUsuario();
         }
