@@ -52,7 +52,6 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenuItem13 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1200, 800));
         setMinimumSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -85,6 +84,11 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenu6.add(jMenuItem4);
 
         jMenuItem5.setText("Consulta usuarios");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
         jMenu6.add(jMenuItem5);
 
         jMenuItem6.setText("Modificar usuario");
@@ -117,6 +121,11 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenu8.setText("Paquete");
 
         jMenuItem7.setText("Crear");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem7);
 
         jMenuItem8.setText("Agregar");
@@ -128,6 +137,11 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenu8.add(jMenuItem8);
 
         jMenuItem9.setText("Consulta");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem9ActionPerformed(evt);
+            }
+        });
         jMenu8.add(jMenuItem9);
 
         jMenu7.add(jMenu8);
@@ -135,9 +149,19 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenu1.setText("Función");
 
         jMenuItem10.setText("Alta");
+        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem10ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem10);
 
         jMenuItem11.setText("Consulta");
+        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem11ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem11);
 
         jMenuItem12.setText("Registro");
@@ -160,15 +184,38 @@ public class MenuInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        AltaEspectaculo ventana = new AltaEspectaculo();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
+         // TODO add your handling code here:
+         ConsultaEspectaculo ventana = new ConsultaEspectaculo();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
         // TODO add your handling code here:
+        AgregarPaquete ventana = new AgregarPaquete();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -181,6 +228,66 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        ConsultaUsuario ventanaConsulta = new ConsultaUsuario();
+        this.jDesktopPane2.add(ventanaConsulta);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventanaConsulta.getSize();
+        ventanaConsulta.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventanaConsulta.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        // TODO add your handling code here:
+        CrearPaquete ventana = new CrearPaquete();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+        // TODO add your handling code here:
+        ConsultarPaquete ventana = new ConsultarPaquete();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+        // TODO add your handling code here:
+        AltaFuncion ventana = new AltaFuncion();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+        // TODO add your handling code here:
+        ConsultaFuncion ventana = new ConsultaFuncion();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     /**
      * @param args the command line arguments
