@@ -5,39 +5,18 @@
  */
 package Presentacion;
 
-import Logica.DataTypes.DTFecha;
-import Logica.Fabrica;
-import java.awt.Component;
-import javax.swing.DefaultListModel;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
-import javax.swing.JOptionPane;
-import javax.swing.SwingUtilities;
-import javax.swing.table.DefaultTableModel;
-import logica.Interfaces.IControladorUsuario;
-
 /**
  *
  * @author pabli
  */
-public class ConsultaUsuario extends javax.swing.JInternalFrame {
+public class ConsultaArtista extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form ConsultaUsuario
+     * Creates new form ConsultaArtista
      */
-    private IControladorUsuario ICU;
-    
-    public ConsultaUsuario() {
+    public ConsultaArtista() {
         initComponents();
-        //DefaultListModel modelo = (DefaultListModel) listUsuarios.getModel();
-        this.ICU = Fabrica.getInstance().getIControladorUsuario();
-        this.ICU.obtenerEspectadores(this.listUsuarios);
     }
-    
-    //this.getContentPane().setLayout(new FlowLayout());
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -79,20 +58,33 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
         txtFechaNacimiento = new javax.swing.JTextField();
         filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel1 = new javax.swing.JPanel();
-        spinnerDia = new javax.swing.JSpinner();
-        spinnerMes = new javax.swing.JSpinner();
-        spinnerAnio = new javax.swing.JSpinner();
+        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        jLabel3 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        jPanel11 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(21, 0), new java.awt.Dimension(21, 0), new java.awt.Dimension(19, 32767));
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        jPanel12 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(21, 0), new java.awt.Dimension(21, 0), new java.awt.Dimension(19, 32767));
+        jTextField1 = new javax.swing.JTextField();
+        jPanel13 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        filler20 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
         btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnMostrar = new javax.swing.JButton();
-
-        setTitle("Consulta de usuario");
-        setMinimumSize(new java.awt.Dimension(600, 500));
-        setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(600, 500));
 
         listUsuarios.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -197,49 +189,68 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel9);
         jPanel3.add(filler13);
+        jPanel3.add(filler11);
 
-        jPanel1.setMinimumSize(new java.awt.Dimension(170, 50));
-        jPanel1.setPreferredSize(new java.awt.Dimension(170, 50));
+        jLabel3.setText("Información de artista");
 
-        spinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        spinnerDia.setEnabled(false);
-        spinnerDia.setMinimumSize(new java.awt.Dimension(50, 30));
-        spinnerDia.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(spinnerDia);
+        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
 
-        spinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        spinnerMes.setEnabled(false);
-        spinnerMes.setMinimumSize(new java.awt.Dimension(50, 30));
-        spinnerMes.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(spinnerMes);
+        jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.X_AXIS));
 
-        spinnerAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
-        spinnerAnio.setEnabled(false);
-        spinnerAnio.setMinimumSize(new java.awt.Dimension(80, 30));
-        spinnerAnio.setName(""); // NOI18N
-        spinnerAnio.setPreferredSize(new java.awt.Dimension(80, 30));
-        jPanel1.add(spinnerAnio);
+        jLabel11.setText("Descripción");
+        jPanel10.add(jLabel11);
+        jPanel10.add(filler8);
 
-        jPanel3.add(jPanel1);
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
+
+        jPanel10.add(jScrollPane3);
+
+        jPanel4.add(jPanel10);
+        jPanel4.add(filler12);
+
+        jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.X_AXIS));
+
+        jLabel12.setText("Biografía");
+        jPanel11.add(jLabel12);
+        jPanel11.add(filler14);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel11.add(jScrollPane2);
+
+        jPanel4.add(jPanel11);
+        jPanel4.add(filler15);
+
+        jPanel12.setLayout(new javax.swing.BoxLayout(jPanel12, javax.swing.BoxLayout.X_AXIS));
+
+        jLabel13.setText("Link web");
+        jPanel12.add(jLabel13);
+        jPanel12.add(filler16);
+
+        jTextField1.setEditable(false);
+        jPanel12.add(jTextField1);
+
+        jPanel4.add(jPanel12);
+
+        jPanel13.setLayout(new javax.swing.BoxLayout(jPanel13, javax.swing.BoxLayout.X_AXIS));
+        jPanel4.add(jPanel13);
+
+        jPanel14.setLayout(new javax.swing.BoxLayout(jPanel14, javax.swing.BoxLayout.X_AXIS));
+        jPanel14.add(filler20);
+
+        jPanel4.add(jPanel14);
 
         btnModificar.setText("Modificar");
-        btnModificar.setEnabled(false);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
 
         btnGuardar.setText("Guardar");
-        btnGuardar.setEnabled(false);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
 
         btnCancelar.setText("Cancelar");
-        btnCancelar.setEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -259,54 +270,73 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(42, 42, 42))
+            .addGap(0, 460, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addComponent(jLabel1)
+                            .addGap(81, 81, 81)
+                            .addComponent(jLabel2)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnMostrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(19, Short.MAX_VALUE))
+            .addGap(0, 551, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
+                        .addComponent(btnBuscar))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(btnMostrar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnModificar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnGuardar)
+                            .addGap(18, 18, 18)
+                            .addComponent(btnCancelar)))
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel3)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void listUsuariosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listUsuariosFocusGained
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_listUsuariosFocusGained
+
+    private void listUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listUsuariosValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_listUsuariosValueChanged
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
@@ -332,65 +362,9 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void listUsuariosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listUsuariosFocusGained
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_listUsuariosFocusGained
-
-    private void listUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listUsuariosValueChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listUsuariosValueChanged
-
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         // TODO add your handling code here:
-
-        if(this.listUsuarios.getSelectedValue() != null){
-            this.ICU.cargarDatosConsultaEspectador(this.listUsuarios.getSelectedValue(),this.txtNickname, this.txtNombre, this.txtApellido, this.txtEmail, this.txtFechaNacimiento);
-            this.btnModificar.setEnabled(true);
-            this.btnGuardar.setEnabled(true);
-            this.btnCancelar.setEnabled(true);
-        }else{
-            System.out.println("No hay ningún usuario seleccionado");
-        }
-        
-        
     }//GEN-LAST:event_btnMostrarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-        this.txtNombre.setEditable(true);
-        this.txtApellido.setEditable(true);
-        this.spinnerDia.setEnabled(true);
-        this.spinnerMes.setEnabled(true);
-        this.spinnerAnio.setEnabled(true);
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-        JFrame frame = new JFrame();
-        
-        Object[] options = {"Si", "No"};
-        int n = JOptionPane.showOptionDialog(frame,
-        "¿Está seguro que quiere guardar?",
-        "Confirmar",
-        JOptionPane.YES_NO_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,     //do not use a custom Icon
-        options,  //the titles of buttons
-        options[0]); //default button title
-
-        String nombre = this.txtNombre.getText();
-        String apellido = this.txtApellido.getText();
-        int dia = (int) this.spinnerDia.getValue();
-        int mes = (int) this.spinnerMes.getValue();
-        int anio = (int) this.spinnerAnio.getValue();
-        
-        if(n == 0){
-            this.ICU.modificarEspectador(nombre, apellido,new DTFecha(dia,mes,anio));
-        }else{
-            System.out.println("Cancelado");
-        }
-    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -401,34 +375,52 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnMostrar;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler10;
+    private javax.swing.Box.Filler filler11;
+    private javax.swing.Box.Filler filler12;
     private javax.swing.Box.Filler filler13;
+    private javax.swing.Box.Filler filler14;
+    private javax.swing.Box.Filler filler15;
+    private javax.swing.Box.Filler filler16;
     private javax.swing.Box.Filler filler2;
+    private javax.swing.Box.Filler filler20;
     private javax.swing.Box.Filler filler3;
     private javax.swing.Box.Filler filler4;
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
+    private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
+    private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JList<String> listUsuarios;
-    private javax.swing.JSpinner spinnerAnio;
-    private javax.swing.JSpinner spinnerDia;
-    private javax.swing.JSpinner spinnerMes;
     private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFechaNacimiento;

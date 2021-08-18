@@ -9,7 +9,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Presentacion.MenuInicio;
-import static Presentacion.MenuInicio.jDesktopPane2;
+//import static Presentacion.MenuInicio.jDesktopPane2;
 import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
