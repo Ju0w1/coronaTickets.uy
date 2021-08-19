@@ -1,5 +1,3 @@
 #ignoring the files within the build folder
 /build/
 build/**
-/dist/
-nbproject/private/private.xml
