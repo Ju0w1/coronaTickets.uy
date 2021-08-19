@@ -5,6 +5,9 @@
  */
 package Presentacion;
 
+import Logica.Interfaz.IControladorEspectaculo;
+import Logica.Fabrica;
+import static Presentacion.AltaEspectaculo.jFrameBuscarArtista;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,12 +17,14 @@ import java.awt.Dimension;
 import java.awt.HeadlessException;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
 import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 /**
@@ -28,11 +33,17 @@ import javax.swing.UIManager;
  */
 public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
+    private IControladorEspectaculo ICE;
     /**
      * Creates new form AltaEspectaculo
      */
     public AltaEspectaculo() {
         initComponents();
+        this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
+        this.ICE.obtenerPlataformas();
+        this.ICE.obtenerArtistas();
+        //jComboBox1= this.ICE.obtenerPlataformas();
+        //jComboBox1.addItem(this.ICE.obtenerPlataformas().getItemAt(0).toString());
 //        jLabelErrorCantidadEspectadorMaxima1.setText("");
 //        jLabelErrorCantidadEspectadorMinima.setText("");
         controlCamposVacios();
@@ -50,7 +61,19 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
+        jFrameBuscarArtista = new javax.swing.JFrame();
+        jPanel2 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jListArtistas = new javax.swing.JList<>();
+        jButton2 = new javax.swing.JButton();
+        jFrameModificar = new javax.swing.JFrame();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jLabel12 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtNombreArtista = new javax.swing.JTextField();
         txtCantidadMaxima = new javax.swing.JTextField();
@@ -70,26 +93,152 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1Plataformas = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         btnConfirmar = new javax.swing.JButton();
         jLabelErrorCase = new javax.swing.JLabel();
+        jLabelDescripcionTam = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jFrameBuscarArtista.setMinimumSize(new java.awt.Dimension(400, 330));
+        jFrameBuscarArtista.setResizable(false);
+        jFrameBuscarArtista.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setMaximumSize(new java.awt.Dimension(405, 370));
+        jPanel2.setMinimumSize(new java.awt.Dimension(405, 370));
+        jPanel2.setPreferredSize(new java.awt.Dimension(405, 370));
+
+        jTextField1.setText("Filtrar por nombre");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField1KeyPressed(evt);
+            }
+        });
+
+        jButton1.setText("Buscar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jScrollPane2.setViewportView(jListArtistas);
+
+        jButton2.setText("Seleccionar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton2))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 289, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)))
+                        .addGap(42, 42, 42))))
         );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap())
+        );
+
+        jFrameBuscarArtista.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 422, 288));
+
+        jFrameModificar.setMaximumSize(new java.awt.Dimension(516, 266));
+        jFrameModificar.setMinimumSize(new java.awt.Dimension(516, 266));
+        jFrameModificar.setResizable(false);
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("ERROR: Ha ocurrido un problema al momento intentar crear el espectáculo.\nDETALLES: El problema se ha presentado debido a que el nombre del\nespectáculo ingresado ya existe en el sistema.\nSUGERENCIA: Modifique el nombre del espectáculo e intente nuevamente.\nADVERTENCIA: Si pulsa 'Cancelar' se perderán todos los datos ingresados.");
+        jScrollPane3.setViewportView(jTextArea1);
+
+        jLabel12.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel12.setText("¿Desea modificar el nombre del espectáculo?");
+
+        jButton4.setText("Modificar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("Cancelar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jFrameModificarLayout = new javax.swing.GroupLayout(jFrameModificar.getContentPane());
+        jFrameModificar.getContentPane().setLayout(jFrameModificarLayout);
+        jFrameModificarLayout.setHorizontalGroup(
+            jFrameModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameModificarLayout.createSequentialGroup()
+                .addGroup(jFrameModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jFrameModificarLayout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jFrameModificarLayout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4))
+                    .addGroup(jFrameModificarLayout.createSequentialGroup()
+                        .addGap(122, 122, 122)
+                        .addComponent(jLabel12)))
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+        jFrameModificarLayout.setVerticalGroup(
+            jFrameModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrameModificarLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel12)
+                .addGap(18, 18, 18)
+                .addGroup(jFrameModificarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton5)
+                    .addComponent(jButton4))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         setClosable(true);
         setTitle("Alta de Espectáculo");
+        setMaximumSize(new java.awt.Dimension(740, 540));
+        setMinimumSize(new java.awt.Dimension(740, 540));
         setPreferredSize(new java.awt.Dimension(740, 540));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -97,6 +246,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
+        txtNombreArtista.setEditable(false);
         txtNombreArtista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreArtistaActionPerformed(evt);
@@ -150,7 +300,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel1.setText("Nombre del organizador");
+        jLabel1.setText("Nickname del organizador");
 
         jLabel2.setText("Nombre del espectáculo");
 
@@ -201,13 +351,24 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Máxima");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1Plataformas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1PlataformasActionPerformed(evt);
+            }
+        });
 
         jLabel8.setText("URL");
 
         jLabel9.setText("Costo");
 
         jLabel11.setText("$");
+
+        jButton3.setText("Seleccioanr");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -219,19 +380,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addGap(137, 137, 137)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(64, 64, 64)
-                        .addComponent(txtNombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(62, 62, 62)
-                        .addComponent(txtNombreEspectaculo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(131, 131, 131)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBox1Plataformas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(172, 172, 172)
@@ -244,22 +393,39 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
                         .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4))
-                        .addGap(51, 51, 51)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(53, 53, 53)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(26, 26, 26)
-                                .addComponent(txtMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(29, 29, 29)
-                                .addComponent(txtCantidadMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtNombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                .addComponent(jButton3))
+                            .addComponent(txtNombreEspectaculo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel5)
+                                .addComponent(jLabel4))
+                            .addGap(51, 51, 51)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel15)
+                                    .addGap(26, 26, 26)
+                                    .addComponent(txtMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(29, 29, 29)
+                                    .addComponent(txtCantidadMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jLabel7)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addContainerGap())
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel3)
+                            .addGap(131, 131, 131)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -269,13 +435,15 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
                         .addComponent(jLabel10))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBox1Plataformas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel1))
-                    .addComponent(txtNombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtNombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton3)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -313,7 +481,8 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel9)
-                            .addComponent(jLabel11)))))
+                            .addComponent(jLabel11))))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         btnConfirmar.setText("Confirmar");
@@ -332,6 +501,8 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabelDescripcionTam.setText("0/255");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -339,7 +510,9 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 145, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabelDescripcionTam)
+                .addContainerGap(88, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(46, 46, 46)
                 .addComponent(jLabelErrorCase)
@@ -350,9 +523,14 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabelDescripcionTam)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConfirmar)
                     .addComponent(jLabelErrorCase))
@@ -460,7 +638,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     
     
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        String nombrePlataforma= jComboBox1.getSelectedItem().toString();
+        String nombrePlataforma= jComboBox1Plataformas.getSelectedItem().toString();
         String nombreOrganizador= txtNombreArtista.getText();
         String nombreEspectaculo= txtNombreEspectaculo.getText();
         String descripcion = txtDescripcion.getText();
@@ -469,39 +647,21 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         int cantEspectadoresMaxima = Integer.parseInt(txtCantidadMaxima.getText());
         String URL = txtURL.getText();
         Double Costo = Double.parseDouble(txtCosto.getText());
-        if (nombreEspectaculo.equalsIgnoreCase("a")) {
-//            AltaEspectaculoModificar ventanaAux = new AltaEspectaculoModificar();
-//            Dimension desktopSize = jDesktopPane2.getSize();
-//            Dimension jInternalFrameSize = ventanaAux.getSize();
-//            ventanaAux.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-//            (desktopSize.height- jInternalFrameSize.height)/2);
-//            jDesktopPane2.add(ventanaAux);
-//            this.setVisible(false);
-//            ventanaAux.setVisible(true);
-              //JOptionPane.showInternalConfirmDialog(this, "nombre del espectáculo ya existe en el sistema. ¿Desea modificar el nombre?");
-              
-              //1. create a dialog object 'dialog'
-              
-//            JTextField firstName = new JTextField();
-//            JTextField lastName = new JTextField();
-//            JPasswordField password = new JPasswordField();
-//            final JComponent[] inputs = new JComponent[]{
-//                new JLabel("First"),};
-//            int result = JOptionPane.showConfirmDialog(null, inputs, "My custom dialog", JOptionPane.PLAIN_MESSAGE);
-//            if (result == JOptionPane.OK_OPTION) {
-//                System.out.println("You entered "
-//                        + firstName.getText() + ", "
-//                        + lastName.getText() + ", "
-//                        + password.getText());
-//            } else {
-//                System.out.println("User canceled / closed the dialog, result = " + result);
-//            }
-
-        //JOptionPaneTest2.main();
-
+        if(controlCamposCorrectos()==0){ //EN CASO DE QUE TODOS LOS DATOS INGRESADOS SEAN COHERENTES/CORRECTO SE PROCEDE A CARGAR LOS DATOS A LA DB
+            if (this.ICE.verificarNombreEspectaculo(nombreEspectaculo)==true) { //EN CASO DE QUE EL NOMBRE INGRESADO DE ESPECTÁCULO EXISTA SE PROCEDE CON LA OPCION DE MODIFICAR O CANCELAR EL CASO DE USO
+                Dimension desktopSize = jDesktopPane2.getSize();
+                Dimension jInternalFrameSize = jFrameModificar.getSize();
+                jFrameModificar.setLocation((jDesktopPane2.getWidth() - jInternalFrameSize.width)/2,
+                (jDesktopPane2.getHeight() - jInternalFrameSize.height)/2);
+                jFrameModificar.setVisible(true);
+            }else{
+                this.ICE.altaEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
+                JOptionPane.showMessageDialog(this, "Espectáculo agregado exitosamente.");
+                this.dispose();
+            }
+        }else{
+            controlCamposVacios();
         }
-        
-        //JOptionPane.showMessageDialog(this, nombrePlataforma);
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void formMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseMoved
@@ -509,7 +669,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formMouseMoved
 
     private void txtNombreArtistaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreArtistaKeyPressed
-        controlCamposVacios();
+        controlCamposVacios(); 
     }//GEN-LAST:event_txtNombreArtistaKeyPressed
 
     private void txtNombreEspectaculoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEspectaculoKeyPressed
@@ -517,12 +677,73 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNombreEspectaculoKeyPressed
 
     private void txtDescripcionKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDescripcionKeyPressed
-        controlCamposVacios();
+        if(txtDescripcion.getText().length()+1>255){
+            btnConfirmar.setEnabled(false);
+            jLabelDescripcionTam.setForeground(Color.RED);
+        }
+        else{
+            int i=txtDescripcion.getText().length()+1;
+            String iString= Integer.toString(i);
+            jLabelDescripcionTam.setText(iString + "/255");
+            btnConfirmar.setEnabled(true);
+            jLabelDescripcionTam.setForeground(Color.BLACK);
+        }
     }//GEN-LAST:event_txtDescripcionKeyPressed
 
     private void txtURLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtURLKeyPressed
         controlCamposVacios();
     }//GEN-LAST:event_txtURLKeyPressed
+
+    private void jComboBox1PlataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1PlataformasActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = jFrameBuscarArtista.getSize();
+        jFrameBuscarArtista.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        jFrameBuscarArtista.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if(jListArtistas.isSelectionEmpty()){
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningun artista.");
+        }else{
+            txtNombreArtista.setText(jListArtistas.getSelectedValue());
+            jFrameBuscarArtista.setVisible(false);
+            controlCamposVacios();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.ICE.obtenerArtistaPorNombre(jTextField1.getText());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jFrameModificar.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jFrameModificar.setVisible(false);
+        this.dispose();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
+        try{
+           this.ICE.obtenerArtistaPorNombre(jTextField1.getText());
+        }catch (java.lang.Exception e){ //SI INGRESA SOLO ESPACIOS LE SALE UNA ADVERTENCIA Y SE REINICIA EL JTEXTFIELD.
+            jTextField1.enable(false);
+            JOptionPane.showMessageDialog(null, "No puede ingresar solo espaciados, debe ingresar al menos una letra.", "ERROR:", JOptionPane.ERROR_MESSAGE);
+            jTextField1.enable(true);
+            jTextField1.setText("");
+            this.ICE.obtenerArtistaPorNombre(jTextField1.getText());
+        }
+    }//GEN-LAST:event_jTextField1KeyPressed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     public void controlCamposVacios(){
         if(txtCantidadMaxima.getText().equalsIgnoreCase("") || txtCantidadMinima.getText().equalsIgnoreCase("") || txtCosto.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtMinutos.getText().equalsIgnoreCase("") || txtNombreArtista.getText().equalsIgnoreCase("") || txtNombreEspectaculo.getText().equalsIgnoreCase("") || txtURL.getText().equalsIgnoreCase("")){
@@ -541,6 +762,10 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
             else if(controlCamposCorrectos()==-1){
                 jLabelErrorCase.setText("ERROR: No puede establecer valores negativos en el campo 'Minutos'.");
+                jLabelErrorCase.setForeground(Color.RED);
+            }
+            else if(controlCamposCorrectos()==-11){
+                jLabelErrorCase.setText("ERROR: El campo 'Minutos' no puede ser cero.");
                 jLabelErrorCase.setForeground(Color.RED);
             }
             else if(controlCamposCorrectos()==-2){
@@ -576,6 +801,9 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             int i = Integer.parseInt(txtMinutos.getText());
             if(i<0){
                 return -1;
+            }
+            if(i==0){
+                return -11;
             }
         } catch (NumberFormatException e) {
             cont++;
@@ -616,11 +844,18 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btnConfirmar;
-    public javax.swing.JComboBox<String> jComboBox1;
-    public static javax.swing.JFrame jFrame1;
+    public static javax.swing.JButton jButton1;
+    public static javax.swing.JButton jButton2;
+    public static javax.swing.JButton jButton3;
+    public static javax.swing.JButton jButton4;
+    public javax.swing.JButton jButton5;
+    public static javax.swing.JComboBox<String> jComboBox1Plataformas;
+    public static javax.swing.JFrame jFrameBuscarArtista;
+    public static javax.swing.JFrame jFrameModificar;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel10;
     public static javax.swing.JLabel jLabel11;
+    public static javax.swing.JLabel jLabel12;
     public static javax.swing.JLabel jLabel15;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;
@@ -630,9 +865,16 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     public static javax.swing.JLabel jLabel7;
     public static javax.swing.JLabel jLabel8;
     public static javax.swing.JLabel jLabel9;
+    public static javax.swing.JLabel jLabelDescripcionTam;
     public static javax.swing.JLabel jLabelErrorCase;
+    public static javax.swing.JList<String> jListArtistas;
     public static javax.swing.JPanel jPanel1;
+    public static javax.swing.JPanel jPanel2;
     public static javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JScrollPane jScrollPane2;
+    public static javax.swing.JScrollPane jScrollPane3;
+    public static javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTextField jTextField1;
     public static javax.swing.JTextField txtCantidadMaxima;
     public static javax.swing.JTextField txtCantidadMinima;
     public static javax.swing.JTextField txtCosto;
