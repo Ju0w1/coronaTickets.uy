@@ -6,10 +6,8 @@
 package Presentacion;
 import Logica.Fabrica;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import logica.Controladores.ControladorUsuario;
-import logica.DataTypes.DTFecha;
-import logica.interfaz.IControladorUsuario;
+import Logica.DataTypes.DTFecha;
+import Logica.Interfaz.IControladorUsuario;
 /**
  *
  * @author pabli
@@ -20,9 +18,10 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
      * Creates new form Usuario
      */
     //private IControladorUsuario ICU;
+    private IControladorUsuario ICU;
     public AltaUsuario() {
         initComponents();
-        //this.ICU = Fabrica.getInstance().getIControladorUsuario();
+        this.ICU = Fabrica.getInstance().getIControladorUsuario();
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -236,7 +235,7 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(this, "Fecha invalida");
         }else{
             JOptionPane.showMessageDialog(this, "Exito");
-            Fabrica.getInstance().getIControladorUsuario().addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio));
+            this.ICU.addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio));
 //            cont.agregarUsuario(textNombre.getText(), textApellido.getText(), textCedula.getText());
 //            DefaultTableModel tablaModelo = (DefaultTableModel)jTable1.getModel();
 //            cont.llenarTabla(tablaModelo);

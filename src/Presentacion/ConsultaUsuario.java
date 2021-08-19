@@ -7,6 +7,7 @@ package Presentacion;
 
 import Logica.DataTypes.DTFecha;
 import Logica.Fabrica;
+import Logica.Interfaz.IControladorUsuario;
 import java.awt.Component;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
@@ -15,7 +16,6 @@ import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
-import logica.Interfaces.IControladorUsuario;
 
 /**
  *

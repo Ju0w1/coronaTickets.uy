@@ -18,7 +18,6 @@ import java.util.HashMap;
 import java.util.Map;
 import logica.Clases.Espectador;
 import logica.Clases.Usuario;
-import logica.DataTypes.DTFecha;
 /**
  *
  * @author LucasCiceri
@@ -57,24 +56,6 @@ public class UsuariosServicios {
         }
         return resultado;
     }
-    
-//    public void agregarEspectador(Espectador espectador){
-//        try {
-//            PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario (usu_nick, usu_nombre, usu_apellido, usu_mail, usu_nacimiento) VALUES (?,?,?,?,?)");
-//        
-//            status.setString (1, espectador.getNickname());
-//            status.setString (2, espectador.getNombre());
-//            status.setString (3, espectador.getApellido());
-//            status.setString (4, espectador.getEmail());
-//            status.setDate(1, Date.valueOf("20/10/2021"));
-//            
-//            status.execute();
-//            
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//
-//        }
-//    }
     
 
     public boolean addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {

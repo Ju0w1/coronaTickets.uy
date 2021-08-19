@@ -5,15 +5,11 @@
  */
 package logica.Controladores;
 
-import Logica.Clases.Espectaculo;
-import java.util.HashMap;
 import java.util.Map;
 import Logica.Clases.Espectaculo;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
-import Presentacion.AltaEspectaculo;
 
-import javax.swing.JComboBox;
 
 /**
  *
