@@ -12,9 +12,12 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import logica.Clases.Espectador;
+import java.util.HashMap;
 import logica.Clases.Usuario;
-import logica.Interfaces.IControladorUsuario;
+import logica.Clases.Espectador;
+import logica.interfaz.IControladorUsuario;
 import logica.servicios.UsuariosServicios;
+import logica.DataTypes.DTFecha;
 
 /**
  *
@@ -23,13 +26,15 @@ import logica.servicios.UsuariosServicios;
 public class ControladorUsuario implements IControladorUsuario{
     
     private Map<String, Usuario> artistas;
-    private Map<String, Usuario> espectadores;
+    private Map<String, Espectador> espectadores;
     
     private UsuariosServicios servicioUsuarios;
     private static ControladorUsuario instancia;
 
     public ControladorUsuario() {
         this.servicioUsuarios = new UsuariosServicios();
+        this.espectadores = new HashMap<>();
+        this.artistas = new HashMap<>();
     }
     
     public static ControladorUsuario getInstance() {
@@ -43,6 +48,10 @@ public class ControladorUsuario implements IControladorUsuario{
         Map<String, Usuario> usuarios = servicioUsuarios.getUsers();
         return usuarios;
     };
+//    public Map<String, Usuario> getUsuarios(){
+//        this.espectadores = servicioUsuarios.getUsers();
+//        return espectadores;
+//    };
     
     public void agregarEspectador(Espectador espectador) {
     
@@ -92,3 +101,14 @@ public class ControladorUsuario implements IControladorUsuario{
         System.out.println(fecha.getAnio());
     }
 }
+//     public void addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento){
+//         //this.servicioUsuarios.getUsers();
+//         this.espectadores.put(nickname, new Espectador(nickname,nombre,apellido,email,nacimiento));
+        
+// //        for(int i = 0; i < this.espectadores.size(); i++){
+// //            System.out.println("Nombre: " + this.espectadores.get(i).getNombre() + ", Apellido: " + this.espectadores.get(i).getApellido());
+// //        }
+
+//         this.servicioUsuarios.addEspectador(nickname, nombre, apellido, email, nacimiento);
+//     }
+// }

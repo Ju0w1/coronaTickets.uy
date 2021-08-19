@@ -4,20 +4,26 @@
  * and open the template in the editor.
  */
 package Presentacion;
-
+import Logica.Fabrica;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import logica.Controladores.ControladorUsuario;
+import logica.DataTypes.DTFecha;
+import logica.interfaz.IControladorUsuario;
 /**
  *
  * @author pabli
  */
 public class AltaUsuario extends javax.swing.JInternalFrame {
-
+    
     /**
      * Creates new form Usuario
      */
+    //private IControladorUsuario ICU;
     public AltaUsuario() {
         initComponents();
+        //this.ICU = Fabrica.getInstance().getIControladorUsuario();
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,14 +52,14 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         jPanel8 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
-        email = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel9 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
+        SpinnerDia = new javax.swing.JSpinner();
+        SpinnerMes = new javax.swing.JSpinner();
+        SpinnerAnio = new javax.swing.JSpinner();
         filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel4 = new javax.swing.JPanel();
         btnAgregarImagen = new javax.swing.JButton();
@@ -117,12 +123,13 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         jPanel8.add(jLabel8);
         jPanel8.add(filler9);
 
-        email.addActionListener(new java.awt.event.ActionListener() {
+        txtEmail.setName("txtEmail"); // NOI18N
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                emailActionPerformed(evt);
+                txtEmailActionPerformed(evt);
             }
         });
-        jPanel8.add(email);
+        jPanel8.add(txtEmail);
 
         jPanel3.add(jPanel8);
         jPanel3.add(filler6);
@@ -132,9 +139,18 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         jLabel9.setText("Fecha de nacimiento");
         jPanel9.add(jLabel9);
 
-        jPanel1.add(jSpinner1);
-        jPanel1.add(jSpinner2);
-        jPanel1.add(jSpinner3);
+        SpinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+        SpinnerDia.setName("SpinnerDia"); // NOI18N
+        jPanel1.add(SpinnerDia);
+        SpinnerDia.getAccessibleContext().setAccessibleName("");
+
+        SpinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, null, 12, 1));
+        SpinnerMes.setName("SpinnerMes"); // NOI18N
+        jPanel1.add(SpinnerMes);
+
+        SpinnerAnio.setModel(new javax.swing.SpinnerNumberModel(1990, 1950, 2003, 1));
+        SpinnerAnio.setName("SpinnerAnio"); // NOI18N
+        jPanel1.add(SpinnerAnio);
 
         jPanel9.add(jPanel1);
 
@@ -180,17 +196,17 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(95, 95, 95)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(104, 104, 104))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(75, 75, 75)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(85, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(130, 130, 130)
+                .addGap(175, 175, 175)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(179, Short.MAX_VALUE))
         );
 
         pack();
@@ -204,20 +220,28 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailActionPerformed
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_emailActionPerformed
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
-//        if(textNombre.getText().equals("") || textApellido.getText().equals("") || textCedula.getText().equals("")){
-//            JOptionPane.showMessageDialog(this, "Ingrese todos los datos por favor");
-//        }else{
+        int dia,mes, anio;
+        dia = (int)SpinnerDia.getModel().getValue();
+        mes = (int)SpinnerMes.getModel().getValue();
+        anio = (int)SpinnerAnio.getModel().getValue();
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtEmail.getText().equals("") || txtNickname.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos por favor");
+//        }else if((dia < 1 || dia > 31) || (mes < 1 || mes > 12) || (anio < 1950 || anio > 2003)){
+//            JOptionPane.showMessageDialog(this, "Fecha invalida");
+        }else{
+            JOptionPane.showMessageDialog(this, "Exito");
+            Fabrica.getInstance().getIControladorUsuario().addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio));
 //            cont.agregarUsuario(textNombre.getText(), textApellido.getText(), textCedula.getText());
 //            DefaultTableModel tablaModelo = (DefaultTableModel)jTable1.getModel();
 //            cont.llenarTabla(tablaModelo);
 //            JOptionPane.showMessageDialog(this, "Agregado correctamente");
-//        }
+        }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -234,10 +258,12 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner SpinnerAnio;
+    private javax.swing.JSpinner SpinnerDia;
+    private javax.swing.JSpinner SpinnerMes;
     private javax.swing.JButton btnAgregarImagen;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnConfirmar;
-    private javax.swing.JTextField email;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler10;
     private javax.swing.Box.Filler filler11;
@@ -263,11 +289,9 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNickname;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
