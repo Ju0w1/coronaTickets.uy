@@ -5,6 +5,8 @@
  */
 package logica.Clases;
 
+import Logica.DataTypes.DTFecha;
+
 /**
  *
  * @author Admin

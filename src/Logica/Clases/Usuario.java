@@ -1,5 +1,7 @@
 package logica.Clases;
 
+import Logica.DataTypes.DTFecha;
+
 public class Usuario {
     private String nickname;
     private String nombre;

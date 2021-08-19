@@ -1,7 +1,7 @@
 package Logica.Clases;
 
-import logica.Clases.DTFecha;
-import logica.Clases.DTTimeStamp;
+import Logica.DataTypes.DTFecha;
+import Logica.DataTypes.DTTimeStamp;
 
 
 public class Espectaculo {

@@ -3,21 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Presentacion/AltaUsuario.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Interfaz/IControladorUsuario.java</file>
             <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Controladores/ControladorUsuario.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Funcion.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Espectador.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Artista.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Plataforma.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Servicios/UsuariosServicios.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Espectaculo.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/laboratorioprogramacionaplicaciones/LaboratorioProgramacionAplicaciones.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Paquete.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Persistencia/ConexionDB.java</file>
             <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Presentacion/MenuInicio.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Fabrica.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Controladores/ControladorEspectaculos.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Usuario.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Servicios/UsuariosServicios.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Presentacion/ConsultaUsuario.java</file>
         </group>
     </open-files>
 </project-private>

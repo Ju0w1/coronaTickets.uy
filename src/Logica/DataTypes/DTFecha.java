@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Clases;
+package Logica.DataTypes;
 
 /**
  *
@@ -26,10 +26,10 @@ public class DTFecha {
         return this.dia;
     }
     public int getMes(){
-        return this.dia;
+        return this.mes;
     }
     public int getAnio(){
-        return this.dia;
+        return this.anio;
     }
     
 }

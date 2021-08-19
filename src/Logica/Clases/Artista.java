@@ -1,5 +1,7 @@
 package logica.Clases;
 
+import Logica.DataTypes.DTFecha;
+
 public class Artista extends Usuario {
     private String descripcion;
     private String biografia;
