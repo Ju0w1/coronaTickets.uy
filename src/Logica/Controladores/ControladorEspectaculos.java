@@ -9,7 +9,12 @@ import java.util.Map;
 import Logica.Clases.Espectaculo;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
-
+import java.util.Set;
+import logica.Clases.Funcion;
+import logica.Clases.Artista;
+import Presentacion.ConsultaFuncion;
+import javax.swing.JLabel;
+import javax.swing.JList;
 
 /**
  *
@@ -71,8 +76,20 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         
     }
     
-    public void consultaFuncionEspectaculo(){
+    public void consultaFuncionEspectaculo(String plataforma, String espectaculo, String funcion, JLabel mostrarNom, JLabel mostrarFecha, JLabel mostrarHora, JList mostrarArtistas){
+        Map<String, Funcion> funciones = servicioEspectaculo.getFunciones();
+        String auxFecha, auxHora, auxArtistas[]={};
+        Set<String> artistas;
+        Funcion rslt=funciones.get(funcion);
         
+        mostrarNom.setText(rslt.getNombre());
+        auxFecha= String.valueOf(rslt.getFecha().getDia())+"/"+String.valueOf(rslt.getFecha().getMes())+"/"+String.valueOf(rslt.getFecha().getAnio());
+        mostrarFecha.setText(auxFecha);
+        auxHora= String.valueOf(rslt.getHoraInicio().getHora())+":"+String.valueOf(rslt.getHoraInicio().getMinuto());
+        mostrarHora.setText(auxHora);
+        artistas= rslt.getArtistas().keySet();
+        System.arraycopy(artistas.toArray(), 0, auxArtistas, 0, artistas.size());
+        mostrarArtistas.setListData(auxArtistas);
     }
     
     public void registroFuncionEspectaculo(){

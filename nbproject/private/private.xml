@@ -3,13 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Interfaz/IControladorEspectaculo.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Interfaz/IControladorUsuario.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Controladores/ControladorUsuario.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Presentacion/MenuInicio.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Servicios/UsuariosServicios.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Controladores/ControladorEspectaculos.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Presentacion/ConsultaUsuario.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Servicios/EspectaculosServicios.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Controladores/ControladorUsuario.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Presentacion/ConsultaFuncion.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Controladores/ControladorEspectaculos.java</file>
         </group>
     </open-files>
 </project-private>

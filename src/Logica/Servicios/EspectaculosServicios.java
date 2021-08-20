@@ -21,6 +21,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+import logica.Clases.Funcion;
 import logica.Clases.Usuario;
 
 /**
@@ -179,6 +180,20 @@ public class EspectaculosServicios {
             return false;
         }
     }
+    public Map<String, Funcion> getFunciones() {
+        Map<String, Funcion> resultado = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM funciones");
+            ResultSet rs = status.executeQuery();
 
+            while (rs.next()) {
+                //resultado.put(rs.getString("nombre"), new Usuario(rs.getString("nombre"), rs.getString("apellido")));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return resultado;
+    }
 
 }

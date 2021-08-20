@@ -7,6 +7,7 @@ package logica.Clases;
 
 import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
+import java.util.Map;
 
 /**
  *
@@ -17,6 +18,7 @@ public class Funcion {
         private DTFecha fecha;
         private DTTimeStamp horaInicio;
         private DTFecha fechaRegistro;
+        private Map<String, Artista> artistas;
         
         public Funcion(String nombre_, DTFecha fecha_, DTTimeStamp horaInicio_, DTFecha fechaRegistro_){
             this.nombre= nombre_;
@@ -41,6 +43,10 @@ public class Funcion {
             this.fechaRegistro=fechaRegistro_;
         }
         
+        public void setArtistas(Map<String, Artista> artistas){
+            this.artistas=artistas;
+        }
+        
         public String getNombre(){
             return this.nombre;
         }
@@ -57,5 +63,8 @@ public class Funcion {
             return this.fechaRegistro;
         }
         
+        public Map<String, Artista> getArtistas(){
+            return this.artistas;
+        }
     
 }
