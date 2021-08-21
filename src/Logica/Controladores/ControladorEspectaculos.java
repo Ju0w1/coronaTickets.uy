@@ -25,9 +25,10 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
 //        
 //    }
     
-    public Map<String, Espectaculo> getEspectaculos(){
-        return this.espectaculos;
-    }
+    public Map<String, Espectaculo> getUsuarios(){
+        Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
+        return espectaculos;
+    };
     
     //metodos
     public ControladorEspectaculos() {

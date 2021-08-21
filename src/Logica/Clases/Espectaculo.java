@@ -2,6 +2,8 @@ package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
+
 
 
 public class Espectaculo {
@@ -26,6 +28,10 @@ public class Espectaculo {
         this.Costo=costo;
         this.Duracion=duracion;
         this.Fecha_Registro=Fregistro;
+    }
+    
+    public Espectaculo(int id, int organizador, int plataforma, String nombre, String descripcion, double duracion, int espectmax, int especmin, String url, String fecha, double costo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     //Getters
