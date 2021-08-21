@@ -12,6 +12,7 @@ import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
+import javax.swing.JComboBox;
 import javax.swing.JList;
 
 
@@ -51,9 +52,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
     }
     
-    public void obtenerPlataformas(){
+    public void obtenerPlataformas(JComboBox listPlataform){
         for(int i=0;i<this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount();i++){
-            Presentacion.AltaEspectaculo.jComboBox1Plataformas.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
+            listPlataform.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
         }
     }
     
@@ -69,6 +70,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         listPlataform.setModel(listModel1);
     }
     
+     
+    
+     
     public void obtenerArtistas(){
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistas().getModel());
     }

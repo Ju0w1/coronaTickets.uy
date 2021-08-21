@@ -41,7 +41,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     public AltaEspectaculo() {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
-        this.ICE.obtenerPlataformas();
+        this.ICE.obtenerPlataformas(jComboBox1Plataformas);
         this.ICE.obtenerArtistas();
         //jComboBox1= this.ICE.obtenerPlataformas();
         //jComboBox1.addItem(this.ICE.obtenerPlataformas().getItemAt(0).toString());
@@ -696,7 +696,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtURLKeyPressed
 
     private void jComboBox1PlataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox1PlataformasActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

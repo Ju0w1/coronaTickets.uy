@@ -500,6 +500,8 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         if(listPlataformas.isSelectionEmpty()){
             JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna plataforma.");
         }
+        
+        
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     public void setLabelsTxtNotVisible(){

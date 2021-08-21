@@ -15,10 +15,13 @@ import javax.swing.JList;
  */
 public interface IControladorEspectaculo {
     public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo);
-    public abstract void obtenerPlataformas();
+    public abstract void obtenerPlataformas(JComboBox comboPlataform);
     public abstract void obtenerPlataformas(JList listPlataform);
     public abstract void obtenerArtistas();
     public abstract void obtenerArtistaPorNombre(String nombre);
+    //public abstract void obtenerEspectaculo(String nombre);
+    //public abstract void obtenerFuncionesDeEspectaculo(String nombre);
     public abstract boolean verificarNombreEspectaculo(String nombre);
+    
 }
 
