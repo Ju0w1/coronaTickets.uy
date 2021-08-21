@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import Logica.Fabrica;
+import Logica.Interfaz.IControladorEspectaculo;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,12 +15,13 @@ import javax.swing.JOptionPane;
  */
 public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form ConsultaEspectaculo
-     */
+    private IControladorEspectaculo ICE;
+    
     public ConsultaEspectaculo() {
         initComponents();
         setLabelsTxtNotVisible();
+        this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
+        this.ICE.obtenerPlataformas(this.listPlataformas);
     }
 
     /**

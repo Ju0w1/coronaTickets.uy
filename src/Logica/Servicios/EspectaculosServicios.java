@@ -6,6 +6,7 @@
 package Logica.Servicios;
 
 import Logica.Clases.Espectaculo;
+import Logica.Clases.Plataforma;
 import Persistencia.ConexionDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -34,17 +35,34 @@ public class EspectaculosServicios {
     private Connection conexion = new ConexionDB().getConexion();
 
     public Map<String, Espectaculo> getEspectaculos() {
-        Map<String, Espectaculo> resultado = new HashMap<>();
+        Map<String, Espectaculo> resultado = null;
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario");
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos");
             ResultSet rs = status.executeQuery();
 //int id, int organizador, int plataforma, String nombre, String descripcion, double duracion, int espectmax, int especmin, String url, String fecha, double costo
             while (rs.next()) {
-                resultado.put(rs.getString("Nombre"), new Espectaculo(rs.getInt("Id"), rs.getInt("Artista"), rs.getInt("Plataforma"), rs.getString("Nombre"), rs.getString("descripcion"), rs.getDouble("Duracion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("URL"), rs.getString("fecha"), rs.getDouble("Costo")));
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getInt("espec_id"), rs.getInt("espec_artista"), rs.getInt("espec_plataforma"), rs.getString("espec_nombre"), rs.getString("espec_descripcion"), rs.getDouble("espec_duracion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getString("espec_fecha_registro"), rs.getDouble("espec_Costo")));
                 System.out.println("Nombre: " + rs.getString("Nombre"));
                 System.out.println("Id: " + rs.getInt("Id"));
                 System.out.println("Artista: " + rs.getInt("Artista"));
                 System.out.println("Plataforma: " + rs.getInt("Plataforma"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return resultado;
+    }
+
+    public Map<String, Plataforma> getPlataformas() {
+        Map<String, Plataforma> resultado = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM valores_tipo");
+            ResultSet rs = status.executeQuery();
+//int id, int organizador, int plataforma, String nombre, String descripcion, double duracion, int espectmax, int especmin, String url, String fecha, double costo
+            while (rs.next()) {
+                resultado.put(rs.getString("vp_nombre"), new Plataforma(rs.getString("vp_nombre"), rs.getString("vp_valor_1"), rs.getString("vp_valor_2")));
+                System.out.println("Nombre Plataforma: " + rs.getString("vp_nombre"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -87,7 +105,7 @@ public class EspectaculosServicios {
         }
     }
 
-    public JComboBox llenarListaPlataformas() {
+    public JComboBox llenarComboBoxPlataformas() {
         JComboBox aux = new JComboBox();
         try {
             Statement status = conexion.createStatement();
@@ -101,6 +119,8 @@ public class EspectaculosServicios {
             return new JComboBox();
         }
     }
+    
+    
 
     public JList llenarListaArtistas() {
         DefaultListModel demoList = new DefaultListModel();

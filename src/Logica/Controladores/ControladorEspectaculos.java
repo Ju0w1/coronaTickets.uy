@@ -7,8 +7,12 @@ package logica.Controladores;
 
 import java.util.Map;
 import Logica.Clases.Espectaculo;
+import Logica.Clases.Plataforma;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
+import java.util.Iterator;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
 
 
 /**
@@ -18,6 +22,7 @@ import Logica.Servicios.EspectaculosServicios;
 public class ControladorEspectaculos implements IControladorEspectaculo{
     //atributos
     private Map<String, Espectaculo> espectaculos;
+    private Map<String, Plataforma> plataformas;
     private EspectaculosServicios servicioEspectaculo;
     private static ControladorEspectaculos instancia;
     //getters
@@ -25,7 +30,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
 //        
 //    }
     
-    public Map<String, Espectaculo> getUsuarios(){
+    public Map<String, Espectaculo> getEspectaculos(){
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
         return espectaculos;
     };
@@ -47,9 +52,21 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     }
     
     public void obtenerPlataformas(){
-        for(int i=0;i<this.servicioEspectaculo.llenarListaPlataformas().getItemCount();i++){
-            Presentacion.AltaEspectaculo.jComboBox1Plataformas.addItem(this.servicioEspectaculo.llenarListaPlataformas().getItemAt(i).toString());
+        for(int i=0;i<this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount();i++){
+            Presentacion.AltaEspectaculo.jComboBox1Plataformas.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
         }
+    }
+    
+     public void obtenerPlataformas(JList listPlataform){
+        this.plataformas= servicioEspectaculo.getPlataformas();
+        DefaultListModel listModel1 = new DefaultListModel();
+        Iterator iterator = this.plataformas.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entrada = (Map.Entry) iterator.next();
+            Plataforma p = (Plataforma) entrada.getValue();
+            listModel1.addElement(p.getNombre());
+        } 
+        listPlataform.setModel(listModel1);
     }
     
     public void obtenerArtistas(){
