@@ -18,5 +18,5 @@ public interface IControladorEspectaculo {
     public abstract void obtenerArtistas();
     public abstract void obtenerArtistaPorNombre(String nombre);
     public abstract boolean verificarNombreEspectaculo(String nombre);
+    public abstract boolean addPlataforma(String nombre, String url, String descripcion);
 }
-

@@ -38,7 +38,6 @@ public class EspectaculosServicios {
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario");
             ResultSet rs = status.executeQuery();
-
             while (rs.next()) {
                 resultado.put(rs.getString("Nombre"), new Usuario(rs.getString("Nombre"), rs.getString("Apellido")));
                 System.out.println("Nombre: " + rs.getString("Nombre"));
@@ -49,7 +48,58 @@ public class EspectaculosServicios {
         }
         return resultado;
     }
-
+    
+    public boolean addPlataforma(String nombre, String url, String descripcion){
+        String id;
+        try { // Busco el id del "tipo" con nombre "Plataforma" en la base y si no existe la creo
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM tipo WHERE tp_nombre = 'Plataforma'");
+            ResultSet rs = status.executeQuery();
+            if (rs.next()){
+                id = rs.getString(1);
+                //System.out.println("1.ID de Plataforma: " + id);
+            } else {
+                status = conexion.prepareStatement("INSERT INTO tipo (tp_id, tp_nombre) VALUES (DEFAULT,'Plataforma')");
+                status.execute();
+                rs = status.executeQuery("SELECT tp_id FROM tipo WHERE tp_nombre = 'Plataforma'");
+                rs.next();
+                id = rs.getString(1);
+                //System.out.println("2.ID de Plataforma: " + id);
+            }
+            //return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        int intID = Integer.parseInt(id);
+        try { // Creo la plataforma en "Valores_tipo" una vez ya obtenido el ID
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO valores_tipo (tp_id, vp_id, vp_nombre, vp_valor_1, vp_valor_2, vp_vigente) VALUES (?,DEFAULT,?,?,?, NULL)");
+            status.setInt(1, intID);
+            status.setString(2, nombre);
+            status.setString(3, url);
+            status.setString(4, descripcion);
+            status.execute();
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public boolean checkPlataforma(String nombre){
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM valores_tipo WHERE vp_nombre=?");
+            status.setString(1, nombre);
+            ResultSet rs = status.executeQuery();
+            if (rs.next()){
+                return true;
+            }// existe la plataforma
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; // No existe la plataforma
+        }
+        return false;
+    }
+    
     public void addEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo) {
         LocalDateTime now = LocalDateTime.now();
         Date today = new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());

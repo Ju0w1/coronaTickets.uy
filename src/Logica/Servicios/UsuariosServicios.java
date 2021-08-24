@@ -82,7 +82,6 @@ public class UsuariosServicios {
             ResultSet rs = status.executeQuery("SELECT usu_id FROM usuario WHERE usu_nick='" + nickname+"'");
             rs.next();
             id = rs.getString(1);
-            //System.out.println("asddasdasdasd" + id);
         } catch (SQLException ex) {
             ex.printStackTrace();
             return false;
