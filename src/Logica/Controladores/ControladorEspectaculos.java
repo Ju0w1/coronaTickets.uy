@@ -103,7 +103,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         nombreEspectaculo.setText(e.getNombre());
         duracion.setText(Integer.toString(e.getDuracion()));
         espectMin.setText(Integer.toString(e.getMin()));
-        espectMin.setText(Integer.toString(e.getMax()));
+        espectMax.setText(Integer.toString(e.getMax()));
         URL.setText(e.getUrl());
         costo.setText(Double.toString(e.getCosto()));
         fecha.setText(e.getFecha().toString());
