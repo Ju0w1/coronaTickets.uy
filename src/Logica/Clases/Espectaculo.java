@@ -2,6 +2,7 @@ package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
+import java.sql.Date;
 
 
 
@@ -9,16 +10,16 @@ import Logica.DataTypes.DTTimeStamp;
 public class Espectaculo {
     
     private String Nombre;
-    private String Artista;
+    private int Artista;
     private String Descripcion;
     private int Cant_min_espectadores;
     private int Cant_max_espectadores;
     private String Url;
-    private int Costo;
-    private DTTimeStamp Duracion;
-    private DTFecha Fecha_Registro;
+    private double Costo;
+    private int Duracion;
+    private Date Fecha_Registro;
     
-    public Espectaculo(String nombre,String Artista,String descr,int min,int max, String url, int costo,DTTimeStamp duracion,DTFecha Fregistro){
+    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,int duracion,Date Fregistro){
         this.Nombre=nombre;
         this.Artista=Artista;
         this.Descripcion=descr;
@@ -38,7 +39,7 @@ public class Espectaculo {
     public String getNombre(){
         return this.Nombre;
     }
-    public String getArtista(){
+    public int getArtista(){
         return this.Artista;
     }
     public String getDescripcion(){
@@ -53,15 +54,21 @@ public class Espectaculo {
     public String getUrl(){
         return this.Url;
     }
-    public int getCosto(){
+    public double getCosto(){
         return this.Costo;
+    }
+    public int getDuracion(){
+        return this.Duracion;
+    }
+    public Date getFecha(){
+        return this.Fecha_Registro;
     }
     
     //Setters
     public void setNombre(String nom_x){
         this.Nombre=nom_x;
     }
-    public void setArtista(String artista_x){
+    public void setArtista(int artista_x){
         this.Artista=artista_x;
     }
     public void setDescripcion(String desc_x){
@@ -78,5 +85,8 @@ public class Espectaculo {
     }
     public void setCosto(int costo_x){
         this.Costo=costo_x;
+    }
+    public void setFecha(Date fecha){
+        this.Fecha_Registro=fecha;
     }
 }

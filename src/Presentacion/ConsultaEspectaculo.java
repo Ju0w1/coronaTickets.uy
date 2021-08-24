@@ -137,11 +137,6 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         setPreferredSize(new java.awt.Dimension(740, 630));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        listEspectaculos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Facebook Live", "Amazon live premiun 4k", "test", "Item 4", "Item 5", "test2", "test3", "test4", "asd" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane2.setViewportView(listEspectaculos);
 
         getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, 88));
@@ -470,14 +465,14 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnFuncion1ActionPerformed
 
     private void btnSelecionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSelecionarActionPerformed
-        if(listEspectaculos.isSelectionEmpty()){
+        if (jTextField1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna plataforma.");
+        } else if (listEspectaculos.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado ningun espectaculo.");
         }
-        else if(jTextField1.getText().isEmpty()){
-            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna plataforma.");
+        else{//JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
+            this.ICE.cargarDatosConsultaEspectador(listEspectaculos.getSelectedValue(), txtNombreArtista, txtNombreEspectaculo, txtDuracion, txtCantEspectadoresMinima, txtCantEspectadoresMaxima, txtURL, txtCosto, txtFechaRegistro, txtDescripcion);
         }
-        
-        
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -490,6 +485,8 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         jTextField1.setText(listPlataformas.getSelectedValue());
+        this.ICE.obtenerEspectaculosPorPlataforma(listEspectaculos, jTextField1.getText());
+        jFrame1.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

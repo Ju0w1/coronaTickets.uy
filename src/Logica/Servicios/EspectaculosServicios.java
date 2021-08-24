@@ -35,17 +35,12 @@ public class EspectaculosServicios {
     private Connection conexion = new ConexionDB().getConexion();
 
     public Map<String, Espectaculo> getEspectaculos() {
-        Map<String, Espectaculo> resultado = null;
+        Map<String, Espectaculo> resultado = new HashMap<>();
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos");
             ResultSet rs = status.executeQuery();
-//int id, int organizador, int plataforma, String nombre, String descripcion, double duracion, int espectmax, int especmin, String url, String fecha, double costo
             while (rs.next()) {
-                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getInt("espec_id"), rs.getInt("espec_artista"), rs.getInt("espec_plataforma"), rs.getString("espec_nombre"), rs.getString("espec_descripcion"), rs.getDouble("espec_duracion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getString("espec_fecha_registro"), rs.getDouble("espec_Costo")));
-                System.out.println("Nombre: " + rs.getString("Nombre"));
-                System.out.println("Id: " + rs.getInt("Id"));
-                System.out.println("Artista: " + rs.getInt("Artista"));
-                System.out.println("Plataforma: " + rs.getInt("Plataforma"));
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -53,6 +48,34 @@ public class EspectaculosServicios {
         }
         return resultado;
     }
+    
+    public Map<String, Espectaculo> getEspectaculosSegunPlataforma(String nombrePlataforma) {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        //String nombre,int Artista,String descr,int min,int max, String url, double costo,int duracion,String Fregistro)
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_plataforma in (SELECT valores_tipo.vp_id from valores_tipo WHERE valores_tipo.vp_nombre=?)");
+            status.setString(1, nombrePlataforma);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro")));
+                System.out.println("Nombre: " + rs.getString("espec_nombre"));
+                System.out.println("Artista: " + rs.getInt("espec_artista"));
+                System.out.println("Descripcion: " + rs.getString("espec_descripcion"));
+                System.out.println("Min: " + rs.getInt("espec_cant_min_espect"));
+                System.out.println("Min: " + rs.getInt("espec_cant_max_espect"));
+                System.out.println("URL: " + rs.getString("espec_URL"));
+                System.out.println("Costo: " + rs.getDouble("espec_Costo"));
+                System.out.println("Duracion: " + rs.getInt("espec_duracion"));
+                System.out.println("Fecha: " + rs.getDate("espec_fecha_registro"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return resultado;
+    }
+    
+    
 
     public Map<String, Plataforma> getPlataformas() {
         Map<String, Plataforma> resultado = new HashMap<>();

@@ -10,10 +10,13 @@ import Logica.Clases.Espectaculo;
 import Logica.Clases.Plataforma;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
+import java.util.Date;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JTextArea;
 
 
 /**
@@ -66,9 +69,46 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
             Map.Entry entrada = (Map.Entry) iterator.next();
             Plataforma p = (Plataforma) entrada.getValue();
             listModel1.addElement(p.getNombre());
-        } 
+        }
         listPlataform.setModel(listModel1);
     }
+     
+     public void obtenerEspectaculos(JList listaEspectaculos) {
+        this.espectaculos = servicioEspectaculo.getEspectaculos();
+        DefaultListModel listModel1 = new DefaultListModel();
+        Iterator iterator = this.espectaculos.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entrada = (Map.Entry) iterator.next();
+            Espectaculo e = (Espectaculo) entrada.getValue();
+            listModel1.addElement(e.getNombre());
+        }
+        listaEspectaculos.setModel(listModel1);
+    }
+
+    public void obtenerEspectaculosPorPlataforma(JList listaEspectaculos, String nombrePlataforma) {
+        this.espectaculos = servicioEspectaculo.getEspectaculosSegunPlataforma(nombrePlataforma);
+        DefaultListModel listModel1 = new DefaultListModel();
+        Iterator iterator = this.espectaculos.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entrada = (Map.Entry) iterator.next();
+            Espectaculo e = (Espectaculo) entrada.getValue();
+            listModel1.addElement(e.getNombre());
+        }
+        listaEspectaculos.setModel(listModel1);
+    }
+     
+     public void cargarDatosConsultaEspectador(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip){
+        Espectaculo e = (Espectaculo) this.espectaculos.get(espectaculoNombre);
+        nombreApellido.setText(Integer.toString(e.getArtista()));
+        nombreEspectaculo.setText(e.getNombre());
+        duracion.setText(Integer.toString(e.getDuracion()));
+        espectMin.setText(Integer.toString(e.getMin()));
+        espectMin.setText(Integer.toString(e.getMax()));
+        URL.setText(e.getUrl());
+        costo.setText(Double.toString(e.getCosto()));
+        fecha.setText(e.getFecha().toString());
+        descrip.setText(e.getDescripcion());
+     }
     
      
     
