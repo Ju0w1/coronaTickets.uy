@@ -39,6 +39,7 @@ public class UsuariosServicios {
     public Map<String, Usuario> getUsers() {
         Map<String, Usuario> resultado = new HashMap<>();
         try {
+            System.out.println("Entró");
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario");
             ResultSet rs = status.executeQuery();
             
@@ -72,5 +73,18 @@ public class UsuariosServicios {
             return false;
         }
         return true;
+    }
+    
+    public void modificarEspectador(String nombre, String apellido, DTFecha fecha, String email){
+        try{
+            PreparedStatement status = conexion.prepareStatement("UPDATE usuario SET usu_nombre = ?, usu_apellido= ?, usu_nacimiento = ? WHERE usu_mail = ?");
+            status.setString(1, nombre);
+            status.setString(2, apellido);
+            status.setString (3, fecha.getAnio() + "-" +  fecha.getMes() + "-" + fecha.getDia());
+            status.setString(4, email);
+            status.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
     }
 }
