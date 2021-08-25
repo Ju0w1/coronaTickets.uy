@@ -32,7 +32,8 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         initComponents();
         //DefaultListModel modelo = (DefaultListModel) listUsuarios.getModel();
         this.ICU = Fabrica.getInstance().getIControladorUsuario();
-        this.ICU.obtenerEspectadores(this.listUsuarios);
+        //this.ICU.obtenerEspectadores(this.listUsuarios, (DefaultTableModel) this.jTable2.getModel());
+        this.ICU.obtenerEspectadores((DefaultTableModel) this.jTable2.getModel());
     }
     
     //this.getContentPane().setLayout(new FlowLayout());
@@ -48,8 +49,6 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        listUsuarios = new javax.swing.JList<>();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,23 +87,13 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         btnCancelar = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
         btnMostrar = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setTitle("Consulta de usuario");
-        setMinimumSize(new java.awt.Dimension(600, 500));
+        setMinimumSize(new java.awt.Dimension(900, 600));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(600, 500));
-
-        listUsuarios.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                listUsuariosFocusGained(evt);
-            }
-        });
-        listUsuarios.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                listUsuariosValueChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(listUsuarios);
+        setPreferredSize(new java.awt.Dimension(900, 600));
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -255,22 +244,44 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
             }
         });
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nickname", "Nombre", "Apellido", "Email", "Fecha de nacimiento"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable2);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
                         .addComponent(jLabel1)
                         .addGap(81, 81, 81)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -291,18 +302,18 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnMostrar)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(btnCancelar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(35, 35, 35)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -332,37 +343,34 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void listUsuariosFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listUsuariosFocusGained
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_listUsuariosFocusGained
-
-    private void listUsuariosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listUsuariosValueChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listUsuariosValueChanged
-
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
         // TODO add your handling code here:
-
-        if(this.listUsuarios.getSelectedValue() != null){
-            this.ICU.cargarDatosConsultaEspectador(this.listUsuarios.getSelectedValue(),this.txtNickname, this.txtNombre, this.txtApellido, this.txtEmail, this.txtFechaNacimiento);
+        if(this.jTable2.getSelectedRow() >= 0){
+            String nick = this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),3).toString();
+            this.ICU.cargarDatosConsultaEspectador(nick,this.txtNickname, this.txtNombre, this.txtApellido, this.txtEmail, this.txtFechaNacimiento);
             this.btnModificar.setEnabled(true);
-            this.btnGuardar.setEnabled(true);
-            this.btnCancelar.setEnabled(true);
         }else{
             System.out.println("No hay ningún usuario seleccionado");
         }
-        
-        
     }//GEN-LAST:event_btnMostrarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
         // TODO add your handling code here:
+        this.btnGuardar.setEnabled(true);
+        this.btnCancelar.setEnabled(true);
         this.txtNombre.setEditable(true);
         this.txtApellido.setEditable(true);
         this.spinnerDia.setEnabled(true);
         this.spinnerMes.setEnabled(true);
         this.spinnerAnio.setEnabled(true);
+        //System.err.println(this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),4).toString());
+        String fecha[] = this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),4).toString().split("/");
+        int dia = Integer.parseInt(fecha[0]); 
+        int mes = Integer.parseInt(fecha[1]); 
+        int anio = Integer.parseInt(fecha[2]); 
+        this.spinnerDia.setValue(dia);
+        this.spinnerMes.setValue(mes);
+        this.spinnerAnio.setValue(anio);
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -379,14 +387,25 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         options,  //the titles of buttons
         options[0]); //default button title
 
+        String email = this.txtEmail.getText();
         String nombre = this.txtNombre.getText();
         String apellido = this.txtApellido.getText();
         int dia = (int) this.spinnerDia.getValue();
         int mes = (int) this.spinnerMes.getValue();
         int anio = (int) this.spinnerAnio.getValue();
         
+        
         if(n == 0){
-            this.ICU.modificarEspectador(nombre, apellido,new DTFecha(dia,mes,anio));
+            this.ICU.modificarEspectador(email,nombre, apellido,new DTFecha(dia,mes,anio));
+            //this.ICU.obtenerEspectadores(listUsuarios, (DefaultTableModel) this.jTable2.getModel());
+            this.ICU.obtenerEspectadores((DefaultTableModel) this.jTable2.getModel());
+            this.btnGuardar.setEnabled(false);
+            this.btnCancelar.setEnabled(false);
+            this.txtNombre.setEditable(false);
+            this.txtApellido.setEditable(false);
+            this.spinnerDia.setEnabled(false);
+            this.spinnerMes.setEnabled(false);
+            this.spinnerAnio.setEnabled(false);
         }else{
             System.out.println("Cancelado");
         }
@@ -423,9 +442,9 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextField2;
-    private javax.swing.JList<String> listUsuarios;
     private javax.swing.JSpinner spinnerAnio;
     private javax.swing.JSpinner spinnerDia;
     private javax.swing.JSpinner spinnerMes;
