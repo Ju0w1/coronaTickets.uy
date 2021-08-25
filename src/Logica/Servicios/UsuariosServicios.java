@@ -12,6 +12,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -58,8 +59,7 @@ public class UsuariosServicios {
         return resultado;
     }
     
-
-    public boolean addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
+    public boolean addUsuario(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
         try {
             PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario (usu_nick,usu_nombre,usu_apellido,usu_mail,usu_nacimiento) VALUES (?,?,?,?,?)");
             status.setString (1, nickname);
@@ -87,4 +87,62 @@ public class UsuariosServicios {
             ex.printStackTrace();
         }
     }
+    public boolean addArtista(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String descripcion, String biografia,String link) {
+        String id;
+        try {
+            this.addUsuario(nickname, nombre, apellido, email, nacimiento);
+            Statement status = conexion.createStatement();
+            ResultSet rs = status.executeQuery("SELECT usu_id FROM usuario WHERE usu_nick='" + nickname+"'");
+            rs.next();
+            id = rs.getString(1);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        try {
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO artistas (art_usu, art_descripcion, art_biografia, art_url) VALUES (?,?,?,?)");
+            status.setString (1, id);
+            status.setString (2, descripcion);
+            status.setString (3, biografia);
+            status.setString (4, link);
+            status.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    
+    public boolean checkUsuario(String nick, String email) { // compruebo que no haya un espectador con ese nick
+        String nickAux, emailAux;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usu_nick FROM usuario WHERE usu_nick=?");
+            status.setString(1, nick);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                nickAux = rs.getString(1);
+                if (nick.equals(nickAux))
+                    return true; // Existe el usuario
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; // No existe el usuario
+        }
+        
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usu_mail FROM usuario WHERE usu_mail=?");
+            status.setString(1, email);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                emailAux = rs.getString(1);
+                if (emailAux.equals(email))
+                    return true; // Existe el usuario
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; // No existe el usuario
+        }
+        return false; // No existe el usuario
+    }
+
 }

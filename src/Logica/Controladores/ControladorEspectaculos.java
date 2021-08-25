@@ -7,8 +7,10 @@ package logica.Controladores;
 
 import java.util.Map;
 import Logica.Clases.Espectaculo;
+import Logica.Clases.Plataforma;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
+import java.util.HashMap;
 
 
 /**
@@ -20,6 +22,8 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     private Map<String, Espectaculo> espectaculos;
     private EspectaculosServicios servicioEspectaculo;
     private static ControladorEspectaculos instancia;
+    private Map<String, Plataforma> plataformas;
+    
     //getters
 //    public Espectaculo getEspectaculo(){
 //        
@@ -32,6 +36,8 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     //metodos
     public ControladorEspectaculos() {
         this.servicioEspectaculo = new EspectaculosServicios();
+        this.plataformas = new HashMap<>();
+        this.espectaculos = new HashMap<>();
     }
    
     public static ControladorEspectaculos getInstance() {
@@ -39,6 +45,17 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
             instancia = new ControladorEspectaculos();
         }
         return instancia;
+    }
+    
+    public boolean addPlataforma(String nombre, String url, String descripcion){
+        if (this.servicioEspectaculo.checkPlataforma(nombre)){
+            return false;
+        }
+        if (this.servicioEspectaculo.addPlataforma(nombre, url, descripcion)){
+            this.plataformas.put(nombre, new Plataforma(nombre, url, descripcion));    
+            return true;
+        }
+        return false;
     }
 
     public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo) {

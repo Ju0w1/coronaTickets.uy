@@ -17,8 +17,8 @@ import logica.Clases.Usuario;
 import logica.Clases.Espectador;
 import Logica.Interfaz.IControladorUsuario;
 import javax.swing.table.DefaultTableModel;
+import logica.Clases.Artista;
 import logica.servicios.UsuariosServicios;
-
 
 /**
  *
@@ -53,10 +53,28 @@ public class ControladorUsuario implements IControladorUsuario{
 //        this.espectadores = servicioUsuarios.getUsers();
 //        return espectadores;
 //    };
+    public Map<String, Usuario> getUsuarios(){
+        Map<String, Usuario> usuarios = servicioUsuarios.getUsers();
+        return usuarios;
+    };
     
-    public void addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
-        this.espectadores.put(email, new Espectador(nickname,nombre,apellido,email,nacimiento));
-        this.servicioUsuarios.addEspectador(nickname, nombre, apellido, email, nacimiento);
+    public boolean addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
+        if (this.servicioUsuarios.checkUsuario(nickname, email) == false){
+            this.espectadores.put(email, new Espectador(nickname,nombre,apellido,email,nacimiento));
+            this.servicioUsuarios.addUsuario(nickname, nombre, apellido, email, nacimiento);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean addArtista(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String descripcion, String biografia, String link){
+        if (this.servicioUsuarios.checkUsuario(nickname, email) == false){
+            this.artistas.put(email, new Artista(nickname, nombre, apellido, email, nacimiento, descripcion, biografia, link));
+            this.servicioUsuarios.addArtista(nickname, nombre, apellido, email, nacimiento, descripcion, biografia, link);
+            return true;
+        } else {
+            return false;
+        }
     }
     
     //public void obtenerEspectadores(JList listEspec, DefaultTableModel tablaModelo){
@@ -119,7 +137,6 @@ public class ControladorUsuario implements IControladorUsuario{
         apellido.setText(e.getApellido());
         mail.setText(e.getEmail());
         nacimiento.setText(fechaNacim);
-        
     }
     
     public void modificarEspectador(String email, String nombre, String apellido, DTFecha fecha){
@@ -131,5 +148,3 @@ public class ControladorUsuario implements IControladorUsuario{
         this.servicioUsuarios.modificarEspectador(nombre, apellido, fecha, email);
     }
 }
-     
- 

@@ -36,23 +36,27 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
+        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         txtNickname = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
         txtNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
         txtApellido = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel8 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
         txtEmail = new javax.swing.JTextField();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
+        jLabel12 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -68,8 +72,12 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         btnConfirmar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel13 = new javax.swing.JLabel();
 
-        setTitle("Alta usuario");
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Alta Usuario");
         setPreferredSize(new java.awt.Dimension(500, 600));
 
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
@@ -79,7 +87,13 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         jLabel2.setText("Nickname");
         jPanel5.add(jLabel2);
         jPanel5.add(filler1);
+        jPanel5.add(filler6);
         jPanel5.add(txtNickname);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel1.setText("*");
+        jPanel5.add(jLabel1);
 
         jPanel3.add(jPanel5);
         jPanel3.add(filler3);
@@ -97,6 +111,11 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         });
         jPanel6.add(txtNombre);
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel3.setText("*");
+        jPanel6.add(jLabel3);
+
         jPanel3.add(jPanel6);
         jPanel3.add(filler4);
 
@@ -112,6 +131,11 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
             }
         });
         jPanel7.add(txtApellido);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel4.setText("*");
+        jPanel7.add(jLabel4);
 
         jPanel3.add(jPanel7);
         jPanel3.add(filler5);
@@ -130,8 +154,12 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         });
         jPanel8.add(txtEmail);
 
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel12.setText("*");
+        jPanel8.add(jLabel12);
+
         jPanel3.add(jPanel8);
-        jPanel3.add(filler6);
 
         jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.X_AXIS));
 
@@ -191,37 +219,43 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel2);
 
+        jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel13.setText("(*) Campo obligatorio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel13)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(56, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(175, 175, 175)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
-
-    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtApellidoActionPerformed
-
-    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtEmailActionPerformed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        this.txtNickname.setText("");
+        this.txtNombre.setText("");
+        this.txtApellido.setText("");
+        this.txtEmail.setText("");
+        this.SpinnerDia.setValue(1);
+        this.SpinnerMes.setValue(1);
+        this.SpinnerAnio.setValue(1990);
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
@@ -230,30 +264,31 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         mes = (int)SpinnerMes.getModel().getValue();
         anio = (int)SpinnerAnio.getModel().getValue();
         if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtEmail.getText().equals("") || txtNickname.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "Ingrese todos los datos por favor");
-//        }else if((dia < 1 || dia > 31) || (mes < 1 || mes > 12) || (anio < 1950 || anio > 2003)){
-//            JOptionPane.showMessageDialog(this, "Fecha invalida");
+            JOptionPane.showMessageDialog(this, "Campos incompletos.");
         }else{
-            JOptionPane.showMessageDialog(this, "Exito");
-            this.ICU.addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio));
-//            cont.agregarUsuario(textNombre.getText(), textApellido.getText(), textCedula.getText());
-//            DefaultTableModel tablaModelo = (DefaultTableModel)jTable1.getModel();
-//            cont.llenarTabla(tablaModelo);
-//            JOptionPane.showMessageDialog(this, "Agregado correctamente");
+            if (this.ICU.addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio)) == true){
+                JOptionPane.showMessageDialog(this, "Espectador agregado con exito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya existe ese espectador.");
+            }
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
-
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-//        textNombre.setText("Nombre");
-//        textApellido.setText("Apellido");
-//        textCedula.setText("Cedula");
-//        ServiciosUsuarios ser = new ServiciosUsuarios();
-//        ser.getUsers();
-    }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarImagenActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarImagenActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtApellidoActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -274,7 +309,12 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
     private javax.swing.Box.Filler filler9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

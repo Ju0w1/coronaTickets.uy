@@ -5,6 +5,11 @@
  */
 package Presentacion;
 
+import Logica.DataTypes.DTFecha;
+import Logica.Fabrica;
+import Logica.Interfaz.IControladorUsuario;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pabli
@@ -14,8 +19,10 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
     /**
      * Creates new form AgregarArtista
      */
+    private IControladorUsuario ICU;
     public AgregarArtista() {
         initComponents();
+        this.ICU = Fabrica.getInstance().getIControladorUsuario();
     }
 
     /**
@@ -32,21 +39,25 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         txtNickname = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
         txtNombre = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
         txtApellido = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel8 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
         txtEmail = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel9 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -61,27 +72,32 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         jLabel11 = new javax.swing.JLabel();
         filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
+        txtDescripcion = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
         filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel12 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(21, 0), new java.awt.Dimension(21, 0), new java.awt.Dimension(19, 32767));
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtBiografia = new javax.swing.JTextArea();
         filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
         jPanel13 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(21, 0), new java.awt.Dimension(21, 0), new java.awt.Dimension(19, 32767));
-        jTextField2 = new javax.swing.JTextField();
+        txtLink = new javax.swing.JTextField();
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         filler20 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
         jPanel2 = new javax.swing.JPanel();
         btnConfirmar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel14 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setMinimumSize(new java.awt.Dimension(500, 600));
-        setPreferredSize(new java.awt.Dimension(500, 600));
+        setPreferredSize(new java.awt.Dimension(500, 675));
 
         jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
 
@@ -91,6 +107,11 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         jPanel5.add(jLabel2);
         jPanel5.add(filler1);
         jPanel5.add(txtNickname);
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("*");
+        jPanel5.add(jLabel1);
 
         jPanel3.add(jPanel5);
         jPanel3.add(filler3);
@@ -108,6 +129,11 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         });
         jPanel6.add(txtNombre);
 
+        jLabel3.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel3.setText("*");
+        jPanel6.add(jLabel3);
+
         jPanel3.add(jPanel6);
         jPanel3.add(filler4);
 
@@ -123,6 +149,11 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
             }
         });
         jPanel7.add(txtApellido);
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel4.setText("*");
+        jPanel7.add(jLabel4);
 
         jPanel3.add(jPanel7);
         jPanel3.add(filler5);
@@ -140,6 +171,11 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
             }
         });
         jPanel8.add(txtEmail);
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel5.setText("*");
+        jPanel8.add(jLabel5);
 
         jPanel3.add(jPanel8);
         jPanel3.add(filler6);
@@ -175,12 +211,16 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         jPanel11.add(jLabel11);
         jPanel11.add(filler12);
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        jScrollPane3.setViewportView(txtDescripcion);
 
         jPanel11.add(jScrollPane3);
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel10.setText("*");
+        jPanel11.add(jLabel10);
 
         jPanel10.add(jPanel11);
         jPanel10.add(filler13);
@@ -191,10 +231,9 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         jPanel12.add(jLabel12);
         jPanel12.add(filler14);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        txtBiografia.setColumns(20);
+        txtBiografia.setRows(5);
+        jScrollPane2.setViewportView(txtBiografia);
 
         jPanel12.add(jScrollPane2);
 
@@ -206,9 +245,7 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         jLabel13.setText("Link web");
         jPanel13.add(jLabel13);
         jPanel13.add(filler16);
-
-        jTextField2.setEditable(false);
-        jPanel13.add(jTextField2);
+        jPanel13.add(txtLink);
 
         jPanel10.add(jPanel13);
 
@@ -236,22 +273,30 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         });
         jPanel2.add(btnCancelar);
 
+        jLabel14.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 0, 51));
+        jLabel14.setText("(*) Campo obligatorio");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 34, Short.MAX_VALUE)
+                        .addGap(82, 82, 82)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(41, 41, 41))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(82, 82, 82))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(96, 96, 96)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -260,9 +305,11 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                .addComponent(jLabel14)
+                .addContainerGap())
         );
 
         pack();
@@ -281,17 +328,33 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtEmailActionPerformed
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-
+        int dia,mes, anio;
+        dia = (int)SpinnerDia.getModel().getValue();
+        mes = (int)SpinnerMes.getModel().getValue();
+        anio = (int)SpinnerAnio.getModel().getValue();
+        if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtEmail.getText().equals("") || txtNickname.getText().equals("") || txtDescripcion.getText().equals("")) {
+            JOptionPane.showMessageDialog(this, "Campos incompletos.");
+        } else{
+            if (this.ICU.addArtista(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio), txtDescripcion.getText(), txtBiografia.getText(), txtLink.getText()) == true){
+                JOptionPane.showMessageDialog(this, "Artista agregado con exito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Ya existe ese Artista.");
+            }
+        }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        //        textNombre.setText("Nombre");
-        //        textApellido.setText("Apellido");
-        //        textCedula.setText("Cedula");
-        //        ServiciosUsuarios ser = new ServiciosUsuarios();
-        //        ser.getUsers();
+        this.txtNickname.setText("");
+        this.txtNombre.setText("");
+        this.txtApellido.setText("");
+        this.txtEmail.setText("");
+        this.SpinnerDia.setValue(1);
+        this.SpinnerMes.setValue(1);
+        this.SpinnerAnio.setValue(1990);
+        this.txtBiografia.setText("");
+        this.txtDescripcion.setText("");
+        this.txtLink.setText("");
     }//GEN-LAST:event_btnCancelarActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner SpinnerAnio;
@@ -315,10 +378,16 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -339,11 +408,11 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextArea txtBiografia;
+    private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtLink;
     private javax.swing.JTextField txtNickname;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
