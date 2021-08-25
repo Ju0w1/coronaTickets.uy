@@ -88,11 +88,10 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         listEspectaculosDePaquete = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
         jFrame1.setTitle("Seleccionar plataformas");
-        jFrame1.setMaximumSize(new java.awt.Dimension(370, 190));
         jFrame1.setMinimumSize(new java.awt.Dimension(370, 190));
-        jFrame1.setPreferredSize(new java.awt.Dimension(370, 190));
         jFrame1.setResizable(false);
 
         listPlataformas.setModel(new javax.swing.AbstractListModel<String>() {
@@ -139,19 +138,19 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
 
         jScrollPane2.setViewportView(listEspectaculos);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 250, 88));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 250, 88));
 
         jLabel1.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel1.setText("Artista organizador:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel2.setText("Nombre del espectáculo:");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel4.setText("Duración en minutos:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, -1, -1));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel5.setText("Cantidad de espectadores mínima:");
@@ -180,11 +179,11 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         txtDescripcion.setText("Esta es una descripción aleatoria de un\nespectáculo x.");
         jScrollPane1.setViewportView(txtDescripcion);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 180, 250, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 250, -1));
 
         jLabel10.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel10.setText("Descripción del espectáculo");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jLabel10.setText("Espectáculos:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         btnSelecionar.setText("Seleccionar");
         btnSelecionar.addActionListener(new java.awt.event.ActionListener() {
@@ -192,30 +191,14 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                 btnSelecionarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSelecionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, -1, -1));
-
-        txtNombreArtista.setText("Nombre Apellido");
-        getContentPane().add(txtNombreArtista, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, -1, -1));
-
-        txtNombreEspectaculo.setText("Nombre Espectáculo");
-        getContentPane().add(txtNombreEspectaculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 130, -1, -1));
-
-        txtDuracion.setText("999");
-        getContentPane().add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
-
-        txtCantEspectadoresMinima.setText("999");
-        getContentPane().add(txtCantEspectadoresMinima, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 180, -1, -1));
-
-        txtCantEspectadoresMaxima.setText("99999");
+        getContentPane().add(btnSelecionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, -1, -1));
+        getContentPane().add(txtNombreArtista, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 120, -1, -1));
+        getContentPane().add(txtNombreEspectaculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 140, -1, -1));
+        getContentPane().add(txtDuracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 160, -1, -1));
+        getContentPane().add(txtCantEspectadoresMinima, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, -1, -1));
         getContentPane().add(txtCantEspectadoresMaxima, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 200, -1, -1));
-
-        txtURL.setText("Link de acceso URL");
         getContentPane().add(txtURL, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 220, -1, -1));
-
-        txtCosto.setText("$69.420");
         getContentPane().add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
-
-        txtFechaRegistro.setText("2021/8/24");
         getContentPane().add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
 
         listFunciones.setModel(new javax.swing.AbstractListModel<String>() {
@@ -225,7 +208,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(listFunciones);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 250, 66));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 250, 66));
 
         btnFuncion.setText("Seleccionar");
         btnFuncion.addActionListener(new java.awt.event.ActionListener() {
@@ -233,11 +216,11 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                 btnFuncionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, -1, -1));
+        getContentPane().add(btnFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 390, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel11.setText("Funciones");
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, -1, -1));
+        jLabel11.setText("Funciones:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
         listPaquetes.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -246,11 +229,11 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(listPaquetes);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, 250, 66));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 250, 66));
 
         jLabel12.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabel12.setText("Paquetes");
-        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
+        jLabel12.setText("Paquetes:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
 
         btnFuncion1.setText("Seleccionar");
         btnFuncion1.addActionListener(new java.awt.event.ActionListener() {
@@ -258,7 +241,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                 btnFuncion1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnFuncion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 510, -1, -1));
+        getContentPane().add(btnFuncion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 520, -1, -1));
 
         labelNombreFP.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         labelNombreFP.setText("Nombre de función:");
@@ -329,7 +312,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelDescuentoP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtDescuentoP))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelDescripcionP_FechaF)
@@ -337,7 +320,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                         .addComponent(txtDescripcionP_FechaF))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelNombreFP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtNombreFP))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelFechaInicioP_HoraInicioF)
@@ -349,7 +332,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                         .addComponent(txtFechaFinP_FechaRegistroF))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(labelCostoP)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtCostoP))
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -357,7 +340,6 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelNombreFP)
                     .addComponent(txtNombreFP))
@@ -386,7 +368,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 310, -1, -1));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 320, -1, -1));
 
         jButton2.setText("Plataforma");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -403,6 +385,10 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, 260, -1));
+
+        jLabel13.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+        jLabel13.setText("Descripción del espectáculo:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -521,6 +507,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
