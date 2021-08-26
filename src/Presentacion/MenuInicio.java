@@ -40,8 +40,9 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -111,16 +112,25 @@ public class MenuInicio extends javax.swing.JFrame {
 
         jMenu6.add(jMenu2);
 
-        jMenuItem5.setText("Consulta usuarios");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+        jMenu4.setText("Consulta/Modificación Usuario");
+
+        jMenuItem16.setText("Artista");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
+                jMenuItem16ActionPerformed(evt);
             }
         });
-        jMenu6.add(jMenuItem5);
+        jMenu4.add(jMenuItem16);
 
-        jMenuItem6.setText("Modificar usuario");
-        jMenu6.add(jMenuItem6);
+        jMenuItem17.setText("Espectador");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem17);
+
+        jMenu6.add(jMenu4);
 
         jMenuBar1.add(jMenu6);
 
@@ -258,18 +268,6 @@ public class MenuInicio extends javax.swing.JFrame {
         this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        // TODO add your handling code here:
-        ConsultaUsuario ventanaConsulta = new ConsultaUsuario();
-        this.jDesktopPane2.add(ventanaConsulta);
-        Dimension desktopSize = jDesktopPane2.getSize();
-        Dimension jInternalFrameSize = ventanaConsulta.getSize();
-        ventanaConsulta.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
-        (desktopSize.height- jInternalFrameSize.height)/2);
-        ventanaConsulta.setVisible(true);
-        this.jLabel1.setVisible(false);
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
         // TODO add your handling code here:
         CrearPaquete ventana = new CrearPaquete();
@@ -346,6 +344,30 @@ public class MenuInicio extends javax.swing.JFrame {
         this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        // TODO add your handling code here:
+        ConsultaArtista ventana = new ConsultaArtista();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+        ConsultaUsuario ventana = new ConsultaUsuario();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -387,6 +409,7 @@ public class MenuInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
@@ -398,12 +421,12 @@ public class MenuInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem13;
     private javax.swing.JMenuItem jMenuItem14;
     private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem19;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

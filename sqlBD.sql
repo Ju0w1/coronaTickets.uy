@@ -12,3 +12,7 @@ VALUES
 SELECT * FROM usuario;
 
 DELETE FROM usuario WHERE usu_id = 1;
+
+use coronaticket;
+
+SELECT * FROM usuario,artistas WHERE usuario.usu_id = artistas.art_usu;

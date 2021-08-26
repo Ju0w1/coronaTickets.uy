@@ -2,7 +2,6 @@ package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 
 
 
