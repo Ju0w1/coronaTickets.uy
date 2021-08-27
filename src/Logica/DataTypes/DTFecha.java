@@ -26,10 +26,10 @@ public class DTFecha {
         return this.dia;
     }
     public int getMes(){
-        return this.dia;
+        return this.mes;
     }
     public int getAnio(){
-        return this.dia;
+        return this.anio;
     }
     
 }

@@ -1,11 +1,17 @@
 
 package Presentacion;
-
+import Logica.Fabrica;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import logica.Interfaz.IControladorEspetaculo;
+import logica.Clases.DTFecha;
 
 public class CrearPaquete extends javax.swing.JInternalFrame {
-
+    private IControladorEspetaculo ICE;
     public CrearPaquete() {
         initComponents();
+        this.ICE = Fabrica.getInstance().getIControladorEspetaculo();        
     }
     
     
@@ -38,21 +44,18 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         fechaInicio = new javax.swing.JPanel();
-        jSpinner1 = new javax.swing.JSpinner();
-        jSpinner2 = new javax.swing.JSpinner();
-        jSpinner3 = new javax.swing.JSpinner();
+        iDia = new javax.swing.JSpinner();
+        iMes = new javax.swing.JSpinner();
+        iAnio = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         fechaFin = new javax.swing.JPanel();
-        jSpinner7 = new javax.swing.JSpinner();
-        jSpinner8 = new javax.swing.JSpinner();
-        jSpinner9 = new javax.swing.JSpinner();
+        fDia = new javax.swing.JSpinner();
+        fMes = new javax.swing.JSpinner();
+        fAnio = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
-        txtDescuento = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        fechaAlta = new javax.swing.JPanel();
-        jSpinner10 = new javax.swing.JSpinner();
-        jSpinner11 = new javax.swing.JSpinner();
-        jSpinner12 = new javax.swing.JSpinner();
+        aceptar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        txtDescuento = new javax.swing.JFormattedTextField();
 
         setResizable(true);
         setTitle("Crear Paquete Espectáculo");
@@ -100,62 +103,67 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha Inicio");
 
-        fechaInicio.add(jSpinner1);
-        fechaInicio.add(jSpinner2);
-        fechaInicio.add(jSpinner3);
+        fechaInicio.add(iDia);
+        fechaInicio.add(iMes);
+
+        iAnio.setPreferredSize(new java.awt.Dimension(50, 20));
+        fechaInicio.add(iAnio);
 
         jLabel6.setText("Fecha Fin");
 
-        fechaFin.add(jSpinner7);
-        fechaFin.add(jSpinner8);
-        fechaFin.add(jSpinner9);
+        fechaFin.add(fDia);
+        fechaFin.add(fMes);
+
+        fAnio.setPreferredSize(new java.awt.Dimension(50, 20));
+        fechaFin.add(fAnio);
 
         jLabel3.setText("Descuento");
 
-        txtDescuento.addActionListener(new java.awt.event.ActionListener() {
+        aceptar.setText("Aceptar");
+        aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescuentoActionPerformed(evt);
+                aceptarActionPerformed(evt);
             }
         });
 
-        jLabel4.setText("Fecha de Alta");
-
-        fechaAlta.add(jSpinner10);
-        fechaAlta.add(jSpinner11);
-        fechaAlta.add(jSpinner12);
+        jButton2.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 65, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(49, 49, 49)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(5, 5, 5))
-                                .addComponent(jLabel3))
-                            .addComponent(Nombre)
-                            .addComponent(jLabel5))
-                        .addGap(22, 22, 22)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-                            .addComponent(txtDescuento)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel6)
+                                            .addGap(5, 5, 5))
+                                        .addComponent(jLabel3))
+                                    .addComponent(Nombre)
+                                    .addComponent(jLabel5))
+                                .addGap(22, 22, 22)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                                    .addComponent(txtDescuento)
+                                    .addComponent(fechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(fechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Descripcion)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Descripcion))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(49, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(aceptar)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(27, 27, 27))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +172,7 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Nombre)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -176,17 +184,17 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(fechaAlta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(26, 26, 26)
                 .addComponent(Descripcion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(aceptar)
+                    .addComponent(jButton2))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         pack();
@@ -196,19 +204,52 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescripcionActionPerformed
 
-    private void txtDescuentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescuentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescuentoActionPerformed
-
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
+        /* Cuando se le da click a  */
+        
+        JTextField nombreTf = (JTextField)txtNombre; 
+        JTextField descripcionTf = (JTextField)txtDescripcion; 
+        JTextField descuentoTf = (JTextField)txtDescuento; 
+        JSpinner diaIS = (JSpinner)iDia;
+        JSpinner mesIS = (JSpinner)iMes;
+        JSpinner anioIS = (JSpinner)iAnio;
+        
+        JSpinner diaFS = (JSpinner)fDia;
+        JSpinner mesFS = (JSpinner)fMes;
+        JSpinner anioFS = (JSpinner)fAnio;
+        
+        String nombre = nombreTf.getText();
+        String descripcion = descripcionTf.getText();
+        
+        int descuento = new Integer(descuentoTf.getText());
+        
+        int anioi = Integer.parseInt(anioIS.getValue().toString());
+        int mesi = Integer.parseInt(mesIS.getValue().toString());
+        int diai = Integer.parseInt(diaIS.getValue().toString()); 
+        DTFecha fechaInicio = new DTFecha(diai,mesi,anioi);
+        
+        int aniof = Integer.parseInt(anioFS.getValue().toString());
+        int mesf = Integer.parseInt(mesFS.getValue().toString());
+        int diaf = Integer.parseInt(diaFS.getValue().toString());
+        
+        DTFecha fechaFin = new DTFecha(diaf,mesf,aniof);
+        
+        this.ICE.crearPaquete(nombre, fechaInicio, fechaFin, descuento, descripcion);
+        //JOptionPane.showMessageDialog(this, "Agregado correctamente");
+    }//GEN-LAST:event_aceptarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Descripcion;
     private javax.swing.JLabel Nombre;
-    private javax.swing.JPanel fechaAlta;
+    private javax.swing.JButton aceptar;
+    private javax.swing.JSpinner fAnio;
+    private javax.swing.JSpinner fDia;
+    private javax.swing.JSpinner fMes;
     private javax.swing.JPanel fechaFin;
     private javax.swing.JPanel fechaInicio;
     private javax.swing.Box.Filler filler1;
@@ -227,24 +268,18 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
     private javax.swing.Box.Filler filler5;
     private javax.swing.Box.Filler filler7;
     private javax.swing.Box.Filler filler8;
+    private javax.swing.JSpinner iAnio;
+    private javax.swing.JSpinner iDia;
+    private javax.swing.JSpinner iMes;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JSpinner jSpinner10;
-    private javax.swing.JSpinner jSpinner11;
-    private javax.swing.JSpinner jSpinner12;
-    private javax.swing.JSpinner jSpinner2;
-    private javax.swing.JSpinner jSpinner3;
-    private javax.swing.JSpinner jSpinner7;
-    private javax.swing.JSpinner jSpinner8;
-    private javax.swing.JSpinner jSpinner9;
     private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JTextField txtDescuento;
+    private javax.swing.JFormattedTextField txtDescuento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
