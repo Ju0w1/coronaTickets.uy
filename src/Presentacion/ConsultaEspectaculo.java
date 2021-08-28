@@ -458,6 +458,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         }
         else{//JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
             this.ICE.cargarDatosConsultaEspectador(listEspectaculos.getSelectedValue(), txtNombreArtista, txtNombreEspectaculo, txtDuracion, txtCantEspectadoresMinima, txtCantEspectadoresMaxima, txtURL, txtCosto, txtFechaRegistro, txtDescripcion);
+            
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
@@ -547,8 +548,8 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
     private javax.swing.JLabel txtFechaFinP_FechaRegistroF;
     private javax.swing.JLabel txtFechaInicioP_HoraInicioF;
     private javax.swing.JLabel txtFechaRegistro;
-    private javax.swing.JLabel txtNombreArtista;
-    private javax.swing.JLabel txtNombreEspectaculo;
+    public static javax.swing.JLabel txtNombreArtista;
+    public static javax.swing.JLabel txtNombreEspectaculo;
     private javax.swing.JLabel txtNombreFP;
     private javax.swing.JLabel txtURL;
     // End of variables declaration//GEN-END:variables

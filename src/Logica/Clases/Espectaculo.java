@@ -16,10 +16,14 @@ public class Espectaculo {
     private int Cant_max_espectadores;
     private String Url;
     private double Costo;
-    private int Duracion;
+    private double Duracion;
     private Date Fecha_Registro;
     
-    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,int duracion,Date Fregistro){
+    public Espectaculo(){
+        
+    }
+    
+    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date Fregistro){
         this.Nombre=nombre;
         this.Artista=Artista;
         this.Descripcion=descr;
@@ -57,7 +61,7 @@ public class Espectaculo {
     public double getCosto(){
         return this.Costo;
     }
-    public int getDuracion(){
+    public double getDuracion(){
         return this.Duracion;
     }
     public Date getFecha(){

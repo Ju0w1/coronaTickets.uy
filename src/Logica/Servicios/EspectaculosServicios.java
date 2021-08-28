@@ -23,6 +23,8 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+import Logica.Clases.Artista;
+import Logica.Clases.Funcion;
 
 /**
  *
@@ -225,6 +227,61 @@ public class EspectaculosServicios {
             return false;
         }
     }
+    
+    
+    
+      public Map<String, Funcion> getMapFuncionesEspectaculoNombre(String espectaculoNombre) {
+        Map<String, Funcion> resultado = new HashMap<>();
+        Map<String, Artista> artistas = new HashMap<>();
+        Espectaculo espectaculo;
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id in (SELECT espectaculos.espec_id FROM espectaculos WHERE espectaculos.espec_nombre=?");
+            status1.setString(1, espectaculoNombre);
+            ResultSet rs1 = status1.executeQuery();
+            while (rs1.next()) {
+                artistas=getMapArtistas(rs1.getString("fun_id"));
+                espectaculo=getEspecaculo(rs1.getString("fun_id"));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha"), rs1.getTime("fun_hora"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
 
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+      
+      public Map<String, Artista> getMapArtistas(String funcionId) {
+        Map<String, Artista> artistas= new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM artistas AS a, funcion_artista AS funart WHERE a.art_id=funart.funart_art_id AND funart.funart_fun_id=?");
+            status1.setString(1, funcionId);
+            ResultSet rs1 = status1.executeQuery();
+            try {
+                while (rs1.next()) {
+                    PreparedStatement status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id"));
+                    ResultSet rs2= status2.executeQuery();
+                    artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), rs2.getDate("usu_nacimiento"), rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url")));
+                }
+            }catch(SQLException ex2){
+                ex2.printStackTrace();
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return artistas;
+    }
 
+      public Espectaculo getEspecaculo(String funcionId){
+        Espectaculo rslt;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espectaculos AS e AND funcion AS f WHERE e.espec_id=f.fun_espec_id AND f.fun_id="+funcionId);
+            ResultSet rs = status.executeQuery();
+            rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_url"), rs.getInt("espec_costo"), rs.getDouble("espec_duracion"), rs.getDate("espec_fecha_registro"));
+            return rslt;
+        }catch (SQLException ex){
+            ex.printStackTrace();
+
+        }
+        return new Espectaculo();
+    }
 }

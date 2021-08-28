@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Controladores;
+package Logica.Controladores;
 
 import Logica.DataTypes.DTFecha;
 import java.util.Iterator;
@@ -11,12 +11,12 @@ import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JTextField;
-import logica.Clases.Espectador;
+import Logica.Clases.Espectador;
 import java.util.HashMap;
-import logica.Clases.Usuario;
-import logica.Clases.Espectador;
+import Logica.Clases.Usuario;
+import Logica.Clases.Espectador;
 import Logica.Interfaz.IControladorUsuario;
-import logica.servicios.UsuariosServicios;
+import Logica.servicios.UsuariosServicios;
 
 
 /**

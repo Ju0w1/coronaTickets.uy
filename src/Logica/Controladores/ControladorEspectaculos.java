@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Controladores;
+package Logica.Controladores;
 
 import java.util.Map;
 import Logica.Clases.Espectaculo;
@@ -17,6 +17,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
+import Logica.Clases.Funcion;
 
 
 /**
@@ -28,6 +29,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     private Map<String, Espectaculo> espectaculos;
     private Map<String, Plataforma> plataformas;
     private EspectaculosServicios servicioEspectaculo;
+    private Map<String, Funcion> funciones;
     private static ControladorEspectaculos instancia;
     //getters
 //    public Espectaculo getEspectaculo(){
@@ -96,12 +98,16 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         }
         listaEspectaculos.setModel(listModel1);
     }
+    
+    public void obtenerFuncionesDeEspectaculo(){
+        //CONTINUAR
+    }
      
      public void cargarDatosConsultaEspectador(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip){
         Espectaculo e = (Espectaculo) this.espectaculos.get(espectaculoNombre);
         nombreApellido.setText(Integer.toString(e.getArtista()));
         nombreEspectaculo.setText(e.getNombre());
-        duracion.setText(Integer.toString(e.getDuracion()));
+        duracion.setText(Double.toString(e.getDuracion()));
         espectMin.setText(Integer.toString(e.getMin()));
         espectMax.setText(Integer.toString(e.getMax()));
         URL.setText(e.getUrl());
@@ -143,6 +149,18 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     
     public void crearPaqueteEspectaculos(){
         
+    }
+    
+     public void obtenerListaFunciones(JList listFunciones){
+        this.funciones= servicioEspectaculo.getMapFuncionesEspectaculoNombre(Presentacion.ConsultaEspectaculo.txtNombreEspectaculo.getText());
+        DefaultListModel listModel1 = new DefaultListModel();
+        Iterator iterator = this.funciones.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entrada = (Map.Entry) iterator.next();
+            Plataforma p = (Plataforma) entrada.getValue();
+            listModel1.addElement(p.getNombre());
+        }
+        listFunciones.setModel(listModel1);
     }
 
 //    @Override

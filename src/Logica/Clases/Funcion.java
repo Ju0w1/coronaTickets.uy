@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package logica.Clases;
+package Logica.Clases;
 
-import Logica.DataTypes.DTFecha;
-import Logica.DataTypes.DTTimeStamp;
+import java.sql.Date;
+import java.sql.Time;
+import java.util.Map;
 
 /**
  *
@@ -14,48 +10,59 @@ import Logica.DataTypes.DTTimeStamp;
  */
 public class Funcion {
         private String nombre;
-        private DTFecha fecha;
-        private DTTimeStamp horaInicio;
-        private DTFecha fechaRegistro;
+        private Date fecha;
+        private Time horaInicio;
+        private Date fechaRegistro;
+        private Espectaculo espectaculo;
+        private Map<String, Artista> artistas;
         
-        public Funcion(String nombre_, DTFecha fecha_, DTTimeStamp horaInicio_, DTFecha fechaRegistro_){
-            this.nombre= nombre_;
-            this.fecha= fecha_;
-            this.horaInicio= horaInicio_;
-            this.fechaRegistro= fechaRegistro_;
+        public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas){
+            this.nombre= nombre;
+            this.fecha= fecha;
+            this.horaInicio= horaInicio;
+            this.fechaRegistro= fechaRegistro;
+            this.espectaculo=espectaculo;
+            this.artistas=artistas;
         }
         
         public void setNombre(String nombre_){
             this.nombre=nombre_;
         }
         
-        public void setFecha(DTFecha fecha_){
+        public void setFecha(Date fecha_){
             this.fecha= fecha_;
         }
         
-        public void setHoraInicio(DTTimeStamp horaInicio_){
+        public void setHoraInicio(Time horaInicio_){
             this.horaInicio= horaInicio_;
         }
         
-        public void setFechaRegistro(DTFecha fechaRegistro_){
+        public void setFechaRegistro(Date fechaRegistro_){
             this.fechaRegistro=fechaRegistro_;
+        }
+        
+        public void setArtistas(Map<String, Artista> artistas){
+            this.artistas=artistas;
         }
         
         public String getNombre(){
             return this.nombre;
         }
         
-        public DTFecha getFecha(){
+        public Date getFecha(){
             return this.fecha;
         }
         
-        public DTTimeStamp getHoraInicio(){
+        public Time getHoraInicio(){
             return this.horaInicio;
         }
         
-        public DTFecha getFechaRegistro(){
+        public Date getFechaRegistro(){
             return this.fechaRegistro;
         }
         
+        public Map<String, Artista> getArtistas(){
+            return this.artistas;
+        }
     
 }
