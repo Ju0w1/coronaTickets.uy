@@ -41,7 +41,7 @@ public class UsuariosServicios {
     public Map<String, Usuario> getUsers() {
         Map<String, Usuario> resultado = new HashMap<>();
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario");
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario where usuario.usu_id NOT IN(SELECT artistas.art_usu FROM artistas)");
             ResultSet rs = status.executeQuery();
             
 //            if(rs.){
@@ -108,6 +108,22 @@ public class UsuariosServicios {
             status.setString(2, apellido);
             status.setString (3, fecha.getAnio() + "-" +  fecha.getMes() + "-" + fecha.getDia());
             status.setString(4, email);
+            status.execute();
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    public void modificarArtista(String nombre, String apellido, DTFecha fecha, String email, String descripcion, String biografia, String url){
+        try{
+            PreparedStatement status = conexion.prepareStatement("UPDATE usuario, artistas SET usuario.usu_nombre = ?, usuario.usu_apellido = ?, usu_nacimiento = ?, artistas.art_descripcion = ?, artistas.art_biografia = ?, artistas.art_url = ? WHERE usuario.usu_id = artistas.art_usu AND usuario.usu_mail = ?");
+            status.setString(1, nombre);
+            status.setString(2, apellido);
+            status.setString(3, fecha.getAnio() + "-" +  fecha.getMes() + "-" + fecha.getDia());
+            status.setString(4, descripcion);
+            status.setString(5, biografia);
+            status.setString(6, url);
+            status.setString(7, email);
             status.execute();
         }catch (SQLException ex){
             ex.printStackTrace();

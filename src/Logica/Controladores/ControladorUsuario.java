@@ -114,6 +114,10 @@ public class ControladorUsuario implements IControladorUsuario{
     public void modificarEspectador(String email, String nombre, String apellido, DTFecha fecha){
         this.servicioUsuarios.modificarEspectador(nombre, apellido, fecha, email);
     }
+    
+    public void modificarArtista(String email, String nombre, String apellido, DTFecha fecha, String descripcion, String biografia, String url){
+        this.servicioUsuarios.modificarArtista(nombre, apellido, fecha, email, descripcion, biografia, url);
+    }
 
     public void obtenerArtistas(DefaultTableModel tablaModelo) {
         this.artistas = this.servicioUsuarios.getArtistas();

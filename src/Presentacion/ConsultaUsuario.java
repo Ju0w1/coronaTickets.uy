@@ -374,39 +374,45 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
 
-        JFrame frame = new JFrame();
-        
-        Object[] options = {"Si", "No"};
-        int n = JOptionPane.showOptionDialog(frame,
-        "¿Está seguro que quiere guardar?",
-        "Confirmar",
-        JOptionPane.YES_NO_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,     //do not use a custom Icon
-        options,  //the titles of buttons
-        options[0]); //default button title
-
-        String email = this.txtEmail.getText();
-        String nombre = this.txtNombre.getText();
-        String apellido = this.txtApellido.getText();
-        int dia = (int) this.spinnerDia.getValue();
-        int mes = (int) this.spinnerMes.getValue();
-        int anio = (int) this.spinnerAnio.getValue();
-        
-        
-        if(n == 0){
-            this.ICU.modificarEspectador(email,nombre, apellido,new DTFecha(dia,mes,anio));
-            //this.ICU.obtenerEspectadores(listUsuarios, (DefaultTableModel) this.jTable2.getModel());
-            this.ICU.obtenerEspectadores((DefaultTableModel) this.jTable2.getModel());
-            this.btnGuardar.setEnabled(false);
-            this.btnCancelar.setEnabled(false);
-            this.txtNombre.setEditable(false);
-            this.txtApellido.setEditable(false);
-            this.spinnerDia.setEnabled(false);
-            this.spinnerMes.setEnabled(false);
-            this.spinnerAnio.setEnabled(false);
+        if(this.txtEmail.getText().equals("") || this.txtApellido.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Revise que no haya ningún campo sin completar");
         }else{
-            System.out.println("Cancelado");
+            JFrame frame = new JFrame();
+        
+            Object[] options = {"Si", "No"};
+            int n = JOptionPane.showOptionDialog(frame,
+            "¿Está seguro que quiere guardar?",
+            "Confirmar",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,     //do not use a custom Icon
+            options,  //the titles of buttons
+            options[0]); //default button title
+
+            String email = this.txtEmail.getText();
+            String nombre = this.txtNombre.getText();
+            String apellido = this.txtApellido.getText();
+            int dia = (int) this.spinnerDia.getValue();
+            int mes = (int) this.spinnerMes.getValue();
+            int anio = (int) this.spinnerAnio.getValue();
+
+            if(n == 0){
+                try{
+                    this.ICU.modificarEspectador(email,nombre, apellido,new DTFecha(dia,mes,anio));
+                    this.ICU.obtenerEspectadores((DefaultTableModel) this.jTable2.getModel());
+                    this.btnGuardar.setEnabled(false);
+                    this.btnCancelar.setEnabled(false);
+                    this.txtNombre.setEditable(false);
+                    this.txtApellido.setEditable(false);
+                    this.spinnerDia.setEnabled(false);
+                    this.spinnerMes.setEnabled(false);
+                    this.spinnerAnio.setEnabled(false);
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }  
+            }else{
+               
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
