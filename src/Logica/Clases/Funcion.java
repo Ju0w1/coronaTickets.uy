@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logica.Clases;
 
-import Logica.DataTypes.DTFecha;
-import Logica.DataTypes.DTTimeStamp;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.Map;
 
 /**
@@ -17,12 +11,12 @@ import java.util.Map;
 public class Funcion {
         private String nombre;
         private Date fecha;
-        private DTTimeStamp horaInicio;
+        private Time horaInicio;
         private Date fechaRegistro;
         private Espectaculo espectaculo;
         private Map<String, Artista> artistas;
         
-        public Funcion(String nombre, Date fecha, DTTimeStamp horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas){
+        public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas){
             this.nombre= nombre;
             this.fecha= fecha;
             this.horaInicio= horaInicio;
@@ -39,7 +33,7 @@ public class Funcion {
             this.fecha= fecha_;
         }
         
-        public void setHoraInicio(DTTimeStamp horaInicio_){
+        public void setHoraInicio(Time horaInicio_){
             this.horaInicio= horaInicio_;
         }
         
@@ -59,7 +53,7 @@ public class Funcion {
             return this.fecha;
         }
         
-        public DTTimeStamp getHoraInicio(){
+        public Time getHoraInicio(){
             return this.horaInicio;
         }
         
