@@ -5,6 +5,9 @@
  */
 package Presentacion;
 
+import Logica.Fabrica;
+import Logica.Interfaz.IControladorEspectaculo;
+import javax.swing.JOptionPane;
 import logica.Controladores.ControladorEspectaculos;
 
 /**
@@ -16,8 +19,14 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
     /**
      * Creates new form ConsultaFuncion
      */
+    private IControladorEspectaculo ICE;
+    
     public ConsultaFuncion() {
         initComponents();
+        this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
+        this.ICE.obtenerPlataformas(plat);
+        this.ICE.obtenerEspectaculos(espec);
+        this.ICE.obtenerListaFunciones(func);
     }
 
     /**
@@ -31,11 +40,11 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        plat = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        espec = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        func = new javax.swing.JList<>();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
@@ -54,18 +63,18 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Plataforma:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        plat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel2.setText("Espetaculo");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        espec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        func.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(func);
 
         jLabel10.setText("Funciones");
 
@@ -135,12 +144,12 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(plat, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel2)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(mostrarNom)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(espec, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(mostrarFecha)
                                     .addComponent(jLabel9))))
                         .addGap(36, 36, 36))))
@@ -151,9 +160,9 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(plat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(espec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -182,7 +191,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox1.getAccessibleContext().setAccessibleName("plataformas");
+        plat.getAccessibleContext().setAccessibleName("plataformas");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -206,20 +215,35 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
                 //int index;
-        String plat, espec, func;
-        ControladorEspectaculos cont=ControladorEspectaculos.getInstance();
-        //index= jList1.getSelectedIndex();
-        func= (String) jList1.getSelectedValue();
-        plat= (String) jComboBox1.getSelectedItem();
-        espec= (String) jComboBox2.getSelectedItem();
-        cont.consultaFuncionEspectaculo(plat, espec, func, this.mostrarNom, this.mostrarFecha, this.mostrarHora, this.mostrarArtistas);
+        if (plat.getSelectedIndex()==-1){
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna plataforma.");
+        }
+        else {
+            if (espec.getSelectedIndex()==-1){
+                 JOptionPane.showMessageDialog(this, "No ha seleccionado ningun espectaculo.");
+            }
+            else{
+                if(func.getSelectedIndex()==-1){
+                    JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna funcion.");
+                }
+                else{
+                    String getPlat, getEspec, getFunc;
+                ControladorEspectaculos cont=ControladorEspectaculos.getInstance();
+                //index= jList1.getSelectedIndex();
+                getFunc= (String) func.getSelectedValue();
+                getPlat= (String) plat.getSelectedItem();
+                getEspec= (String) espec.getSelectedItem();
+                this.ICE.consultaFuncionEspectaculo(getPlat, getEspec, getFunc, this.mostrarNom, this.mostrarFecha, this.mostrarHora, this.mostrarArtistas);
+                }
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> espec;
+    private javax.swing.JList<String> func;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -228,7 +252,6 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -236,5 +259,6 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
     private javax.swing.JLabel mostrarFecha;
     private javax.swing.JLabel mostrarHora;
     private javax.swing.JLabel mostrarNom;
+    private javax.swing.JComboBox<String> plat;
     // End of variables declaration//GEN-END:variables
 }

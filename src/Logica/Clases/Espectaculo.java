@@ -1,7 +1,7 @@
 package Logica.Clases;
 
-import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
+import java.sql.Date;
 
 
 public class Espectaculo {
@@ -13,10 +13,10 @@ public class Espectaculo {
     private int Cant_max_espectadores;
     private String Url;
     private int Costo;
-    private DTTimeStamp Duracion;
-    private DTFecha Fecha_Registro;
+    private double Duracion;
+    private Date Fecha_Registro;
     
-    public Espectaculo(String nombre,String Artista,String descr,int min,int max, String url, int costo,DTTimeStamp duracion,DTFecha Fregistro){
+    public Espectaculo(String nombre,String Artista,String descr,int min,int max, String url, int costo, double duracion,Date Fregistro){
         this.Nombre=nombre;
         this.Artista=Artista;
         this.Descripcion=descr;

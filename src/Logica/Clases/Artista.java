@@ -1,12 +1,12 @@
 package logica.Clases;
 
-import Logica.DataTypes.DTFecha;
+import java.sql.Date;
 
 public class Artista extends Usuario {
     private String descripcion;
     private String biografia;
     private String linkWeb;
-    public Artista(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String descripcion, String biografia, String linkWeb){
+    public Artista(String nickname, String nombre, String apellido, String email, Date nacimiento, String descripcion, String biografia, String linkWeb){
         super (nickname, nombre, apellido, email, nacimiento);
         this.descripcion=descripcion;
         this.biografia=biografia;

@@ -5,6 +5,8 @@
  */
 package Logica.Servicios;
 
+import Logica.Clases.Espectaculo;
+import Logica.DataTypes.DTTimeStamp;
 import Persistencia.ConexionDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -21,6 +23,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+import logica.Clases.Artista;
 import logica.Clases.Funcion;
 import logica.Clases.Usuario;
 
@@ -85,7 +88,22 @@ public class EspectaculosServicios {
         }
     }
 
-    public JComboBox llenarListaPlataformas() {
+    public JComboBox llenarComboBoxPlataformas() {
+        JComboBox aux = new JComboBox();
+        try {
+            Statement status = conexion.createStatement();
+            ResultSet rs = status.executeQuery("SELECT vp_nombre FROM valores_tipo");
+            while (rs.next()) {
+                aux.addItem(rs.getString(1));
+            }
+            return aux;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return new JComboBox();
+        }
+    }
+    
+    public JComboBox llenarComboBoxEspectaculo() {
         JComboBox aux = new JComboBox();
         try {
             Statement status = conexion.createStatement();
@@ -180,20 +198,55 @@ public class EspectaculosServicios {
             return false;
         }
     }
-    public Map<String, Funcion> getFunciones() {
-        Map<String, Funcion> resultado = new HashMap<>();
+    
+    public Map<String, Artista> getMapArtistas(String funcionId) {
+        Map<String, Artista> artistas= new HashMap<>();
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM funciones");
-            ResultSet rs = status.executeQuery();
-
-            while (rs.next()) {
-                //resultado.put(rs.getString("nombre"), new Usuario(rs.getString("nombre"), rs.getString("apellido")));
+            Statement status1 = conexion.prepareStatement("SELECT * FROM artistas AS a, funcion_artista AS funart WHERE a.art_id=funart.funart_art_id AND funart.funart_fun_id="+funcionId), status2;
+            ResultSet rs1 = status1.executeQuery(), rs2;
+            try {
+                while (rs1.next()) {
+                    status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id"));
+                    rs2= status2.executeQuery();
+                    artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), rs2.getDate("usu_nacimiento"), rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url")));
+                }
+            }catch(SQLException ex2){
+                ex2.printStackTrace();
             }
-        } catch (SQLException ex) {
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return artistas;
+    }
+    //No se si hacer un conversor o cambiar a float la duracion
+    public Espectaculo getEspecaculo(String funcionId){
+        Espectaculo rslt;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espectaculos AS e AND funcion AS f WHERE e.espec_id=f.fun_espec_id AND f.fun_id="+funcionId);
+            ResultSet rs = status.executeQuery();
+            rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getString("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_url"), rs.getInt("espec_costo"), rs.getDouble("espec_duracion"), rs.getDate("espec_fecha_registro"));
+        }catch (SQLException ex){
             ex.printStackTrace();
+        }
+        return rslt;
+    }
+    
+    public Map<String, Funcion> getMapFunciones(String espectaculoId) {
+        Map<String, Funcion> resultado = new HashMap<>();
+        Map<String, Artista> artistas;
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id="+espectaculoId);
+            ResultSet rs1 = status1.executeQuery();
+            while (rs1.next()) {
+                artistas=getMapArtistas(rs1.getString("fun_id"));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha"), rs1.getDate("fun_fecha_registro"), rs1.getString("fun_fecha")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
 
         }
         return resultado;
     }
-
+    
+    
 }
