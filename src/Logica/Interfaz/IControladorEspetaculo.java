@@ -18,7 +18,7 @@ import logica.Clases.Funcion;
 public interface IControladorEspetaculo {
     
     public abstract Map<String, Espectaculo> getEspectaculos();
-    public abstract void crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, double descuento, String descripcion);
+    public abstract void crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion);
     public abstract void crearFuncion();
     public abstract ArrayList<String> cargarPlataforma();
     public abstract ArrayList<String> cargarEspectaculos(int plataforma);

@@ -33,6 +33,12 @@ public class ControladorEspectaculos implements IControladorEspetaculo{
     private Map<String, Paquete > paquetes = new HashMap<>();
     private Map<String, Plataforma> plataforma = new HashMap<>();
     
+    public ControladorEspectaculos ()
+    {
+        this.servicioPaquete = new PaqueteServicio();
+    }
+    
+    
     //getters
 //    public Espectaculo getEspectaculo(){
 //        
@@ -80,7 +86,7 @@ public class ControladorEspectaculos implements IControladorEspetaculo{
         
     }
     
-    public void crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, double descuento, String descripcion){
+    public void crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion){
         //Busco si encuentro el paquete
         boolean encontre = this.servicioPaquete.verificarPaquete(nombre);
       

@@ -24,18 +24,16 @@ public class PaqueteServicio {
     public PaqueteServicio() {}
     private Connection conexion = new ConexionDB().getConexion();
 
-    public void addPaquete(String nombre,Date fechaInicio, Date fechaFin,Date fechaCreado,double descuento,String descripcion)
+    public void addPaquete(String nombre,Date fechaInicio, Date fechaFin,Date fechaCreado,int descuento,String descripcion)
     {
         try{
-            //,paq_fecha_inicio,paq_fecha_fin,paq_fecha_creado  
-            //,?,?,?
-            PreparedStatement statement = conexion.prepareStatement("INSERT INTO paquetes(paq_nombre, paq_descripcion,paq_descuento) VALUES(?,?,?)");
-            statement.setString(0, nombre);
-            statement.setString(1, descripcion);
-/*            statement.setDate(2, fechaInicio); //Fecha inicio
-            statement.setDate(3, fechaFin); //Fecha fin
-            statement.setDate(4, fechaCreado); //Fecha creado
-  */          statement.setDouble(2, descuento); //Descuento
+            PreparedStatement statement = conexion.prepareStatement("INSERT INTO paquetes(paq_nombre, paq_descripcion,paq_descuento,paq_fecha_inicio,paq_fecha_fin,paq_fecha_creado  ) VALUES(?,?,?,?,?,?)");
+            statement.setString(1, nombre);
+            statement.setString(2, descripcion);
+            statement.setDouble(3, descuento); //Descuento
+            statement.setDate(4, fechaInicio); //Fecha inicio
+            statement.setDate(5, fechaFin); //Fecha fin
+            statement.setDate(6, fechaCreado); //Fecha creado
             statement.execute();
         } catch(SQLException ex){
             ex.printStackTrace();
@@ -47,14 +45,17 @@ public class PaqueteServicio {
         boolean encontro = false;
         try{
             PreparedStatement stm = conexion.prepareStatement("SELECT * FROM paquetes WHERE paq_nombre = ?");
-            stm.setString(0,nombre);
+            stm.setString(1,nombre);
             ResultSet rs = stm.executeQuery();
-            while(rs.next())
+            if(rs.next())
             {
-                if(rs.getString("paq_nombre") == nombre)
+                while(rs.next())
                 {
-                    encontro = true;
-                    break;
+                    if(rs.getString("paq_nombre") == nombre)
+                    {
+                        encontro = true;
+                        break;
+                    }
                 }
             }
            
