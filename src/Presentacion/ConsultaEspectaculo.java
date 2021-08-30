@@ -26,6 +26,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         initComponents();
         setLabelsTxtNotVisible();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
+        this.ICP = Fabrica.getInstance().getIControladorPaquete();
         this.ICE.obtenerPlataformas(this.listPlataformas);
     }
 
@@ -464,8 +465,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
             this.ICE.cargarDatosConsultaEspectaculo(listEspectaculos.getSelectedValue(), txtNombreArtista, txtNombreEspectaculo, txtDuracion, txtCantEspectadoresMinima, txtCantEspectadoresMaxima, txtURL, txtCosto, txtFechaRegistro, txtDescripcion);
             this.ICE.obtenerListaFunciones(listFunciones);
             String espectNombre = listEspectaculos.getSelectedValue();
-            System.out.println(espectNombre);
-            this.ICP.obtenerPaqueteEspectaculo(listPaquetes, espectNombre);
+            this.ICP.obtenerPaqueteEspectaculo(listPaquetes, listEspectaculos.getSelectedValue());
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 

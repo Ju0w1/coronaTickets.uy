@@ -2,7 +2,9 @@ package Logica;
 import Logica.Interfaz.IControladorUsuario;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Controladores.ControladorEspectaculos;
+import Logica.Controladores.ControladorPaquete;
 import Logica.Controladores.ControladorUsuario;
+import Logica.Interfaz.IControladorPaquete;
 
 
 
@@ -31,6 +33,11 @@ public class Fabrica {
      public IControladorUsuario getIControladorUsuario() {
         IControladorUsuario ControladorU = ControladorUsuario.getInstance();
         return ControladorU; //To change body of generated methods, choose Tools | Templates.
+    }
+     
+    public IControladorPaquete getIControladorPaquete() {
+        IControladorPaquete ControladorP = ControladorPaquete.getInstance();
+        return ControladorP; //To change body of generated methods, choose Tools | Templates.
     }
 
     

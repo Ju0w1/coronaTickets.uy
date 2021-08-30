@@ -48,7 +48,7 @@ public class PaquetesServicios {
     public Map<String, Paquete> getPaquetesDeEspectaculo(String espectaculoNombre) {
         Map<String, Paquete> resultado = new HashMap<>();
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes, paquete_espetaculos WHERE paquetes.paq_id=paquete_espetaculos.paqespec_paq_id AND paquete_espetaculos.paqespec_espec_id IN (select espetaculos.espec_id from espetaculos where espetaculos.espec_nombre=?");
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes, paquete_espetaculos WHERE paquetes.paq_id=paquete_espetaculos.paqespec_paq_id AND paquete_espetaculos.paqespec_espec_id IN (select espetaculos.espec_id from espetaculos where espetaculos.espec_nombre=?)");
             status.setString(1, espectaculoNombre);
             ResultSet rs = status.executeQuery();
             while (rs.next()) {
