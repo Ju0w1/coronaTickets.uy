@@ -19,12 +19,12 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import Logica.Clases.Funcion;
 
-
 /**
  *
  * @author pabli
  */
-public class ControladorEspectaculos implements IControladorEspectaculo{
+public class ControladorEspectaculos implements IControladorEspectaculo {
+
     //atributos
     private Map<String, Espectaculo> espectaculos;
     private Map<String, Plataforma> plataformas;
@@ -35,17 +35,19 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
 //    public Espectaculo getEspectaculo(){
 //        
 //    }
-    
-    public Map<String, Espectaculo> getEspectaculos(){
+
+    public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
         return espectaculos;
-    };
+    }
+
+    ;
     
     //metodos
     public ControladorEspectaculos() {
         this.servicioEspectaculo = new EspectaculosServicios();
     }
-   
+
     public static ControladorEspectaculos getInstance() {
         if (instancia == null) {
             instancia = new ControladorEspectaculos();
@@ -56,15 +58,15 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo) {
         this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
     }
-    
-    public void obtenerPlataformas(JComboBox listPlataform){
-        for(int i=0;i<this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount();i++){
+
+    public void obtenerPlataformas(JComboBox listPlataform) {
+        for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount(); i++) {
             listPlataform.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
         }
     }
-    
-     public void obtenerPlataformas(JList listPlataform){
-        this.plataformas= servicioEspectaculo.getPlataformas();
+
+    public void obtenerPlataformas(JList listPlataform) {
+        this.plataformas = servicioEspectaculo.getPlataformas();
         DefaultListModel listModel1 = new DefaultListModel();
         Iterator iterator = this.plataformas.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -74,8 +76,8 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         }
         listPlataform.setModel(listModel1);
     }
-     
-     public void obtenerEspectaculos(JList listaEspectaculos) {
+
+    public void obtenerEspectaculos(JList listaEspectaculos) {
         this.espectaculos = servicioEspectaculo.getEspectaculos();
         DefaultListModel listModel1 = new DefaultListModel();
         Iterator iterator = this.espectaculos.entrySet().iterator();
@@ -98,12 +100,12 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         }
         listaEspectaculos.setModel(listModel1);
     }
-    
-    public void obtenerFuncionesDeEspectaculo(){
+
+    public void obtenerFuncionesDeEspectaculo() {
         //CONTINUAR
     }
-     
-     public void cargarDatosConsultaEspectador(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip){
+
+    public void cargarDatosConsultaEspectaculo(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip) {
         Espectaculo e = (Espectaculo) this.espectaculos.get(espectaculoNombre);
         nombreApellido.setText(Integer.toString(e.getArtista()));
         nombreEspectaculo.setText(e.getNombre());
@@ -114,53 +116,58 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         costo.setText(Double.toString(e.getCosto()));
         fecha.setText(e.getFecha().toString());
         descrip.setText(e.getDescripcion());
-     }
-    
-     
-    
-     
-    public void obtenerArtistas(){
+    }
+
+    public void obtenerArtistas() {
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistas().getModel());
     }
-    
-    public void obtenerArtistaPorNombre(String nombre){
+
+    public void obtenerArtistaPorNombre(String nombre) {
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistasPorNombre(nombre).getModel());
     }
-    
-    public boolean verificarNombreEspectaculo(String nombre){
+
+    public boolean verificarNombreEspectaculo(String nombre) {
         return this.servicioEspectaculo.verificarExistenciaNombreEspectaculo(nombre);
     }
-    
+
     public void consultaEspectaculo() {
 
     }
-    
-    public void altaFuncionEspectaculo(){
-        
+
+    public void altaFuncionEspectaculo() {
+
     }
-    
-    public void consultaFuncionEspectaculo(){
-        
+
+    public void consultaFuncionEspectaculo() {
+
     }
-    
-    public void registroFuncionEspectaculo(){
-        
+
+    public void registroFuncionEspectaculo() {
+
     }
-    
-    public void crearPaqueteEspectaculos(){
-        
+
+    public void crearPaqueteEspectaculos() {
+
     }
-    
-     public void obtenerListaFunciones(JList listFunciones){
-        this.funciones= servicioEspectaculo.getMapFuncionesEspectaculoNombre(Presentacion.ConsultaEspectaculo.txtNombreEspectaculo.getText());
+
+    public void obtenerListaFunciones(JList listFunciones) {
+        this.funciones = servicioEspectaculo.getMapFuncionesEspectaculoNombre(Presentacion.ConsultaEspectaculo.txtNombreEspectaculo.getText());
         DefaultListModel listModel1 = new DefaultListModel();
         Iterator iterator = this.funciones.entrySet().iterator();
         while (iterator.hasNext()) {
             Map.Entry entrada = (Map.Entry) iterator.next();
-            Plataforma p = (Plataforma) entrada.getValue();
-            listModel1.addElement(p.getNombre());
+            Funcion f = (Funcion) entrada.getValue();
+            listModel1.addElement(f.getNombre());
         }
         listFunciones.setModel(listModel1);
+    }
+    
+    public void cargarDatosFuncionConsultaEspectaculo(String nombreFuncion, JLabel nombreFun, JLabel fechaRegistro, JLabel horaInicio, JLabel fechaInicio) {
+        Funcion f = (Funcion) this.funciones.get(nombreFuncion);
+        nombreFun.setText(f.getNombre());
+        fechaRegistro.setText(f.getFechaRegistro().toString());
+        horaInicio.setText(f.getHoraInicio().toString());
+        fechaInicio.setText(f.getFecha().toString());
     }
 
 //    @Override

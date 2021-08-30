@@ -397,6 +397,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         if (listFunciones.isSelectionEmpty()) {
             JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna función.");
         }else{
+            this.ICE.cargarDatosFuncionConsultaEspectaculo(listFunciones.getSelectedValue(),txtNombreFP,txtDescripcionP_FechaF, txtFechaInicioP_HoraInicioF, txtFechaFinP_FechaRegistroF);
             labelNombreFP.setText("Nombre de función:");
             labelDescripcionP_FechaF.setText("Fecha de función:");
             labelFechaInicioP_HoraInicioF.setText("Hora de inicio:");
@@ -457,8 +458,8 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "No ha seleccionado ningun espectaculo.");
         }
         else{//JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
-            this.ICE.cargarDatosConsultaEspectador(listEspectaculos.getSelectedValue(), txtNombreArtista, txtNombreEspectaculo, txtDuracion, txtCantEspectadoresMinima, txtCantEspectadoresMaxima, txtURL, txtCosto, txtFechaRegistro, txtDescripcion);
-            
+            this.ICE.cargarDatosConsultaEspectaculo(listEspectaculos.getSelectedValue(), txtNombreArtista, txtNombreEspectaculo, txtDuracion, txtCantEspectadoresMinima, txtCantEspectadoresMaxima, txtURL, txtCosto, txtFechaRegistro, txtDescripcion);
+            this.ICE.obtenerListaFunciones(listFunciones);
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 

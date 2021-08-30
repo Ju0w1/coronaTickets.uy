@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import Logica.Clases.Artista;
 import Logica.Clases.Funcion;
+import Logica.DataTypes.DTFecha;
 
 /**
  *
@@ -235,13 +236,13 @@ public class EspectaculosServicios {
         Map<String, Artista> artistas = new HashMap<>();
         Espectaculo espectaculo;
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id in (SELECT espectaculos.espec_id FROM espectaculos WHERE espectaculos.espec_nombre=?");
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion WHERE funcion.fun_espec_id in (SELECT espetaculos.espec_id FROM espetaculos WHERE espetaculos.espec_nombre= ? )");
             status1.setString(1, espectaculoNombre);
             ResultSet rs1 = status1.executeQuery();
             while (rs1.next()) {
                 artistas=getMapArtistas(rs1.getString("fun_id"));
                 espectaculo=getEspecaculo(rs1.getString("fun_id"));
-                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha"), rs1.getTime("fun_hora"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
 
             }
         } catch (SQLException ex1) {
@@ -260,7 +261,10 @@ public class EspectaculosServicios {
                 while (rs1.next()) {
                     PreparedStatement status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id"));
                     ResultSet rs2= status2.executeQuery();
-                    artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), rs2.getDate("usu_nacimiento"), rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url")));
+                    String fechaString = rs2.getString("usu_nacimiento"); 
+                    String[] fechaParts = fechaString.split("-");
+                    DTFecha auxFecha = new DTFecha(Integer.parseInt(fechaParts[2]),Integer.parseInt(fechaParts[1]),Integer.parseInt(fechaParts[0]));
+                    artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), auxFecha , rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url")));
                 }
             }catch(SQLException ex2){
                 ex2.printStackTrace();
@@ -272,12 +276,14 @@ public class EspectaculosServicios {
     }
 
       public Espectaculo getEspecaculo(String funcionId){
-        Espectaculo rslt;
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espectaculos AS e AND funcion AS f WHERE e.espec_id=f.fun_espec_id AND f.fun_id="+funcionId);
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos, funcion WHERE espetaculos.espec_id=funcion.fun_espec_id AND funcion.fun_id=?");
+            status.setString(1, funcionId);
             ResultSet rs = status.executeQuery();
-            rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_url"), rs.getInt("espec_costo"), rs.getDouble("espec_duracion"), rs.getDate("espec_fecha_registro"));
-            return rslt;
+            while(rs.next()){
+                Espectaculo rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"));
+                return rslt;
+            }
         }catch (SQLException ex){
             ex.printStackTrace();
 

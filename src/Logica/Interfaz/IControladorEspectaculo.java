@@ -23,10 +23,12 @@ public interface IControladorEspectaculo {
     public abstract void obtenerEspectaculosPorPlataforma(JList listPlataform, String nombrePlataforma);
     public abstract void obtenerArtistas();
     public abstract void obtenerArtistaPorNombre(String nombre);
-    public abstract void cargarDatosConsultaEspectador(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
-    //public abstract void obtenerEspectaculo(String nombre);
+    public abstract void cargarDatosConsultaEspectaculo(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
+    public abstract void cargarDatosFuncionConsultaEspectaculo(String nombreFuncion, JLabel nombreFun, JLabel fechaRegistro, JLabel horaInicio, JLabel fechaInicio);
+//public abstract void obtenerEspectaculo(String nombre);
     //public abstract void obtenerFuncionesDeEspectaculo(String nombre);
     public abstract boolean verificarNombreEspectaculo(String nombre);
+    public abstract void obtenerListaFunciones(JList listFunciones);
     
 }
 
