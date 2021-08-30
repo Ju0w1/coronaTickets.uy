@@ -7,8 +7,10 @@ package Presentacion;
 
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorEspectaculo;
+import Logica.Interfaz.IControladorPaquete;
 import static Presentacion.MenuInicio.jDesktopPane2;
 import java.awt.Dimension;
+import java.io.Console;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,6 +20,7 @@ import javax.swing.JOptionPane;
 public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
 
     private IControladorEspectaculo ICE;
+    private IControladorPaquete ICP;
     
     public ConsultaEspectaculo() {
         initComponents();
@@ -460,6 +463,9 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         else{//JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
             this.ICE.cargarDatosConsultaEspectaculo(listEspectaculos.getSelectedValue(), txtNombreArtista, txtNombreEspectaculo, txtDuracion, txtCantEspectadoresMinima, txtCantEspectadoresMaxima, txtURL, txtCosto, txtFechaRegistro, txtDescripcion);
             this.ICE.obtenerListaFunciones(listFunciones);
+            String espectNombre = listEspectaculos.getSelectedValue();
+            System.out.println(espectNombre);
+            this.ICP.obtenerPaqueteEspectaculo(listPaquetes, espectNombre);
         }
     }//GEN-LAST:event_btnSelecionarActionPerformed
 
