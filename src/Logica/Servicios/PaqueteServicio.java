@@ -40,29 +40,105 @@ public class PaqueteServicio {
         }
     }
     
+    public void updatePaquete(String nombre,Date fechaInicio, Date fechaFin,int descuento,String descripcion)
+    {
+        try{
+            PreparedStatement statement = conexion.prepareStatement("UPDATE paquetes SET paq_descripcion = ?, paq_fecha_inicio = ?, paq_fecha_fin = ?, paq_descuento = ? WHERE paq_nombre = ?");
+            statement.setString(1, descripcion);
+            statement.setDate(2, fechaInicio); //Fecha inicio
+            statement.setDate(3, fechaFin); //Fecha fin
+            statement.setDouble(4, descuento); //Descuento
+            statement.setString(5, nombre);
+            statement.execute();
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
     public boolean verificarPaquete(String nombre)
     {
         boolean encontro = false;
         try{
-            PreparedStatement stm = conexion.prepareStatement("SELECT * FROM paquetes WHERE paq_nombre = ?");
-            stm.setString(1,nombre);
+            PreparedStatement stm = conexion.prepareStatement("SELECT * FROM paquetes");
+            
             ResultSet rs = stm.executeQuery();
-            if(rs.next())
+            while(rs.next())
             {
-                while(rs.next())
+                if(rs.getString("paq_nombre").equals(nombre))
                 {
-                    if(rs.getString("paq_nombre") == nombre)
-                    {
-                        encontro = true;
-                        break;
-                    }
+                    encontro = true;
+                     break;
                 }
             }
-           
         }catch(SQLException ex){
             ex.printStackTrace();
         }
         return encontro;
+    }
+ 
+    public String obtenerDescripcion(String nombre)
+    {
+        String desc = "";
+        try
+        {
+            PreparedStatement stm = conexion.prepareStatement("SELECT * FROM paquetes WHERE paq_nombre = ?");    
+            stm.setString(1, nombre);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next())
+            {
+                desc = rs.getString("paq_descripcion");
+            }
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return desc;
+    }
+    
+    public String[] obtenerFecha(String nombre, int fecha)
+    {
+        String fechas = "";
+        String[] fechaSplit;
+        try
+        {
+            PreparedStatement stm = conexion.prepareStatement("SELECT * FROM paquetes WHERE paq_nombre = ?");    
+            stm.setString(1, nombre);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next())
+            {
+                if(fecha == 1) //Es la fecha de inicio
+                {
+                    fechas = rs.getDate("paq_fecha_inicio").toString();
+                }else if(fecha == 2) //Es la fehca de fin
+                {
+                    fechas = rs.getDate("paq_fecha_fin").toString();
+                }
+            }
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        fechaSplit = fechas.split("-");
+        return fechaSplit;
+    }
+    
+    public int obtenerDescuento(String nombre)
+    {
+        int descuento = 0;
+        try
+        {
+            PreparedStatement stm = conexion.prepareStatement("SELECT * FROM paquetes WHERE paq_nombre = ?");    
+            stm.setString(1, nombre);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next())
+            {
+                descuento = rs.getInt("paq_descuento");
+            }
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return descuento;
     }
     
 }

@@ -86,10 +86,9 @@ public class ControladorEspectaculos implements IControladorEspetaculo{
         
     }
     
-    public void crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion){
+    public boolean crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion){
         //Busco si encuentro el paquete
         boolean encontre = this.servicioPaquete.verificarPaquete(nombre);
-      
         if(!encontre) // Si no encontro lo agrego
         {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
@@ -111,10 +110,50 @@ public class ControladorEspectaculos implements IControladorEspetaculo{
            {
                ex.getStackTrace();
            }
-           
+           return true;
         }else{ //Lo encontro 
-            //Encontro y tengo que devolver el mensaje
+            return false;
         }
+    }
+
+    public String obtenerDescripcion(String nombre)    
+    {
+        return this.servicioPaquete.obtenerDescripcion(nombre);
+    }
+    
+    public String[] obtenerFecha(String nombre, int fecha)
+    {
+        return this.servicioPaquete.obtenerFecha(nombre, fecha);
+    }
+    
+    public int obtenerDescuento(String nombre)
+    {
+        return this.servicioPaquete.obtenerDescuento(nombre);
+    }
+    
+    public boolean actualizarPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion)
+    {
+        boolean actualizo = false;
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        String fechaSI = String.valueOf(fechaInicio.getAnio())+"-"+String.valueOf(fechaInicio.getMes())+"-"+String.valueOf(fechaInicio.getDia());
+
+        String fechaSF = String.valueOf(fechaFin.getAnio())+"-"+String.valueOf(fechaFin.getMes())+"-"+String.valueOf(fechaFin.getDia()); 
+
+        try
+        {
+            java.util.Date fechaIF = formato.parse(fechaSI); 
+            java.util.Date fechaFF = formato.parse(fechaSF);  
+            java.util.Date fechaFC = new java.util.Date();
+            java.sql.Date fechasql = new java.sql.Date(fechaIF.getTime());
+            java.sql.Date fechaF = new java.sql.Date(fechaFF.getTime());
+
+            this.servicioPaquete.updatePaquete(nombre, fechasql, fechaF, descuento, descripcion);
+            actualizo = true;
+        }catch(ParseException ex)
+        {
+            ex.getStackTrace();
+        }
+        return actualizo;
     }
     
     public void crearFuncion()

@@ -9,8 +9,10 @@ import logica.Clases.DTFecha;
 
 public class CrearPaquete extends javax.swing.JInternalFrame {
     private IControladorEspetaculo ICE;
+    private boolean modifica;
     public CrearPaquete() {
         initComponents();
+        this.modifica = false;
         this.ICE = Fabrica.getInstance().getIControladorEspetaculo();        
     }
     
@@ -44,8 +46,8 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         fechaInicio = new javax.swing.JPanel();
-        iDia = new javax.swing.JSpinner();
         iMes = new javax.swing.JSpinner();
+        iDia = new javax.swing.JSpinner();
         iAnio = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         fechaFin = new javax.swing.JPanel();
@@ -55,7 +57,7 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         aceptar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        txtDescuento = new javax.swing.JFormattedTextField();
+        spDescuento = new javax.swing.JSpinner();
 
         setResizable(true);
         setTitle("Crear Paquete Espectáculo");
@@ -103,23 +105,31 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
 
         jLabel5.setText("Fecha Inicio");
 
-        fechaInicio.add(iDia);
+        iMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
         fechaInicio.add(iMes);
 
+        iDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        fechaInicio.add(iDia);
+
+        iAnio.setModel(new javax.swing.SpinnerNumberModel(2021, 2021, null, 1));
         iAnio.setPreferredSize(new java.awt.Dimension(50, 20));
         fechaInicio.add(iAnio);
 
         jLabel6.setText("Fecha Fin");
 
+        fDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
         fechaFin.add(fDia);
+
+        fMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         fechaFin.add(fMes);
 
+        fAnio.setModel(new javax.swing.SpinnerNumberModel(2021, 2021, null, 1));
         fAnio.setPreferredSize(new java.awt.Dimension(50, 20));
         fechaFin.add(fAnio);
 
         jLabel3.setText("Descuento");
 
-        aceptar.setText("Aceptar");
+        aceptar.setText("Agregar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 aceptarActionPerformed(evt);
@@ -127,6 +137,8 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         });
 
         jButton2.setText("Cancelar");
+
+        spDescuento.setModel(new javax.swing.SpinnerNumberModel(0, null, 100, 1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,6 +149,7 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -148,11 +161,10 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel5))
                                 .addGap(22, 22, 22)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                                    .addComponent(txtDescuento)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                                    .addComponent(spDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(fechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(fechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Descripcion)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -183,7 +195,7 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(spDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addComponent(Descripcion)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,7 +225,7 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         
         JTextField nombreTf = (JTextField)txtNombre; 
         JTextField descripcionTf = (JTextField)txtDescripcion; 
-        JTextField descuentoTf = (JTextField)txtDescuento; 
+        JSpinner descuentoTf = (JSpinner)spDescuento; 
         JSpinner diaIS = (JSpinner)iDia;
         JSpinner mesIS = (JSpinner)iMes;
         JSpinner anioIS = (JSpinner)iAnio;
@@ -225,7 +237,7 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         String nombre = nombreTf.getText();
         String descripcion = descripcionTf.getText();
         
-        int descuento = new Integer(descuentoTf.getText());
+        int descuento = (int) descuentoTf.getValue();
         
         int anioi = Integer.parseInt(anioIS.getValue().toString());
         int mesi = Integer.parseInt(mesIS.getValue().toString());
@@ -237,11 +249,65 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         int diaf = Integer.parseInt(diaFS.getValue().toString());
         
         DTFecha fechaFin = new DTFecha(diaf,mesf,aniof);
+        System.out.println(this.modifica);
+        if(this.modifica) //Entra acá porque modificamos la que encontramos
+        {
+            if(this.ICE.actualizarPaquete(nombre, fechaInicio, fechaFin, descuento, descripcion)) // Se creo correctamente
+            {
+                JOptionPane.showMessageDialog(this, "Actualizo correctamente");    
+                this.limpiarFormulario();
+            }
+        }else{
+            if(this.ICE.crearPaquete(nombre, fechaInicio, fechaFin, descuento, descripcion)) // Se creo correctamente
+            {
+                JOptionPane.showMessageDialog(this, "Agregado correctamente");    
+            }else{ //Lo encontro lleno los datos y dejo para modificarla
+                this.llenamosCampos(nombre);
+                this.modifica = true;
+            }    
+        }
         
-        this.ICE.crearPaquete(nombre, fechaInicio, fechaFin, descuento, descripcion);
-        //JOptionPane.showMessageDialog(this, "Agregado correctamente");
     }//GEN-LAST:event_aceptarActionPerformed
 
+    
+    void llenamosCampos(String nombre) //Con el nombre mandamos porque es unico en el sistema
+    {   
+        this.aceptar.setText("Modifcar");     
+        this.txtNombre.setEditable(false);
+        this.txtNombre.setEnabled(false);
+        this.txtDescripcion.setText(this.ICE.obtenerDescripcion(nombre));
+        String[] fechaInicio = this.ICE.obtenerFecha(nombre, 1);
+        int anioI = Integer.parseInt(fechaInicio[0]);
+        int mesI = Integer.parseInt(fechaInicio[1]);
+        int diaI = Integer.parseInt(fechaInicio[2]);
+        String[] fechaFin = this.ICE.obtenerFecha(nombre, 2);
+        int anioF = Integer.parseInt(fechaFin[0]);
+        int mesF = Integer.parseInt(fechaFin[1]);
+        int diaF = Integer.parseInt(fechaFin[2]);
+        this.iDia.setValue(diaI);
+        this.iMes.setValue(mesI);
+        this.iAnio.setValue(anioI);
+        this.fDia.setValue(diaF);
+        this.fMes.setValue(mesF);
+        this.fAnio.setValue(anioF);
+        this.spDescuento.setValue(this.ICE.obtenerDescuento(nombre));
+    }
+    
+    void limpiarFormulario()
+    {
+        this.txtNombre.setEditable(true);
+        this.txtNombre.setEnabled(true);
+        this.txtNombre.setText("");
+        this.txtDescripcion.setText("");
+        this.spDescuento.setValue(1);
+        this.iDia.setValue(1);
+        this.iMes.setValue(1);
+        this.iAnio.setValue(2021);
+        this.fDia.setValue(1);
+        this.fMes.setValue(1);
+        this.fAnio.setValue(2021);
+        this.aceptar.setText("Agregar");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Descripcion;
@@ -278,8 +344,8 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JSpinner spDescuento;
     private javax.swing.JTextField txtDescripcion;
-    private javax.swing.JFormattedTextField txtDescuento;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
