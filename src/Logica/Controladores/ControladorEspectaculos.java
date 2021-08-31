@@ -19,6 +19,7 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import Logica.Clases.Funcion;
 import Logica.Clases.Paquete;
+import Logica.DataTypes.DTFecha;
 import Logica.servicios.PaquetesServicios;
 import java.util.HashMap;
 
@@ -181,10 +182,16 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Paquete p = (Paquete) this.paquetes.get(nombrePaquete);
         nombre.setText(p.getNombre());
         descripcion.setText(p.getDescripcion());
-        fechaInicio.setText(p.getFecha_Inicio().toString());
-        fechaFin.setText(p.getFecha_Fin().toString());
         costo.setText(p.getCosto().toString());
         Descuento.setText(p.getDescuento().toString());
+        
+        String fechaIn = p.getFecha_Fin().getDia()+"/"+p.getFecha_Fin().getMes()+"/"+p.getFecha_Fin().getAnio();
+        
+        String fechaFn = p.getFecha_Fin().getDia()+"/"+p.getFecha_Fin().getMes()+"/"+p.getFecha_Fin().getAnio();
+        
+        fechaInicio.setText(fechaIn);
+        fechaFin.setText(fechaFn);
+        
         Map<String, Espectaculo> espectaculos = new HashMap<>();
         espectaculos = this.servicioEspectaculo.getMapEspectaculoDePaquete(nombrePaquete);
         DefaultListModel listModel1 = new DefaultListModel();
