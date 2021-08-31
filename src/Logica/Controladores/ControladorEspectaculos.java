@@ -21,7 +21,7 @@ import java.util.Map;
 import Logica.Clases.Plataforma;
 import Logica.Clases.Paquete;
 import Logica.Interfaz.IControladorEspectaculo;
-import Logica.Servicios.PaqueteServicio;
+import Logica.Servicios.PaquetesServicios;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -35,7 +35,7 @@ import javax.swing.JTextArea;
 import Logica.Clases.Funcion;
 import Logica.Clases.Paquete;
 import Logica.DataTypes.DTFecha;
-import Logica.servicios.PaquetesServicios;
+import Logica.Servicios.PaquetesServicios;
 import java.util.HashMap;
 
 public class ControladorEspectaculos implements IControladorEspectaculo {
@@ -47,7 +47,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     private Map<String, Funcion> funciones;
     //private Map<String, Paquete> paquetes;
     private static ControladorEspectaculos instancia;
-    private PaqueteServicio servicioPaquete;
+    private PaquetesServicios servicioPaquete;
     private PlataformaServicio servicioPlataforma;
     private EspetaculoServicio servicioEspetaculo;
     private Map<String, Espectaculo> espectaculos = new HashMap<>();

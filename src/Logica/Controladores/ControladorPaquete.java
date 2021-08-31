@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import Logica.Clases.Paquete;
 import java.util.HashMap;
 import Logica.Interfaz.IControladorPaquete;
-import Logica.servicios.PaquetesServicios;
+import Logica.Servicios.PaquetesServicios;
 
 
 
