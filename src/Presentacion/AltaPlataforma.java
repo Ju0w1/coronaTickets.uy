@@ -196,13 +196,19 @@ public class AltaPlataforma extends javax.swing.JInternalFrame {
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
         // CREAR PLATAFORMA
+        
         if (txtName.getText().equals("") || txtAreaDescrip.getText().equals("") || txtUrl.getText().equals("")){
             JOptionPane.showMessageDialog(this, "Complete todos los campos por favor.");
-        } else {
-            if (this.ICE.addPlataforma(txtName.getText(), txtUrl.getText(), txtAreaDescrip.getText()) == true){
-                JOptionPane.showMessageDialog(this, "Plataforma agregada con exito.");
+        } else {// "^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
+            // "^((((https?|ftps?|gopher|telnet|nntp)://)|(mailto:|news:))(%{2}|[-()_.!~*’;/?:@&=+$, A-Za-z0-9])+)([).!’;/?:, ][[:blank:]])?$"
+            if (txtUrl.getText().matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")){ // Expresion regular para comprobar la url
+                if (this.ICE.addPlataforma(txtName.getText(), txtUrl.getText(), txtAreaDescrip.getText()) == true){
+                    JOptionPane.showMessageDialog(this, "Plataforma agregada con exito.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ya existe esa Plataforma.");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Ya existe esa Plataforma.");
+                JOptionPane.showMessageDialog(this, "Url no valida");
             }
         }
     }//GEN-LAST:event_btnCrearActionPerformed

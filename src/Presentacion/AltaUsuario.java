@@ -259,17 +259,23 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
 
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
         // TODO add your handling code here:
+        
+        
         int dia,mes, anio;
         dia = (int)SpinnerDia.getModel().getValue();
         mes = (int)SpinnerMes.getModel().getValue();
         anio = (int)SpinnerAnio.getModel().getValue();
         if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtEmail.getText().equals("") || txtNickname.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Campos incompletos.");
-        }else{
-            if (this.ICU.addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio)) == true){
-                JOptionPane.showMessageDialog(this, "Espectador agregado con exito.");
+        } else {
+            if (txtEmail.getText().matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) { // Expresion regular para comprobar el Correo
+                if (this.ICU.addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio)) == true){
+                    JOptionPane.showMessageDialog(this, "Espectador agregado con exito.");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Ya existe ese espectador.");
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Ya existe ese espectador.");
+                JOptionPane.showMessageDialog(this, "Ingrese un correo válido");
             }
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
