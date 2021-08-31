@@ -9,7 +9,9 @@ INSERT INTO `coronaticket`.`usuario`
 VALUES
 ('ju0wi', 'Pablo', 'Peculio', 'pablopeculio@cras-dev.com', DATE('2001-07-13'));
 
-SELECT * FROM usuario;
+SELECT * FROM usuario where NOT IN(SELECT * FROM artistas);
+
+SELECT * FROM artistas;
 
 DELETE FROM usuario WHERE usu_id = 1;
 

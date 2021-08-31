@@ -5,8 +5,12 @@
  */
 package Presentacion;
 
+import Logica.DataTypes.DTFecha;
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorUsuario;
+import java.io.IOException;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -287,9 +291,19 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
         btnModificar.setRolloverEnabled(false);
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setText("Guardar");
         btnGuardar.setEnabled(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.setEnabled(false);
@@ -411,6 +425,77 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
             System.out.println("No hay ningún usuario seleccionado");
         }
     }//GEN-LAST:event_btnMostrarActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+        this.btnGuardar.setEnabled(true);
+        this.btnCancelar.setEnabled(true);
+        this.txtNombre.setEditable(true);
+        this.txtApellido.setEditable(true);
+        this.spinnerDia.setEnabled(true);
+        this.spinnerMes.setEnabled(true);
+        this.spinnerAnio.setEnabled(true);
+        //System.err.println(this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),4).toString());
+        String fecha[] = this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),4).toString().split("/");
+        int dia = Integer.parseInt(fecha[0]); 
+        int mes = Integer.parseInt(fecha[1]); 
+        int anio = Integer.parseInt(fecha[2]); 
+        this.spinnerDia.setValue(dia);
+        this.spinnerMes.setValue(mes);
+        this.spinnerAnio.setValue(anio);
+        this.areaDescripcion.setEditable(true);
+        this.areaBiografia.setEditable(true);
+        this.txtUrl.setEditable(true);
+    }//GEN-LAST:event_btnModificarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // TODO add your handling code here:
+        
+        if(this.txtEmail.getText().equals("") || this.txtApellido.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Revise que no haya ningún campo sin completar");
+        }else{
+            JFrame frame = new JFrame();
+        
+            Object[] options = {"Si", "No"};
+            int n = JOptionPane.showOptionDialog(frame,
+            "¿Está seguro que quiere guardar?",
+            "Confirmar",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,     //do not use a custom Icon
+            options,  //the titles of buttons
+            options[0]); //default button title
+
+            String email = this.txtEmail.getText();
+            String nombre = this.txtNombre.getText();
+            String apellido = this.txtApellido.getText();
+            String descripcion = this.areaDescripcion.getText();
+            String biografia = this.areaBiografia.getText();
+            String url = this.txtUrl.getText();
+            
+            int dia = (int) this.spinnerDia.getValue();
+            int mes = (int) this.spinnerMes.getValue();
+            int anio = (int) this.spinnerAnio.getValue();
+
+            if(n == 0){
+                try{
+                    this.ICU.modificarArtista(email,nombre,apellido,new DTFecha(dia,mes,anio), descripcion, biografia, url);
+                    this.ICU.obtenerArtistas((DefaultTableModel) this.jTable2.getModel());
+                    this.btnGuardar.setEnabled(false);
+                    this.btnCancelar.setEnabled(false);
+                    this.txtNombre.setEditable(false);
+                    this.txtApellido.setEditable(false);
+                    this.spinnerDia.setEnabled(false);
+                    this.spinnerMes.setEnabled(false);
+                    this.spinnerAnio.setEnabled(false);
+                }catch (Exception e) {
+                    JOptionPane.showMessageDialog(null, e.getMessage());
+                }  
+            }else{
+                System.out.println("Cancelado");
+            }
+        }
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
