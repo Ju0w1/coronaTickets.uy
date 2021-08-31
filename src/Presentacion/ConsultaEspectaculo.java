@@ -205,11 +205,6 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         getContentPane().add(txtCosto, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
         getContentPane().add(txtFechaRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, -1, -1));
 
-        listFunciones.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane3.setViewportView(listFunciones);
 
         getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 250, 66));
@@ -226,11 +221,6 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         jLabel11.setText("Funciones:");
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, -1, -1));
 
-        listPaquetes.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
         jScrollPane4.setViewportView(listPaquetes);
 
         getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 450, 250, 66));
