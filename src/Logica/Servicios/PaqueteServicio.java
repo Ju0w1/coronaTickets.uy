@@ -27,7 +27,7 @@ public class PaqueteServicio {
     public void addPaquete(String nombre,Date fechaInicio, Date fechaFin,Date fechaCreado,int descuento,String descripcion)
     {
         try{
-            PreparedStatement statement = conexion.prepareStatement("INSERT INTO paquetes(paq_nombre, paq_descripcion,paq_descuento,paq_fecha_inicio,paq_fecha_fin,paq_fecha_creado  ) VALUES(?,?,?,?,?,?)");
+            PreparedStatement statement = conexion.prepareStatement("INSERT INTO paquetes(paq_nombre, paq_descripcion,paq_descuento,paq_fecha_inicio,paq_fecha_fin,paq_fecha_alta  ) VALUES(?,?,?,?,?,?)");
             statement.setString(1, nombre);
             statement.setString(2, descripcion);
             statement.setDouble(3, descuento); //Descuento

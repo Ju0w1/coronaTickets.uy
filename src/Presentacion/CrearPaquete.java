@@ -3,6 +3,7 @@ package Presentacion;
 import Logica.Fabrica;
 import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import logica.Interfaz.IControladorEspetaculo;
 import logica.Clases.DTFecha;
@@ -21,26 +22,6 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler19 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler17 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler18 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler20 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler21 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel2 = new javax.swing.JPanel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        txtDescripcion = new javax.swing.JTextField();
         Descripcion = new javax.swing.JLabel();
         Nombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -58,76 +39,66 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         aceptar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         spDescuento = new javax.swing.JSpinner();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtDescripcion = new javax.swing.JTextArea();
 
+        setClosable(true);
         setResizable(true);
         setTitle("Crear Paquete Espectáculo");
-        setPreferredSize(new java.awt.Dimension(500, 600));
-
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
-        jPanel4.add(filler5);
-        jPanel4.add(filler7);
-        jPanel4.add(filler19);
-        jPanel4.add(filler8);
-        jPanel4.add(filler17);
-        jPanel4.add(filler16);
-        jPanel4.add(filler12);
-        jPanel4.add(filler13);
-        jPanel4.add(filler18);
-        jPanel4.add(filler20);
-        jPanel4.add(filler21);
-
-        jPanel3.add(jPanel4);
-
-        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
-        jPanel2.add(filler1);
-        jPanel2.add(filler2);
-        jPanel2.add(filler10);
-        jPanel2.add(filler14);
-        jPanel2.add(filler15);
-
-        jPanel3.add(jPanel2);
-
-        txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDescripcionActionPerformed(evt);
-            }
-        });
+        setMaximumSize(new java.awt.Dimension(435, 455));
+        setMinimumSize(new java.awt.Dimension(435, 455));
+        setPreferredSize(new java.awt.Dimension(435, 455));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Descripcion.setText("Descripcion");
+        getContentPane().add(Descripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 216, -1, -1));
 
         Nombre.setText("Nombre");
+        getContentPane().add(Nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 36, -1, -1));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreActionPerformed(evt);
             }
         });
+        getContentPane().add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 30, 237, -1));
 
         jLabel5.setText("Fecha Inicio");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
+
+        fechaInicio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         iMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        fechaInicio.add(iMes);
+        fechaInicio.add(iMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 5, -1, -1));
 
         iDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        fechaInicio.add(iDia);
+        fechaInicio.add(iDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(91, 5, -1, -1));
 
         iAnio.setModel(new javax.swing.SpinnerNumberModel(2021, 2021, null, 1));
         iAnio.setPreferredSize(new java.awt.Dimension(50, 20));
-        fechaInicio.add(iAnio);
+        fechaInicio.add(iAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 6, 87, 28));
+
+        getContentPane().add(fechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
 
         jLabel6.setText("Fecha Fin");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
+
+        fechaFin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         fDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        fechaFin.add(fDia);
+        fechaFin.add(fDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 5, -1, -1));
 
         fMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        fechaFin.add(fMes);
+        fechaFin.add(fMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(86, 5, -1, -1));
 
         fAnio.setModel(new javax.swing.SpinnerNumberModel(2021, 2021, null, 1));
         fAnio.setPreferredSize(new java.awt.Dimension(50, 20));
-        fechaFin.add(fAnio);
+        fechaFin.add(fAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 6, 87, 28));
+
+        getContentPane().add(fechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(137, 116, -1, -1));
 
         jLabel3.setText("Descuento");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         aceptar.setText("Agregar");
         aceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -135,86 +106,27 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
                 aceptarActionPerformed(evt);
             }
         });
+        getContentPane().add(aceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 366, -1, -1));
 
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(296, 366, -1, -1));
 
         spDescuento.setModel(new javax.swing.SpinnerNumberModel(0, null, 100, 1));
+        getContentPane().add(spDescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 54, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jLabel6)
-                                            .addGap(5, 5, 5))
-                                        .addComponent(jLabel3))
-                                    .addComponent(Nombre)
-                                    .addComponent(jLabel5))
-                                .addGap(22, 22, 22)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
-                                    .addComponent(spDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fechaInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(fechaFin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addComponent(Descripcion)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(aceptar)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(27, 27, 27))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Nombre)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(spDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addComponent(Descripcion)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(aceptar)
-                    .addComponent(jButton2))
-                .addContainerGap(97, Short.MAX_VALUE))
-        );
+        txtDescripcion.setColumns(20);
+        txtDescripcion.setRows(5);
+        jScrollPane1.setViewportView(txtDescripcion);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 250, 325, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void txtDescripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescripcionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDescripcionActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -224,7 +136,7 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         /* Cuando se le da click a  */
         
         JTextField nombreTf = (JTextField)txtNombre; 
-        JTextField descripcionTf = (JTextField)txtDescripcion; 
+        JTextArea descripcionTf = (JTextArea)txtDescripcion; 
         JSpinner descuentoTf = (JSpinner)spDescuento; 
         JSpinner diaIS = (JSpinner)iDia;
         JSpinner mesIS = (JSpinner)iMes;
@@ -268,6 +180,10 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
         }
         
     }//GEN-LAST:event_aceptarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     
     void llenamosCampos(String nombre) //Con el nombre mandamos porque es unico en el sistema
@@ -318,22 +234,6 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner fMes;
     private javax.swing.JPanel fechaFin;
     private javax.swing.JPanel fechaInicio;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler10;
-    private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler13;
-    private javax.swing.Box.Filler filler14;
-    private javax.swing.Box.Filler filler15;
-    private javax.swing.Box.Filler filler16;
-    private javax.swing.Box.Filler filler17;
-    private javax.swing.Box.Filler filler18;
-    private javax.swing.Box.Filler filler19;
-    private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler20;
-    private javax.swing.Box.Filler filler21;
-    private javax.swing.Box.Filler filler5;
-    private javax.swing.Box.Filler filler7;
-    private javax.swing.Box.Filler filler8;
     private javax.swing.JSpinner iAnio;
     private javax.swing.JSpinner iDia;
     private javax.swing.JSpinner iMes;
@@ -341,11 +241,9 @@ public class CrearPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSpinner spDescuento;
-    private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextArea txtDescripcion;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
