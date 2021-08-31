@@ -176,7 +176,6 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
         jFrameBuscarArtista.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 422, 288));
 
-        jFrameModificar.setMaximumSize(new java.awt.Dimension(516, 266));
         jFrameModificar.setMinimumSize(new java.awt.Dimension(516, 266));
         jFrameModificar.setResizable(false);
 
@@ -494,7 +493,6 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         });
 
         jLabelErrorCase.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabelErrorCase.setForeground(new java.awt.Color(0, 0, 0));
         jLabelErrorCase.setText("Este label será utilizado para informar de errores mediante Try-Catchs");
         jLabelErrorCase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

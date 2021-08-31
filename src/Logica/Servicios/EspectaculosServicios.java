@@ -251,6 +251,8 @@ public class EspectaculosServicios {
         return resultado;
     }
       
+    
+      
       public Map<String, Artista> getMapArtistas(String funcionId) {
         Map<String, Artista> artistas= new HashMap<>();
         try {
@@ -273,6 +275,21 @@ public class EspectaculosServicios {
             ex1.printStackTrace();
         }
         return artistas;
+    }
+      
+    public Map<String, Espectaculo> getMapEspectaculoDePaquete(String paqueteId) {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_id IN (SELECT paquete_espetaculos.paqespec_espec_id FROM paquete_espetaculos,paquetes WHERE paquete_espetaculos.paqespec_paq_id=paquetes.paq_id AND paquetes.paq_nombre=?)");
+            status1.setString(1, paqueteId);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
     }
 
       public Espectaculo getEspecaculo(String funcionId){

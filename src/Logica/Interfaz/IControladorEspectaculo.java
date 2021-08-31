@@ -29,6 +29,7 @@ public interface IControladorEspectaculo {
     //public abstract void obtenerFuncionesDeEspectaculo(String nombre);
     public abstract boolean verificarNombreEspectaculo(String nombre);
     public abstract void obtenerListaFunciones(JList listFunciones);
+    public abstract void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento , JList listaEspectaculos);
     
 }
 

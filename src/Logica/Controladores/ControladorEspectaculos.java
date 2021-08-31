@@ -18,6 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import Logica.Clases.Funcion;
+import Logica.Clases.Paquete;
+import Logica.servicios.PaquetesServicios;
+import java.util.HashMap;
 
 /**
  *
@@ -29,7 +32,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     private Map<String, Espectaculo> espectaculos;
     private Map<String, Plataforma> plataformas;
     private EspectaculosServicios servicioEspectaculo;
+     private PaquetesServicios servicioPaquete;
     private Map<String, Funcion> funciones;
+    private Map<String, Paquete> paquetes;
     private static ControladorEspectaculos instancia;
     //getters
 //    public Espectaculo getEspectaculo(){
@@ -46,6 +51,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     //metodos
     public ControladorEspectaculos() {
         this.servicioEspectaculo = new EspectaculosServicios();
+        this.servicioPaquete = new PaquetesServicios();
     }
 
     public static ControladorEspectaculos getInstance() {
@@ -168,6 +174,27 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         fechaRegistro.setText(f.getFechaRegistro().toString());
         horaInicio.setText(f.getHoraInicio().toString());
         fechaInicio.setText(f.getFecha().toString());
+    }
+    
+    public void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento , JList listaEspectaculos){
+        this.paquetes=this.servicioPaquete.getPaquete();
+        Paquete p = (Paquete) this.paquetes.get(nombrePaquete);
+        nombre.setText(p.getNombre());
+        descripcion.setText(p.getDescripcion());
+        fechaInicio.setText(p.getFecha_Inicio().toString());
+        fechaFin.setText(p.getFecha_Fin().toString());
+        costo.setText(p.getCosto().toString());
+        Descuento.setText(p.getDescuento().toString());
+        Map<String, Espectaculo> espectaculos = new HashMap<>();
+        espectaculos = this.servicioEspectaculo.getMapEspectaculoDePaquete(nombrePaquete);
+        DefaultListModel listModel1 = new DefaultListModel();
+        Iterator iterator = espectaculos.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry entrada = (Map.Entry) iterator.next();
+            Espectaculo e = (Espectaculo) entrada.getValue();
+            listModel1.addElement(e.getNombre());
+        }
+        listaEspectaculos.setModel(listModel1);
     }
 
 //    @Override

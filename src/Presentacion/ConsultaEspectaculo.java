@@ -430,6 +430,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         if(listPaquetes.isSelectionEmpty()){
             JOptionPane.showMessageDialog(this, "No ha seleccionado ningún paquete.");
         }else{
+            this.ICE.cargarDatosPaqueteConsultaEspectaculo(txtNombreEspectaculo.getText(), listPaquetes.getSelectedValue(),txtNombreFP,txtDescripcionP_FechaF, txtFechaInicioP_HoraInicioF, txtFechaFinP_FechaRegistroF, txtCostoP, txtDescuentoP, listEspectaculosDePaquete);
             labelNombreFP.setText("Nombre del paquete:");
             labelDescripcionP_FechaF.setText("Descripción:");
             labelFechaInicioP_HoraInicioF.setText("Fecha de inicio:");
@@ -462,6 +463,22 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "No ha seleccionado ningun espectaculo.");
         }
         else{//JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
+                        labelNombreFP.setVisible(false);
+            labelDescripcionP_FechaF.setVisible(false);
+            labelFechaInicioP_HoraInicioF.setVisible(false);
+            labelFechaFinP_FechaRegistroF.setVisible(false);
+            txtNombreFP.setVisible(false);
+            txtDescripcionP_FechaF.setVisible(false);
+            txtFechaInicioP_HoraInicioF.setVisible(false);
+            txtFechaFinP_FechaRegistroF.setVisible(false);
+
+            labelDescuentoP.setVisible(false);
+            labelCostoP.setVisible(false);
+            txtDescuentoP.setVisible(false);
+            txtCostoP.setVisible(false);
+            
+            jPanel2.setVisible(false);
+            
             this.ICE.cargarDatosConsultaEspectaculo(listEspectaculos.getSelectedValue(), txtNombreArtista, txtNombreEspectaculo, txtDuracion, txtCantEspectadoresMinima, txtCantEspectadoresMaxima, txtURL, txtCosto, txtFechaRegistro, txtDescripcion);
             this.ICE.obtenerListaFunciones(listFunciones);
             String espectNombre = listEspectaculos.getSelectedValue();
