@@ -18,14 +18,16 @@ public class Paquete {
     private DTFecha Fecha_Fin;
     private Float Costo;
     private Float Descuento;
+    private DTFecha Fecha_Compra;
     
-    public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, Float Costo_, Float Descuento_) {
+    public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, Float Costo_, Float Descuento_, DTFecha Fecha_Compra_) {
         this.Nombre=nombre_;
         this.Descripcion=Descripcion_;
         this.Fecha_Inicio= Fecha_Inicio_;
         this.Fecha_Fin= Fecha_Fin_;
         this.Costo= Costo_;
         this.Descuento= Descuento_;
+        this.Fecha_Compra= Fecha_Compra_;
     }
     
     public void setNombre(String nombre){
@@ -75,5 +77,10 @@ public class Paquete {
     public Float getDescuento(){
         return this.Descuento;
     }
-    
+    public void setFecha_Compra(DTFecha fecha_compra){
+        this.Fecha_Compra= fecha_compra;
+    }
+    public DTFecha getFecha_Compra(){
+        return this.Fecha_Compra;
+    }
 }
