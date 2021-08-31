@@ -7,7 +7,7 @@ import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JTextField;
-import logica.Clases.Paquete;
+import Logica.Clases.Paquete;
 import java.util.HashMap;
 import Logica.Interfaz.IControladorPaquete;
 import logica.servicios.PaquetesServicios;

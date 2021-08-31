@@ -5,7 +5,7 @@ import java.util.Map;
 import javax.swing.JList;
 import javax.swing.JTextField;
 
-import logica.Clases.Paquete;
+import Logica.Clases.Paquete;
 
 public interface IControladorPaquete {
     public abstract Map<String, Paquete> getPaquetes();

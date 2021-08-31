@@ -12,7 +12,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import logica.Clases.Paquete;
+import Logica.Clases.Paquete;
 
 
 public class PaquetesServicios {
@@ -22,10 +22,16 @@ public class PaquetesServicios {
     private Connection conexion = new ConexionDB().getConexion();
 
     public DTFecha dateToDTFecha(Date fecha){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaDB = dateFormat.format(fecha);
-        String[] partes = fechaDB.split("-");
-        return new DTFecha(Integer.parseInt(partes[2]),Integer.parseInt(partes[1]),Integer.parseInt(partes[0]));
+        if(fecha != null){
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String fechaDB = dateFormat.format(fecha);
+            String[] partes = fechaDB.split("-");
+            return new DTFecha(Integer.parseInt(partes[2]),Integer.parseInt(partes[1]),Integer.parseInt(partes[0]));
+        }
+        else{
+            return new DTFecha(0,0,0);
+        }
+        
     }
     
     
