@@ -11,7 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
-import logica.Interfaz.IControladorEspetaculo;
+import Logica.Interfaz.IControladorEspectaculo;
 /**
  *
  * @author 59898
@@ -21,10 +21,10 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
     /**
      * Creates new form AltaFuncion
      */
-    private IControladorEspetaculo ICE;
+    private IControladorEspectaculo ICE;
     public AltaFuncion() {
         initComponents();
-        this.ICE = Fabrica.getInstance().getIControladorEspetaculo();
+        this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
         cmbxEspetaculo.removeAllItems();
        // cargarEspetaculos();
         cmbxPlataforma.removeAllItems();

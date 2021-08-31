@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Controladores;
+package Logica.Controladores;
 
 import Logica.DataTypes.DTFecha;
 import java.util.Map;
 import javax.swing.JTextField;
-import logica.Clases.Usuario;
-import logica.Clases.Espectador;
+import Logica.Clases.Usuario;
+import Logica.Clases.Espectador;
 import Logica.Interfaz.IControladorUsuario;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
-import logica.Clases.Artista;
-import logica.servicios.UsuariosServicios;
+import Logica.Clases.Artista;
+import Logica.servicios.UsuariosServicios;
 
 /**
  *

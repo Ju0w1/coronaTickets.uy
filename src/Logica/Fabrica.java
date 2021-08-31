@@ -3,8 +3,7 @@ import Logica.Interfaz.IControladorUsuario;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Controladores.ControladorEspectaculos;
 import Logica.Controladores.ControladorUsuario;
-import Logica.Interfaces.IControladorUsuario;
-import Logica.Interfaz.IControladorEspetaculo;
+import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Controladores.ControladorEspectaculos;
 /**
  *

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.servicios;
+package Logica.servicios;
 
 import Logica.DataTypes.DTFecha;
 import Persistencia.ConexionDB;
@@ -17,9 +17,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import logica.Clases.Artista;
-import logica.Clases.Espectador;
-import logica.Clases.Usuario;
+import Logica.Clases.Artista;
+import Logica.Clases.Espectador;
+import Logica.Clases.Usuario;
 /**
  *
  * @author LucasCiceri

@@ -2,13 +2,13 @@
 package Presentacion;
 
 import Logica.Fabrica;
-import logica.Interfaz.IControladorEspetaculo;
+import Logica.Interfaz.IControladorEspectaculo;
 
 public class AgregarPaquete extends javax.swing.JInternalFrame {
-    private IControladorEspetaculo ICE;
+    private IControladorEspectaculo ICE;
     public AgregarPaquete() {
         initComponents();
-        this.ICE = Fabrica.getInstance().getIControladorEspetaculo();
+        this.ICE = (IControladorEspectaculo) Fabrica.getInstance().getIControladorEspectaculo();
     }
     
     @SuppressWarnings("unchecked")

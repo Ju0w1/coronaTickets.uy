@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Controladores;
+package Logica.Controladores;
 
 import java.util.Map;
 import Logica.Clases.Espectaculo;
@@ -12,25 +12,21 @@ import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
 import java.util.HashMap;
 
-import logica.Clases.DTFecha;
+import Logica.DataTypes.DTFecha;
 import java.util.HashMap;
 import Logica.Servicios.EspetaculoServicio;
 import Logica.Servicios.PlataformaServicio;
 import java.text.ParseException;
 import java.util.Map;
 import Logica.Clases.Plataforma;
-import logica.Clases.Paquete;
-import logica.Interfaz.IControladorEspetaculo;
+import Logica.Clases.Paquete;
+import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.PaqueteServicio;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-/**
- *
- * @author pabli
- */
 
-public class ControladorEspectaculos implements IControladorEspetaculo{
+public class ControladorEspectaculos implements IControladorEspectaculo{
     //atributos
     private EspectaculosServicios servicioEspectaculo;
     private PaqueteServicio servicioPaquete;
@@ -39,21 +35,15 @@ public class ControladorEspectaculos implements IControladorEspetaculo{
     private static ControladorEspectaculos instancia;
     private Map<String, Espectaculo> espectaculos = new HashMap<>();
     private Map<String, Paquete > paquetes = new HashMap<>();
-    private Map<String, Plataforma> plataforma = new HashMap<>();
+    private Map<String, Plataforma> plataformas = new HashMap<>();
     
     public ControladorEspectaculos ()
     {
         this.servicioPaquete = new PaqueteServicio();
+        this.servicioEspectaculo = new EspectaculosServicios();
+        this.plataformas = new HashMap<>();
+        this.espectaculos = new HashMap<>();
     }
-}
-    
-    //getters
-//    public Espectaculo getEspectaculo(){
-//        
-//    }
-    
-
-
     
     public static ControladorEspectaculos getInstance() {
         if (instancia == null) {
@@ -66,20 +56,7 @@ public class ControladorEspectaculos implements IControladorEspetaculo{
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
         return espectaculos;
     }
-    
-    //metodos
-    public ControladorEspectaculos() {
-        this.servicioEspectaculo = new EspectaculosServicios();
-        this.plataformas = new HashMap<>();
-        this.espectaculos = new HashMap<>();
-    }
    
-    public static ControladorEspectaculos getInstance() {
-        if (instancia == null) {
-            instancia = new ControladorEspectaculos();
-        }
-        return instancia;
-    }
     
     public boolean addPlataforma(String nombre, String url, String descripcion){
         if (this.servicioEspectaculo.checkPlataforma(nombre)){
@@ -220,3 +197,4 @@ public class ControladorEspectaculos implements IControladorEspetaculo{
     }
     
 }
+

@@ -1,4 +1,4 @@
-package logica.Clases;
+package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
 

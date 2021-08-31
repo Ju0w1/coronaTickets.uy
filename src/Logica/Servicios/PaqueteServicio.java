@@ -5,8 +5,8 @@
  */
 package Logica.Servicios;
 
-import logica.Clases.Paquete;
-import logica.Clases.DTFecha;
+import Logica.Clases.Paquete;
+import Logica.DataTypes.DTFecha;
 import Persistencia.ConexionDB;
 import java.sql.Date;
 import java.sql.Connection;

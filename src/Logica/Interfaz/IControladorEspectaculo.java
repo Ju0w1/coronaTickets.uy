@@ -7,6 +7,11 @@ package Logica.Interfaz;
 
 import Logica.Clases.Espectaculo;
 import javax.swing.JComboBox;
+import java.util.*;
+import Logica.Clases.Espectaculo;
+import Logica.DataTypes.DTFecha;
+import Logica.Clases.Paquete;
+import Logica.Clases.Funcion;
 
 /**
  *
@@ -19,4 +24,13 @@ public interface IControladorEspectaculo {
     public abstract void obtenerArtistaPorNombre(String nombre);
     public abstract boolean verificarNombreEspectaculo(String nombre);
     public abstract boolean addPlataforma(String nombre, String url, String descripcion);
+    public abstract Map<String, Espectaculo> getEspectaculos();
+    public abstract boolean crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion);
+    public abstract String obtenerDescripcion(String nombre);
+    public abstract String[] obtenerFecha(String nombre,int fecha);
+    public abstract int obtenerDescuento(String nombre); 
+    public abstract boolean actualizarPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion);
+    public abstract void crearFuncion();
+    public abstract ArrayList<String> cargarPlataforma();
+    public abstract ArrayList<String> cargarEspectaculos(int plataforma);
 }

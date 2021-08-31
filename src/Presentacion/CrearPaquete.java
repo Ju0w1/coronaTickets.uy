@@ -5,16 +5,16 @@ import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import logica.Interfaz.IControladorEspetaculo;
-import logica.Clases.DTFecha;
+import Logica.Interfaz.IControladorEspectaculo;
+import Logica.DataTypes.DTFecha;
 
 public class CrearPaquete extends javax.swing.JInternalFrame {
-    private IControladorEspetaculo ICE;
+    private IControladorEspectaculo ICE;
     private boolean modifica;
     public CrearPaquete() {
         initComponents();
         this.modifica = false;
-        this.ICE = Fabrica.getInstance().getIControladorEspetaculo();        
+        this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
     }
     
     
