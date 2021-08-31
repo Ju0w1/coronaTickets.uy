@@ -1,5 +1,4 @@
-
-package logica.Controladores;
+package Logica.Controladores;
 
 import Logica.DataTypes.DTFecha;
 import java.util.Iterator;
@@ -10,7 +9,7 @@ import javax.swing.JTextField;
 import Logica.Clases.Paquete;
 import java.util.HashMap;
 import Logica.Interfaz.IControladorPaquete;
-import logica.servicios.PaquetesServicios;
+import Logica.servicios.PaquetesServicios;
 
 
 
@@ -63,6 +62,24 @@ public class ControladorPaquete implements IControladorPaquete{
         listEspec.setModel(listModel1);
     }
     
+    @Override
+    public void obtenerPaqueteEspectaculo(JList listEspec, String espectaculoNombre){
+        this.paquetes = this.servicioPaq.getPaquetesDeEspectaculo(espectaculoNombre);
+        DefaultListModel listModel1 = new DefaultListModel();
+        
+        System.out.println("While Loop:");
+        Iterator iterator = this.paquetes.entrySet().iterator();
+        
+        while (iterator.hasNext()) {
+            Map.Entry entrada = (Map.Entry) iterator.next();
+            Paquete e = (Paquete) entrada.getValue();
+            System.out.println(e.getNombre());
+            listModel1.addElement(e.getNombre());
+        } 
+        
+        listEspec.setModel(listModel1);
+    }
+    
     
     @Override
     public void cargarDatosConsultaPaquete(String seleccion, JTextField nombre_, JTextField descripcion_, JTextField Finicio, JTextField Ffinal, JTextField costo_, JTextField descuento_, JTextField FCompra){
@@ -98,5 +115,3 @@ public class ControladorPaquete implements IControladorPaquete{
     }
     
 }
-     
- 

@@ -5,7 +5,7 @@ import java.util.Map;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.table.DefaultTableModel;
+import Logica.Clases.Espectador;
 import Logica.Clases.Usuario;
 public interface IControladorUsuario {
     //public abstract Map<String, Usuario> getUsuarios();

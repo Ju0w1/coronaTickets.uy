@@ -1,5 +1,4 @@
-
-package logica.servicios;
+package Logica.servicios;
 
 import Logica.DataTypes.DTFecha;
 import Persistencia.ConexionDB;
@@ -52,6 +51,23 @@ public class PaquetesServicios {
         return resultado;
     }
     
+    public Map<String, Paquete> getPaquetesDeEspectaculo(String espectaculoNombre) {
+        Map<String, Paquete> resultado = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes, paquete_espetaculos WHERE paquetes.paq_id=paquete_espetaculos.paqespec_paq_id AND paquete_espetaculos.paqespec_espec_id IN (select espetaculos.espec_id from espetaculos where espetaculos.espec_nombre=?)");
+            status.setString(1, espectaculoNombre);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                dateToDTFecha(rs.getDate("paq_fecha_inicio"));
+                resultado.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra")))); 
+                //System.out.println("Nombre: "+ rs.getString("paq_nombre")+"Descripcion: "+ rs.getString("paq_descripcion")+"Costo: "+ rs.getFloat("paq_costo")+"Descuento: "+ rs.getFloat("paq_descuento"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return resultado;
+    }
+    
 
     public boolean addPaquete(String nombre, String descripcion,DTFecha Finicio,DTFecha Ffinal, String costo, String descuento, DTFecha FCompra) {
         try {
@@ -70,4 +86,6 @@ public class PaquetesServicios {
         }
         return true;
     }
+    
+    
 }

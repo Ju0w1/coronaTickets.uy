@@ -15,6 +15,11 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import Logica.Clases.Artista;
 import Logica.servicios.UsuariosServicios;
+import java.util.HashMap;
+
+
+
+
 
 /**
  *

@@ -1,4 +1,3 @@
-
 package Logica.Interfaz;
 import Logica.DataTypes.DTFecha;
 import java.util.Map;
@@ -13,4 +12,6 @@ public interface IControladorPaquete {
     public abstract void obtenerPaquete(JList listEspec);
     public abstract void cargarDatosConsultaPaquete(String seleccion, JTextField nombre, JTextField descripcion, JTextField Finicio, JTextField Ffinal, JTextField costo, JTextField descuento, JTextField FCompra);
     public abstract void modificarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFinal, float costo, float descuento,DTFecha fechaCompra);
+    public abstract void obtenerPaqueteEspectaculo(JList listEspec, String espectaculoNombre);
+    
 }

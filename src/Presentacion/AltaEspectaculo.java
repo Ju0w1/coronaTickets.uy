@@ -41,7 +41,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     public AltaEspectaculo() {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
-        this.ICE.obtenerPlataformas();
+        this.ICE.obtenerPlataformas(jComboBox1Plataformas);
         this.ICE.obtenerArtistas();
         //jComboBox1= this.ICE.obtenerPlataformas();
         //jComboBox1.addItem(this.ICE.obtenerPlataformas().getItemAt(0).toString());
@@ -176,7 +176,6 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
         jFrameBuscarArtista.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 422, 288));
 
-        jFrameModificar.setMaximumSize(new java.awt.Dimension(516, 266));
         jFrameModificar.setMinimumSize(new java.awt.Dimension(516, 266));
         jFrameModificar.setResizable(false);
 
@@ -494,7 +493,6 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         });
 
         jLabelErrorCase.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
-        jLabelErrorCase.setForeground(new java.awt.Color(0, 0, 0));
         jLabelErrorCase.setText("Este label será utilizado para informar de errores mediante Try-Catchs");
         jLabelErrorCase.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -696,7 +694,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtURLKeyPressed
 
     private void jComboBox1PlataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jComboBox1PlataformasActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

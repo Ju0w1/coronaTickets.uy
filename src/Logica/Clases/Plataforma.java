@@ -11,6 +11,10 @@ public class Plataforma {
         this.Descripcion=desc;
         this.Url=url;
     }
+    
+    public Plataforma(String nombre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     //Getters
     public String getNombre(){
         return this.Nombre;
