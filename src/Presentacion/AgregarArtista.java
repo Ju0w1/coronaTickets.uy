@@ -335,10 +335,26 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         if (txtNombre.getText().equals("") || txtApellido.getText().equals("") || txtEmail.getText().equals("") || txtNickname.getText().equals("") || txtDescripcion.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Campos incompletos.");
         } else{
-            if (this.ICU.addArtista(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio), txtDescripcion.getText(), txtBiografia.getText(), txtLink.getText()) == true){
-                JOptionPane.showMessageDialog(this, "Artista agregado con exito.");
+            if (txtEmail.getText().matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")) { // Expresion regular para comprobar el Correo
+                if (txtLink.getText().equals("")){
+                    if (this.ICU.addArtista(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio), txtDescripcion.getText(), txtBiografia.getText(), txtLink.getText()) == true){
+                        JOptionPane.showMessageDialog(this, "Artista agregado con exito.");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Ya existe ese Artista.");
+                    }
+                } else {
+                    if (txtLink.getText().matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")){ // Expresion regular para comprobar la url
+                        if (this.ICU.addArtista(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio), txtDescripcion.getText(), txtBiografia.getText(), txtLink.getText()) == true){
+                            JOptionPane.showMessageDialog(this, "Artista agregado con exito.");
+                        } else {
+                            JOptionPane.showMessageDialog(this, "Ya existe ese Artista.");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Link Web no valido");
+                    }
+                }
             } else {
-                JOptionPane.showMessageDialog(this, "Ya existe ese Artista.");
+                JOptionPane.showMessageDialog(this, "Ingrese un correo válido");
             }
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
