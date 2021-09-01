@@ -7,6 +7,8 @@ package Presentacion;
 
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorEspectaculo;
+import java.sql.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -49,12 +51,13 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         plat = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        func = new javax.swing.JTable();
+        funcTable = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         listViewers = new javax.swing.JList<>();
+        jButton3 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         txtFuncion = new javax.swing.JTextField();
@@ -130,7 +133,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
 
         plat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        func.setModel(new javax.swing.table.DefaultTableModel(
+        funcTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -141,7 +144,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(func);
+        jScrollPane1.setViewportView(funcTable);
 
         jButton2.setText("Seleccionar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +206,13 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
         });
         jScrollPane4.setViewportView(listViewers);
 
+        jButton3.setText("Seleccionar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -210,8 +220,10 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jButton3)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -221,7 +233,8 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                .addGap(26, 26, 26))
+                .addGap(3, 3, 3)
+                .addComponent(jButton3))
         );
 
         jLabel6.setText("Funcion");
@@ -323,13 +336,49 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
+        if (plat.getSelectedIndex()==-1){
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna plataforma.");
+        }
+        else {
+            if (espec.getSelectedIndex()==-1){
+                 JOptionPane.showMessageDialog(this, "No ha seleccionado ningun espectaculo.");
+            }
+            else{
+                if(txtFuncion.getText().equals("")){
+                    JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna funcion.");
+                }
+                else{
+                    if(listViewers.getSelectedIndex()==-1){
+                        JOptionPane.showMessageDialog(this, "No ha seleccionado ningun espectador.");
+                    }
+                    else{
+                        if((int) dia.getValue()==0 || (int) mes.getValue()==0 || (int) anio.getValue()==0){
+                            JOptionPane.showMessageDialog(this, "La fecha ingresada no es valida.");
+                        }
+                        else{
+                            String getFunc= txtFuncion.getText();
+                            String getPlat= (String) plat.getSelectedItem();
+                            String getEspec= espec.getSelectedValue();
+                            String getViewer= listViewers.getSelectedValue();
+                            Date date= new Date((int) dia.getValue(), (int) mes.getValue(), (int) anio.getValue());
+                            this.ICE.registroFuncionEspectaculo(getPlat, getEspec, getFunc, getViewer, date);
+                        }
+                    }
+                }
+            }
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        String idEspectaculo= espec.getSelectedValue();
-        this.ICE.obtenerTablaFunciones(func, idEspectaculo);
+        String nomEspectaculo= espec.getSelectedValue();
+        
+        this.ICE.obtenerTablaFunciones(funcTable, nomEspectaculo);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -372,9 +421,10 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JSpinner dia;
     private javax.swing.JList<String> espec;
-    private javax.swing.JTable func;
+    private javax.swing.JTable funcTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JFrame jFrame1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -233,12 +233,11 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 }
                 else{
                     String getPlat, getEspec, getFunc;
-                ControladorEspectaculos cont=ControladorEspectaculos.getInstance();
-                //index= jList1.getSelectedIndex();
-                getFunc= (String) func.getSelectedValue();
-                getPlat= (String) plat.getSelectedItem();
-                getEspec= (String) espec.getSelectedItem();
-                this.ICE.consultaFuncionEspectaculo(getPlat, getEspec, getFunc, this.mostrarNom, this.mostrarFecha, this.mostrarHora, this.mostrarArtistas);
+                    //index= jList1.getSelectedIndex();
+                    getFunc= (String) func.getSelectedValue();
+                    getPlat= (String) plat.getSelectedItem();
+                    getEspec= (String) espec.getSelectedItem();
+                    this.ICE.consultaFuncionEspectaculo(getPlat, getEspec, getFunc, this.mostrarNom, this.mostrarFecha, this.mostrarHora, this.mostrarArtistas);
                 }
             }
         }

@@ -256,4 +256,10 @@ public class EspectaculosServicios {
         return resultado;
     }
     
+    public String getIdEspectaculo (String espectaculoNom){
+        String rslt="";
+        
+        return rslt;
+    }
+    
 }

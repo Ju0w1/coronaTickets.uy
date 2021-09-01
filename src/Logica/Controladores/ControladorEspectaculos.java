@@ -14,6 +14,7 @@ import Logica.Clases.Funcion;
 import Logica.Clases.Artista;
 import Logica.Clases.Plataforma;
 import Presentacion.ConsultaFuncion;
+import java.sql.Date;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
@@ -84,7 +85,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         listFunciones.setModel(listModel1);
     }
      
-    public void obtenerTablaFunciones (JTable tablaFunciones, String idEspectaculo){
+    @Override
+    public void obtenerTablaFunciones (JTable tablaFunciones, String nomEspectaculo){
+        servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
         
     } 
     
@@ -128,7 +131,8 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         mostrarArtistas.setListData(auxArtistas);
     }
     
-    public void registroFuncionEspectaculo(){
+    @Override
+    public void registroFuncionEspectaculo(String getPlat, String getEspec, String getFunc, String getViewer, Date date){
         
     }
     
