@@ -1,4 +1,4 @@
-package logica.Clases;
+package Logica.Clases;
 
 import java.sql.Date;
 import java.sql.Time;

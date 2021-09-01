@@ -41,7 +41,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     public AltaEspectaculo() {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
-        this.ICE.obtenerPlataformas(jComboBox1Plataformas);
+        this.ICE.obtenerJComboBoxPlataformas(jComboBox1Plataformas);
         this.ICE.obtenerArtistas();
         //jComboBox1= this.ICE.obtenerPlataformas();
         //jComboBox1.addItem(this.ICE.obtenerPlataformas().getItemAt(0).toString());

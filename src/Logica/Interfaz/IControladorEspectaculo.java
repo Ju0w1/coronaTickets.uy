@@ -6,9 +6,12 @@
 package Logica.Interfaz;
 
 import Logica.Clases.Espectaculo;
+import Logica.Clases.Funcion;
+import java.util.Map;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JTable;
 
 /**
  *
@@ -16,9 +19,10 @@ import javax.swing.JList;
  */
 public interface IControladorEspectaculo {
     public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo);
-    public abstract void obtenerPlataformas(JComboBox comboBox);
-    public abstract void obtenerEspectaculos(JComboBox comboBox);
-    public void obtenerListaFunciones(JList jList);
+    public abstract void obtenerJComboBoxPlataformas(JComboBox comboBox);
+    public abstract void obtenerJComboBoxEspectaculos(JComboBox comboBox);
+    public void obtenerListaFunciones(JList jList, String idEspectaculo);
+    public void obtenerTablaFunciones (JTable tablaFunciones, String idEspectaculo);
     public abstract void obtenerArtistas();
     public abstract void obtenerArtistaPorNombre(String nombre);
     public abstract boolean verificarNombreEspectaculo(String nombre);

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Controladores;
+package Logica.Controladores;
 
 import java.util.Map;
 import Logica.Clases.Espectaculo;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Servicios.EspectaculosServicios;
 import java.util.Set;
-import logica.Clases.Funcion;
-import logica.Clases.Artista;
+import Logica.Clases.Funcion;
+import Logica.Clases.Artista;
 import Logica.Clases.Plataforma;
 import Presentacion.ConsultaFuncion;
 import java.util.Iterator;
@@ -19,6 +19,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JComboBox;
+import javax.swing.JTable;
 
 /**
  *
@@ -57,22 +58,22 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     }
     
     @Override
-    public void obtenerPlataformas(JComboBox comboBox){
+    public void obtenerJComboBoxPlataformas(JComboBox comboBox){
         for(int i=0;i<this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount();i++){
             comboBox.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
         }
     }
     
     @Override
-    public void obtenerEspectaculos(JComboBox comboBox){
+    public void obtenerJComboBoxEspectaculos(JComboBox comboBox){
         for(int i=0;i<this.servicioEspectaculo.llenarComboBoxEspectaculo().getItemCount();i++){
             comboBox.addItem(this.servicioEspectaculo.llenarComboBoxEspectaculo().getItemAt(i).toString());
         }
     }
     
     @Override
-     public void obtenerListaFunciones(JList listFunciones){
-        this.funciones= servicioEspectaculo.getMapFunciones();
+     public void obtenerListaFunciones(JList listFunciones, String idEspectaculo){
+        this.funciones= servicioEspectaculo.getMapFunciones(idEspectaculo);
         DefaultListModel listModel1 = new DefaultListModel();
         Iterator iterator = this.funciones.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -82,6 +83,10 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
         }
         listFunciones.setModel(listModel1);
     }
+     
+    public void obtenerTablaFunciones (JTable tablaFunciones, String idEspectaculo){
+        
+    } 
     
     @Override
     public void obtenerArtistas(){
@@ -108,15 +113,15 @@ public class ControladorEspectaculos implements IControladorEspectaculo{
     
     @Override
     public void consultaFuncionEspectaculo(String plataforma, String espectaculo, String funcion, JLabel mostrarNom, JLabel mostrarFecha, JLabel mostrarHora, JList mostrarArtistas){
-        Map<String, Funcion> funciones = servicioEspectaculo.getMapFunciones();
+        Map<String, Funcion> funciones = servicioEspectaculo.getMapFunciones(espectaculo);
         String auxFecha, auxHora, auxArtistas[]={};
         Set<String> artistas;
         Funcion rslt=funciones.get(funcion);
         
         mostrarNom.setText(rslt.getNombre());
-        auxFecha= String.valueOf(rslt.getFecha().getDia())+"/"+String.valueOf(rslt.getFecha().getMes())+"/"+String.valueOf(rslt.getFecha().getAnio());
+        auxFecha= String.valueOf(rslt.getFecha().getDay())+"/"+String.valueOf(rslt.getFecha().getMonth())+"/"+String.valueOf(rslt.getFecha().getYear());
         mostrarFecha.setText(auxFecha);
-        auxHora= String.valueOf(rslt.getHoraInicio().getHora())+":"+String.valueOf(rslt.getHoraInicio().getMinuto());
+        auxHora= String.valueOf(rslt.getHoraInicio().getHours())+":"+String.valueOf(rslt.getHoraInicio().getMinutes());
         mostrarHora.setText(auxHora);
         artistas= rslt.getArtistas().keySet();
         System.arraycopy(artistas.toArray(), 0, auxArtistas, 0, artistas.size());

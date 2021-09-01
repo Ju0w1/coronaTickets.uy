@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Controladores;
+package Logica.Controladores;
 
 import Logica.DataTypes.DTFecha;
 import java.util.Iterator;
@@ -11,12 +11,13 @@ import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JTextField;
-import logica.Clases.Espectador;
+import Logica.Clases.Espectador;
 import java.util.HashMap;
-import logica.Clases.Usuario;
-import logica.Clases.Espectador;
+import Logica.Clases.Usuario;
+import Logica.Clases.Espectador;
 import Logica.Interfaz.IControladorUsuario;
-import logica.servicios.UsuariosServicios;
+import Logica.servicios.UsuariosServicios;
+import java.sql.Date;
 
 
 /**
@@ -44,6 +45,7 @@ public class ControladorUsuario implements IControladorUsuario{
         return instancia;
     }
     
+    @Override
     public Map<String, Usuario> getUsuarios(){
         Map<String, Usuario> usuarios = servicioUsuarios.getUsers();
         return usuarios;
@@ -53,11 +55,13 @@ public class ControladorUsuario implements IControladorUsuario{
 //        return espectadores;
 //    };
     
-    public void addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
+    @Override
+    public void addEspectador(String nickname, String nombre, String apellido, String email, Date nacimiento) {
         this.espectadores.put(email, new Espectador(nickname,nombre,apellido,email,nacimiento));
         this.servicioUsuarios.addEspectador(nickname, nombre, apellido, email, nacimiento);
     }
     
+    @Override
     public void obtenerEspectadores(JList listEspec){
         this.espectadores = this.servicioUsuarios.getUsers();
         DefaultListModel listModel1 = new DefaultListModel();
@@ -75,14 +79,15 @@ public class ControladorUsuario implements IControladorUsuario{
         listEspec.setModel(listModel1);
     }
     
+    @Override
     public void cargarDatosConsultaEspectador(String seleccion, JTextField nick, JTextField nombre, JTextField apellido, JTextField mail, JTextField nacimiento){
         String[] partes = seleccion.split("\\(");
         String[] partes2 = partes[1].split("\\)");
         
         Espectador e = (Espectador) this.espectadores.get(partes2[0]);
-        DTFecha fechaN = e.getNacimiento();
+        Date fechaN = e.getNacimiento();
 
-        String fechaNacim = fechaN.getDia()+"/"+fechaN.getMes()+"/"+fechaN.getAnio();
+        String fechaNacim = fechaN.getDay()+"/"+fechaN.getMonth()+"/"+fechaN.getYear();
         nick.setText(e.getNickname());
         nombre.setText(e.getNombre());
         apellido.setText(e.getApellido());
@@ -91,12 +96,13 @@ public class ControladorUsuario implements IControladorUsuario{
         
     }
     
-    public void modificarEspectador(String nombre, String apellido, DTFecha fecha){
+    @Override
+    public void modificarEspectador(String nombre, String apellido, Date fecha){
         System.out.println(nombre);
         System.out.println(apellido);
-        System.out.println(fecha.getDia());
-        System.out.println(fecha.getMes());
-        System.out.println(fecha.getAnio());
+        System.out.println(fecha.getDay());
+        System.out.println(fecha.getMonth());
+        System.out.println(fecha.getYear());
     }
 }
      

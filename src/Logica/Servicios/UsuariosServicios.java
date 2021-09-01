@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.servicios;
+package Logica.servicios;
 
 import Logica.DataTypes.DTFecha;
 import Persistencia.ConexionDB;
@@ -16,8 +16,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import logica.Clases.Espectador;
-import logica.Clases.Usuario;
+import Logica.Clases.Espectador;
+import Logica.Clases.Usuario;
 /**
  *
  * @author LucasCiceri
@@ -43,7 +43,7 @@ public class UsuariosServicios {
             ResultSet rs = status.executeQuery();
             
             while (rs.next()) {
-                resultado.put(rs.getString("usu_mail"), new Espectador(rs.getString("usu_nick"),rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), dateToDTFecha(rs.getDate("usu_nacimiento"))));
+                resultado.put(rs.getString("usu_mail"), new Espectador(rs.getString("usu_nick"),rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), rs.getDate("usu_nacimiento")));
                 
                 //+e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getAnio()
                 //resultado.put(rs.getString("usu_nombre"), new Usuario(rs.getString("usu_nick"), rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), new DTFecha(1,1,1900)));
@@ -58,14 +58,14 @@ public class UsuariosServicios {
     }
     
 
-    public boolean addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
+    public boolean addEspectador(String nickname, String nombre, String apellido, String email, Date nacimiento) {
         try {
             PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario (usu_nick,usu_nombre,usu_apellido,usu_mail,usu_nacimiento) VALUES (?,?,?,?,?)");
             status.setString (1, nickname);
             status.setString (2, nombre);
             status.setString (3, apellido);
             status.setString (4, email);
-            status.setString (5, nacimiento.getAnio() + "-" +  nacimiento.getMes() + "-" + nacimiento.getDia());
+            status.setString (5, nacimiento.getYear() + "-" +  nacimiento.getMonth() + "-" + nacimiento.getDay());
             status.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

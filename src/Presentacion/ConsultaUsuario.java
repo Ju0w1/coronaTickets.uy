@@ -9,6 +9,7 @@ import Logica.DataTypes.DTFecha;
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorUsuario;
 import java.awt.Component;
+import java.sql.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -386,7 +387,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         int anio = (int) this.spinnerAnio.getValue();
         
         if(n == 0){
-            this.ICU.modificarEspectador(nombre, apellido,new DTFecha(dia,mes,anio));
+            this.ICU.modificarEspectador(nombre, apellido,new Date(dia,mes,anio));
         }else{
             System.out.println("Cancelado");
         }

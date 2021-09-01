@@ -8,7 +8,8 @@
             <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Presentacion/RegistroFuncionEspectaculo.java</file>
             <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Controladores/ControladorEspectaculos.java</file>
             <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Interfaz/IControladorEspectaculo.java</file>
-            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Clases/Funcion.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Presentacion/ConsultaUsuario.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Interfaz/IControladorUsuario.java</file>
         </group>
     </open-files>
 </project-private>

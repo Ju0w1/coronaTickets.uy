@@ -8,6 +8,7 @@ import Logica.Fabrica;
 import javax.swing.JOptionPane;
 import Logica.DataTypes.DTFecha;
 import Logica.Interfaz.IControladorUsuario;
+import java.sql.Date;
 /**
  *
  * @author pabli
@@ -235,7 +236,7 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
 //            JOptionPane.showMessageDialog(this, "Fecha invalida");
         }else{
             JOptionPane.showMessageDialog(this, "Exito");
-            this.ICU.addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new DTFecha(dia, mes, anio));
+            this.ICU.addEspectador(txtNickname.getText(),txtNombre.getText(),txtApellido.getText(),txtEmail.getText(), new Date(dia, mes, anio));
 //            cont.agregarUsuario(textNombre.getText(), textApellido.getText(), textCedula.getText());
 //            DefaultTableModel tablaModelo = (DefaultTableModel)jTable1.getModel();
 //            cont.llenarTabla(tablaModelo);

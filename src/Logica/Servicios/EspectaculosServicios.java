@@ -23,9 +23,10 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
-import logica.Clases.Artista;
-import logica.Clases.Funcion;
-import logica.Clases.Usuario;
+import Logica.Clases.Artista;
+import Logica.Clases.Funcion;
+import Logica.Clases.Usuario;
+import javax.swing.JTable;
 
 /**
  *
@@ -201,13 +202,15 @@ public class EspectaculosServicios {
     
     public Map<String, Artista> getMapArtistas(String funcionId) {
         Map<String, Artista> artistas= new HashMap<>();
+        String query1="SELECT * FROM artistas AS a, funcion_artista AS funart WHERE a.art_id=funart.funart_art_id AND funart.funart_fun_id="+funcionId;
         try {
-            Statement status1 = conexion.prepareStatement("SELECT * FROM artistas AS a, funcion_artista AS funart WHERE a.art_id=funart.funart_art_id AND funart.funart_fun_id="+funcionId), status2;
-            ResultSet rs1 = status1.executeQuery(), rs2;
+            Statement status1 = conexion.createStatement();
+            ResultSet rs1 = status1.executeQuery(query1);
             try {
                 while (rs1.next()) {
-                    status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id"));
-                    rs2= status2.executeQuery();
+                    String query2="SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id");
+                    Statement status2= conexion.createStatement();
+                    ResultSet rs2= status2.executeQuery(query2);
                     artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), rs2.getDate("usu_nacimiento"), rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url")));
                 }
             }catch(SQLException ex2){
@@ -218,9 +221,12 @@ public class EspectaculosServicios {
         }
         return artistas;
     }
+    
     //No se si hacer un conversor o cambiar a float la duracion
     public Espectaculo getEspecaculo(String funcionId){
         Espectaculo rslt;
+        double auxT=0;
+        Date auxD= new Date(1234, 12, 8);
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM espectaculos AS e AND funcion AS f WHERE e.espec_id=f.fun_espec_id AND f.fun_id="+funcionId);
             ResultSet rs = status.executeQuery();
@@ -228,9 +234,8 @@ public class EspectaculosServicios {
             return rslt;
         }catch (SQLException ex){
             ex.printStackTrace();
-            return new Espectaculo();
+            return new Espectaculo("error", "error", "error", 0, 0, "error", 0, auxT, auxD);
         }
-        return rslt;
     }
     
     public Map<String, Funcion> getMapFunciones(String espectaculoId) {
@@ -250,4 +255,5 @@ public class EspectaculosServicios {
         }
         return resultado;
     }
+    
 }

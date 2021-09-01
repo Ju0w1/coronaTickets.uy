@@ -8,7 +8,7 @@ package Presentacion;
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorEspectaculo;
 import javax.swing.JOptionPane;
-import logica.Controladores.ControladorEspectaculos;
+import Logica.Controladores.ControladorEspectaculos;
 
 /**
  *
@@ -24,9 +24,9 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
     public ConsultaFuncion() {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
-        this.ICE.obtenerPlataformas(plat);
-        this.ICE.obtenerEspectaculos(espec);
-        this.ICE.obtenerListaFunciones(func);
+        this.ICE.obtenerJComboBoxPlataformas(plat);
+        this.ICE.obtenerJComboBoxEspectaculos(espec);
+        
     }
 
     /**
@@ -68,6 +68,11 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         jLabel2.setText("Espetaculo");
 
         espec.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        espec.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especActionPerformed(evt);
+            }
+        });
 
         func.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -238,6 +243,12 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void especActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especActionPerformed
+        // TODO add your handling code here:
+        String idEspectaculo= (String )espec.getSelectedItem();
+        this.ICE.obtenerListaFunciones(func, idEspectaculo);
+    }//GEN-LAST:event_especActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

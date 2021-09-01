@@ -1,8 +1,8 @@
 package Logica;
 import Logica.Interfaz.IControladorUsuario;
 import Logica.Interfaz.IControladorEspectaculo;
-import logica.Controladores.ControladorEspectaculos;
-import logica.Controladores.ControladorUsuario;
+import Logica.Controladores.ControladorEspectaculos;
+import Logica.Controladores.ControladorUsuario;
 
 
 
