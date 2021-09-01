@@ -256,7 +256,6 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="lineWrap" type="boolean" value="true"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Esta es una descripci&#xf3;n aleatoria de un&#xa;espect&#xe1;culo x."/>
           </Properties>
         </Component>
       </SubComponents>

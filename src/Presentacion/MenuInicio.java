@@ -6,6 +6,7 @@
 package Presentacion;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -43,8 +44,13 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenuItem15 = new javax.swing.JMenuItem();
         jMenuItem19 = new javax.swing.JMenuItem();
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        jLabel1 = new javax.swing.JLabel();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
+        ImageIcon icon=new ImageIcon(getClass().getResource("imagenCoronaTickets.png"));
+        Image img=icon.getImage();
+        jDesktopPane2 = new javax.swing.JDesktopPane(){
+            public void paintComponent(Graphics g){
+                g.drawImage(img, 0, 0, getWidth(), getHeight(), this);
+            }
+        };
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu6 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -76,11 +82,6 @@ public class MenuInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Bienvenido a coronaTickets.uy");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 360, -1, -1));
 
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
@@ -240,7 +241,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
@@ -252,7 +252,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
@@ -264,7 +263,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem8ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
@@ -275,7 +273,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
@@ -287,7 +284,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
 
     private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
@@ -299,7 +295,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem9ActionPerformed
 
     private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
@@ -311,7 +306,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem10ActionPerformed
 
     private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
@@ -323,7 +317,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -334,7 +327,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
@@ -351,7 +343,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
@@ -363,7 +354,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem16ActionPerformed
 
     private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
@@ -375,7 +365,6 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
         (desktopSize.height- jInternalFrameSize.height)/2);
         ventana.setVisible(true);
-        this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
@@ -409,7 +398,6 @@ public class MenuInicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane jDesktopPane2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

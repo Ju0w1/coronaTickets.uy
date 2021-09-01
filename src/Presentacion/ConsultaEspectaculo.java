@@ -180,7 +180,6 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         txtDescripcion.setColumns(20);
         txtDescripcion.setLineWrap(true);
         txtDescripcion.setRows(5);
-        txtDescripcion.setText("Esta es una descripción aleatoria de un\nespectáculo x.");
         jScrollPane1.setViewportView(txtDescripcion);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 250, -1));
