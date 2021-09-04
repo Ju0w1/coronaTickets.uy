@@ -19,6 +19,8 @@ public class Paquete {
     private Float Costo;
     private Float Descuento;
     private DTFecha Fecha_Compra;
+
+  
     
     public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, Float Costo_, Float Descuento_, DTFecha Fecha_Compra_) {
         this.Nombre=nombre_;
