@@ -23,7 +23,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
         this.ICE.obtenerJComboBoxPlataformas(plat);
         this.ICE.obtenerListaEspectaculos(espec); //Renombrar el de federico en el cotrolador
-        
+        this.ICE.obtenerListaEspectadores(listViewers); 
     }
 
     /**
@@ -141,7 +141,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Espectaculo", "Fecha", "Hora de Inicio"
             }
         ));
         jScrollPane1.setViewportView(funcTable);
@@ -361,7 +361,21 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
                             String getEspec= espec.getSelectedValue();
                             String getViewer= listViewers.getSelectedValue();
                             Date date= new Date((int) dia.getValue(), (int) mes.getValue(), (int) anio.getValue());
-                            this.ICE.registroFuncionEspectaculo(getPlat, getEspec, getFunc, getViewer, date);
+                            
+                            switch (this.ICE.registroFuncionEspectaculo(getFunc, getViewer, date)){
+                                case 0: //Ya se realizó el registro
+                                    this.dispose();
+                                    break;
+                                case 1: //llamar a ventaja de canje
+                                    acá va la llamada a la ventana de canjes
+                                    break;
+                                case 2: //El espectador seleccionado ya está registrado
+                                    JOptionPane.showMessageDialog(this, "El espectador seleccionado ya está registrado a la funcion.");
+                                    break;
+                                case 3: //El limite de registros para la funcion fue alcanzado 
+                                    JOptionPane.showMessageDialog(this, "Se ha alcanzado el limite de registros para la funcion seleccionada.");
+                                    break;            
+                            }
                         }
                     }
                 }
@@ -372,7 +386,6 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String nomEspectaculo= espec.getSelectedValue();
-        
         this.ICE.obtenerTablaFunciones(funcTable, nomEspectaculo);
     }//GEN-LAST:event_jButton2ActionPerformed
 

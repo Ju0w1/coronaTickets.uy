@@ -45,6 +45,10 @@ public class Funcion {
             this.artistas=artistas;
         }
         
+        public void setEspectaculo(Espectaculo espectaculo){
+            this.espectaculo=espectaculo;
+        }
+        
         public String getNombre(){
             return this.nombre;
         }
@@ -63,6 +67,10 @@ public class Funcion {
         
         public Map<String, Artista> getArtistas(){
             return this.artistas;
+        }
+        
+        public Espectaculo getEspectaculo(){
+            return this.espectaculo;
         }
     
 }
