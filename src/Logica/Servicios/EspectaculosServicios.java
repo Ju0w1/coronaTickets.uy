@@ -31,8 +31,8 @@ import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import Logica.Clases.Artista;
 import Logica.Clases.Funcion;
 import Logica.DataTypes.DTFecha;
-import logica.Clases.Paquete; //NUEVO
-import logica.Clases.Usuario;
+import Logica.Clases.Paquete; //NUEVO
+import Logica.Clases.Usuario;
 
 /**
  *
@@ -266,10 +266,15 @@ public class EspectaculosServicios {
     }
     //NUEVO
     public DTFecha dateToDTFecha(Date fecha){
+        if(fecha != null){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaDB = dateFormat.format(fecha);
         String[] partes = fechaDB.split("-");
         return new DTFecha(Integer.parseInt(partes[2]),Integer.parseInt(partes[1]),Integer.parseInt(partes[0]));
+        }
+        else{
+            return new DTFecha(0,0,0);
+        }
     }
     
     public boolean verificarExistenciaNombreEspectaculo(String nombreEspectaculo) {
@@ -354,6 +359,7 @@ public class EspectaculosServicios {
             ex1.printStackTrace();
         }
         return resultado;
+    }
     // NUEVO
     public Map<String, Paquete> getPaquetes() {
         Map<String, Paquete> map = new HashMap<>();
@@ -362,8 +368,7 @@ public class EspectaculosServicios {
             ResultSet rs = status.executeQuery();
             
             while (rs.next()) {
-                map.put(rs.getString("paq_id"), new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")), rs.getFloat("paq_costo"),rs.getFloat("paq_descuento")));
-                
+                map.put(rs.getString("paq_id"), new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")), rs.getFloat("paq_costo"),rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_alta"))));
                 //
             }
             
@@ -375,25 +380,7 @@ public class EspectaculosServicios {
     }
     
     
-    // NUEVO
-    public Map<String, Plataforma> getPlataformas(){
-        Map<String, Plataforma> map = new HashMap<>();
-        try {
-            PreparedStatement status = conexion.prepareStatement("SELECT vp_id, vp_nombre, vp_valor_1, vp_valor_2 FROM valores_tipo"); 
-            ResultSet rs = status.executeQuery();
-            
-            while (rs.next()) {
-                map.put(rs.getString("vp_id"), new Plataforma(rs.getString("vp_nombre"),rs.getString("vp_valor_1"), rs.getString("vp_valor_2")));
-                
-                //
-            }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        return map;
-    
-    }
+
     //NUEVO
     public String getidPaquete(String paq_seleccionado){
         String idpaquete = "";

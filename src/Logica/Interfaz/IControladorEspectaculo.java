@@ -23,12 +23,10 @@ import javax.swing.JList; //NUEVO
  */
 public interface IControladorEspectaculo {
     public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo);
-    public abstract void obtenerPlataformas(JComboBox comboPlataform);
-    public abstract void obtenerPlataformas(JList listPlataform);
+    public abstract void obtenerPlataformasToList(JList listPlataform);
     public abstract void obtenerEspectaculos(JList listPlataform);
     public abstract void obtenerEspectaculosPorPlataforma(JList listPlataform, String nombrePlataforma);
     public abstract void obtenerPlataformas();
-    
     public abstract void obtenerArtistas();
     public abstract void obtenerArtistaPorNombre(String nombre);
     public abstract void cargarDatosConsultaEspectaculo(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
@@ -47,7 +45,7 @@ public interface IControladorEspectaculo {
     public abstract void obtenerListaFunciones(JList listFunciones);
     public abstract void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento , JList listaEspectaculos);
     public void obtenerPaquetes(JList listPaquetes); //NUEVO
-    public void obtenerPlataformas(JComboBox comboBoxPlataformas); //NUEVO
+    public void obtenerPlataformasToComboBox(JComboBox comboBoxPlataformas); //NUEVO
     public void obtenerEspectaculosPP(JList listEspectaculos, String paq_seleccionado, String plat_seleccionada); //NUEVO
     public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO
 }

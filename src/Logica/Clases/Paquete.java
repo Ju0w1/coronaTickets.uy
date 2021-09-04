@@ -22,7 +22,7 @@ public class Paquete {
 
   
     
-    public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, Float Costo_, Float Descuento_, DTFecha Fecha_Compra_) {
+    public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, float Costo_, Float Descuento_, DTFecha Fecha_Compra_) {
         this.Nombre=nombre_;
         this.Descripcion=Descripcion_;
         this.Fecha_Inicio= Fecha_Inicio_;
@@ -31,6 +31,8 @@ public class Paquete {
         this.Descuento= Descuento_;
         this.Fecha_Compra= Fecha_Compra_;
     }
+
+  
     
     public void setNombre(String nombre){
         this.Nombre= nombre;

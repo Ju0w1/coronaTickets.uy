@@ -18,7 +18,7 @@ import java.util.Iterator; //NUEVO
 import javax.swing.DefaultListModel; //NUEVO
 import javax.swing.JComboBox; //NUEVO
 import javax.swing.JList; // NUEVO
-import logica.Clases.Paquete; // NUEVO
+import Logica.Clases.Paquete; // NUEVO
 
 import Logica.DataTypes.DTFecha;
 import java.util.HashMap;
@@ -61,11 +61,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     private PaquetesServicios servicioPaquete;
     private PlataformaServicio servicioPlataforma;
     private EspetaculoServicio servicioEspetaculo;
-    private Map<String, Espectaculo> espectaculos = new HashMap<>();
-    private Map<String, Paquete > paquetes = new HashMap<>();
-    private Map<String, Plataforma> plataformas = new HashMap<>();
 
-    
     //metodos
     public ControladorEspectaculos() {
         this.servicioEspectaculo = new EspectaculosServicios();
@@ -80,19 +76,18 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         return instancia;
     }
-    
-    public Map<String, Espectaculo> getEspectaculos(){
+
+    public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
         return espectaculos;
     }
-   
-    
-    public boolean addPlataforma(String nombre, String url, String descripcion){
-        if (this.servicioEspectaculo.checkPlataforma(nombre)){
+
+    public boolean addPlataforma(String nombre, String url, String descripcion) {
+        if (this.servicioEspectaculo.checkPlataforma(nombre)) {
             return false;
         }
-        if (this.servicioEspectaculo.addPlataforma(nombre, url, descripcion)){
-            this.plataformas.put(nombre, new Plataforma(nombre, url, descripcion));    
+        if (this.servicioEspectaculo.addPlataforma(nombre, url, descripcion)) {
+            this.plataformas.put(nombre, new Plataforma(nombre, url, descripcion));
             return true;
         }
         return false;
@@ -102,19 +97,14 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
     }
 
-    public void obtenerPlataformas(JComboBox listPlataform) {
+    public void obtenerPlataformasToComboBox(JComboBox listPlataform) {
         for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount(); i++) {
             listPlataform.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
-    
-    
-    public void obtenerPlataformas(){
-        for(int i=0;i<this.servicioEspectaculo.llenarListaPlataformas().getItemCount();i++){
-            Presentacion.AltaEspectaculo.jComboBox1Plataformas.addItem(this.servicioEspectaculo.llenarListaPlataformas().getItemAt(i).toString());
+
         }
-        
     }
 
-    public void obtenerPlataformas(JList listPlataform) {
+    public void obtenerPlataformasToList(JList listPlataform) {
         this.plataformas = servicioEspectaculo.getPlataformas();
         DefaultListModel listModel1 = new DefaultListModel();
         Iterator iterator = this.plataformas.entrySet().iterator();
@@ -166,11 +156,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         fecha.setText(e.getFecha().toString());
         descrip.setText(e.getDescripcion());
     }
+    
 
     public void obtenerArtistas() {
-    
-    
-    public void obtenerArtistas(){
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistas().getModel());
     }
 
@@ -213,7 +201,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         listFunciones.setModel(listModel1);
     }
-    
+
     public void cargarDatosFuncionConsultaEspectaculo(String nombreFuncion, JLabel nombreFun, JLabel fechaRegistro, JLabel horaInicio, JLabel fechaInicio) {
         Funcion f = (Funcion) this.funciones.get(nombreFuncion);
         nombreFun.setText(f.getNombre());
@@ -221,22 +209,22 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         horaInicio.setText(f.getHoraInicio().toString());
         fechaInicio.setText(f.getFecha().toString());
     }
-    
-    public void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento , JList listaEspectaculos){
-        this.paquetes=this.servicioPaquete.getPaquete();
+
+    public void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento, JList listaEspectaculos) {
+        this.paquetes = this.servicioPaquete.getPaquete();
         Paquete p = (Paquete) this.paquetes.get(nombrePaquete);
         nombre.setText(p.getNombre());
         descripcion.setText(p.getDescripcion());
         costo.setText(p.getCosto().toString());
         Descuento.setText(p.getDescuento().toString());
-        
-        String fechaIn = p.getFecha_Fin().getDia()+"/"+p.getFecha_Fin().getMes()+"/"+p.getFecha_Fin().getAnio();
-        
-        String fechaFn = p.getFecha_Fin().getDia()+"/"+p.getFecha_Fin().getMes()+"/"+p.getFecha_Fin().getAnio();
-        
+
+        String fechaIn = p.getFecha_Fin().getDia() + "/" + p.getFecha_Fin().getMes() + "/" + p.getFecha_Fin().getAnio();
+
+        String fechaFn = p.getFecha_Fin().getDia() + "/" + p.getFecha_Fin().getMes() + "/" + p.getFecha_Fin().getAnio();
+
         fechaInicio.setText(fechaIn);
         fechaFin.setText(fechaFn);
-        
+
         Map<String, Espectaculo> espectaculos = new HashMap<>();
         espectaculos = this.servicioEspectaculo.getMapEspectaculoDePaquete(nombrePaquete);
         DefaultListModel listModel1 = new DefaultListModel();
@@ -248,107 +236,95 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         listaEspectaculos.setModel(listModel1);
     }
-    
-    public boolean crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion){
+
+    public boolean crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion) {
         //Busco si encuentro el paquete
         boolean encontre = this.servicioPaquete.verificarPaquete(nombre);
-        if(!encontre) // Si no encontro lo agrego
+        if (!encontre) // Si no encontro lo agrego
         {
             SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-            String fechaSI = String.valueOf(fechaInicio.getAnio())+"-"+String.valueOf(fechaInicio.getMes())+"-"+String.valueOf(fechaInicio.getDia());
-            
-            String fechaSF = String.valueOf(fechaFin.getAnio())+"-"+String.valueOf(fechaFin.getMes())+"-"+String.valueOf(fechaFin.getDia()); 
+            String fechaSI = String.valueOf(fechaInicio.getAnio()) + "-" + String.valueOf(fechaInicio.getMes()) + "-" + String.valueOf(fechaInicio.getDia());
 
-           try
-           {
-            java.util.Date fechaIF = formato.parse(fechaSI); 
-            java.util.Date fechaFF = formato.parse(fechaSF);  
-            java.util.Date fechaFC = new java.util.Date();
-            java.sql.Date fechasql = new java.sql.Date(fechaIF.getTime());
-            java.sql.Date fechaF = new java.sql.Date(fechaFF.getTime());
-            java.sql.Date fechaCreado = new java.sql.Date(fechaFC.getTime());
-            
-            this.servicioPaquete.addPaquete(nombre, fechasql, fechaF,fechaCreado, descuento, descripcion);
-           }catch(ParseException ex)
-           {
-               ex.getStackTrace();
-           }
-           return true;
-        }else{ //Lo encontro 
+            String fechaSF = String.valueOf(fechaFin.getAnio()) + "-" + String.valueOf(fechaFin.getMes()) + "-" + String.valueOf(fechaFin.getDia());
+
+            try {
+                java.util.Date fechaIF = formato.parse(fechaSI);
+                java.util.Date fechaFF = formato.parse(fechaSF);
+                java.util.Date fechaFC = new java.util.Date();
+                java.sql.Date fechasql = new java.sql.Date(fechaIF.getTime());
+                java.sql.Date fechaF = new java.sql.Date(fechaFF.getTime());
+                java.sql.Date fechaCreado = new java.sql.Date(fechaFC.getTime());
+
+                this.servicioPaquete.addPaquete(nombre, fechasql, fechaF, fechaCreado, descuento, descripcion);
+            } catch (ParseException ex) {
+                ex.getStackTrace();
+            }
+            return true;
+        } else { //Lo encontro 
             return false;
         }
     }
 
-    public String obtenerDescripcion(String nombre)    
-    {
+    public String obtenerDescripcion(String nombre) {
         return this.servicioPaquete.obtenerDescripcion(nombre);
     }
-    
-    public String[] obtenerFecha(String nombre, int fecha)
-    {
+
+    public String[] obtenerFecha(String nombre, int fecha) {
         return this.servicioPaquete.obtenerFecha(nombre, fecha);
     }
-    
-    public int obtenerDescuento(String nombre)
-    {
+
+    public int obtenerDescuento(String nombre) {
         return this.servicioPaquete.obtenerDescuento(nombre);
     }
-    
-    public boolean actualizarPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion)
-    {
+
+    public boolean actualizarPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion) {
         boolean actualizo = false;
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        String fechaSI = String.valueOf(fechaInicio.getAnio())+"-"+String.valueOf(fechaInicio.getMes())+"-"+String.valueOf(fechaInicio.getDia());
+        String fechaSI = String.valueOf(fechaInicio.getAnio()) + "-" + String.valueOf(fechaInicio.getMes()) + "-" + String.valueOf(fechaInicio.getDia());
 
-        String fechaSF = String.valueOf(fechaFin.getAnio())+"-"+String.valueOf(fechaFin.getMes())+"-"+String.valueOf(fechaFin.getDia()); 
+        String fechaSF = String.valueOf(fechaFin.getAnio()) + "-" + String.valueOf(fechaFin.getMes()) + "-" + String.valueOf(fechaFin.getDia());
 
-        try
-        {
-            java.util.Date fechaIF = formato.parse(fechaSI); 
-            java.util.Date fechaFF = formato.parse(fechaSF);  
+        try {
+            java.util.Date fechaIF = formato.parse(fechaSI);
+            java.util.Date fechaFF = formato.parse(fechaSF);
             java.util.Date fechaFC = new java.util.Date();
             java.sql.Date fechasql = new java.sql.Date(fechaIF.getTime());
             java.sql.Date fechaF = new java.sql.Date(fechaFF.getTime());
 
             this.servicioPaquete.updatePaquete(nombre, fechasql, fechaF, descuento, descripcion);
             actualizo = true;
-        }catch(ParseException ex)
-        {
+        } catch (ParseException ex) {
             ex.getStackTrace();
         }
         return actualizo;
     }
-    
-    public void crearFuncion()
-    {
-        
+
+    public void crearFuncion() {
+
     }
-    
-    public ArrayList<String> cargarPlataforma()
-    {
+
+    public ArrayList<String> cargarPlataforma() {
         return this.servicioPlataforma.llenarComboPlataforma();
     }
-    
-    public ArrayList<String> cargarEspectaculos(int plataforma)
-    {
+
+    public ArrayList<String> cargarEspectaculos(int plataforma) {
         return this.servicioEspetaculo.llenarComboEspectaculos(plataforma);
     }
-    
+
 //    @Override
 //    public void agregarEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-    
     //NUEVO
-    public void obtenerPaquetes(JList jlist){
+    public void obtenerPaquetes(JList jlist) {
         DefaultListModel model = new DefaultListModel();
         this.paquetes = this.servicioEspectaculo.getPaquetes();
-        
+
         for (Paquete value : paquetes.values()) {
-             model.addElement(value.getNombre());
-              //System.out.println("Value = " + value);
+            model.addElement(value.getNombre());
+            //System.out.println("Value = " + value);
         }
-        
+
         /*
         DefaultListModel model = new DefaultListModel();
         
@@ -363,46 +339,48 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
             model.addElement(p.getNombre()); // agrega el nombre al model
                     
         } */
-        
         jlist.setModel(model); // se le pasa al jlist
     }
-    
+
     //NUEVO
-    public void obtenerPlataformas(JComboBox jComboBox1Plataformas){
+    public void obtenerPlataformas(JComboBox jComboBox1Plataformas) {
         this.plataformas = this.servicioEspectaculo.getPlataformas();
         jComboBox1Plataformas.removeAllItems();
-               
-        
+
         Iterator iterator = this.plataformas.entrySet().iterator();
-        
+
         while (iterator.hasNext()) {
-           
+
             Map.Entry entrada = (Map.Entry) iterator.next(); // tomando las entradas
             Plataforma p = (Plataforma) entrada.getValue(); // se obtiene el paquete 
-           
+
             jComboBox1Plataformas.addItem(p.getNombre()); // agrega el nombre al combobox
-                    
-        } 
-        
+
+        }
+
     }
-    
+
     //NUEVO
-    public void obtenerEspectaculosPP(JList jlist, String paq_seleccionado, String plat_seleccionada){
-        Map<String, String>espectaculosRaros;
+    public void obtenerEspectaculosPP(JList jlist, String paq_seleccionado, String plat_seleccionada) {
+        Map<String, String> espectaculosRaros;
         DefaultListModel model = new DefaultListModel();
         espectaculosRaros = this.servicioEspectaculo.getEspectaculosPP(paq_seleccionado, plat_seleccionada);
-        
+
         for (String value : espectaculosRaros.values()) {
-             model.addElement(value);
-              //System.out.println("Value = " + value);
+            model.addElement(value);
+            //System.out.println("Value = " + value);
         }
         jlist.setModel(model);
-    
+
     }
 
     @Override
     public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado) {
         this.servicioEspectaculo.addEspectaculoAPaquete(espec_seleccionada, paq_seleccionado);
     }
-}
 
+    @Override
+    public void obtenerPlataformas() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}

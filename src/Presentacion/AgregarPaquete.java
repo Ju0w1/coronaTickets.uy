@@ -1,41 +1,31 @@
-
 package Presentacion;
 
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorEspectaculo;
-
-public class AgregarPaquete extends javax.swing.JInternalFrame {
-    private IControladorEspectaculo ICE;
-    public AgregarPaquete() {
-        initComponents();
-        this.ICE = (IControladorEspectaculo) Fabrica.getInstance().getIControladorEspectaculo();
 import Logica.Fabrica; //NUEVO
 import Logica.Interfaz.IControladorEspectaculo; //NUEVO
 
-
 public class AgregarPaquete extends javax.swing.JInternalFrame {
-    
-    
-     private IControladorEspectaculo ICE;
-     String paq_seleccionado;
-     String plat_seleccionada;
-     String espec_seleccionada;
+
+    private IControladorEspectaculo ICE;
+    String paq_seleccionado;
+    String plat_seleccionada;
+    String espec_seleccionada;
 
     public AgregarPaquete() {
         initComponents();
-      
+        this.ICE = (IControladorEspectaculo) Fabrica.getInstance().getIControladorEspectaculo();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
-        
+
         // el sistema lista los nombres de los paquetes que tiene registrados.
         this.ICE.obtenerPaquetes(this.listPaquetes);
-                        
+
         // Luego, el administrador selecciona una plataforma  
         // Me va a dar todas las plataformas existentes.
-        this.ICE.obtenerPlataformas(this.comboBoxPlataformas);
-        
-     
+        this.ICE.obtenerPlataformasToComboBox(this.comboBoxPlataformas);
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -155,7 +145,7 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboBoxPlataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxPlataformasActionPerformed
-       // Guarda lo que se selecciono en el combobox de plataforma
+        // Guarda lo que se selecciono en el combobox de plataforma
         this.plat_seleccionada = comboBoxPlataformas.getSelectedItem().toString();
     }//GEN-LAST:event_comboBoxPlataformasActionPerformed
 
@@ -165,8 +155,8 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnRecordarPaqueteActionPerformed
 
     private void btnObtenerEspectaculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnObtenerEspectaculosActionPerformed
-       // y el sistema lista los espectáculos existentes en esa plataforma
-       // que no forman parte del paquete seleccionado.
+        // y el sistema lista los espectáculos existentes en esa plataforma
+        // que no forman parte del paquete seleccionado.
         this.ICE.obtenerEspectaculosPP(this.listEspectaculos, this.paq_seleccionado, this.plat_seleccionada);
     }//GEN-LAST:event_btnObtenerEspectaculosActionPerformed
 
@@ -176,8 +166,8 @@ public class AgregarPaquete extends javax.swing.JInternalFrame {
         espec_seleccionada = (String) listEspectaculos.getSelectedValue();
         //Finalmente, el sistema ingresa el espectáculo en el paquete seleccionado.
         this.ICE.agregarEspectaculoAlPaquete(espec_seleccionada, paq_seleccionado);
-        
-        
+
+
     }//GEN-LAST:event_btnAgregarAlPaqueteActionPerformed
 
 

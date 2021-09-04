@@ -27,7 +27,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         setLabelsTxtNotVisible();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
         this.ICP = Fabrica.getInstance().getIControladorPaquete();
-        this.ICE.obtenerPlataformas(this.listPlataformas);
+        this.ICE.obtenerPlataformasToList(this.listPlataformas);
     }
 
     /**
