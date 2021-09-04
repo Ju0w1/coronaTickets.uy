@@ -22,7 +22,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
         this.ICE.obtenerJComboBoxPlataformas(plat);
-        this.ICE.obtenerListaEspectaculos(espec); //Renombrar el de federico en el cotrolador
+        //this.ICE.o obtener (espec); //Renombrar el de federico en el cotrolador
         this.ICE.obtenerListaEspectadores(listViewers); 
     }
 
@@ -367,7 +367,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
                                     this.dispose();
                                     break;
                                 case 1: //llamar a ventaja de canje
-                                    acá va la llamada a la ventana de canjes
+                                    //acá va la llamada a la ventana de canjes
                                     break;
                                 case 2: //El espectador seleccionado ya está registrado
                                     JOptionPane.showMessageDialog(this, "El espectador seleccionado ya está registrado a la funcion.");

@@ -47,12 +47,11 @@ public class EspectaculosServicios {
             ResultSet rs = status.executeQuery();
 
             while (rs.next()) {
-                resultado.put(rs.getString("Nombre"), new Usuario(rs.getString("Nombre"), rs.getString("Apellido")));
+                resultado.put(rs.getString("usu_nick"), new Usuario(rs.getString("usu_nombre"), rs.getString("usu_apellido")));
                 System.out.println("Nombre: " + rs.getString("Nombre"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
-
         }
         return resultado;
     }
@@ -245,7 +244,7 @@ public class EspectaculosServicios {
         Map<String, Artista> artistas;
         Espectaculo espectaculo;
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id="+espectaculoId);
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id='"+espectaculoId+"'");
             ResultSet rs1 = status1.executeQuery();
             while (rs1.next()) {
                 artistas=getMapArtistas(rs1.getString("fun_id"));

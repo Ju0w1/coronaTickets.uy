@@ -165,6 +165,11 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenu1.add(jMenuItem11);
 
         jMenuItem12.setText("Registro");
+        jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem12ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem12);
 
         jMenu7.add(jMenu1);
@@ -288,6 +293,18 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setVisible(true);
         this.jLabel1.setVisible(false);
     }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+    private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+        // TODO add your handling code here:
+        RegistroFuncionEspectaculo ventana = new RegistroFuncionEspectaculo();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+        this.jLabel1.setVisible(false);
+    }//GEN-LAST:event_jMenuItem12ActionPerformed
 
     /**
      * @param args the command line arguments
