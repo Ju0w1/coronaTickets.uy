@@ -106,12 +106,4 @@ public class ControladorPaquete implements IControladorPaquete{
         FCompra.setText(fechaCm);
         
     }
-
-
-
-    @Override
-    public void modificarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFinal, float costo, float descuento, DTFecha fechaCompra) {
-        System.out.println(nombre);
-    }
-    
 }

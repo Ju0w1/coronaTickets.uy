@@ -484,11 +484,11 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         float x,y;
         x=Float.parseFloat(costo);
         y=Float.parseFloat(descuento);
-        if(n == 0){
-            this.ICU.modificarPaquete(nombre, descripcion,new DTFecha(inicio_dia,inicio_mes,inicio_anio),new DTFecha(final_dia,final_mes,final_anio),x,y,new DTFecha(compra_dia,compra_mes,compra_anio));
-        }else{
-            System.out.println("Cancelado");
-        }
+//        if(n == 0){
+//            this.ICU.modificarPaquete(nombre, descripcion,new DTFecha(inicio_dia,inicio_mes,inicio_anio),new DTFecha(final_dia,final_mes,final_anio),x,y,new DTFecha(compra_dia,compra_mes,compra_anio));
+//        }else{
+//            System.out.println("Cancelado");
+//        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void txtFechaFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaFinActionPerformed
