@@ -8,6 +8,7 @@ import Logica.Fabrica;
 import javax.swing.JOptionPane;
 import Logica.DataTypes.DTFecha;
 import Logica.Interfaz.IControladorUsuario;
+import java.sql.Date;
 /**
  *
  * @author pabli

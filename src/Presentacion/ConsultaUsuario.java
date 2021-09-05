@@ -9,6 +9,7 @@ import Logica.DataTypes.DTFecha;
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorUsuario;
 import java.awt.Component;
+import java.sql.Date;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JFrame;

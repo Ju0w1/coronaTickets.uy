@@ -1,6 +1,6 @@
 
 package Logica.Interfaz;
-import Logica.DataTypes.DTFecha;
+
 import java.util.Map;
 import javax.swing.JList;
 import javax.swing.JTextArea;
@@ -8,6 +8,8 @@ import javax.swing.JTextField;
 import Logica.Clases.Espectador;
 import Logica.Clases.Usuario;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Date;
+
 public interface IControladorUsuario {
     //public abstract Map<String, Usuario> getUsuarios();
     //public abstract void addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento);
@@ -21,4 +23,8 @@ public interface IControladorUsuario {
     public abstract void cargarDatosConsultaArtista(String seleccion, JTextField nick, JTextField nombre, JTextField apellido, JTextField mail, JTextField nacimiento, JTextArea areaDescripcion, JTextArea areaBiografia, JTextField url);
     public abstract void modificarEspectador(String email,String nombre, String apellido, DTFecha fecha);
     public abstract void modificarArtista(String email,String nombre, String apellido, DTFecha fecha, String descripcion, String biografia, String url);
+    public abstract void addEspectador(String nickname, String nombre, String apellido, String email, Date nacimiento);
+    public abstract void obtenerEspectadores(JList listEspec);
+    public abstract void cargarDatosConsultaEspectador(String seleccion, JTextField nick, JTextField nombre, JTextField apellido, JTextField mail, JTextField nacimiento);
+    public abstract void modificarEspectador(String nombre, String apellido, Date fecha);
 }
