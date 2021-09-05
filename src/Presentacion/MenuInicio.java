@@ -22,6 +22,7 @@ public class MenuInicio extends javax.swing.JFrame {
      */
     public MenuInicio() {
         initComponents();
+<<<<<<< Updated upstream
 //        Image imagen;
 //        try {
 //            imagen = new ImageIcon(getClass().getResource("\\imagenCoronaTickets.png")).getImage();
@@ -29,6 +30,10 @@ public class MenuInicio extends javax.swing.JFrame {
 //            JOptionPane.showMessageDialog(null, "Não foi possivel ler a imagem !");
 //
 //        }
+=======
+        
+
+>>>>>>> Stashed changes
     }
 
     /**

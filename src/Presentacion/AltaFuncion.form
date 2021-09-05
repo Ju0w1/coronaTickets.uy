@@ -41,7 +41,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="42" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -73,7 +73,11 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+<<<<<<< Updated upstream
                                       <Component id="cmbxPlataforma" pref="132" max="32767" attributes="0"/>
+=======
+                                      <Component id="PlataformaBox" pref="132" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                                       <Component id="txtNombre" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
@@ -84,26 +88,43 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
+<<<<<<< Updated upstream
                                       <Component id="txtHora" pref="35" max="32767" attributes="0"/>
                                       <Component id="txtDia" max="32767" attributes="0"/>
+=======
+                                      <Component id="Hora_Hr" pref="35" max="32767" attributes="0"/>
+                                      <Component id="Fecha_Inicio_Dia" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel12" min="-2" pref="5" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                                           <Component id="txtMes" min="-2" pref="34" max="-2" attributes="0"/>
+=======
+                                          <Component id="Fecha_Inicio_Mes" min="-2" pref="34" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                                           <Component id="txtMinuto" max="32767" attributes="0"/>
+=======
+                                          <Component id="Hora_Min" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                                       </Group>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                                   <Component id="txtAnio" pref="38" max="32767" attributes="0"/>
+=======
+                                  <Component id="Fecha_Inicio_Anio" pref="38" max="32767" attributes="0"/>
+>>>>>>> Stashed changes
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -111,12 +132,16 @@
                                   <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                                   <Component id="cmbxEspetaculo" min="-2" pref="122" max="-2" attributes="0"/>
+=======
+                                  <Component id="EspectaculoBox" min="-2" pref="122" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jButton1" max="32767" attributes="0"/>
+                                      <Component id="Boton_Agregar_Artista" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -129,7 +154,7 @@
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          <Component id="Boton_Crear" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="jButton3" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -143,9 +168,15 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                       <Component id="cmbxPlataforma" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmbxEspetaculo" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                      <Component id="PlataformaBox" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="EspectaculoBox" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -157,6 +188,7 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< Updated upstream
                               <Component id="txtDia" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtMes" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -168,6 +200,19 @@
                               <Component id="txtHora" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="txtMinuto" alignment="3" min="-2" max="-2" attributes="0"/>
+=======
+                              <Component id="Fecha_Inicio_Dia" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Fecha_Inicio_Mes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Fecha_Inicio_Anio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="Hora_Hr" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="Hora_Min" alignment="3" min="-2" max="-2" attributes="0"/>
+>>>>>>> Stashed changes
                               <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -179,10 +224,10 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <Component id="Boton_Agregar_Artista" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="323" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="Boton_Crear" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -196,7 +241,11 @@
             <Property name="text" type="java.lang.String" value="Plataforma:"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JComboBox" name="cmbxPlataforma">
+=======
+        <Component class="javax.swing.JComboBox" name="PlataformaBox">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -212,6 +261,7 @@
           </AccessibilityProperties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
@@ -219,7 +269,11 @@
             <Property name="text" type="java.lang.String" value="Espetaculo:"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JComboBox" name="cmbxEspetaculo">
+=======
+        <Component class="javax.swing.JComboBox" name="EspectaculoBox">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -235,6 +289,7 @@
           </AccessibilityProperties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -260,7 +315,11 @@
             <Property name="text" type="java.lang.String" value="Hora inicio"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JTextField" name="txtDia">
+=======
+        <Component class="javax.swing.JTextField" name="Fecha_Inicio_Dia">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -276,7 +335,11 @@
             <Property name="text" type="java.lang.String" value="/"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JTextField" name="txtMes">
+=======
+        <Component class="javax.swing.JTextField" name="Fecha_Inicio_Mes">
+>>>>>>> Stashed changes
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="fechaMes"/>
           </AccessibilityProperties>
@@ -289,12 +352,20 @@
             <Property name="text" type="java.lang.String" value="/"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JTextField" name="txtAnio">
+=======
+        <Component class="javax.swing.JTextField" name="Fecha_Inicio_Anio">
+>>>>>>> Stashed changes
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="fechaAnio"/>
           </AccessibilityProperties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JTextField" name="txtHora">
+=======
+        <Component class="javax.swing.JTextField" name="Hora_Hr">
+>>>>>>> Stashed changes
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="fechaHora"/>
           </AccessibilityProperties>
@@ -304,7 +375,11 @@
             <Property name="text" type="java.lang.String" value=":"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JTextField" name="txtMinuto">
+=======
+        <Component class="javax.swing.JTextField" name="Hora_Min">
+>>>>>>> Stashed changes
           <AccessibilityProperties>
             <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="fechaMinuto"/>
           </AccessibilityProperties>
@@ -319,7 +394,11 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
+<<<<<<< Updated upstream
             <Component class="javax.swing.JList" name="listArtistas">
+=======
+            <Component class="javax.swing.JList" name="Lista_Artistas">
+>>>>>>> Stashed changes
               <Properties>
                 <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                   <StringArray count="5">
@@ -333,6 +412,7 @@
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
           </SubComponents>
@@ -342,20 +422,24 @@
             <Property name="text" type="java.lang.String" value="Artistas invitados:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="Boton_Agregar_Artista">
           <Properties>
             <Property name="text" type="java.lang.String" value="Agregar Artista"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_Agregar_ArtistaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JButton" name="Boton_Crear">
           <Properties>
             <Property name="text" type="java.lang.String" value="Crear"/>
           </Properties>
           <Events>
+<<<<<<< Updated upstream
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+=======
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Boton_CrearActionPerformed"/>
+>>>>>>> Stashed changes
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton3">

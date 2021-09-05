@@ -100,10 +100,7 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         FechaCompraDia = new javax.swing.JSpinner();
         FechaCompraMes = new javax.swing.JSpinner();
         FechaCompraAnio = new javax.swing.JSpinner();
-        btnModificar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         btnMostrar = new javax.swing.JButton();
 
         setTitle("Consulta de Paquete");
@@ -316,22 +313,6 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
 
         jPanel3.add(jPanel4);
 
-        btnModificar.setText("Modificar");
-        btnModificar.setEnabled(false);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
-        btnGuardar.setText("Guardar");
-        btnGuardar.setEnabled(false);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-
         btnCancelar.setText("Cancelar");
         btnCancelar.setEnabled(false);
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -339,8 +320,6 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-
-        btnBuscar.setText("Buscar");
 
         btnMostrar.setText("Mostrar");
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -361,22 +340,17 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                         .addComponent(jLabel1)
                         .addGap(287, 287, 287))
                     .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
                     .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnBuscar))
+                .addGap(24, 24, 24)
+                .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -385,13 +359,9 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnMostrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
+                        .addGap(104, 104, 104)
                         .addComponent(btnCancelar)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
@@ -427,8 +397,8 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         
         if(this.listPaquetes.getSelectedValue() != null){
             this.ICU.cargarDatosConsultaPaquete(this.listPaquetes.getSelectedValue(),this.txtNombre, this.txtDescripcion, this.txtFechaInicio, this.txtFechaFin, this.txtCosto, this.txtDescuento, this.txtFechaCompra);
-            this.btnModificar.setEnabled(true);
-            this.btnGuardar.setEnabled(true);
+            //this.btnModificar.setEnabled(true);
+            //this.btnGuardar.setEnabled(true);
             this.btnCancelar.setEnabled(true);
         }else{
             System.out.println("No hay ningún Paquete seleccionado");
@@ -437,6 +407,7 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnMostrarActionPerformed
 
+<<<<<<< Updated upstream
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
 //        // TODO add your handling code here:
         this.txtNombre.setEditable(true);
@@ -491,6 +462,8 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
 //        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+=======
+>>>>>>> Stashed changes
     private void txtFechaFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaFinActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFechaFinActionPerformed
@@ -514,10 +487,7 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner FechaInicioAnio;
     private javax.swing.JSpinner FechaInicioDia;
     private javax.swing.JSpinner FechaInicioMes;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnMostrar;
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler11;

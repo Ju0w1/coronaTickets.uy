@@ -1,0 +1,18 @@
+
+package Logica.Interfaz;
+import Logica.DataTypes.DTFecha;
+import Logica.DataTypes.DTTimeStamp;
+import java.util.Map;
+import javax.swing.JComboBox;
+import javax.swing.JList;
+import javax.swing.JTextField;
+import logica.Clases.Funcion;
+
+public interface IControladorFuncion {
+    public abstract void addFuncion(String espec_id, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo);
+    public abstract void obtenerPlataformas(JComboBox plataformas);
+    public abstract void obtenerArtistas(JList listEspec);
+    public abstract void obtenerEspectaculo(JComboBox espectaculos);
+    public abstract void Prueba(String nombre_artista,String id_funcion,String id_artista,String nombre_funcion,DTFecha funcion_vigente);
+    
+}
