@@ -47,6 +47,7 @@ import Logica.Servicios.PaquetesServicios;
 import java.sql.Date;
 import java.util.HashMap;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorEspectaculos implements IControladorEspectaculo {
 
@@ -386,19 +387,43 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-     public void obtenerTablaFunciones (JTable tablaFunciones, String nomEspectaculo){ 
+     public void obtenerTablaFunciones (DefaultTableModel tablaModelo, String nomEspectaculo){ 
         String id=servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
         Map<String, Funcion> mapFunciones=servicioEspectaculo.getMapFunciones(id);
-        Funcion f;
+//        /Funcion f;
         int i=0;
-        for (Map.Entry entry : mapFunciones.entrySet()) {
-            f= (Funcion) entry.getValue();
-            tablaFunciones.setValueAt(f.getNombre(), i, 0);
-            tablaFunciones.setValueAt(f.getEspectaculo().getNombre(), i, 1);
-            tablaFunciones.setValueAt(f.getFecha(), i, 2);
-            tablaFunciones.setValueAt(f.getHoraInicio(), i, 3);
-            i++;
+        
+        tablaModelo.setRowCount(0);
+        
+        int tamanioFun = mapFunciones.size();
+        Object[][] data = new Object[tamanioFun][2];
+        
+        for(int n = 0; n < tamanioFun; n++){
+            for(Map.Entry<String, Funcion> entry : mapFunciones.entrySet()){
+
+               data[n][0] = entry.getKey();
+               data[n][1] = entry.getValue();
+               //String datos[] = data[i][1].
+               n++;
+            }
+        }  
+        for(int j = 0; j < tamanioFun; j++){
+            //String data[] = {this.usuarios.get(i).getNombre(), this.usuarios.get(i).getApellido(), this.usuarios.get(i).getCedula()};
+            Funcion f = (Funcion) data[j][1];
+            //System.err.println(e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getMes());
+            //String fecha = e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getAnio();
+            String datos[] = {f.getNombre(),f.getEspectaculo().getNombre(),f.getFecha().toString(),f.getHoraInicio().toString()};
+            tablaModelo.addRow(datos);
         }
+        
+//        for (Map.Entry entry : mapFunciones.entrySet()) {
+//            f= (Funcion) entry.getValue();
+//            tablaFunciones.setValueAt(f.getNombre(), i, 0);
+//            tablaFunciones.setValueAt(f.getEspectaculo().getNombre(), i, 1);
+//            tablaFunciones.setValueAt(f.getFecha(), i, 2);
+//            tablaFunciones.setValueAt(f.getHoraInicio(), i, 3);
+//            i++;
+//        }
     }
      
      public int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha){
@@ -408,19 +433,21 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         String idFuncion=servicioEspectaculo.getIdFuncion(nomFuncion);
         String idEspectador=servicioEspectaculo.getIdUsuario(espectadorNom);
         Map<String, Registro> registros=servicioEspectaculo.registrosPrevios(idEspectador);
+        
+         System.out.println(registros.isEmpty());
+        
         if(servicioEspectaculo.limiteSobrepasado(idFuncion)){ //Se sobrepasa el limite de registros
             rslt=3;
         }
         else{ //No se sobrepasa el limite de registros
+            
             if (!registros.isEmpty()){ //Si hay registros pervios
                 if (!yaRegistradoAFuncion(registros, espectadorNom)){ //ver si son o no suficientes
                     rslt=1;//llamar a una ventana en la que seleccionar los registros a canjear
-                }
-                else{
+                }else{
                     rslt=2; //Llamar a presentacion y cambiar datos
                 }
-            }
-            else{ //Si no hay registros pervios
+            }else{ //Si no hay registros pervios
                 servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
                 rslt=0; //el registro ya fue realizado
             }
@@ -429,13 +456,16 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     }
      
      public Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom){
+        
         Registro r;
         Boolean rslt=false;
         for (Map.Entry entry : registros.entrySet()) {
             r= (Registro) entry.getValue();
-            if (r.getEspectador()==espectadorNom){
+            if (r.getEspectador().equals(espectadorNom)){
+                
                 rslt=true;
             }
+            System.out.println(espectadorNom);
         }
         return rslt;
     }

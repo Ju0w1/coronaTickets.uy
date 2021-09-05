@@ -21,6 +21,7 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JList; //NUEVO
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -53,7 +54,7 @@ public interface IControladorEspectaculo {
     public void obtenerPlataformasToComboBox(JComboBox comboBoxPlataformas); //NUEVO
     public void obtenerEspectaculosPP(JList listEspectaculos, String paq_seleccionado, String plat_seleccionada); //NUEVO
     public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO
-    public abstract void obtenerTablaFunciones (JTable tablaFunciones, String nomEspectaculo);
+    public abstract void obtenerTablaFunciones (DefaultTableModel tablaModelo, String nomEspectaculo);
     public abstract int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha);
     public abstract Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom);
 }

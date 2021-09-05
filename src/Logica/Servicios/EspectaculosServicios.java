@@ -166,10 +166,11 @@ public class EspectaculosServicios {
             while (rs.next()) {
                 id_plataforma = rs.getInt(1);
             } //SEGUNDO OBTENGO EL ID DEL ARTISTA SEGUN EL NICK DEL ARTISTA POR PARAMETRO
-            PreparedStatement status2 = conexion.prepareStatement("SELECT usuario.usu_id FROM usuario WHERE usuario.usu_nick=?");
+            PreparedStatement status2 = conexion.prepareStatement("SELECT artistas.art_id FROM artistas where artistas.art_usu IN(SELECT usuario.usu_id FROM usuario WHERE usuario.usu_nick=?)");
             status2.setString(1, nombreOrganizador);
             ResultSet rs2 = status2.executeQuery();
-            while (rs2.next()) {
+            
+            if (rs2.next()) {
                 id_usuario = rs2.getInt(1);
             } //TERCERO INSERTO EL NUEVO ESPECTACULO
             PreparedStatement status3 = conexion.prepareStatement("INSERT INTO espetaculos (espec_artista, espec_plataforma, espec_nombre, espec_descripcion, espec_duracion, espec_cant_min_espect, espec_cant_max_espect, espec_url, espec_fecha_registro, espec_costo) VALUES (?,?,?,?,?,?,?,?,?,?)");
@@ -183,6 +184,7 @@ public class EspectaculosServicios {
             status3.setString(8, URL);
             status3.setDate(9, today);
             status3.setDouble(10, Costo);
+            System.out.println(status3.toString());
             status3.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -368,7 +370,9 @@ public class EspectaculosServicios {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes"); //SELECT paq_id, paq_nombre FROM paquetes
             ResultSet rs = status.executeQuery();
             
-            while (rs.next()) {
+            
+            
+            if (rs.next()) {
                 map.put(rs.getString("paq_id"), new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")), rs.getFloat("paq_costo"),rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_alta"))));
                 //
             }
@@ -529,9 +533,11 @@ public class EspectaculosServicios {
      public String getIdFuncion (String nomFuncion){
         String rslt="";
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT fun_id FROM funcion AS f WHERE f.fun_nombre="+nomFuncion);
+            PreparedStatement status1 = conexion.prepareStatement("SELECT f.fun_id FROM funcion AS f WHERE f.fun_nombre='"+nomFuncion+"'");
             ResultSet rs1 = status1.executeQuery();
-            rslt=rs1.getString("fun_id");
+            if(rs1.next()){
+                rslt=rs1.getString("fun_id");
+            }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
         }
@@ -541,9 +547,11 @@ public class EspectaculosServicios {
     public String getIdUsuario (String nickUsuario){
         String rslt="";
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT usu_id FROM funcion AS u WHERE u.usu_nick="+nickUsuario);
+            PreparedStatement status1 = conexion.prepareStatement("SELECT u.usu_id FROM usuario AS u WHERE u.usu_nick='"+nickUsuario+"'");
             ResultSet rs1 = status1.executeQuery();
-            rslt=rs1.getString("usu_id");
+            if(rs1.next()){
+                rslt=rs1.getString("usu_id");
+            }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
         }
@@ -553,14 +561,20 @@ public class EspectaculosServicios {
     public Map<String, Registro> registrosPrevios(String idEspectador){
         Map<String, Registro> resultado = new HashMap<>();
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.usu_id="+idEspectador);
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.usu_id='"+idEspectador+"'");
             ResultSet rs1 = status1.executeQuery();
             while (rs1.next()) {
-                PreparedStatement status2 = conexion.prepareStatement("SELECT usu_nick FROM usuario AS u WHERE u.usu_id="+rs1.getString("usu_id"));
+                PreparedStatement status2 = conexion.prepareStatement("SELECT usu_nick FROM usuario AS u WHERE u.usu_id="+rs1.getInt("usu_id"));
                 ResultSet rs2 = status2.executeQuery();
-                PreparedStatement status3 = conexion.prepareStatement("SELECT fun_nombre FROM funcion AS f WHERE f.fun_nombre="+rs1.getString("funcion_id"));
-                ResultSet rs3 = status3.executeQuery();
-                resultado.put(rs1.getString("funcion_id"), new Registro(rs2.getString("usu_nick"), rs3.getString("fun_nombre"), rs1.getDate("fechaRegistro"),rs1.getBoolean("canjeado")));
+                if(rs2.next()){
+                    System.out.println("Entra al primer if");
+                    PreparedStatement status3 = conexion.prepareStatement("SELECT fun_nombre FROM funcion AS f WHERE f.fun_id="+rs1.getInt("funcion_id"));
+                    ResultSet rs3 = status3.executeQuery();
+                    if(rs3.next()){
+                        System.out.println("Entra al segundo if");
+                        resultado.put(rs1.getString("funcion_id"), new Registro(rs2.getString(1), rs3.getString(1), rs1.getDate("fechaRegistro"),rs1.getBoolean("canjeado")));
+                    }
+                }  
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
@@ -569,34 +583,64 @@ public class EspectaculosServicios {
     }
     
     public Boolean limiteSobrepasado(String idFuncion){
-        int i=0;
-        Boolean rslt=true;
+        //int i=0;
+        Boolean rslt=false;
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.funcion_id="+idFuncion);
+            //SELECT funcion_id,COUNT(funcion_id) FROM usuario_funcion where funcion_id = 1;
+            
+            PreparedStatement status1 = conexion.prepareStatement("SELECT funcion_id,COUNT(funcion_id) FROM usuario_funcion where funcion_id = '"+idFuncion+"'");
             ResultSet rs1 = status1.executeQuery();
-            String idEspectaculo=rs1.getString("fun_espec_id");
-            while (rs1.next()) {
-                i++;
+            int cantidadRegistros = 0;
+            if(rs1.next()){
+                cantidadRegistros = rs1.getInt(2);
             }
-            try {
-                PreparedStatement status2 = conexion.prepareStatement("SELECT espec_cant_max_espect FROM espectaculos AS e WHERE e.espec_id="+idEspectaculo);
-                ResultSet rs2 = status2.executeQuery();
-                int maxRegistros=rs2.getInt("espec_cant_max_espect");
-                if(i<maxRegistros){
-                    rslt=false;
-                }
-            }catch (SQLException ex1) {
-                ex1.printStackTrace();
+            PreparedStatement status2 = conexion.prepareStatement("SELECT fun_espec_id FROM funcion WHERE funcion.fun_id='"+idFuncion+"'");
+            ResultSet rs2 = status2.executeQuery();
+            int idEspectaculo = 0;
+            if(rs2.next()){
+                idEspectaculo = rs2.getInt(1);
             }
+            PreparedStatement status3 = conexion.prepareStatement("SELECT espec_cant_max_espect FROM espetaculos WHERE espetaculos.espec_id='"+idEspectaculo+"'");
+            ResultSet rs3 = status3.executeQuery();
+            int cantMax = 0;
+            if(rs3.next()){
+                cantMax = rs3.getInt(1);
+            }
+            
+            if(cantidadRegistros < cantMax){
+                rslt=false;
+            }else{
+                rslt=true;
+            }
+            
+//            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.funcion_id='"+idFuncion+"'");
+//            ResultSet rs1 = status1.executeQuery();
+//            String idEspectaculo=rs1.getString("fun_espec_id");
+//            while (rs1.next()) {
+//                i++;
+//            }
+//            try {
+//                PreparedStatement status2 = conexion.prepareStatement("SELECT espec_cant_max_espect FROM espectaculos AS e WHERE e.espec_id='"+idEspectaculo+"'");
+//                ResultSet rs2 = status2.executeQuery();
+//                int maxRegistros=rs2.getInt("espec_cant_max_espect");
+//                if(i<maxRegistros){
+//                    rslt=false;
+//                }
+//            }catch (SQLException ex1) {
+//                ex1.printStackTrace();
+//            }
         }catch (SQLException ex1) {
             ex1.printStackTrace();
         }
+        //return rslt;
         return rslt;
     }
     
     public void registrarFuncion(String idFuncion, String idEspectador, Date fechaRegistro){
         try {
             PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario_funcion (funcion_id,usu_id,fechaRegistro,canjeado) VALUES (?,?,?,?)");
+            System.out.println("aaaaaaaaaaa"+idFuncion);
+            System.out.println("aaaaaaaaaaa"+idEspectador);
             status.setInt (1, Integer.parseInt(idFuncion));
             status.setInt (2, Integer.parseInt(idEspectador));
             status.setDate(3, fechaRegistro);
