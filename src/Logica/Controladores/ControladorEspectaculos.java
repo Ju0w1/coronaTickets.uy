@@ -388,7 +388,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     
      public void obtenerTablaFunciones (JTable tablaFunciones, String nomEspectaculo){ 
         String id=servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
-        Map<String, Funcion> mapFunciones=servicioEspectaculo.getMapFunciones(nomEspectaculo);
+        Map<String, Funcion> mapFunciones=servicioEspectaculo.getMapFunciones(id);
         Funcion f;
         int i=0;
         for (Map.Entry entry : mapFunciones.entrySet()) {

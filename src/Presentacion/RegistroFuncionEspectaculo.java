@@ -8,23 +8,28 @@ package Presentacion; //New
 
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorEspectaculo;
+import Logica.Interfaz.IControladorUsuario;
+import java.io.Console;
 import java.sql.Date;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Admin
  */
 public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private IControladorEspectaculo ICE;
+    private IControladorUsuario ICU;
     /**
      * Creates new form RegistroFuncionEspectaculo2
      */
     public RegistroFuncionEspectaculo() {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
+        this.ICU = Fabrica.getInstance().getIControladorUsuario();
         this.ICE.obtenerPlataformasToComboBox(plat);
         //this.ICE.o obtener (espec); //Renombrar el de federico en el cotrolador
-        this.ICE.obtenerEspectaculos(listViewers); 
+        this.ICU.obtenerEspectadores((DefaultTableModel) this.listViewers.getModel());
     }
 
     /**
@@ -55,13 +60,15 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         mes = new javax.swing.JSpinner();
         anio = new javax.swing.JSpinner();
         jLabel10 = new javax.swing.JLabel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        listViewers = new javax.swing.JList<>();
         jButton5 = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        listViewers = new javax.swing.JTable();
 
-        setPreferredSize(new java.awt.Dimension(527, 670));
+        setClosable(true);
+        setTitle("Registrar espectador a función");
+        setPreferredSize(new java.awt.Dimension(527, 711));
 
         jLabel4.setText("Plataforma");
 
@@ -164,8 +171,6 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Seleccionar espectador");
 
-        jScrollPane6.setViewportView(listViewers);
-
         jButton5.setText("Seleccionar");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -184,42 +189,59 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
+        listViewers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nombre", "Espectaculo", "Fecha", "Hora de Inicio"
+            }
+        ));
+        jScrollPane7.setViewportView(listViewers);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton5))
+                        .addComponent(jLabel10)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnCancelar)
                                 .addGap(217, 217, 217)
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(60, Short.MAX_VALUE))
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(60, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jButton5))
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(68, 68, 68))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jButton5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
@@ -235,6 +257,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        // TODO add your handling code here:
         String nomEspectaculo= espec.getSelectedValue();
+        System.out.print(nomEspectaculo);
         this.ICE.obtenerTablaFunciones(funcTable, nomEspectaculo);
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -256,7 +279,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                     JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna funcion.");
                 }
                 else{
-                    if(listViewers.getSelectedIndex()==-1){
+                    if(listViewers.getSelectedRow()==-1){
                         JOptionPane.showMessageDialog(this, "No ha seleccionado ningun espectador.");
                     }
                     else{
@@ -267,7 +290,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                             String getFunc= txtFuncion.getText();
                             String getPlat= (String) plat.getSelectedItem();
                             String getEspec= espec.getSelectedValue();
-                            String getViewer= listViewers.getSelectedValue();
+                            String getViewer= listViewers.getModel().getValueAt(listViewers.getSelectedRow(), listViewers.getSelectedColumn()).toString();
                             Date date= new Date((int) dia.getValue(), (int) mes.getValue(), (int) anio.getValue());
                             
                             switch (this.ICE.registroFuncionEspectaculo(getFunc, getViewer, date)){
@@ -320,8 +343,8 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JList<String> listViewers;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable listViewers;
     private javax.swing.JSpinner mes;
     private javax.swing.JComboBox<String> plat;
     private javax.swing.JTextField txtFuncion;

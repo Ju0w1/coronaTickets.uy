@@ -498,9 +498,11 @@ public class EspectaculosServicios {
      public String getIdEspectaculo (String espectaculoNom){
         String rslt="";
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT espec_id FROM espectaculos AS e WHERE e.espec_nombre="+espectaculoNom);
+            PreparedStatement status1 = conexion.prepareStatement("SELECT espec_id FROM espetaculos AS e WHERE e.espec_nombre='"+espectaculoNom+"'");
             ResultSet rs1 = status1.executeQuery();
-            rslt=rs1.getString("espec_id");
+            if(rs1.next()){
+                rslt=rs1.getString("espec_id");
+            }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
         }
@@ -516,7 +518,7 @@ public class EspectaculosServicios {
             while (rs1.next()) {
                 artistas=getMapArtistas(rs1.getString("fun_id"));
                 espectaculo=getEspecaculo(rs1.getString("fun_id"));
-                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha"), rs1.getTime("fun_hora"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
