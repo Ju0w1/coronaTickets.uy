@@ -33,7 +33,6 @@ import Logica.Servicios.PaquetesServicios;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import java.util.Date;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
@@ -42,9 +41,12 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 import Logica.Clases.Funcion;
 import Logica.Clases.Paquete;
+import Logica.Clases.Registro;
 import Logica.DataTypes.DTFecha;
 import Logica.Servicios.PaquetesServicios;
+import java.sql.Date;
 import java.util.HashMap;
+import javax.swing.JTable;
 
 public class ControladorEspectaculos implements IControladorEspectaculo {
 
@@ -382,5 +384,59 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     @Override
     public void obtenerPlataformas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+     public void obtenerTablaFunciones (JTable tablaFunciones, String nomEspectaculo){ 
+        String id=servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
+        Map<String, Funcion> mapFunciones=servicioEspectaculo.getMapFunciones(nomEspectaculo);
+        Funcion f;
+        int i=0;
+        for (Map.Entry entry : mapFunciones.entrySet()) {
+            f= (Funcion) entry.getValue();
+            tablaFunciones.setValueAt(f.getNombre(), i, 0);
+            tablaFunciones.setValueAt(f.getEspectaculo().getNombre(), i, 1);
+            tablaFunciones.setValueAt(f.getFecha(), i, 2);
+            tablaFunciones.setValueAt(f.getHoraInicio(), i, 3);
+            i++;
+        }
+    }
+     
+     public int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha){
+        /*LocalDateTime now = LocalDateTime.now();
+        Date fechaRegistro= new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());*/
+        int rslt;
+        String idFuncion=servicioEspectaculo.getIdFuncion(nomFuncion);
+        String idEspectador=servicioEspectaculo.getIdUsuario(espectadorNom);
+        Map<String, Registro> registros=servicioEspectaculo.registrosPrevios(idEspectador);
+        if(servicioEspectaculo.limiteSobrepasado(idFuncion)){ //Se sobrepasa el limite de registros
+            rslt=3;
+        }
+        else{ //No se sobrepasa el limite de registros
+            if (!registros.isEmpty()){ //Si hay registros pervios
+                if (!yaRegistradoAFuncion(registros, espectadorNom)){ //ver si son o no suficientes
+                    rslt=1;//llamar a una ventana en la que seleccionar los registros a canjear
+                }
+                else{
+                    rslt=2; //Llamar a presentacion y cambiar datos
+                }
+            }
+            else{ //Si no hay registros pervios
+                servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
+                rslt=0; //el registro ya fue realizado
+            }
+        }
+        return rslt;
+    }
+     
+     public Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom){
+        Registro r;
+        Boolean rslt=false;
+        for (Map.Entry entry : registros.entrySet()) {
+            r= (Registro) entry.getValue();
+            if (r.getEspectador()==espectadorNom){
+                rslt=true;
+            }
+        }
+        return rslt;
     }
 }

@@ -64,5 +64,7 @@ public class Funcion {
         public Map<String, Artista> getArtistas(){
             return this.artistas;
         }
-    
+        public Espectaculo getEspectaculo(){
+            return this.espectaculo;
+        }
 }

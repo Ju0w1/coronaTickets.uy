@@ -93,4 +93,5 @@ public class Espectaculo {
     public void setFecha(Date fecha){
         this.Fecha_Registro=fecha;
     }
+    
 }

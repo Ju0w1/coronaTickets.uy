@@ -22,9 +22,9 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     public RegistroFuncionEspectaculo() {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
-        this.ICE.obtenerJComboBoxPlataformas(plat);
+        this.ICE.obtenerPlataformasToComboBox(plat);
         //this.ICE.o obtener (espec); //Renombrar el de federico en el cotrolador
-        this.ICE.obtenerListaEspectadores(listViewers); 
+        this.ICE.obtenerEspectaculos(listViewers); 
     }
 
     /**
@@ -85,6 +85,11 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         });
 
         jButton1.setText("Seleccionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         funcTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -289,6 +294,10 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private void platActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_platActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.ICE.obtenerEspectaculosPorPlataforma(espec, plat.getSelectedItem().toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -32,6 +32,7 @@ import Logica.Clases.Artista;
 import Logica.Clases.Funcion;
 import Logica.DataTypes.DTFecha;
 import Logica.Clases.Paquete; //NUEVO
+import Logica.Clases.Registro;
 import Logica.Clases.Usuario;
 
 /**
@@ -493,4 +494,116 @@ public class EspectaculosServicios {
         }
         return new Espectaculo();
     }
+      
+     public String getIdEspectaculo (String espectaculoNom){
+        String rslt="";
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT espec_id FROM espectaculos AS e WHERE e.espec_nombre="+espectaculoNom);
+            ResultSet rs1 = status1.executeQuery();
+            rslt=rs1.getString("espec_id");
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return rslt;
+    }
+     public Map<String, Funcion> getMapFunciones(String espectaculoId) {
+        Map<String, Funcion> resultado = new HashMap<>();
+        Map<String, Artista> artistas;
+        Espectaculo espectaculo;
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id='"+espectaculoId+"'");
+            ResultSet rs1 = status1.executeQuery();
+            while (rs1.next()) {
+                artistas=getMapArtistas(rs1.getString("fun_id"));
+                espectaculo=getEspecaculo(rs1.getString("fun_id"));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha"), rs1.getTime("fun_hora"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+     
+     public String getIdFuncion (String nomFuncion){
+        String rslt="";
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT fun_id FROM funcion AS f WHERE f.fun_nombre="+nomFuncion);
+            ResultSet rs1 = status1.executeQuery();
+            rslt=rs1.getString("fun_id");
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return rslt;
+    }
+     
+    public String getIdUsuario (String nickUsuario){
+        String rslt="";
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT usu_id FROM funcion AS u WHERE u.usu_nick="+nickUsuario);
+            ResultSet rs1 = status1.executeQuery();
+            rslt=rs1.getString("usu_id");
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return rslt;
+    }
+    
+    public Map<String, Registro> registrosPrevios(String idEspectador){
+        Map<String, Registro> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.usu_id="+idEspectador);
+            ResultSet rs1 = status1.executeQuery();
+            while (rs1.next()) {
+                PreparedStatement status2 = conexion.prepareStatement("SELECT usu_nick FROM usuario AS u WHERE u.usu_id="+rs1.getString("usu_id"));
+                ResultSet rs2 = status2.executeQuery();
+                PreparedStatement status3 = conexion.prepareStatement("SELECT fun_nombre FROM funcion AS f WHERE f.fun_nombre="+rs1.getString("funcion_id"));
+                ResultSet rs3 = status3.executeQuery();
+                resultado.put(rs1.getString("funcion_id"), new Registro(rs2.getString("usu_nick"), rs3.getString("fun_nombre"), rs1.getDate("fechaRegistro"),rs1.getBoolean("canjeado")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    public Boolean limiteSobrepasado(String idFuncion){
+        int i=0;
+        Boolean rslt=true;
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.funcion_id="+idFuncion);
+            ResultSet rs1 = status1.executeQuery();
+            String idEspectaculo=rs1.getString("fun_espec_id");
+            while (rs1.next()) {
+                i++;
+            }
+            try {
+                PreparedStatement status2 = conexion.prepareStatement("SELECT espec_cant_max_espect FROM espectaculos AS e WHERE e.espec_id="+idEspectaculo);
+                ResultSet rs2 = status2.executeQuery();
+                int maxRegistros=rs2.getInt("espec_cant_max_espect");
+                if(i<maxRegistros){
+                    rslt=false;
+                }
+            }catch (SQLException ex1) {
+                ex1.printStackTrace();
+            }
+        }catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return rslt;
+    }
+    
+    public void registrarFuncion(String idFuncion, String idEspectador, Date fechaRegistro){
+        try {
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario_funcion (funcion_id,usu_id,fechaRegistro,canjeado) VALUES (?,?,?,?)");
+            status.setInt (1, Integer.parseInt(idFuncion));
+            status.setInt (2, Integer.parseInt(idEspectador));
+            status.setDate(3, fechaRegistro);
+            status.setBoolean(4, false);
+            
+            status.execute();  
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 }

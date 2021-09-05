@@ -7,15 +7,20 @@ package Logica.Interfaz;
 
 import Logica.Clases.Espectaculo;
 import javax.swing.JComboBox;
-import java.util.*;
+//import java.util.*;
 import Logica.Clases.Espectaculo;
 import Logica.DataTypes.DTFecha;
 import Logica.Clases.Paquete;
 import Logica.Clases.Funcion;
+import Logica.Clases.Registro;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Map;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JList; //NUEVO
+import javax.swing.JTable;
 
 /**
  *
@@ -48,5 +53,8 @@ public interface IControladorEspectaculo {
     public void obtenerPlataformasToComboBox(JComboBox comboBoxPlataformas); //NUEVO
     public void obtenerEspectaculosPP(JList listEspectaculos, String paq_seleccionado, String plat_seleccionada); //NUEVO
     public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO
+    public abstract void obtenerTablaFunciones (JTable tablaFunciones, String nomEspectaculo);
+    public abstract int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha);
+    public abstract Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom);
 }
 
