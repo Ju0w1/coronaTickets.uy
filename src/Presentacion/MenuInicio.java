@@ -296,7 +296,7 @@ public class MenuInicio extends javax.swing.JFrame {
 
     private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
         // TODO add your handling code here:
-        RegistroFuncionEspectaculo ventana = new RegistroFuncionEspectaculo();
+         RegistroFuncionEspectaculo ventana = new RegistroFuncionEspectaculo();
         this.jDesktopPane2.add(ventana);
         Dimension desktopSize = jDesktopPane2.getSize();
         Dimension jInternalFrameSize = ventana.getSize();

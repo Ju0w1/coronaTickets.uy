@@ -46,9 +46,9 @@ public class EspectaculosServicios {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario");
             ResultSet rs = status.executeQuery();
 
-            while (rs.next()) {
-                resultado.put(rs.getString("usu_nick"), new Usuario(rs.getString("usu_nombre"), rs.getString("usu_apellido")));
-                System.out.println("Nombre: " + rs.getString("Nombre"));
+            while (rs.next()) { 
+                resultado.put(rs.getString("usu_nick"), new Usuario(rs.getString("usu_nick"),rs.getString("usu_nombre"), rs.getString("usu_apellido"),rs.getString("usu_mail"),rs.getDate("usu_nacimiento")));
+                //System.out.println("Nombre: " + rs.getString("Nombre"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
