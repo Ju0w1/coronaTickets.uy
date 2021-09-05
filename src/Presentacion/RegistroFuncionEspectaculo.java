@@ -112,11 +112,11 @@ public class RegistroFuncionEspectaculo extends javax.swing.JFrame {
 
         jLabel1.setText("Espectaculos disponibles");
 
-
         listEspec.setModel(new javax.swing.AbstractListModel<String>() {
-
-        espec.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
         jScrollPane2.setViewportView(listEspec);
 
         jLabel3.setText("Funciones");
