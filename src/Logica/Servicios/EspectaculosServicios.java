@@ -10,7 +10,6 @@ import Logica.Clases.Plataforma;
 import Logica.Clases.Espectaculo; //NUEVO
 import Logica.Clases.Plataforma; // NUEVO
 import Logica.DataTypes.DTFecha; //NUEVO
-import Logica.DataTypes.DTTimeStamp;
 import Persistencia.ConexionDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -34,10 +33,6 @@ import Logica.Clases.Funcion;
 import Logica.DataTypes.DTFecha;
 import Logica.Clases.Paquete; //NUEVO
 import Logica.Clases.Usuario;
-import Logica.Clases.Registro;
-import Logica.Clases.Usuario;
-import java.sql.Time;
-import javax.swing.JTable;
 
 /**
  *
@@ -85,6 +80,7 @@ public class EspectaculosServicios {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+
         }
         return resultado;
     }
@@ -323,62 +319,8 @@ public class EspectaculosServicios {
         }
         return resultado;
     }
-    public Map<String, Artista> getMapArtistas(String funcionId) {
-        Map<String, Artista> artistas= new HashMap<>();
-        String query1="SELECT * FROM artistas AS a, funcion_artista AS funart WHERE a.art_id=funart.funart_art_id AND funart.funart_fun_id="+funcionId;
-        try {
-            Statement status1 = conexion.createStatement();
-            ResultSet rs1 = status1.executeQuery(query1);
-            try {
-                while (rs1.next()) {
-                    String query2="SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id");
-                    Statement status2= conexion.createStatement();
-                    ResultSet rs2= status2.executeQuery(query2);
-                    artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), rs2.getDate("usu_nacimiento"), rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url")));
-                }
-            }catch(SQLException ex2){
-                ex2.printStackTrace();
-            }
-        } catch (SQLException ex1) {
-            ex1.printStackTrace();
-        }
-        return artistas;
-    }
+      
     
-    //No se si hacer un conversor o cambiar a float la duracion
-    public Espectaculo getEspecaculo(String funcionId){
-        Espectaculo rslt;
-        double auxT=0;
-        Date auxD= new Date(1234, 12, 8);
-        try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espectaculos AS e AND funcion AS f WHERE e.espec_id=f.fun_espec_id AND f.fun_id="+funcionId);
-            ResultSet rs = status.executeQuery();
-            rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getString("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_url"), rs.getInt("espec_costo"), rs.getDouble("espec_duracion"), rs.getDate("espec_fecha_registro"));
-            return rslt;
-        }catch (SQLException ex){
-            ex.printStackTrace();
-            return new Espectaculo("error", "error", "error", 0, 0, "error", 0, auxT, auxD);
-        }
-    }
-    
-    public Map<String, Funcion> getMapFunciones(String espectaculoId) {
-        Map<String, Funcion> resultado = new HashMap<>();
-        Map<String, Artista> artistas;
-        Espectaculo espectaculo;
-        try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id='"+espectaculoId+"'");
-            ResultSet rs1 = status1.executeQuery();
-            while (rs1.next()) {
-                artistas=getMapArtistas(rs1.getString("fun_id"));
-                espectaculo=getEspecaculo(rs1.getString("fun_id"));
-                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
-
-            }
-        } catch (SQLException ex1) {
-            ex1.printStackTrace();
-        }
-        return resultado;
-    }
       
       public Map<String, Artista> getMapArtistas(String funcionId) {
         Map<String, Artista> artistas= new HashMap<>();
@@ -551,89 +493,4 @@ public class EspectaculosServicios {
         }
         return new Espectaculo();
     }
-    
-    public String getIdEspectaculo (String espectaculoNom){
-        String rslt="";
-        try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT espec_id FROM espectaculos AS e WHERE e.espec_nombre="+espectaculoNom);
-            ResultSet rs1 = status1.executeQuery();
-            rslt=rs1.getString("espec_id");
-        } catch (SQLException ex1) {
-            ex1.printStackTrace();
-        }
-        return rslt;
-    }
-    
-    public String getIdFuncion (String nomFuncion){
-        String rslt="";
-        try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT fun_id FROM funcion AS f WHERE f.fun_nombre="+nomFuncion);
-            ResultSet rs1 = status1.executeQuery();
-            rslt=rs1.getString("fun_id");
-        } catch (SQLException ex1) {
-            ex1.printStackTrace();
-        }
-        return rslt;
-    }
-    
-    public String getIdUsuario (String nickUsuario){
-        String rslt="";
-        try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT usu_id FROM funcion AS u WHERE u.usu_nick="+nickUsuario);
-            ResultSet rs1 = status1.executeQuery();
-            rslt=rs1.getString("usu_id");
-        } catch (SQLException ex1) {
-            ex1.printStackTrace();
-        }
-        return rslt;
-    }
-    
-    public void registrarFuncion(String idFuncion, String idEspectador, Date fechaRegistro){ //La tiene juan pablo
-        
-    }
-    
-    public Map<String, Registro> registrosPrevios(String idEspectador){
-        Map<String, Registro> resultado = new HashMap<>();
-        try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.usu_id="+idEspectador);
-            ResultSet rs1 = status1.executeQuery();
-            while (rs1.next()) {
-                PreparedStatement status2 = conexion.prepareStatement("SELECT usu_nick FROM usuario AS u WHERE u.usu_id="+rs1.getString("usu_id"));
-                ResultSet rs2 = status2.executeQuery();
-                PreparedStatement status3 = conexion.prepareStatement("SELECT fun_nombre FROM funcion AS f WHERE f.fun_nombre="+rs1.getString("funcion_id"));
-                ResultSet rs3 = status3.executeQuery();
-                resultado.put(rs1.getString("funcion_id"), new Registro(rs2.getString("usu_nick"), rs3.getString("fun_nombre"), rs1.getDate("fechaRegistro"),rs1.getBoolean("canjeado")));
-            }
-        } catch (SQLException ex1) {
-            ex1.printStackTrace();
-        }
-        return resultado;
-    }
-    
-    public Boolean limiteSobrepasado(String idFuncion){
-        int i=0;
-        Boolean rslt=true;
-        try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.funcion_id="+idFuncion);
-            ResultSet rs1 = status1.executeQuery();
-            String idEspectaculo=rs1.getString("fun_espec_id");
-            while (rs1.next()) {
-                i++;
-            }
-            try {
-                PreparedStatement status2 = conexion.prepareStatement("SELECT espec_cant_max_espect FROM espectaculos AS e WHERE e.espec_id="+idEspectaculo);
-                ResultSet rs2 = status2.executeQuery();
-                int maxRegistros=rs2.getInt("espec_cant_max_espect");
-                if(i<maxRegistros){
-                    rslt=false;
-                }
-            }catch (SQLException ex1) {
-                ex1.printStackTrace();
-            }
-        }catch (SQLException ex1) {
-            ex1.printStackTrace();
-        }
-        return rslt;
-    }
-    
 }

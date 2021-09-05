@@ -19,13 +19,6 @@ import java.util.HashMap;
 
 
 
-import Logica.Clases.Espectador;
-import java.util.HashMap;
-import Logica.Clases.Usuario;
-import Logica.Clases.Espectador;
-import Logica.Interfaz.IControladorUsuario;
-import Logica.servicios.UsuariosServicios;
-import java.sql.Date;
 
 
 /**
@@ -52,8 +45,7 @@ public class ControladorUsuario implements IControladorUsuario{
         }
         return instancia;
     }
-    
-    @Override
+
     public Map<String, Usuario> getUsuarios(){
         Map<String, Usuario> usuarios = servicioUsuarios.getUsers();
         return usuarios;
@@ -78,17 +70,8 @@ public class ControladorUsuario implements IControladorUsuario{
         }
     }
     
-    
-    @Override
-    public void addEspectador(String nickname, String nombre, String apellido, String email, Date nacimiento) {
-        this.espectadores.put(email, new Espectador(nickname,nombre,apellido,email,nacimiento));
-        this.servicioUsuarios.addEspectador(nickname, nombre, apellido, email, nacimiento);
-    }
-    
-    @Override
-    public void obtenerEspectadores(JList listEspec){
-        //public void obtenerEspectadores(JList listEspec, DefaultTableModel tablaModelo){
-        public void obtenerEspectadores( DefaultTableModel tablaModelo){
+    //public void obtenerEspectadores(JList listEspec, DefaultTableModel tablaModelo){
+    public void obtenerEspectadores( DefaultTableModel tablaModelo){
         this.espectadores = this.servicioUsuarios.getUsers();
         tablaModelo.setRowCount(0);
         
@@ -117,7 +100,6 @@ public class ControladorUsuario implements IControladorUsuario{
         }
     }
     
-    @Override
     public void cargarDatosConsultaEspectador(String seleccion, JTextField nick, JTextField nombre, JTextField apellido, JTextField mail, JTextField nacimiento){
 //        String[] partes = seleccion.split("\\(");
 //        String[] partes2 = partes[1].split("\\)");

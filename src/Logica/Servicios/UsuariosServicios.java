@@ -50,8 +50,8 @@ public class UsuariosServicios {
 //                
 //            }
             while (rs.next()) {
-                resultado.put(rs.getString("usu_mail"), new Espectador(rs.getString("usu_nick"),rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), rs.getDate("usu_nacimiento")));
-                
+                resultado.put(rs.getString("usu_mail"), new Espectador(rs.getString("usu_nick"),rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), dateToDTFecha(rs.getDate("usu_nacimiento"))));
+
                 //+e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getAnio()
                 //resultado.put(rs.getString("usu_nombre"), new Usuario(rs.getString("usu_nick"), rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), new DTFecha(1,1,1900)));
             }
@@ -92,7 +92,7 @@ public class UsuariosServicios {
             status.setString (2, nombre);
             status.setString (3, apellido);
             status.setString (4, email);
-            status.setString (5, nacimiento.getYear() + "-" +  nacimiento.getMonth() + "-" + nacimiento.getDay());
+            status.setString (5, nacimiento.getAnio() + "-" +  nacimiento.getMes() + "-" + nacimiento.getDia());
             status.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

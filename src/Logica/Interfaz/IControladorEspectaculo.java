@@ -6,10 +6,6 @@
 package Logica.Interfaz;
 
 import Logica.Clases.Espectaculo;
-import Logica.Clases.Funcion;
-import java.sql.Date;
-import java.sql.Time;
-import java.util.Map;
 import javax.swing.JComboBox;
 import java.util.*;
 import Logica.Clases.Espectaculo;
@@ -20,9 +16,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 import javax.swing.JList; //NUEVO
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JTable;
 
 /**
  *
@@ -34,10 +27,6 @@ public interface IControladorEspectaculo {
     public abstract void obtenerEspectaculos(JList listPlataform);
     public abstract void obtenerEspectaculosPorPlataforma(JList listPlataform, String nombrePlataforma);
     public abstract void obtenerPlataformas();
-    public abstract void obtenerJComboBoxPlataformas(JComboBox comboBox);
-    public abstract void obtenerJComboBoxEspectaculos(JComboBox comboBox);
-    public void obtenerListaFunciones(JList jList, String idEspectaculo);
-    public void obtenerTablaFunciones (JTable tablaFunciones, String nomEspectaculo);
     public abstract void obtenerArtistas();
     public abstract void obtenerArtistaPorNombre(String nombre);
     public abstract void cargarDatosConsultaEspectaculo(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
@@ -59,8 +48,5 @@ public interface IControladorEspectaculo {
     public void obtenerPlataformasToComboBox(JComboBox comboBoxPlataformas); //NUEVO
     public void obtenerEspectaculosPP(JList listEspectaculos, String paq_seleccionado, String plat_seleccionada); //NUEVO
     public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO
-    public abstract void consultaFuncionEspectaculo(String plataforma, String espectaculo, String funcion, JLabel mostrarNom, JLabel mostrarFecha, JLabel mostrarHora, JList mostrarArtistas);
-    public abstract int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha);
-    public void obtenerListaEspectadores(JList listaEspec);
 }
 
