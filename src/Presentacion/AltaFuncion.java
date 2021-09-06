@@ -58,11 +58,6 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        Fecha_Inicio_Dia = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        Fecha_Inicio_Mes = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        Fecha_Inicio_Anio = new javax.swing.JTextField();
         Hora_Hr = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         Hora_Min = new javax.swing.JTextField();
@@ -73,11 +68,17 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         Boton_Crear = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnBuscar = new javax.swing.JButton();
+        Fecha_Inicio_Dia = new javax.swing.JSpinner();
+        Fecha_Inicio_Mes = new javax.swing.JSpinner();
+        Fecha_Inicio_Anio = new javax.swing.JSpinner();
 
         jScrollPane1.setViewportView(jTree1);
 
         setTitle("Alta funcion");
-        setPreferredSize(new java.awt.Dimension(500, 600));
+        setMinimumSize(new java.awt.Dimension(566, 331));
+        setPreferredSize(new java.awt.Dimension(566, 331));
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(530, 279));
 
         jLabel7.setText("Plataforma:");
 
@@ -95,14 +96,6 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         jLabel10.setText("Fecha inicio");
 
         jLabel11.setText("Hora inicio");
-
-        Fecha_Inicio_Dia.setToolTipText("");
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel12.setText("/");
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("/");
 
         jLabel2.setText(":");
 
@@ -140,6 +133,13 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
             }
         });
 
+        Fecha_Inicio_Dia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+
+        Fecha_Inicio_Mes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+
+        Fecha_Inicio_Anio.setModel(new javax.swing.SpinnerNumberModel(2021, 2021, null, 1));
+        Fecha_Inicio_Anio.setPreferredSize(new java.awt.Dimension(50, 20));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -148,82 +148,72 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(PlataformaBox, 0, 132, Short.MAX_VALUE)
-                                    .addComponent(txtNombre)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel10)
-                                    .addComponent(jLabel11))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Hora_Hr, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                                    .addComponent(Fecha_Inicio_Dia))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Fecha_Inicio_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(Hora_Min)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Fecha_Inicio_Anio, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBuscar)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(PlataformaBox, 0, 132, Short.MAX_VALUE)
+                            .addComponent(txtNombre)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Fecha_Inicio_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Hora_Hr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGap(0, 9, Short.MAX_VALUE)
+                                .addComponent(Fecha_Inicio_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Hora_Min, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Fecha_Inicio_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 24, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnBuscar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addComponent(Boton_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(EspectaculoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(Boton_Agregar_Artista, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(18, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(Boton_Crear)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3))))
+                            .addComponent(jLabel3))
+                        .addComponent(Boton_Agregar_Artista, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(98, 98, 98))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(PlataformaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(EspectaculoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel7)
+                    .addComponent(PlataformaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscar))
+                .addGap(24, 24, 24)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel10)
                             .addComponent(Fecha_Inicio_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel12)
                             .addComponent(Fecha_Inicio_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1)
-                            .addComponent(Fecha_Inicio_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Fecha_Inicio_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Hora_Hr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -231,25 +221,25 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
                             .addComponent(Hora_Min, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel11)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(EspectaculoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(Boton_Agregar_Artista)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 287, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Boton_Crear)
-                    .addComponent(jButton3))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Boton_Agregar_Artista)
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton3)
+                            .addComponent(Boton_Crear))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PlataformaBox.getAccessibleContext().setAccessibleName("plataformas");
         EspectaculoBox.getAccessibleContext().setAccessibleName("espetaculo");
         txtNombre.getAccessibleContext().setAccessibleName("nombre_text");
-        Fecha_Inicio_Dia.getAccessibleContext().setAccessibleName("fechaDia");
-        Fecha_Inicio_Mes.getAccessibleContext().setAccessibleName("fechaMes");
-        Fecha_Inicio_Anio.getAccessibleContext().setAccessibleName("fechaAnio");
         Hora_Hr.getAccessibleContext().setAccessibleName("fechaHora");
         Hora_Min.getAccessibleContext().setAccessibleName("fechaMinuto");
         jScrollPane2.getAccessibleContext().setAccessibleName("actoresAsignado");
@@ -260,8 +250,8 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -281,8 +271,8 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         int posicion = this.Lista_Artistas.getSelectedIndex();
         art = this.ICF.obtenerArtista(artista);
         this.artistas.put(artista, art);
+        System.out.println("Alta funcion estado de map artistas:"+this.artistas.isEmpty());
         DefaultListModel listModel1 = (DefaultListModel) this.Lista_Artistas.getModel();
-        
         listModel1.removeElementAt(posicion);
         //System.out.println(this.artistas.isEmpty());
 //        int dia=0,mes=0,anio=0;
@@ -309,9 +299,9 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         int dia_comienzo,mes_comienzo,anio_comienzo,dia_registro,mes_registro,anio_registro,hr,min,seg=00;
         String nombreEspectaculo=this.EspectaculoBox.getSelectedItem().toString();
         
-        dia_comienzo=Integer.parseInt(Fecha_Inicio_Dia.getText());
-        mes_comienzo=Integer.parseInt(Fecha_Inicio_Mes.getText());
-        anio_comienzo=Integer.parseInt(Fecha_Inicio_Anio.getText());
+        dia_comienzo=(int) Fecha_Inicio_Dia.getValue();
+        mes_comienzo=(int) Fecha_Inicio_Mes.getValue();
+        anio_comienzo=(int) Fecha_Inicio_Anio.getValue();
         
         hr=Integer.parseInt(Hora_Hr.getText());
         min=Integer.parseInt(Hora_Min.getText());
@@ -325,7 +315,7 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         
         DTFecha fecha_registro = new DTFecha(dia_registro,mes_registro,anio_registro);
         
-        if (txtNombre.getText().equals("") || Fecha_Inicio_Dia.getText().equals("") || Fecha_Inicio_Mes.getText().equals("") || Fecha_Inicio_Anio.getText().equals("") || Hora_Hr.getText().equals("") || Hora_Min.getText().equals("")) {
+        if (txtNombre.getText().equals("") || Fecha_Inicio_Dia.getValue().equals("") || Fecha_Inicio_Mes.getValue().equals("") || Fecha_Inicio_Anio.getValue().equals("") || Hora_Hr.getText().equals("") || Hora_Min.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Ingrese todos los datos por favor");
         }else{
             this.ICF.addFuncion(nombreEspectaculo,txtNombre.getText(),fecha_registro,hora_inicio,fecha_comienzo,artistas);
@@ -347,19 +337,17 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
     private javax.swing.JButton Boton_Agregar_Artista;
     private javax.swing.JButton Boton_Crear;
     public static javax.swing.JComboBox<String> EspectaculoBox;
-    private javax.swing.JTextField Fecha_Inicio_Anio;
-    private javax.swing.JTextField Fecha_Inicio_Dia;
-    private javax.swing.JTextField Fecha_Inicio_Mes;
+    private javax.swing.JSpinner Fecha_Inicio_Anio;
+    private javax.swing.JSpinner Fecha_Inicio_Dia;
+    private javax.swing.JSpinner Fecha_Inicio_Mes;
     private javax.swing.JTextField Hora_Hr;
     private javax.swing.JTextField Hora_Min;
     public static javax.swing.JList<String> Lista_Artistas;
     public static javax.swing.JComboBox<String> PlataformaBox;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;

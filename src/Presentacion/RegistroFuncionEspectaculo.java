@@ -499,7 +499,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                             
                             switch (this.ICE.registroFuncionEspectaculo(getFunc, getViewer, date)){
                                 case 0: //Ya se realizó el registro
-                                    this.dispose();
+                                    JOptionPane.showMessageDialog(this, "Registro a función agregado correctamente");
                                     break;
                                 case 1: //llamar a ventaja de canje
                                     Dimension desktopSize = jDesktopPane2.getSize();
@@ -578,6 +578,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
             String getViewer= listViewers.getModel().getValueAt(listViewers.getSelectedRow(),0).toString();
             Date date= new Date((int) dia.getValue(), (int) mes.getValue(), (int) anio.getValue());
             this.ICE.actualizarEstadoDeRegistros(txtFuncion.getText(),registroSeleccionado1.getText(), registroSeleccionado2.getText(), registroSeleccionado3.getText(), getViewer, date);
+            this.jFrame1.dispose();
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

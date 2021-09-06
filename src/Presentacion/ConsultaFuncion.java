@@ -261,7 +261,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         }else{
             
             this.ICE.obtenerArtistasDeFuncion((DefaultTableModel) this.artTable.getModel(), this.funcTable1.getModel().getValueAt(this.funcTable1.getSelectedRow(),0).toString());
-            if(this.artTable.getModel().getRowCount()>0){
+            if(this.artTable.getModel().getRowCount()>=0){
                 this.jPanel2.setVisible(true);
             }else{
                 this.jPanel2.setVisible(false);

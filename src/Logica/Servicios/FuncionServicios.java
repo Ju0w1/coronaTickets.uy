@@ -22,10 +22,12 @@ import Logica.Clases.Funcion;
 public class FuncionServicios {
 
     public FuncionServicios() {
+        this.servicioEspectaculo = new EspectaculosServicios();
     }
     private Connection conexion = new ConexionDB().getConexion();
     static Statement sentencia_;
     static ResultSet resultado_;
+    private EspectaculosServicios servicioEspectaculo;
     
     public DTFecha dateToDTFecha(Date fecha){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -158,6 +160,8 @@ public class FuncionServicios {
                 status2.setString (5, fecha_comienzo.getAnio() + "-" +  fecha_comienzo.getMes() + "-" + fecha_comienzo.getDia());
                 status2.execute();
                 
+                String idFuncion = this.servicioEspectaculo.getIdFuncion(nombre);
+                
                 for(Map.Entry<String, Artista> entry : artistas.entrySet()){
                     try {
                         Statement statusID = conexion.createStatement();
@@ -168,7 +172,7 @@ public class FuncionServicios {
                         }
                         
                         PreparedStatement status3 = conexion.prepareStatement("INSERT INTO funcion_artista (funart_fun_id,funart_art_id) VALUES (?,?)");
-                        status3.setInt (1, rs.getInt(1));
+                        status3.setInt (1, Integer.parseInt(idFuncion));
                         status3.setInt (2, artID);
                         //status3.setString (3, nombre_funcion);
                         status3.execute();
