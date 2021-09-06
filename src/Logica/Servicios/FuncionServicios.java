@@ -202,5 +202,27 @@ public class FuncionServicios {
         }
        return a;
    }
+   
+   public void actualizarEstadoDeCanjeRegistro (String idFuncion1, String idFuncion2, String idFuncion3, String idEspectador){
+        try {
+            PreparedStatement ps = conexion.prepareStatement("UPDATE usuario_funcion SET usuario_funcion.canjeado = 1 WHERE usuario_funcion.usu_id=? AND usuario_funcion.funcion_id=?");
+            ps.setString (1, idEspectador);
+            ps.setString (2, idFuncion1);
+            ps.execute();
+            ps.close();
+            PreparedStatement ps2 = conexion.prepareStatement("UPDATE usuario_funcion SET usuario_funcion.canjeado = 1 WHERE usuario_funcion.usu_id=? AND usuario_funcion.funcion_id=?");
+            ps2.setString (1, idEspectador);
+            ps2.setString (2, idFuncion2);
+            ps2.execute();
+            ps2.close();
+            PreparedStatement ps3 = conexion.prepareStatement("UPDATE usuario_funcion SET usuario_funcion.canjeado = 1 WHERE usuario_funcion.usu_id=? AND usuario_funcion.funcion_id=?");
+            ps3.setString (1, idEspectador);
+            ps3.setString (2, idFuncion3);
+            ps3.execute();
+            ps3.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     
 }

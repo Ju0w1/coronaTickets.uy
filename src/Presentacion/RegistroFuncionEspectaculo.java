@@ -8,6 +8,7 @@ package Presentacion; //New
 
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorEspectaculo;
+import Logica.Interfaz.IControladorFuncion;
 import Logica.Interfaz.IControladorUsuario;
 import static Presentacion.AltaEspectaculo.jFrameBuscarArtista;
 import static Presentacion.MenuInicio.jDesktopPane2;
@@ -25,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private IControladorEspectaculo ICE;
     private IControladorUsuario ICU;
+    private IControladorFuncion ICF;
     /**
      * Creates new form RegistroFuncionEspectaculo2
      */
@@ -32,6 +34,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
         this.ICU = Fabrica.getInstance().getIControladorUsuario();
+        this.ICF = Fabrica.getInstance().getIControladorFuncion();
         this.ICE.obtenerPlataformasToComboBox(plat);
         //this.ICE.o obtener (espec); //Renombrar el de federico en el cotrolador
         this.ICU.obtenerEspectadores((DefaultTableModel) this.listViewers.getModel());
@@ -566,7 +569,9 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Debe seleccionar 3 registros para canjear.");
         }
         else{
-            
+            String getViewer= listViewers.getModel().getValueAt(listViewers.getSelectedRow(),0).toString();
+            Date date= new Date((int) dia.getValue(), (int) mes.getValue(), (int) anio.getValue());
+            this.ICE.actualizarEstadoDeRegistros(txtFuncion.getText(),registroSeleccionado1.getText(), registroSeleccionado2.getText(), registroSeleccionado3.getText(), getViewer, date);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 

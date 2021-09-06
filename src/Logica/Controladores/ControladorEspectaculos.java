@@ -43,6 +43,7 @@ import Logica.Clases.Funcion;
 import Logica.Clases.Paquete;
 import Logica.Clases.Registro;
 import Logica.DataTypes.DTFecha;
+import Logica.Servicios.FuncionServicios;
 import Logica.Servicios.PaquetesServicios;
 import java.sql.Date;
 import java.util.HashMap;
@@ -58,6 +59,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     private Map<String, Plataforma> plataformas; // NUEVO
     private Map<String, Espectaculo> espectaculos;
     private EspectaculosServicios servicioEspectaculo;
+    private FuncionServicios servicioFuncion;
     private Map<String, Funcion> funciones;
     //private Map<String, Paquete> paquetes;
     private static ControladorEspectaculos instancia;
@@ -71,6 +73,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         this.servicioPaquete = new PaquetesServicios();
         this.plataformas = new HashMap<>();
         this.espectaculos = new HashMap<>();
+        this.servicioFuncion = new FuncionServicios();
     }
 
     public static ControladorEspectaculos getInstance() {
@@ -480,7 +483,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         int registrosPrevios = 0;
         for (Map.Entry entry : registros.entrySet()) {
             r = (Registro) entry.getValue();
-            if (r.getEspectador().equals(espectadorNom)) {
+            if (r.getEspectador().equals(espectadorNom) && r.getCanjeado()==false) {
                 registrosPrevios++;
             }
             System.out.println(espectadorNom);
@@ -503,12 +506,21 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Registro r;
         for (Map.Entry entry : registros.entrySet()) {
             r = (Registro) entry.getValue();
-            if (r.getEspectador().equals(espectadorNom)) {
+            if (r.getEspectador().equals(espectadorNom) && r.getCanjeado()==false) {
                 Object datos[] = {r.getFuncion(), r.getFecha(), r.getCanjeado()};
-                System.out.println("XXXXXXX"+r.getFuncion());
                 tabla.addRow(datos);
             }
             System.out.println(espectadorNom);
         }
+    }
+    
+    public void actualizarEstadoDeRegistros(String nombreFuncion, String registro1, String registro2, String registro3, String espectadorNom, Date fecha) {
+        String idFuncion1 = servicioEspectaculo.getIdFuncion(registro1);
+        String idFuncion2 = servicioEspectaculo.getIdFuncion(registro2);
+        String idFuncion3 = servicioEspectaculo.getIdFuncion(registro3);
+        String idEspectador = servicioEspectaculo.getIdUsuario(espectadorNom);
+        servicioFuncion.actualizarEstadoDeCanjeRegistro(idFuncion1,idFuncion2,idFuncion3,idEspectador);
+        String idFuncion = servicioEspectaculo.getIdFuncion(nombreFuncion);
+        servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
     }
 }

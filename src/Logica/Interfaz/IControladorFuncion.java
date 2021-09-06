@@ -17,4 +17,5 @@ public interface IControladorFuncion {
     public abstract void Prueba(String nombre_artista,String id_funcion,String id_artista,String nombre_funcion,DTFecha funcion_vigente);
     public abstract Artista obtenerArtista(String nickname);
     
+    
 }

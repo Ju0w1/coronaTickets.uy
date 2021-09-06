@@ -59,5 +59,6 @@ public interface IControladorEspectaculo {
     public abstract Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom, String nomFuncion);
     public abstract boolean puedeCanjearRegistrosPrevios(Map<String, Registro> registros, String espectadorNom, String nomFuncion);
     public abstract void canjearTresRegistrosPrevios(String nomFuncion, String espectadorNom, Date fecha, DefaultTableModel tabla);
+    public abstract void actualizarEstadoDeRegistros(String idFuncion,String registro1, String registro2, String registro3, String espectadorNom, Date fecha);
 }
 
