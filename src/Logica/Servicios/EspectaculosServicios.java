@@ -333,12 +333,15 @@ public class EspectaculosServicios {
             ResultSet rs1 = status1.executeQuery();
             try {
                 while (rs1.next()) {
+                    //System.out.println("ID ARTISTA: "+rs1.getString("art_id"));
                     PreparedStatement status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id"));
                     ResultSet rs2= status2.executeQuery();
-                    String fechaString = rs2.getString("usu_nacimiento"); 
-                    String[] fechaParts = fechaString.split("-");
-                    DTFecha auxFecha = new DTFecha(Integer.parseInt(fechaParts[2]),Integer.parseInt(fechaParts[1]),Integer.parseInt(fechaParts[0]));
-                    artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), auxFecha , rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url")));
+                    if(rs2.next()){
+                        String fechaString = rs2.getDate("usu_nacimiento").toString(); 
+                        String[] fechaParts = fechaString.split("-");
+                        DTFecha auxFecha = new DTFecha(Integer.parseInt(fechaParts[2]),Integer.parseInt(fechaParts[1]),Integer.parseInt(fechaParts[0]));
+                        artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), auxFecha , rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url"))); 
+                    }
                 }
             }catch(SQLException ex2){
                 ex2.printStackTrace();
@@ -512,12 +515,13 @@ public class EspectaculosServicios {
         }
         return rslt;
     }
-     public Map<String, Funcion> getMapFunciones(String espectaculoId) {
+     public Map<String, Funcion> getMapFunciones(int espectaculoId) {
         Map<String, Funcion> resultado = new HashMap<>();
         Map<String, Artista> artistas;
         Espectaculo espectaculo;
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id='"+espectaculoId+"'");
+            
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id="+espectaculoId);
             ResultSet rs1 = status1.executeQuery();
             while (rs1.next()) {
                 artistas=getMapArtistas(rs1.getString("fun_id"));
