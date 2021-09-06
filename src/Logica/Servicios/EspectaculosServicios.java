@@ -398,7 +398,7 @@ public class EspectaculosServicios {
             
             
             
-            if (rs.next()) {
+            while(rs.next()) {
                 map.put(rs.getString("paq_id"), new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")), rs.getFloat("paq_costo"),rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_alta"))));
                 //
             }
