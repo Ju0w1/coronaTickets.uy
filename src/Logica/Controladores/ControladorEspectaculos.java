@@ -5,6 +5,7 @@
  */
 package Logica.Controladores;
 
+import Logica.Clases.Artista;
 import java.util.Map;
 import Logica.Clases.Espectaculo;
 import Logica.Clases.Plataforma;
@@ -104,9 +105,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     }
 
     public void obtenerPlataformasToComboBox(JComboBox listPlataform) {
+        //listPlataform = this.servicioEspectaculo.llenarComboBoxPlataformas();
         for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount(); i++) {
             listPlataform.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
-
         }
     }
 
@@ -523,4 +524,45 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         String idFuncion = servicioEspectaculo.getIdFuncion(nombreFuncion);
         servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
     }
+    @Override
+    public void obtenerEspectaculosToComboBox(JComboBox comboEspectaculos, String nombrePlataforma) {
+        for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxEspectaculos(nombrePlataforma).getItemCount(); i++) {
+            comboEspectaculos.addItem(this.servicioEspectaculo.llenarComboBoxEspectaculos(nombrePlataforma).getItemAt(i).toString());
+        }
+    }
+
+    @Override
+    public void obtenerArtistasDeFuncion(DefaultTableModel tablaModelo, String nombreFuncion) {
+        String idFuncion = this.servicioEspectaculo.getIdFuncion(nombreFuncion);
+        Map<String, Artista> artistasEnFuncion = this.servicioEspectaculo.getMapArtistas(idFuncion);
+        System.out.println("Este es el de ObtenerArtistasDeFuncion"+artistasEnFuncion.isEmpty());
+        
+        tablaModelo.setRowCount(0);
+        
+        int tamanioA = artistasEnFuncion.size();
+        Object[][] data = new Object[tamanioA][2];
+        
+        for(int i = 0; i < tamanioA; i++){
+
+            for(Map.Entry<String, Artista> entry : artistasEnFuncion.entrySet()){
+
+               data[i][0] = entry.getKey();
+               data[i][1] = entry.getValue();
+               //String datos[] = data[i][1].
+               i++;
+            }
+        }  
+        
+        for(int i = 0; i < tamanioA; i++){
+            //String data[] = {this.usuarios.get(i).getNombre(), this.usuarios.get(i).getApellido(), this.usuarios.get(i).getCedula()};
+           
+            Artista a = (Artista) data[i][1];
+            //System.err.println(e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getMes());
+            
+            String datos[] = {a.getNombre(),a.getDescripcion(),a.getBiografia(),a.getLinkWeb()};
+            tablaModelo.addRow(datos);
+        }
+    }
+
+
 }

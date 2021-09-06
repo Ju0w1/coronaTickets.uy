@@ -52,6 +52,8 @@ public interface IControladorEspectaculo {
     public abstract void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento , JList listaEspectaculos);
     public void obtenerPaquetes(JList listPaquetes); //NUEVO
     public void obtenerPlataformasToComboBox(JComboBox comboBoxPlataformas); //NUEVO
+    public void obtenerEspectaculosToComboBox(JComboBox comboEspectaculos, String nombrePlataforma); //NUEVO
+    //public void cargarDatosFunciones(DefaultTableModel modeloTabla, String nombreEspectaculo); //NUEVO
     public void obtenerEspectaculosPP(JList listEspectaculos, String paq_seleccionado, String plat_seleccionada); //NUEVO
     public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO
     public abstract void obtenerTablaFunciones (DefaultTableModel tablaModelo, String nomEspectaculo);
@@ -60,5 +62,8 @@ public interface IControladorEspectaculo {
     public abstract boolean puedeCanjearRegistrosPrevios(Map<String, Registro> registros, String espectadorNom, String nomFuncion);
     public abstract void canjearTresRegistrosPrevios(String nomFuncion, String espectadorNom, Date fecha, DefaultTableModel tabla);
     public abstract void actualizarEstadoDeRegistros(String idFuncion,String registro1, String registro2, String registro3, String espectadorNom, Date fecha);
+    public abstract Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom);
+    
+    public void obtenerArtistasDeFuncion(DefaultTableModel tablaModelo, String nombreFuncion);
 }
 
