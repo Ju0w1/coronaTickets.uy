@@ -695,7 +695,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtURLKeyPressed
 
     private void jComboBox1PlataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasActionPerformed
-        
+     
     }//GEN-LAST:event_jComboBox1PlataformasActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

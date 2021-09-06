@@ -159,7 +159,6 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         fecha.setText(e.getFecha().toString());
         descrip.setText(e.getDescripcion());
     }
-    
 
     public void obtenerArtistas() {
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistas().getModel());
@@ -386,38 +385,38 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     public void obtenerPlataformas() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
-     public void obtenerTablaFunciones (DefaultTableModel tablaModelo, String nomEspectaculo){ 
-        String id=servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
+
+    public void obtenerTablaFunciones(DefaultTableModel tablaModelo, String nomEspectaculo) {
+        String id = servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
         int idEsp = Integer.parseInt(id);
         //System.out.println(id);
-        Map<String, Funcion> mapFunciones=servicioEspectaculo.getMapFunciones(idEsp);
+        Map<String, Funcion> mapFunciones = servicioEspectaculo.getMapFunciones(idEsp);
 //        /Funcion f;
-        int i=0;
-        
+        int i = 0;
+
         tablaModelo.setRowCount(0);
-        
+
         int tamanioFun = mapFunciones.size();
         Object[][] data = new Object[tamanioFun][2];
-        
-        for(int n = 0; n < tamanioFun; n++){
-            for(Map.Entry<String, Funcion> entry : mapFunciones.entrySet()){
 
-               data[n][0] = entry.getKey();
-               data[n][1] = entry.getValue();
-               //String datos[] = data[i][1].
-               n++;
+        for (int n = 0; n < tamanioFun; n++) {
+            for (Map.Entry<String, Funcion> entry : mapFunciones.entrySet()) {
+
+                data[n][0] = entry.getKey();
+                data[n][1] = entry.getValue();
+                //String datos[] = data[i][1].
+                n++;
             }
-        }  
-        for(int j = 0; j < tamanioFun; j++){
+        }
+        for (int j = 0; j < tamanioFun; j++) {
             //String data[] = {this.usuarios.get(i).getNombre(), this.usuarios.get(i).getApellido(), this.usuarios.get(i).getCedula()};
             Funcion f = (Funcion) data[j][1];
             //System.err.println(e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getMes());
             //String fecha = e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getAnio();
-            String datos[] = {f.getNombre(),f.getEspectaculo().getNombre(),f.getFecha().toString(),f.getHoraInicio().toString()};
+            String datos[] = {f.getNombre(), f.getEspectaculo().getNombre(), f.getFecha().toString(), f.getHoraInicio().toString()};
             tablaModelo.addRow(datos);
         }
-        
+
 //        for (Map.Entry entry : mapFunciones.entrySet()) {
 //            f= (Funcion) entry.getValue();
 //            tablaFunciones.setValueAt(f.getNombre(), i, 0);
@@ -427,48 +426,89 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
 //            i++;
 //        }
     }
-     
-     public int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha){
+
+    public int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha) {
         /*LocalDateTime now = LocalDateTime.now();
         Date fechaRegistro= new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());*/
         int rslt;
-        String idFuncion=servicioEspectaculo.getIdFuncion(nomFuncion);
-        String idEspectador=servicioEspectaculo.getIdUsuario(espectadorNom);
-        Map<String, Registro> registros=servicioEspectaculo.registrosPrevios(idEspectador);
-        
-         System.out.println(registros.isEmpty());
-        
-        if(servicioEspectaculo.limiteSobrepasado(idFuncion)){ //Se sobrepasa el limite de registros
-            rslt=3;
-        }
-        else{ //No se sobrepasa el limite de registros
-            
-            if (!registros.isEmpty()){ //Si hay registros pervios
-                if (!yaRegistradoAFuncion(registros, espectadorNom)){ //ver si son o no suficientes
-                    rslt=1;//llamar a una ventana en la que seleccionar los registros a canjear
-                }else{
-                    rslt=2; //Llamar a presentacion y cambiar datos
+        String idFuncion = servicioEspectaculo.getIdFuncion(nomFuncion);
+        String idEspectador = servicioEspectaculo.getIdUsuario(espectadorNom);
+        Map<String, Registro> registros = servicioEspectaculo.registrosPrevios(idEspectador);
+
+        System.out.println(registros.isEmpty());
+
+        if (servicioEspectaculo.limiteSobrepasado(idFuncion)) { //Se sobrepasa el limite de registros
+            rslt = 3;
+        } else { //No se sobrepasa el limite de registros
+
+            if (!registros.isEmpty()) { //Si hay registros pervios
+                if (!yaRegistradoAFuncion(registros, espectadorNom, nomFuncion)) { //ver si son o no suficientes
+                    if (puedeCanjearRegistrosPrevios(registros, espectadorNom, nomFuncion) == true) {
+                        rslt = 1;//llamar a una ventana en la que seleccionar los registros a canjear
+                    } else {
+                        servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
+                        rslt = 0; //el registro ya fue realizado
+                    }
+
+                } else {
+                    rslt = 2; //Llamar a presentacion y cambiar datos
                 }
-            }else{ //Si no hay registros pervios
+            } else { //Si no hay registros pervios
                 servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
-                rslt=0; //el registro ya fue realizado
+                rslt = 0; //el registro ya fue realizado
             }
         }
         return rslt;
     }
-     
-     public Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom){
-        
+
+    public Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom, String nomFuncion) {
         Registro r;
-        Boolean rslt=false;
+        Boolean rslt = false;
         for (Map.Entry entry : registros.entrySet()) {
-            r= (Registro) entry.getValue();
-            if (r.getEspectador().equals(espectadorNom)){
-                
-                rslt=true;
+            r = (Registro) entry.getValue();
+            if (r.getEspectador().equals(espectadorNom) && r.getFuncion().equals(nomFuncion)) {
+
+                rslt = true;
             }
             System.out.println(espectadorNom);
         }
         return rslt;
+    }
+
+    public boolean puedeCanjearRegistrosPrevios(Map<String, Registro> registros, String espectadorNom, String nomFuncion) {
+        Registro r;
+        int registrosPrevios = 0;
+        for (Map.Entry entry : registros.entrySet()) {
+            r = (Registro) entry.getValue();
+            if (r.getEspectador().equals(espectadorNom)) {
+                registrosPrevios++;
+            }
+            System.out.println(espectadorNom);
+        }
+        if (registrosPrevios >= 3) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void canjearTresRegistrosPrevios(String nomFuncion, String espectadorNom, Date fecha, DefaultTableModel tabla) {
+        /*LocalDateTime now = LocalDateTime.now();
+        Date fechaRegistro= new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());*/
+        tabla.setRowCount(0);
+        int rslt;
+        String idFuncion = servicioEspectaculo.getIdFuncion(nomFuncion);
+        String idEspectador = servicioEspectaculo.getIdUsuario(espectadorNom);
+        Map<String, Registro> registros = servicioEspectaculo.registrosPrevios(idEspectador);
+        Registro r;
+        for (Map.Entry entry : registros.entrySet()) {
+            r = (Registro) entry.getValue();
+            if (r.getEspectador().equals(espectadorNom)) {
+                Object datos[] = {r.getFuncion(), r.getFecha(), r.getCanjeado()};
+                System.out.println("XXXXXXX"+r.getFuncion());
+                tabla.addRow(datos);
+            }
+            System.out.println(espectadorNom);
+        }
     }
 }

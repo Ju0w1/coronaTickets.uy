@@ -56,6 +56,8 @@ public interface IControladorEspectaculo {
     public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO
     public abstract void obtenerTablaFunciones (DefaultTableModel tablaModelo, String nomEspectaculo);
     public abstract int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha);
-    public abstract Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom);
+    public abstract Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom, String nomFuncion);
+    public abstract boolean puedeCanjearRegistrosPrevios(Map<String, Registro> registros, String espectadorNom, String nomFuncion);
+    public abstract void canjearTresRegistrosPrevios(String nomFuncion, String espectadorNom, Date fecha, DefaultTableModel tabla);
 }
 

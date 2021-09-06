@@ -9,6 +9,9 @@ package Presentacion; //New
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Interfaz.IControladorUsuario;
+import static Presentacion.AltaEspectaculo.jFrameBuscarArtista;
+import static Presentacion.MenuInicio.jDesktopPane2;
+import java.awt.Dimension;
 import java.io.Console;
 import java.sql.Date;
 import java.time.LocalDateTime;
@@ -42,6 +45,18 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jFrame1 = new javax.swing.JFrame();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableRegistrosPrevios = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableRegistrosACanjear = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -67,6 +82,128 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         listViewers = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
+
+        jFrame1.setTitle("Canjear registros previos por uno gratis");
+        jFrame1.setMaximumSize(new java.awt.Dimension(516, 448));
+        jFrame1.setMinimumSize(new java.awt.Dimension(516, 448));
+        jFrame1.setResizable(false);
+
+        jLabel1.setText("Espectador:");
+
+        jTableRegistrosPrevios.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id_Registro", "Id_Funcion", "Fecha Registro", "Canjeado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTableRegistrosPrevios);
+        if (jTableRegistrosPrevios.getColumnModel().getColumnCount() > 0) {
+            jTableRegistrosPrevios.getColumnModel().getColumn(0).setResizable(false);
+            jTableRegistrosPrevios.getColumnModel().getColumn(1).setResizable(false);
+            jTableRegistrosPrevios.getColumnModel().getColumn(2).setResizable(false);
+            jTableRegistrosPrevios.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jLabel2.setText("Registros previos sin canjear:");
+
+        jTableRegistrosACanjear.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Id_Registro", "Id_Funcion", "Fecha Registro", "Canjeado"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTableRegistrosACanjear);
+        if (jTableRegistrosACanjear.getColumnModel().getColumnCount() > 0) {
+            jTableRegistrosACanjear.getColumnModel().getColumn(0).setResizable(false);
+            jTableRegistrosACanjear.getColumnModel().getColumn(1).setResizable(false);
+            jTableRegistrosACanjear.getColumnModel().getColumn(2).setResizable(false);
+            jTableRegistrosACanjear.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        jButton2.setText("Seleccionar");
+
+        jLabel3.setText("Registros a canjear:");
+
+        jButton3.setText("Canjear");
+
+        jButton7.setText("Cancelar");
+
+        jTextField1.setEditable(false);
+
+        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
+        jFrame1.getContentPane().setLayout(jFrame1Layout);
+        jFrame1Layout.setHorizontalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addComponent(jButton7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3))
+                    .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2)
+                            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2)
+                                .addGroup(jFrame1Layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+        jFrame1Layout.setVerticalGroup(
+            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jFrame1Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton7))
+                .addGap(30, 30, 30))
+        );
 
         setClosable(true);
         setTitle("Registrar espectador a función");
@@ -321,7 +458,12 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                                     this.dispose();
                                     break;
                                 case 1: //llamar a ventaja de canje
-                                    //acá va la llamada a la ventana de canjes
+                                    Dimension desktopSize = jDesktopPane2.getSize();
+                                    Dimension jInternalFrameSize = jFrame1.getSize();
+                                    jFrame1.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+                                    (desktopSize.height- jInternalFrameSize.height)/2);
+                                    jFrame1.setVisible(true);
+                                    this.ICE.canjearTresRegistrosPrevios(getFunc, getViewer, date, (DefaultTableModel) jTableRegistrosPrevios.getModel());
                                     break;
                                 case 2: //El espectador seleccionado ya está registrado
                                     JOptionPane.showMessageDialog(this, "El espectador seleccionado ya está registrado a la funcion.");
@@ -364,20 +506,32 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private javax.swing.JList<String> espec;
     private javax.swing.JTable funcTable;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JFrame jFrame1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTable jTableRegistrosACanjear;
+    private javax.swing.JTable jTableRegistrosPrevios;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable listViewers;
     private javax.swing.JSpinner mes;
     private javax.swing.JComboBox<String> plat;
