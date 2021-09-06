@@ -482,8 +482,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
 
     @Override
     public void obtenerArtistasDeFuncion(DefaultTableModel tablaModelo, String nombreFuncion) {
-        Map<String, Artista> artistasEnFuncion = this.servicioEspectaculo.getMapArtistas(nombreFuncion);
-        System.out.println(artistasEnFuncion.isEmpty());
+        String idFuncion = this.servicioEspectaculo.getIdFuncion(nombreFuncion);
+        Map<String, Artista> artistasEnFuncion = this.servicioEspectaculo.getMapArtistas(idFuncion);
+        System.out.println("Este es el de ObtenerArtistasDeFuncion"+artistasEnFuncion.isEmpty());
         
         tablaModelo.setRowCount(0);
         

@@ -259,8 +259,14 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         if(this.funcTable1.getSelectedRow() < 0){
             JOptionPane.showMessageDialog(this, "Debe seleccionar una fila de la tabla funciones");
         }else{
-            this.jPanel2.setVisible(true);
+            
             this.ICE.obtenerArtistasDeFuncion((DefaultTableModel) this.artTable.getModel(), this.funcTable1.getModel().getValueAt(this.funcTable1.getSelectedRow(),0).toString());
+            if(this.artTable.getModel().getRowCount()>0){
+                this.jPanel2.setVisible(true);
+            }else{
+                this.jPanel2.setVisible(false);
+                JOptionPane.showMessageDialog(this, "La función no tiene artistas asignados");
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 

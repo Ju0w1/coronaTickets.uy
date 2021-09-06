@@ -349,25 +349,26 @@ public class EspectaculosServicios {
       public Map<String, Artista> getMapArtistas(String funcionId) {
         Map<String, Artista> artistas= new HashMap<>();
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM artistas AS a, funcion_artista AS funart WHERE a.art_id=funart.funart_art_id AND funart.funart_fun_id=?");
-            status1.setString(1, funcionId);
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM artistas AS a, funcion_artista AS funart WHERE a.art_id=funart.funart_art_id AND funart.funart_fun_id="+Integer.parseInt(funcionId));
+            //status1.setString(1, funcionId);
             ResultSet rs1 = status1.executeQuery();
-            try {
-                while (rs1.next()) {
-                    //System.out.println("ID ARTISTA: "+rs1.getString("art_id"));
-                    System.out.println("id artista ="+rs1.getInt("art_id"));
-                    PreparedStatement status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getInt("art_id"));
-                    ResultSet rs2= status2.executeQuery();
-                    if(rs2.next()){
-                        String fechaString = rs2.getDate("usu_nacimiento").toString(); 
-                        String[] fechaParts = fechaString.split("-");
-                        DTFecha auxFecha = new DTFecha(Integer.parseInt(fechaParts[2]),Integer.parseInt(fechaParts[1]),Integer.parseInt(fechaParts[0]));
-                        artistas.put(rs1.getString("art_id)"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), auxFecha , rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url"))); 
-                    }
+            while (rs1.next()) {
+                System.out.println("ID ARTISTA: "+rs1.getInt(1));
+                //System.out.println("id artista ="+rs1.getInt("art_id"));
+                PreparedStatement status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getInt("art_usu"));
+                ResultSet rs2= status2.executeQuery();
+                if(rs2.next()){
+                    System.out.println("nombreUsuario ="+rs2.getString("usu_nombre"));
+                    String fechaString = rs2.getDate("usu_nacimiento").toString(); 
+                    String[] fechaParts = fechaString.split("-");
+                    System.out.println("Fecha nacim: "+fechaString);
+                    DTFecha auxFecha = new DTFecha(Integer.parseInt(fechaParts[2]),Integer.parseInt(fechaParts[1]),Integer.parseInt(fechaParts[0]));
+                    artistas.put(rs1.getString("art_usu"), new Artista(rs2.getString("usu_nick"), rs2.getString("usu_nombre"), rs2.getString("usu_apellido"), rs2.getString("usu_mail"), auxFecha , rs1.getString("art_descripcion"), rs1.getString("art_biografia"), rs1.getString("art_url"))); 
+                }else{
+                    System.out.println("Vacio");
                 }
-            }catch(SQLException ex2){
-                ex2.printStackTrace();
             }
+
         } catch (SQLException ex1) {
             ex1.printStackTrace();
         }
