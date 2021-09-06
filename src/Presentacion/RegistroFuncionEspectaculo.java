@@ -15,6 +15,7 @@ import java.awt.Dimension;
 import java.io.Console;
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Vector;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -50,13 +51,17 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableRegistrosPrevios = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTableRegistrosACanjear = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
+        registroSeleccionado1 = new javax.swing.JTextField();
+        registroSeleccionado2 = new javax.swing.JTextField();
+        registroSeleccionado3 = new javax.swing.JTextField();
+        btnBorrar1 = new javax.swing.JButton();
+        btnBorrar2 = new javax.swing.JButton();
+        btnBorrar3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -92,17 +97,17 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
 
         jTableRegistrosPrevios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Id_Registro", "Id_Funcion", "Fecha Registro", "Canjeado"
+                "Funcion", "Fecha Registro", "Canjeado"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -114,47 +119,56 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
             jTableRegistrosPrevios.getColumnModel().getColumn(0).setResizable(false);
             jTableRegistrosPrevios.getColumnModel().getColumn(1).setResizable(false);
             jTableRegistrosPrevios.getColumnModel().getColumn(2).setResizable(false);
-            jTableRegistrosPrevios.getColumnModel().getColumn(3).setResizable(false);
         }
 
         jLabel2.setText("Registros previos sin canjear:");
 
-        jTableRegistrosACanjear.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Id_Registro", "Id_Funcion", "Fecha Registro", "Canjeado"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
+        jButton2.setText("Seleccionar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
-        jScrollPane2.setViewportView(jTableRegistrosACanjear);
-        if (jTableRegistrosACanjear.getColumnModel().getColumnCount() > 0) {
-            jTableRegistrosACanjear.getColumnModel().getColumn(0).setResizable(false);
-            jTableRegistrosACanjear.getColumnModel().getColumn(1).setResizable(false);
-            jTableRegistrosACanjear.getColumnModel().getColumn(2).setResizable(false);
-            jTableRegistrosACanjear.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        jButton2.setText("Seleccionar");
 
         jLabel3.setText("Registros a canjear:");
 
         jButton3.setText("Canjear");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton7.setText("Cancelar");
 
         jTextField1.setEditable(false);
+
+        registroSeleccionado1.setEditable(false);
+
+        registroSeleccionado2.setEditable(false);
+
+        registroSeleccionado3.setEditable(false);
+
+        btnBorrar1.setText("Borrar seleccion");
+        btnBorrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrar1ActionPerformed(evt);
+            }
+        });
+
+        btnBorrar2.setText("Borrar seleccion");
+        btnBorrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrar2ActionPerformed(evt);
+            }
+        });
+
+        btnBorrar3.setText("Borrar seleccion");
+        btnBorrar3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrar3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
         jFrame1.getContentPane().setLayout(jFrame1Layout);
@@ -162,23 +176,35 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
             jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jFrame1Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addComponent(jButton7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton3))
-                    .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel3)
-                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
-                            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2)
-                                .addGroup(jFrame1Layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                        .addComponent(registroSeleccionado3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBorrar3))
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addComponent(registroSeleccionado2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBorrar2))
+                    .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jFrame1Layout.createSequentialGroup()
+                            .addComponent(jButton7)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton3))
+                        .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton2)
+                                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 456, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addGroup(jFrame1Layout.createSequentialGroup()
+                                        .addComponent(jLabel1)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addGroup(jFrame1Layout.createSequentialGroup()
+                        .addComponent(registroSeleccionado1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnBorrar1)))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
         jFrame1Layout.setVerticalGroup(
@@ -196,9 +222,19 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                 .addComponent(jButton2)
                 .addGap(3, 3, 3)
                 .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registroSeleccionado1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registroSeleccionado2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(registroSeleccionado3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBorrar3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
                     .addComponent(jButton7))
@@ -409,7 +445,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        // TODO add your handling code here:
         String nomEspectaculo= espec.getSelectedValue();
@@ -497,9 +533,49 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         this.anio.setValue(now.getYear());
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    if(jTableRegistrosPrevios.getValueAt(jTableRegistrosPrevios.getSelectedRow(), 0).toString().equals(registroSeleccionado1.getText()) || jTableRegistrosPrevios.getValueAt(jTableRegistrosPrevios.getSelectedRow(), 0).toString().equals(registroSeleccionado2.getText()) || jTableRegistrosPrevios.getValueAt(jTableRegistrosPrevios.getSelectedRow(), 0).toString().equals(registroSeleccionado3.getText())){
+        JOptionPane.showMessageDialog(this, "No puede seleccionar el mismo registro.");
+    }else{
+        if(registroSeleccionado1.getText().equals("")){
+            registroSeleccionado1.setText(jTableRegistrosPrevios.getValueAt(jTableRegistrosPrevios.getSelectedRow(), 0).toString());
+        }
+        else if(registroSeleccionado2.getText().equals("")){
+            registroSeleccionado2.setText(jTableRegistrosPrevios.getValueAt(jTableRegistrosPrevios.getSelectedRow(), 0).toString());
+        }
+        else if(registroSeleccionado3.getText().equals("")){
+            registroSeleccionado3.setText(jTableRegistrosPrevios.getValueAt(jTableRegistrosPrevios.getSelectedRow(), 0).toString());
+        }
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnBorrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar1ActionPerformed
+        registroSeleccionado1.setText("");
+    }//GEN-LAST:event_btnBorrar1ActionPerformed
+
+    private void btnBorrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar2ActionPerformed
+        registroSeleccionado2.setText("");
+    }//GEN-LAST:event_btnBorrar2ActionPerformed
+
+    private void btnBorrar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrar3ActionPerformed
+        registroSeleccionado3.setText("");
+    }//GEN-LAST:event_btnBorrar3ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(registroSeleccionado1.getText().equals("") || registroSeleccionado2.getText().equals("") || registroSeleccionado3.getText().equals("")){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar 3 registros para canjear.");
+        }
+        else{
+            
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner anio;
+    private javax.swing.JButton btnBorrar1;
+    private javax.swing.JButton btnBorrar2;
+    private javax.swing.JButton btnBorrar3;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.JSpinner dia;
@@ -525,16 +601,17 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTable jTableRegistrosACanjear;
     private javax.swing.JTable jTableRegistrosPrevios;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTable listViewers;
     private javax.swing.JSpinner mes;
     private javax.swing.JComboBox<String> plat;
+    private javax.swing.JTextField registroSeleccionado1;
+    private javax.swing.JTextField registroSeleccionado2;
+    private javax.swing.JTextField registroSeleccionado3;
     private javax.swing.JTextField txtFuncion;
     // End of variables declaration//GEN-END:variables
 }
