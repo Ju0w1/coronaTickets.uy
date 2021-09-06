@@ -4,7 +4,7 @@
   <NonVisualComponents>
     <Container class="javax.swing.JFrame" name="jFrame1">
       <Properties>
-        <Property name="title" type="java.lang.String" value="Canjear registros previos por uno gratis"/>
+        <Property name="title" type="java.lang.String" value="PROMO: Canjear tres registros por uno"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[516, 448]"/>
         </Property>
@@ -186,6 +186,9 @@
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="registroSeleccionado1">
           <Properties>

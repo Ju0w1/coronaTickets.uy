@@ -91,7 +91,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         listViewers = new javax.swing.JTable();
         jButton6 = new javax.swing.JButton();
 
-        jFrame1.setTitle("Canjear registros previos por uno gratis");
+        jFrame1.setTitle("PROMO: Canjear tres registros por uno");
         jFrame1.setMaximumSize(new java.awt.Dimension(516, 448));
         jFrame1.setMinimumSize(new java.awt.Dimension(516, 448));
         jFrame1.setResizable(false);
@@ -145,6 +145,11 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         jButton7.setText("Cancelar");
 
         jTextField1.setEditable(false);
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         registroSeleccionado1.setEditable(false);
 
@@ -461,7 +466,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-                // TODO add your handling code here:
+        
         if (plat.getSelectedIndex()==-1){
             JOptionPane.showMessageDialog(this, "No ha seleccionado ninguna plataforma.");
         }
@@ -502,6 +507,7 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                                     jFrame1.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
                                     (desktopSize.height- jInternalFrameSize.height)/2);
                                     jFrame1.setVisible(true);
+                                    jTextField1.setText(getViewer);
                                     this.ICE.canjearTresRegistrosPrevios(getFunc, getViewer, date, (DefaultTableModel) jTableRegistrosPrevios.getModel());
                                     break;
                                 case 2: //El espectador seleccionado ya está registrado
@@ -574,6 +580,10 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
             this.ICE.actualizarEstadoDeRegistros(txtFuncion.getText(),registroSeleccionado1.getText(), registroSeleccionado2.getText(), registroSeleccionado3.getText(), getViewer, date);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
