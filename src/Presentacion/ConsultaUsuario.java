@@ -49,167 +49,48 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtBuscador = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        txtNickname = new javax.swing.JTextField();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
-        txtNombre = new javax.swing.JTextField();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel7 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
-        txtApellido = new javax.swing.JTextField();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
-        txtEmail = new javax.swing.JTextField();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel9 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
-        txtFechaNacimiento = new javax.swing.JTextField();
-        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel1 = new javax.swing.JPanel();
-        spinnerDia = new javax.swing.JSpinner();
-        spinnerMes = new javax.swing.JSpinner();
-        spinnerAnio = new javax.swing.JSpinner();
         btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         btnMostrar = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        txtNickname = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtFechaNacimiento = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        spinnerDia = new javax.swing.JSpinner();
+        spinnerMes = new javax.swing.JSpinner();
+        spinnerAnio = new javax.swing.JSpinner();
 
-        setTitle("Consulta de usuario");
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Espectadores");
         setMinimumSize(new java.awt.Dimension(900, 500));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(900, 500));
+        setPreferredSize(new java.awt.Dimension(880, 460));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        txtBuscador.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtBuscadorCaretUpdate(evt);
             }
         });
-
-        jLabel1.setText("Lista de usuarios");
+        txtBuscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscadorActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Filtro por nickname");
-
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
-
-        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel4.setText("Nickname");
-        jPanel5.add(jLabel4);
-        jPanel5.add(filler1);
-
-        txtNickname.setEditable(false);
-        jPanel5.add(txtNickname);
-
-        jPanel3.add(jPanel5);
-        jPanel3.add(filler3);
-
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel6.setText("Nombre");
-        jPanel6.add(jLabel6);
-        jPanel6.add(filler7);
-
-        txtNombre.setEditable(false);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-        jPanel6.add(txtNombre);
-
-        jPanel3.add(jPanel6);
-        jPanel3.add(filler4);
-
-        jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel7.setText("Apellido");
-        jPanel7.add(jLabel7);
-        jPanel7.add(filler2);
-
-        txtApellido.setEditable(false);
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
-            }
-        });
-        jPanel7.add(txtApellido);
-
-        jPanel3.add(jPanel7);
-        jPanel3.add(filler5);
-
-        jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel8.setText("Email");
-        jPanel8.add(jLabel8);
-        jPanel8.add(filler9);
-
-        txtEmail.setEditable(false);
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        jPanel8.add(txtEmail);
-
-        jPanel3.add(jPanel8);
-        jPanel3.add(filler6);
-
-        jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel9.setText("Fecha de nacimiento");
-        jPanel9.add(jLabel9);
-        jPanel9.add(filler10);
-
-        txtFechaNacimiento.setEditable(false);
-        txtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaNacimientoActionPerformed(evt);
-            }
-        });
-        jPanel9.add(txtFechaNacimiento);
-
-        jPanel3.add(jPanel9);
-        jPanel3.add(filler13);
-
-        jPanel1.setMinimumSize(new java.awt.Dimension(170, 50));
-        jPanel1.setPreferredSize(new java.awt.Dimension(170, 50));
-
-        spinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        spinnerDia.setEnabled(false);
-        spinnerDia.setMinimumSize(new java.awt.Dimension(50, 30));
-        spinnerDia.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(spinnerDia);
-
-        spinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        spinnerMes.setEnabled(false);
-        spinnerMes.setMinimumSize(new java.awt.Dimension(50, 30));
-        spinnerMes.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(spinnerMes);
-
-        spinnerAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
-        spinnerAnio.setEnabled(false);
-        spinnerAnio.setMinimumSize(new java.awt.Dimension(80, 30));
-        spinnerAnio.setName(""); // NOI18N
-        spinnerAnio.setPreferredSize(new java.awt.Dimension(80, 30));
-        jPanel1.add(spinnerAnio);
-
-        jPanel3.add(jPanel1);
 
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
@@ -234,8 +115,6 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
                 btnCancelarActionPerformed(evt);
             }
         });
-
-        btnBuscar.setText("Buscar");
 
         btnMostrar.setText("Mostrar");
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
@@ -262,65 +141,164 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         });
         jScrollPane3.setViewportView(jTable2);
 
+        txtNickname.setEditable(false);
+
+        txtNombre.setEditable(false);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        txtApellido.setEditable(false);
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoActionPerformed(evt);
+            }
+        });
+
+        txtEmail.setEditable(false);
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        txtFechaNacimiento.setEditable(false);
+        txtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaNacimientoActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setText("Nickname");
+
+        jLabel6.setText("Nombre");
+
+        jLabel7.setText("Apellido");
+
+        jLabel8.setText("Email");
+
+        jLabel9.setText("Fecha de nacimiento");
+
+        spinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+        spinnerDia.setEnabled(false);
+        spinnerDia.setMinimumSize(new java.awt.Dimension(50, 30));
+        spinnerDia.setPreferredSize(new java.awt.Dimension(50, 30));
+
+        spinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        spinnerMes.setEnabled(false);
+        spinnerMes.setMinimumSize(new java.awt.Dimension(50, 30));
+        spinnerMes.setPreferredSize(new java.awt.Dimension(50, 30));
+
+        spinnerAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
+        spinnerAnio.setEnabled(false);
+        spinnerAnio.setMinimumSize(new java.awt.Dimension(80, 30));
+        spinnerAnio.setName(""); // NOI18N
+        spinnerAnio.setPreferredSize(new java.awt.Dimension(80, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jLabel1)
-                .addGap(81, 81, 81)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(464, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 1026, Short.MAX_VALUE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 796, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(spinnerDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(spinnerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(spinnerAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtEmail)
+                                        .addComponent(txtNombre)
+                                        .addComponent(txtNickname)
+                                        .addComponent(txtApellido)
+                                        .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 308, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnMostrar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
+                        .addComponent(btnModificar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spinnerDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCancelar)
+                        .addGap(53, 53, 53))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtBuscadorActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -340,6 +318,13 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        this.btnGuardar.setEnabled(false);
+        this.btnCancelar.setEnabled(false);
+        this.txtNombre.setEditable(false);
+        this.txtApellido.setEditable(false);
+        this.spinnerDia.setEnabled(false);
+        this.spinnerMes.setEnabled(false);
+        this.spinnerAnio.setEnabled(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -373,87 +358,77 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-        if(this.txtEmail.getText().equals("") || this.txtApellido.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Revise que no haya ningún campo sin completar");
-        }else{
-            JFrame frame = new JFrame();
-        
-            Object[] options = {"Si", "No"};
-            int n = JOptionPane.showOptionDialog(frame,
-            "¿Está seguro que quiere guardar?",
-            "Confirmar",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,     //do not use a custom Icon
-            options,  //the titles of buttons
-            options[0]); //default button title
-
-            String email = this.txtEmail.getText();
-            String nombre = this.txtNombre.getText();
-            String apellido = this.txtApellido.getText();
-            int dia = (int) this.spinnerDia.getValue();
-            int mes = (int) this.spinnerMes.getValue();
-            int anio = (int) this.spinnerAnio.getValue();
-
-            if(n == 0){
-                try{
-                    this.ICU.modificarEspectador(email,nombre, apellido,new DTFecha(dia,mes,anio));
-                    this.ICU.obtenerEspectadores((DefaultTableModel) this.jTable2.getModel());
-                    this.btnGuardar.setEnabled(false);
-                    this.btnCancelar.setEnabled(false);
-                    this.txtNombre.setEditable(false);
-                    this.txtApellido.setEditable(false);
-                    this.spinnerDia.setEnabled(false);
-                    this.spinnerMes.setEnabled(false);
-                    this.spinnerAnio.setEnabled(false);
-                }catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
-                }  
+        if (this.ICU.controlFecha((int)this.spinnerDia.getValue(),(int)this.spinnerMes.getValue(),(int)this.spinnerAnio.getValue()) == false){
+            JOptionPane.showMessageDialog(null, "Fecha incorrecta");
+        } else {
+            if(this.txtEmail.getText().equals("") || this.txtApellido.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Revise que no haya ningún campo sin completar");
             }else{
-               
+                JFrame frame = new JFrame();
+
+                Object[] options = {"Si", "No"};
+                int n = JOptionPane.showOptionDialog(frame,
+                "¿Está seguro que quiere guardar?",
+                "Confirmar",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,     //do not use a custom Icon
+                options,  //the titles of buttons
+                options[0]); //default button title
+
+                String email = this.txtEmail.getText();
+                String nombre = this.txtNombre.getText();
+                String apellido = this.txtApellido.getText();
+                int dia = (int) this.spinnerDia.getValue();
+                int mes = (int) this.spinnerMes.getValue();
+                int anio = (int) this.spinnerAnio.getValue();
+
+                if(n == 0){
+                    try{
+                        this.ICU.modificarEspectador(email,nombre, apellido,new DTFecha(dia,mes,anio));
+                        this.ICU.obtenerEspectadores((DefaultTableModel) this.jTable2.getModel());
+                        this.btnGuardar.setEnabled(false);
+                        this.btnCancelar.setEnabled(false);
+                        this.txtNombre.setEditable(false);
+                        this.txtApellido.setEditable(false);
+                        this.spinnerDia.setEnabled(false);
+                        this.spinnerMes.setEnabled(false);
+                        this.spinnerAnio.setEnabled(false);
+                    }catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }  
+                }else{
+
+                }
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void txtBuscadorCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtBuscadorCaretUpdate
+        // TODO add your handling code here:
+        this.ICU.obtenerEspectadoresBuscador((DefaultTableModel) this.jTable2.getModel(), this.txtBuscador.getText());
+        //this.ICU.obtenerEspectadoresBuscador((DefaultTableModel) this.jTable2.getModel(), );
+    }//GEN-LAST:event_txtBuscadorCaretUpdate
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnMostrar;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler10;
-    private javax.swing.Box.Filler filler13;
-    private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler3;
-    private javax.swing.Box.Filler filler4;
-    private javax.swing.Box.Filler filler5;
-    private javax.swing.Box.Filler filler6;
-    private javax.swing.Box.Filler filler7;
-    private javax.swing.Box.Filler filler9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JSpinner spinnerAnio;
     private javax.swing.JSpinner spinnerDia;
     private javax.swing.JSpinner spinnerMes;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBuscador;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNickname;

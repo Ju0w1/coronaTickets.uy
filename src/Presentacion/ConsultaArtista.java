@@ -37,78 +37,59 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField2 = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtBuscador = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        txtNickname = new javax.swing.JTextField();
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel6 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
-        txtNombre = new javax.swing.JTextField();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel7 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
-        txtApellido = new javax.swing.JTextField();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
-        txtEmail = new javax.swing.JTextField();
-        filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel9 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        filler10 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
-        txtFechaNacimiento = new javax.swing.JTextField();
-        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel1 = new javax.swing.JPanel();
-        spinnerDia = new javax.swing.JSpinner();
-        spinnerMes = new javax.swing.JSpinner();
-        spinnerAnio = new javax.swing.JSpinner();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
-        jScrollPane3 = new javax.swing.JScrollPane();
-        areaDescripcion = new javax.swing.JTextArea();
-        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel11 = new javax.swing.JPanel();
-        jLabel12 = new javax.swing.JLabel();
-        filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(21, 0), new java.awt.Dimension(21, 0), new java.awt.Dimension(19, 32767));
-        jScrollPane2 = new javax.swing.JScrollPane();
-        areaBiografia = new javax.swing.JTextArea();
-        filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel12 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        filler16 = new javax.swing.Box.Filler(new java.awt.Dimension(21, 0), new java.awt.Dimension(21, 0), new java.awt.Dimension(19, 32767));
-        txtUrl = new javax.swing.JTextField();
-        jPanel13 = new javax.swing.JPanel();
-        jPanel14 = new javax.swing.JPanel();
-        filler20 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
         btnModificar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         btnMostrar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        txtNickname = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        txtApellido = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtFechaNacimiento = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        spinnerDia = new javax.swing.JSpinner();
+        spinnerMes = new javax.swing.JSpinner();
+        spinnerAnio = new javax.swing.JSpinner();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        areaDescripcion = new javax.swing.JTextArea();
+        jLabel11 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        areaBiografia = new javax.swing.JTextArea();
+        jLabel12 = new javax.swing.JLabel();
+        txtUrl = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setTitle("Artistas");
         setMinimumSize(new java.awt.Dimension(1000, 640));
-        setPreferredSize(new java.awt.Dimension(1000, 640));
+        setPreferredSize(new java.awt.Dimension(1130, 500));
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+        txtBuscador.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtBuscadorCaretUpdate(evt);
             }
         });
-
-        jLabel1.setText("Lista de artistas");
+        txtBuscador.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtBuscadorActionPerformed(evt);
+            }
+        });
+        txtBuscador.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtBuscadorKeyPressed(evt);
+            }
+        });
 
         jLabel2.setText("Filtro por nickname");
 
@@ -130,167 +111,8 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
         });
         jScrollPane4.setViewportView(jTable2);
 
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
-
-        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel4.setText("Nickname");
-        jPanel5.add(jLabel4);
-        jPanel5.add(filler1);
-
-        txtNickname.setEditable(false);
-        jPanel5.add(txtNickname);
-
-        jPanel3.add(jPanel5);
-        jPanel3.add(filler3);
-
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel6.setText("Nombre");
-        jPanel6.add(jLabel6);
-        jPanel6.add(filler7);
-
-        txtNombre.setEditable(false);
-        txtNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNombreActionPerformed(evt);
-            }
-        });
-        jPanel6.add(txtNombre);
-
-        jPanel3.add(jPanel6);
-        jPanel3.add(filler4);
-
-        jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel7.setText("Apellido");
-        jPanel7.add(jLabel7);
-        jPanel7.add(filler2);
-
-        txtApellido.setEditable(false);
-        txtApellido.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtApellidoActionPerformed(evt);
-            }
-        });
-        jPanel7.add(txtApellido);
-
-        jPanel3.add(jPanel7);
-        jPanel3.add(filler5);
-
-        jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel8.setText("Email");
-        jPanel8.add(jLabel8);
-        jPanel8.add(filler9);
-
-        txtEmail.setEditable(false);
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
-            }
-        });
-        jPanel8.add(txtEmail);
-
-        jPanel3.add(jPanel8);
-        jPanel3.add(filler6);
-
-        jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel9.setText("Fecha de nacimiento");
-        jPanel9.add(jLabel9);
-        jPanel9.add(filler10);
-
-        txtFechaNacimiento.setEditable(false);
-        txtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFechaNacimientoActionPerformed(evt);
-            }
-        });
-        jPanel9.add(txtFechaNacimiento);
-
-        jPanel3.add(jPanel9);
-        jPanel3.add(filler13);
-        jPanel3.add(filler11);
-
-        jPanel1.setMinimumSize(new java.awt.Dimension(170, 50));
-        jPanel1.setPreferredSize(new java.awt.Dimension(170, 50));
-
-        spinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        spinnerDia.setEnabled(false);
-        spinnerDia.setMinimumSize(new java.awt.Dimension(50, 30));
-        spinnerDia.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(spinnerDia);
-
-        spinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        spinnerMes.setEnabled(false);
-        spinnerMes.setMinimumSize(new java.awt.Dimension(50, 30));
-        spinnerMes.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(spinnerMes);
-
-        spinnerAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
-        spinnerAnio.setEnabled(false);
-        spinnerAnio.setMinimumSize(new java.awt.Dimension(80, 30));
-        spinnerAnio.setName(""); // NOI18N
-        spinnerAnio.setPreferredSize(new java.awt.Dimension(80, 30));
-        jPanel1.add(spinnerAnio);
-
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
-
-        jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel11.setText("Descripción");
-        jPanel10.add(jLabel11);
-        jPanel10.add(filler8);
-
-        areaDescripcion.setEditable(false);
-        areaDescripcion.setColumns(20);
-        areaDescripcion.setRows(5);
-        jScrollPane3.setViewportView(areaDescripcion);
-
-        jPanel10.add(jScrollPane3);
-
-        jPanel4.add(jPanel10);
-        jPanel4.add(filler12);
-
-        jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel12.setText("Biografía");
-        jPanel11.add(jLabel12);
-        jPanel11.add(filler14);
-
-        areaBiografia.setEditable(false);
-        areaBiografia.setColumns(20);
-        areaBiografia.setRows(5);
-        jScrollPane2.setViewportView(areaBiografia);
-
-        jPanel11.add(jScrollPane2);
-
-        jPanel4.add(jPanel11);
-        jPanel4.add(filler15);
-
-        jPanel12.setLayout(new javax.swing.BoxLayout(jPanel12, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel13.setText("Link web");
-        jPanel12.add(jLabel13);
-        jPanel12.add(filler16);
-
-        txtUrl.setEditable(false);
-        jPanel12.add(txtUrl);
-
-        jPanel4.add(jPanel12);
-
-        jPanel13.setLayout(new javax.swing.BoxLayout(jPanel13, javax.swing.BoxLayout.X_AXIS));
-        jPanel4.add(jPanel13);
-
-        jPanel14.setLayout(new javax.swing.BoxLayout(jPanel14, javax.swing.BoxLayout.X_AXIS));
-        jPanel14.add(filler20);
-
-        jPanel4.add(jPanel14);
-
         btnModificar.setText("Modificar");
         btnModificar.setEnabled(false);
-        btnModificar.setRolloverEnabled(false);
         btnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarActionPerformed(evt);
@@ -313,8 +135,6 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
             }
         });
 
-        btnBuscar.setText("Buscar");
-
         btnMostrar.setText("Mostrar");
         btnMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -322,78 +142,217 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel4.setText("Nickname");
+
+        txtNickname.setEditable(false);
+
+        txtNombre.setEditable(false);
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setText("Nombre");
+
+        jLabel7.setText("Apellido");
+
+        txtApellido.setEditable(false);
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtApellidoActionPerformed(evt);
+            }
+        });
+
+        txtEmail.setEditable(false);
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+
+        jLabel8.setText("Email");
+
+        txtFechaNacimiento.setEditable(false);
+        txtFechaNacimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFechaNacimientoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Fecha de nacimiento");
+
+        spinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+        spinnerDia.setEnabled(false);
+        spinnerDia.setMinimumSize(new java.awt.Dimension(50, 30));
+        spinnerDia.setPreferredSize(new java.awt.Dimension(50, 30));
+
+        spinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        spinnerMes.setEnabled(false);
+        spinnerMes.setMinimumSize(new java.awt.Dimension(50, 30));
+        spinnerMes.setPreferredSize(new java.awt.Dimension(50, 30));
+
+        spinnerAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
+        spinnerAnio.setEnabled(false);
+        spinnerAnio.setMinimumSize(new java.awt.Dimension(80, 30));
+        spinnerAnio.setName(""); // NOI18N
+        spinnerAnio.setPreferredSize(new java.awt.Dimension(80, 30));
+
+        areaDescripcion.setEditable(false);
+        areaDescripcion.setColumns(20);
+        areaDescripcion.setRows(5);
+        jScrollPane3.setViewportView(areaDescripcion);
+
+        jLabel11.setText("Descripción");
+
+        areaBiografia.setEditable(false);
+        areaBiografia.setColumns(20);
+        areaBiografia.setRows(5);
+        jScrollPane2.setViewportView(areaBiografia);
+
+        jLabel12.setText("Biografía");
+
+        txtUrl.setEditable(false);
+
+        jLabel13.setText("Link web");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(spinnerDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(spinnerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(spinnerAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                            .addComponent(txtNombre)
+                            .addComponent(txtNickname)
+                            .addComponent(txtApellido)
+                            .addComponent(txtEmail))
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel11)
+                            .addComponent(jLabel12)))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2)
+                    .addComponent(txtUrl))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtNickname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFechaNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(spinnerDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spinnerAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUrl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))))
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 880, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addGap(0, 66, Short.MAX_VALUE)
-                            .addComponent(jLabel1)
-                            .addGap(81, 81, 81)
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(462, 462, 462))
-                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGap(91, 91, 91)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane4)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(19, 19, 19)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtBuscador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnMostrar)
                         .addGap(18, 18, 18)
                         .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
+                        .addGap(142, 142, 142)
                         .addComponent(btnGuardar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
-                    .addGap(141, 141, 141)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(285, Short.MAX_VALUE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtBuscadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscadorActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtBuscadorActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
@@ -413,6 +372,16 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        this.btnGuardar.setEnabled(false);
+        this.btnCancelar.setEnabled(false);
+        this.txtNombre.setEditable(false);
+        this.txtApellido.setEditable(false);
+        this.spinnerDia.setEnabled(false);
+        this.spinnerMes.setEnabled(false);
+        this.spinnerAnio.setEnabled(false);
+        this.areaBiografia.setEditable(false);
+        this.areaDescripcion.setEditable(false);
+        this.txtUrl.setEditable(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
@@ -421,6 +390,14 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
             String nick = this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),3).toString();
             this.ICU.cargarDatosConsultaArtista(nick,this.txtNickname, this.txtNombre, this.txtApellido, this.txtEmail, this.txtFechaNacimiento, this.areaDescripcion, this.areaBiografia, this.txtUrl);
             this.btnModificar.setEnabled(true);
+            this.areaDescripcion.setEditable(false);
+            this.areaBiografia.setEditable(false);
+            this.txtUrl.setEditable(false);
+            this.txtNombre.setEditable(false);
+            this.txtApellido.setEditable(false);
+            this.spinnerDia.setEnabled(false);
+            this.spinnerMes.setEnabled(false);
+            this.spinnerAnio.setEnabled(false);
         }else{
             System.out.println("No hay ningún usuario seleccionado");
         }
@@ -435,6 +412,9 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
         this.spinnerDia.setEnabled(true);
         this.spinnerMes.setEnabled(true);
         this.spinnerAnio.setEnabled(true);
+        this.areaBiografia.setEditable(true);
+        this.areaDescripcion.setEditable(true);
+        this.txtUrl.setEditable(true);
         //System.err.println(this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),4).toString());
         String fecha[] = this.jTable2.getModel().getValueAt(this.jTable2.getSelectedRow(),4).toString().split("/");
         int dia = Integer.parseInt(fecha[0]); 
@@ -451,79 +431,74 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         // TODO add your handling code here:
         
-        if(this.txtEmail.getText().equals("") || this.txtApellido.getText().equals("")){
-            JOptionPane.showMessageDialog(null, "Revise que no haya ningún campo sin completar");
-        }else{
-            JFrame frame = new JFrame();
-        
-            Object[] options = {"Si", "No"};
-            int n = JOptionPane.showOptionDialog(frame,
-            "¿Está seguro que quiere guardar?",
-            "Confirmar",
-            JOptionPane.YES_NO_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,     //do not use a custom Icon
-            options,  //the titles of buttons
-            options[0]); //default button title
-
-            String email = this.txtEmail.getText();
-            String nombre = this.txtNombre.getText();
-            String apellido = this.txtApellido.getText();
-            String descripcion = this.areaDescripcion.getText();
-            String biografia = this.areaBiografia.getText();
-            String url = this.txtUrl.getText();
-            
-            int dia = (int) this.spinnerDia.getValue();
-            int mes = (int) this.spinnerMes.getValue();
-            int anio = (int) this.spinnerAnio.getValue();
-
-            if(n == 0){
-                try{
-                    this.ICU.modificarArtista(email,nombre,apellido,new DTFecha(dia,mes,anio), descripcion, biografia, url);
-                    this.ICU.obtenerArtistas((DefaultTableModel) this.jTable2.getModel());
-                    this.btnGuardar.setEnabled(false);
-                    this.btnCancelar.setEnabled(false);
-                    this.txtNombre.setEditable(false);
-                    this.txtApellido.setEditable(false);
-                    this.spinnerDia.setEnabled(false);
-                    this.spinnerMes.setEnabled(false);
-                    this.spinnerAnio.setEnabled(false);
-                }catch (Exception e) {
-                    JOptionPane.showMessageDialog(null, e.getMessage());
-                }  
+        if (txtUrl.getText().matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")){ // Expresion regular para comprobar la url
+            if(this.txtEmail.getText().equals("") || this.txtApellido.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Revise que no haya ningún campo sin completar");
             }else{
-                System.out.println("Cancelado");
+                JFrame frame = new JFrame();
+
+                Object[] options = {"Si", "No"};
+                int n = JOptionPane.showOptionDialog(frame,
+                "¿Está seguro que quiere guardar?",
+                "Confirmar",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,     //do not use a custom Icon
+                options,  //the titles of buttons
+                options[0]); //default button title
+
+                String email = this.txtEmail.getText();
+                String nombre = this.txtNombre.getText();
+                String apellido = this.txtApellido.getText();
+                String descripcion = this.areaDescripcion.getText();
+                String biografia = this.areaBiografia.getText();
+                String url = this.txtUrl.getText();
+
+                int dia = (int) this.spinnerDia.getValue();
+                int mes = (int) this.spinnerMes.getValue();
+                int anio = (int) this.spinnerAnio.getValue();
+
+                if(n == 0){
+                    try{
+                        this.ICU.modificarArtista(email,nombre,apellido,new DTFecha(dia,mes,anio), descripcion, biografia, url);
+                        this.ICU.obtenerArtistas((DefaultTableModel) this.jTable2.getModel());
+                        this.btnGuardar.setEnabled(false);
+                        this.btnCancelar.setEnabled(false);
+                        this.txtNombre.setEditable(false);
+                        this.txtApellido.setEditable(false);
+                        this.spinnerDia.setEnabled(false);
+                        this.spinnerMes.setEnabled(false);
+                        this.spinnerAnio.setEnabled(false);
+                    }catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    }  
+                }else{
+                    System.out.println("Cancelado");
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(this, "Link Web no valido");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void txtBuscadorKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscadorKeyPressed
+        // TODO add your handling code here:
+        //this.ICU.obtenerArtistasBuscador((DefaultTableModel) this.jTable2.getModel(), this.txtBuscador.getText());
+    }//GEN-LAST:event_txtBuscadorKeyPressed
+
+    private void txtBuscadorCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtBuscadorCaretUpdate
+        // TODO add your handling code here:
+        this.ICU.obtenerArtistasBuscador((DefaultTableModel) this.jTable2.getModel(), this.txtBuscador.getText());
+    }//GEN-LAST:event_txtBuscadorCaretUpdate
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaBiografia;
     private javax.swing.JTextArea areaDescripcion;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnMostrar;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler10;
-    private javax.swing.Box.Filler filler11;
-    private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler13;
-    private javax.swing.Box.Filler filler14;
-    private javax.swing.Box.Filler filler15;
-    private javax.swing.Box.Filler filler16;
-    private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler20;
-    private javax.swing.Box.Filler filler3;
-    private javax.swing.Box.Filler filler4;
-    private javax.swing.Box.Filler filler5;
-    private javax.swing.Box.Filler filler6;
-    private javax.swing.Box.Filler filler7;
-    private javax.swing.Box.Filler filler8;
-    private javax.swing.Box.Filler filler9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -533,28 +508,16 @@ public class ConsultaArtista extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JSpinner spinnerAnio;
     private javax.swing.JSpinner spinnerDia;
     private javax.swing.JSpinner spinnerMes;
     private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtBuscador;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFechaNacimiento;
     private javax.swing.JTextField txtNickname;
