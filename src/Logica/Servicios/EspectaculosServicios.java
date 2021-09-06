@@ -206,6 +206,27 @@ public class EspectaculosServicios {
         }
     }
     
+    public JComboBox llenarComboBoxEspectaculos (String nombrePlataforma) {
+        JComboBox aux = new JComboBox();
+        try {
+            Statement status1 = conexion.createStatement();
+            ResultSet rs1 = status1.executeQuery("SELECT vp_id FROM valores_tipo WHERE tp_id = 1 AND vp_nombre ='"+nombrePlataforma+"'");
+            int id=0;
+            if (rs1.next()) {
+                id = rs1.getInt(1);
+                Statement status = conexion.createStatement();
+                ResultSet rs = status.executeQuery("SELECT espec_nombre FROM espetaculos WHERE espec_plataforma ="+id);
+                while (rs.next()) {
+                    aux.addItem(rs.getString(1));
+                }
+            }
+            return aux;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return new JComboBox();
+        }
+    }
+    
     
 
     public JList llenarListaArtistas() {
@@ -334,7 +355,8 @@ public class EspectaculosServicios {
             try {
                 while (rs1.next()) {
                     //System.out.println("ID ARTISTA: "+rs1.getString("art_id"));
-                    PreparedStatement status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getString("art_id"));
+                    System.out.println("id artista ="+rs1.getInt("art_id"));
+                    PreparedStatement status2= conexion.prepareStatement("SELECT * FROM usuario AS u WHERE u.usu_id="+rs1.getInt("art_id"));
                     ResultSet rs2= status2.executeQuery();
                     if(rs2.next()){
                         String fechaString = rs2.getDate("usu_nacimiento").toString(); 
