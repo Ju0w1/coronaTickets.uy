@@ -12,7 +12,9 @@ public interface IControladorUsuario {
     //public abstract Map<String, Usuario> getUsuarios();
     //public abstract void addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento);
     public abstract void obtenerEspectadores(DefaultTableModel modelo);
+    public abstract void obtenerEspectadoresBuscador(DefaultTableModel modelo,String nick);
     public abstract void obtenerArtistas(DefaultTableModel modelo);
+    public abstract void obtenerArtistasBuscador(DefaultTableModel tablaModelo, String nick);
     //public abstract void obtenerEspectadores(JList listEspec, DefaultTableModel modelo);
     public abstract Map<String, Usuario> getUsuarios();
     public abstract boolean addEspectador(String nickname, String nombre, String apellido, String email, DTFecha nacimiento);
@@ -21,4 +23,6 @@ public interface IControladorUsuario {
     public abstract void cargarDatosConsultaArtista(String seleccion, JTextField nick, JTextField nombre, JTextField apellido, JTextField mail, JTextField nacimiento, JTextArea areaDescripcion, JTextArea areaBiografia, JTextField url);
     public abstract void modificarEspectador(String email,String nombre, String apellido, DTFecha fecha);
     public abstract void modificarArtista(String email,String nombre, String apellido, DTFecha fecha, String descripcion, String biografia, String url);
+    //public abstract static boolean contains(final int[] arr, final int key);
+    public abstract boolean controlFecha(int dia, int mes,int anio);
 }

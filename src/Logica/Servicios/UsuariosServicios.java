@@ -64,6 +64,22 @@ public class UsuariosServicios {
         return resultado;
     }
     
+    public Map<String, Usuario> getUsersBuscador(String nick) {
+        Map<String, Usuario> resultado = new HashMap<>();
+        try {   //"SELECT * FROM usuario where usuario.usu_id NOT IN(SELECT artistas.art_usu FROM artistas) AND usuario.usu_nick LIKE '" + Tom + "%';"
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario where usuario.usu_id NOT IN(SELECT artistas.art_usu FROM artistas) AND usuario.usu_nick LIKE '" + nick + "%';");
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("usu_mail"), new Espectador(rs.getString("usu_nick"),rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), dateToDTFecha(rs.getDate("usu_nacimiento"))));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    
+    
     public Map<String, Usuario> getArtistas() {
         Map<String, Usuario> resultado = new HashMap<>();
         try {
@@ -79,6 +95,22 @@ public class UsuariosServicios {
             }
             //Espectador e = (Espectador) resultado.get("pablopeculio@cras-dev.com");
             //System.out.println("Nombre: "+ rs.getString("usu_nombre")+", fechaNacimeinto: "+e.getNacimiento().getAnio()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getDia());
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    public Map<String, Usuario> getArtistasBuscador(String nick) {
+        Map<String, Usuario> resultado = new HashMap<>();
+        try { // "SELECT * FROM usuario INNER JOIN artistas ON usuario.usu_id=artistas.art_usu WHERE usuario.usu_nick LIKE '" + nick+ "%';"
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario INNER JOIN artistas ON usuario.usu_id=artistas.art_usu WHERE usuario.usu_nick LIKE '" + nick+ "%';");
+            ResultSet rs = status.executeQuery();
+            
+            while (rs.next()) {
+                resultado.put(rs.getString("usu_mail"), new Artista(rs.getString("usu_nick"),rs.getString("usu_nombre"), rs.getString("usu_apellido"), rs.getString("usu_mail"), dateToDTFecha(rs.getDate("usu_nacimiento")), rs.getString("art_descripcion"), rs.getString("art_biografia"), rs.getString("art_url")));
+
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
