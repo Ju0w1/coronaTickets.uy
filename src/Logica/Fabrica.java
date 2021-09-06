@@ -5,11 +5,8 @@ import Logica.Controladores.ControladorEspectaculos;
 import Logica.Controladores.ControladorUsuario;
 import Logica.Interfaz.IControladorPaquete;
 import Logica.Controladores.ControladorPaquete;
-
-
-
-
-
+import Logica.Interfaz.IControladorFuncion;
+import logica.Controladores.ControladorFuncion;
 
 /**
  *
@@ -33,7 +30,10 @@ public class Fabrica {
         IControladorPaquete ControladorP = ControladorPaquete.getInstance();
         return ControladorP; //To change body of generated methods, choose Tools | Templates.
     }
-    
+    public IControladorFuncion getIControladorFuncion() {
+        IControladorFuncion ControladorF = ControladorFuncion.getInstance();
+        return ControladorF; //To change body of generated methods, choose Tools | Templates.
+    }
 
      public IControladorUsuario getIControladorUsuario() {
         IControladorUsuario ControladorU = ControladorUsuario.getInstance();
