@@ -49,10 +49,14 @@ public class ControladorFuncion implements IControladorFuncion{
         return instancia;
     }
     
-    public void addFuncion(String nombreEspec, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map <String,Artista> artistas) {
+    public boolean addFuncion(String nombreEspec, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map <String,Artista> artistas) {
         
         //this.funciones.put(nombre,new Funcion(nombre,fecha_comienzo,hora_inicio,fecha_registro,,));
-        this.servicioFunciones.addFuncion(nombreEspec, nombre, fecha_registro, hora_inicio, fecha_comienzo, artistas);
+        if (this.servicioFunciones.addFuncion(nombreEspec, nombre, fecha_registro, hora_inicio, fecha_comienzo, artistas)){
+            return true;
+        } else {
+            return false;
+        }
     }
     
     public void obtenerPlataformas(JComboBox PlataformaBox){

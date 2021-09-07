@@ -146,7 +146,7 @@ public class FuncionServicios {
         
         }
     
-    public void addFuncion(String nombreEspec, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map <String,Artista> artistas) {
+    public boolean addFuncion(String nombreEspec, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map <String,Artista> artistas) {
         try {
             System.out.println(artistas.isEmpty());
             Statement status1 = conexion.createStatement();
@@ -178,22 +178,25 @@ public class FuncionServicios {
                         status3.setInt (2, artID);
                         //status3.setString (3, nombre_funcion);
                         status3.execute();
-                        
+                        return true;
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
                 }
             }else{
                 System.out.println("No encontró el nombre de espectáculo");
+                return false;
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
             if(ex.getErrorCode() == 1062 ){
                 JFrame j = new JFrame();
                 JOptionPane.showMessageDialog(j,"La plataforma '"+nombre+"' ya existe en la base de datos");
+                return false;
             }
+            return false;
         }
-        
+        return false;
     }
     
    public Artista getArtista(String nickname){

@@ -211,24 +211,30 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         dia_comienzo=(int) Fecha_Inicio_Dia.getValue();
         mes_comienzo=(int) Fecha_Inicio_Mes.getValue();
         anio_comienzo=(int) Fecha_Inicio_Anio.getValue();
-        //hr=Hora_Hr.getValue().toString();
-        hr=Integer.parseInt(Hora_Hr.getValue().toString());
-        min=Integer.parseInt(Hora_Min.getValue().toString());
-        
-        DTFecha fecha_comienzo = new DTFecha(dia_comienzo,mes_comienzo,anio_comienzo);
-        DTTimeStamp hora_inicio = new DTTimeStamp(fecha_comienzo,hr,min,seg);
-        
-        dia_registro=(java.time.LocalDate.now().getDayOfMonth());
-        mes_registro=(java.time.LocalDate.now().getMonth().getValue());
-        anio_registro=(java.time.LocalDate.now().getYear());
-        
-        DTFecha fecha_registro = new DTFecha(dia_registro,mes_registro,anio_registro);
-        
-        if (txtNombre.getText().equals("") || Fecha_Inicio_Dia.getValue().equals("") || Fecha_Inicio_Mes.getValue().equals("") || Fecha_Inicio_Anio.getValue().equals("") || Hora_Hr.getValue().toString().equals("") || Hora_Min.getValue().toString().equals("")) {
-            JOptionPane.showMessageDialog(this, "Ingrese todos los datos por favor");
-        }else{
+        if(Fabrica.getInstance().getIControladorUsuario().controlFecha(dia_comienzo, mes_comienzo, anio_comienzo) == false){
+            JOptionPane.showMessageDialog(this, "Fecha incorrecta");
+        } else {
+            //hr=Hora_Hr.getValue().toString();
+            hr=Integer.parseInt(Hora_Hr.getValue().toString());
+            min=Integer.parseInt(Hora_Min.getValue().toString());
 
-                this.ICF.addFuncion(nombreEspectaculo,txtNombre.getText(),fecha_registro,hora_inicio,fecha_comienzo,artistas);
+            DTFecha fecha_comienzo = new DTFecha(dia_comienzo,mes_comienzo,anio_comienzo);
+            DTTimeStamp hora_inicio = new DTTimeStamp(fecha_comienzo,hr,min,seg);
+
+            dia_registro=(java.time.LocalDate.now().getDayOfMonth());
+            mes_registro=(java.time.LocalDate.now().getMonth().getValue());
+            anio_registro=(java.time.LocalDate.now().getYear());
+
+            DTFecha fecha_registro = new DTFecha(dia_registro,mes_registro,anio_registro);
+
+            if (txtNombre.getText().equals("") || Fecha_Inicio_Dia.getValue().equals("") || Fecha_Inicio_Mes.getValue().equals("") || Fecha_Inicio_Anio.getValue().equals("") || Hora_Hr.getValue().toString().equals("") || Hora_Min.getValue().toString().equals("")) {
+                JOptionPane.showMessageDialog(this, "Ingrese todos los datos por favor");
+            }else{
+                if (this.ICF.addFuncion(nombreEspectaculo,txtNombre.getText(),fecha_registro,hora_inicio,fecha_comienzo,artistas)){
+                    JOptionPane.showMessageDialog(this, "Funcion agregada con exito");
+                }
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_Boton_CrearActionPerformed
 

@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import Logica.Clases.Funcion;
 
 public interface IControladorFuncion {
-    public abstract void addFuncion(String espec_id, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map<String,Artista> artistas);
+    public abstract boolean addFuncion(String espec_id, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map<String,Artista> artistas);
     public abstract void obtenerPlataformas(JComboBox plataformas);
     public abstract void obtenerArtistas(JList listEspec);
     public abstract void obtenerEspectaculo(JComboBox espectaculos, String nombrePlataforma);
