@@ -47,6 +47,7 @@ import Logica.DataTypes.DTFecha;
 import Logica.Servicios.FuncionServicios;
 import Logica.Servicios.PaquetesServicios;
 import java.sql.Date;
+import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -133,6 +134,9 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
             listModel1.addElement(e.getNombre());
         }
         listaEspectaculos.setModel(listModel1);
+    }
+        public void llenarEspectaculos() {
+        this.espectaculos = servicioEspectaculo.getEspectaculos();
     }
 
     public void obtenerEspectaculosPorPlataforma(JList listaEspectaculos, String nombrePlataforma) {
@@ -377,12 +381,79 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
             //System.out.println("Value = " + value);
         }
         jlist.setModel(model);
-
+    }
+        public boolean controlFecha(int dia, int mes,int anio){// TRUE SI ES CORRECTA / FALSE SI ESTA FUERA DE RANGO
+        int[] bisiestos = {1904, 1908, 1912, 1916, 1920, 1924, 1928, 1932, 1936, 1940, 1944, 1948, 1952, 1956, 1960, 1964, 1968, 1972, 1976, 1980, 1984, 1988, 1992, 1996, 2000, 2004, 2008, 2012, 2016, 2020, 2024, 2028, 2032, 2036, 2040, 2044, 2048, 2052, 2056, 2060, 2064, 2068, 2072, 2076, 2080, 2084, 2088, 2092, 2096};
+        int[] mesesLargos = {1, 3, 5 , 7, 8, 10, 12};
+        boolean val = contains(bisiestos, anio);
+        if (val){ 
+            System.out.println("BISIESTO");
+        }
+        System.out.println("Dia:" + dia);
+        System.out.println("Mes:" + mes);
+        System.out.println("Anio:" + anio);
+        
+        boolean val2 = contains(mesesLargos, mes);
+        if (dia > 28){
+            if (val){// ANIO BISIESTO
+                if (mes == 2 && dia == 29){ //UNICO CASO QUE ME INTERESA
+                    return true;
+                }
+            }
+            if (dia == 31){
+                if (val2){ // MESES LARGOS
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+            if (dia==30 || dia == 29){
+                if (mes == 2){
+                    return false;
+                }
+            }
+        } else { // TODO OK
+            return true;
+        }
+        return true;
+    }
+    
+    public static boolean contains(final int[] arr, final int key) {
+        return Arrays.stream(arr).anyMatch(i -> i == key);
+    }
+    
+    public boolean fechaInicioMayor(int diaUno, int mesUno, int anioUno,int diaDos, int mesDos,int anioDos){
+        if(anioUno <= anioDos){
+            if(anioUno < anioDos){
+                return false;
+            } else {//Anios iguales
+                if (mesUno <= mesDos){
+                    if(mesUno < mesDos){
+                        return false;
+                    } else { // Meses iguales
+                        if (diaUno <= diaDos){
+                            if(diaUno < diaDos){
+                                return false;
+                            } else { // mismo anio mes y dia
+                                return true;
+                            }
+                        } else {
+                            return true;
+                        }
+                    }
+                } else {//Mismo anio pero mes uno mayor
+                    return true;
+                }
+            }
+        } else { // Anio uno mayor que el dos
+            return true;
+        }
     }
 
     @Override
-    public void agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado) {
-        this.servicioEspectaculo.addEspectaculoAPaquete(espec_seleccionada, paq_seleccionado);
+    public boolean agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado) {
+        Boolean resultado = this.servicioEspectaculo.addEspectaculoAPaquete(espec_seleccionada, paq_seleccionado);
+        return resultado;
     }
 
     @Override

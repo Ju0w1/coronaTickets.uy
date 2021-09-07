@@ -22,6 +22,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JList;
 
 
 public class PaquetesServicios{
@@ -114,7 +115,7 @@ public class PaquetesServicios{
         }
     }
     
-    public void updatePaquete(String nombre,Date fechaInicio, Date fechaFin,int descuento,String descripcion)
+    public void updatePaquete(String nombre,Date fechaInicio, Date fechaFin, int descuento, String descripcion)
     {
         try{
             PreparedStatement statement = conexion.prepareStatement("UPDATE paquetes SET paq_descripcion = ?, paq_fecha_inicio = ?, paq_fecha_fin = ?, paq_descuento = ? WHERE paq_nombre = ?");
@@ -213,6 +214,19 @@ public class PaquetesServicios{
             ex.printStackTrace();
         }
         return descuento;
+    }
+    
+    public ResultSet getEspectaculos(String paqueteNombre){
+        try
+        {//SELECT espetaculos.espec_nombre FROM espetaculos WHERE espetaculos.espec_id IN (SELECT paquete_espetaculos.paqespec_espec_id FROM paquete_espetaculos WHERE paquete_espetaculos.paqespec_paq_id IN (SELECT paquetes.paq_id FROM paquetes WHERE paquetes.paq_nombre='" + paqueteNombre + "'))";
+            PreparedStatement stm = conexion.prepareStatement("SELECT espetaculos.espec_nombre FROM espetaculos WHERE espetaculos.espec_id IN (SELECT paquete_espetaculos.paqespec_espec_id FROM paquete_espetaculos WHERE paquete_espetaculos.paqespec_paq_id IN (SELECT paquetes.paq_id FROM paquetes WHERE paquetes.paq_nombre='" + paqueteNombre + "'))");    
+            ResultSet rs = stm.executeQuery();
+            return rs;
+        }catch(SQLException ex)
+        {
+            ex.printStackTrace();
+        }
+        return null;
     }
     
     

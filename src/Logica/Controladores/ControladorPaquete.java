@@ -10,6 +10,10 @@ import Logica.Clases.Paquete;
 import java.util.HashMap;
 import Logica.Interfaz.IControladorPaquete;
 import Logica.Servicios.PaquetesServicios;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -105,5 +109,19 @@ public class ControladorPaquete implements IControladorPaquete{
         descuento_.setText(Float.toString(e.getDescuento()));
         FCompra.setText(fechaCm);
         
+    }
+    public boolean getEspectaculos(String nombrePaquete,JList listEspectaculos){
+        ResultSet rs = this.servicioPaq.getEspectaculos(nombrePaquete);
+        DefaultListModel listModel1 = new DefaultListModel();
+        try {
+            while(rs.next()){
+                listModel1.addElement(rs.getString(1));
+            }
+            listEspectaculos.setModel(listModel1);
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorPaquete.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 }
