@@ -187,7 +187,7 @@ public class FuncionServicios {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
+        
     }
     
    public Artista getArtista(String nickname){

@@ -398,7 +398,7 @@ public class EspectaculosServicios {
             
             
             
-            while(rs.next()) {
+            while (rs.next()) {
                 map.put(rs.getString("paq_id"), new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")), rs.getFloat("paq_costo"),rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_alta"))));
                 //
             }
@@ -416,16 +416,13 @@ public class EspectaculosServicios {
     public String getidPaquete(String paq_seleccionado){
         String idpaquete = "";
         try {
-            
-            PreparedStatement status = conexion.prepareStatement("SELECT paq_id FROM paquetes WHERE paquetes.paq_nombre = '"+paq_seleccionado+"';"); 
+            PreparedStatement status = conexion.prepareStatement("SELECT paq_id FROM paquetes WHERE paquetes.paq_nombre = '" + paq_seleccionado + "';"); 
             ResultSet rs = status.executeQuery();
             if (rs.next()) {
                // System.out.println(rs.getString(1));
                 idpaquete = rs.getString(1);
             }            
-        
             return idpaquete;
-                        
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -492,7 +489,7 @@ public class EspectaculosServicios {
         return null;
     }
     //NUEVO
-    public void addEspectaculoAPaquete(String espec_seleccionado, String paq_seleccionado){
+    public boolean addEspectaculoAPaquete(String espec_seleccionado, String paq_seleccionado){
         // pide el id de los sus respectivas filas dado el nombre en estas
        String idPaquete = getidPaquete(paq_seleccionado);
        String idEspectaculo = getidEspectaculo(espec_seleccionado);
@@ -501,12 +498,12 @@ public class EspectaculosServicios {
             PreparedStatement status3 = conexion.prepareStatement("INSERT INTO paquete_espetaculos (paqespec_paq_id, paqespec_espec_id) VALUES (?,?)");
             status3.setString(1, idPaquete);
             status3.setString(2, idEspectaculo);
-            status3.execute();       
+            status3.execute();
+            return true;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-       
-    
+        return false;
     }
 
       public Espectaculo getEspecaculo(String funcionId){

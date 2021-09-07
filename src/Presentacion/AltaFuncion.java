@@ -74,6 +74,9 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
 
         jScrollPane1.setViewportView(jTree1);
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Alta funcion");
         setMinimumSize(new java.awt.Dimension(566, 331));
         setPreferredSize(new java.awt.Dimension(566, 331));
@@ -170,7 +173,7 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(Fecha_Inicio_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel2)

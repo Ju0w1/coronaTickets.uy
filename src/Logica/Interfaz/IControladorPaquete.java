@@ -13,5 +13,5 @@ public interface IControladorPaquete {
     public abstract void cargarDatosConsultaPaquete(String seleccion, JTextField nombre, JTextField descripcion, JTextField Finicio, JTextField Ffinal, JTextField costo, JTextField descuento, JTextField FCompra);
     //public abstract void modificarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFinal, float costo, float descuento,DTFecha fechaCompra);
     public abstract void obtenerPaqueteEspectaculo(JList listEspec, String espectaculoNombre);
-    
+    public abstract boolean getEspectaculos(String nombrePaquete, JList listEspectaculos);
 }

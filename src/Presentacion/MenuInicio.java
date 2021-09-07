@@ -83,6 +83,9 @@ public class MenuInicio extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jDesktopPane2.setMaximumSize(new java.awt.Dimension(1250, 780));
+        jDesktopPane2.setMinimumSize(new java.awt.Dimension(1250, 780));
+
         javax.swing.GroupLayout jDesktopPane2Layout = new javax.swing.GroupLayout(jDesktopPane2);
         jDesktopPane2.setLayout(jDesktopPane2Layout);
         jDesktopPane2Layout.setHorizontalGroup(

@@ -8,6 +8,7 @@ package Presentacion;
 import Logica.DataTypes.DTFecha;
 import Logica.Fabrica;
 import Logica.Interfaz.IControladorPaquete;
+import Logica.Interfaz.IControladorEspectaculo;
 import java.awt.Component;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
@@ -33,6 +34,9 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         //DefaultListModel modelo = (DefaultListModel) listUsuarios.getModel();
         this.ICU = Fabrica.getInstance().getIControladorPaquete();
         this.ICU.obtenerPaquete(this.listPaquetes);
+        
+        
+        
     }
     
     //this.getContentPane().setLayout(new FlowLayout());
@@ -51,65 +55,53 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listPaquetes = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listEspectaculos = new javax.swing.JList<>();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        txtNombreArtista = new javax.swing.JLabel();
+        txtNombreEspectaculo = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        txtNombreEspectaculos = new javax.swing.JLabel();
+        txtDuracion = new javax.swing.JLabel();
+        txtCantEspectadoresMinima = new javax.swing.JLabel();
+        txtCantEspectadoresMaxima = new javax.swing.JLabel();
+        txtURL = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        txtCosto2 = new javax.swing.JLabel();
+        txtFechaRegistro = new javax.swing.JLabel();
+        txtNombre2 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        txtDescripcion2 = new javax.swing.JTextArea();
+        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 0), new java.awt.Dimension(10, 32767));
         txtNombre = new javax.swing.JTextField();
-        filler8 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel6 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
         txtDescripcion = new javax.swing.JTextField();
-        filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel7 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
-        txtFechaInicio = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        FechaInicioDia = new javax.swing.JSpinner();
-        FechaInicioMes = new javax.swing.JSpinner();
-        FechaInicioAnio = new javax.swing.JSpinner();
-        jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        filler11 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
+        txtFechaInicio = new javax.swing.JTextField();
         txtFechaFin = new javax.swing.JTextField();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        FechaFinDia = new javax.swing.JSpinner();
-        FechaFinMes = new javax.swing.JSpinner();
-        FechaFinAnio = new javax.swing.JSpinner();
-        filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel8 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        filler9 = new javax.swing.Box.Filler(new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 0), new java.awt.Dimension(31, 32767));
-        txtCosto = new javax.swing.JTextField();
-        filler13 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        filler21 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel16 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        filler12 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
         txtDescuento = new javax.swing.JTextField();
-        filler15 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 10), new java.awt.Dimension(0, 10), new java.awt.Dimension(32767, 10));
-        jPanel9 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
-        filler14 = new javax.swing.Box.Filler(new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 0), new java.awt.Dimension(19, 32767));
         txtFechaCompra = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        FechaCompraDia = new javax.swing.JSpinner();
-        FechaCompraMes = new javax.swing.JSpinner();
-        FechaCompraAnio = new javax.swing.JSpinner();
-        btnModificar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
-        btnMostrar = new javax.swing.JButton();
+        txtCosto = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Consulta de Paquete");
-        setMinimumSize(new java.awt.Dimension(600, 500));
+        setMaximumSize(new java.awt.Dimension(720, 620));
+        setMinimumSize(new java.awt.Dimension(720, 620));
         setName(""); // NOI18N
-        setPreferredSize(new java.awt.Dimension(600, 700));
+        setPreferredSize(new java.awt.Dimension(720, 620));
 
         listPaquetes.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -123,28 +115,170 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(listPaquetes);
 
-        jLabel1.setText("Lista de Paquete");
+        jLabel1.setText("Lista de paquetes");
 
-        jPanel3.setLayout(new javax.swing.BoxLayout(jPanel3, javax.swing.BoxLayout.Y_AXIS));
+        listEspectaculos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listEspectaculosValueChanged(evt);
+            }
+        });
+        jScrollPane2.setViewportView(listEspectaculos);
 
-        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.X_AXIS));
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel2.setText("Artista Organizador:");
+
+        txtNombreArtista.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
+
+        txtNombreEspectaculo.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtNombreEspectaculo.setText("Nombre del espectáculo:");
+
+        jLabel5.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel5.setText("Duración en minutos:");
+
+        jLabel12.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel12.setText("Cantidad de espectadores mínima:");
+
+        jLabel14.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel14.setText("Cantidad de espectadores máxima:");
+
+        jLabel15.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel15.setText("Costo");
+
+        txtNombreEspectaculos.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtNombreEspectaculos.setText(" ");
+
+        txtDuracion.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtDuracion.setText(" ");
+
+        txtCantEspectadoresMinima.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtCantEspectadoresMinima.setText(" ");
+
+        txtCantEspectadoresMaxima.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtCantEspectadoresMaxima.setText(" ");
+
+        txtURL.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtURL.setText(" ");
+
+        jLabel16.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel16.setText("URL:");
+
+        jLabel17.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel17.setText("Fecha de registro:");
+
+        txtCosto2.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtCosto2.setText(" ");
+
+        txtFechaRegistro.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtFechaRegistro.setText(" ");
+
+        txtNombre2.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        txtNombre2.setText("     ");
+
+        jLabel13.setFont(new java.awt.Font("sansserif", 0, 12)); // NOI18N
+        jLabel13.setText("Descripción del espectáculo:");
+
+        txtDescripcion2.setEditable(false);
+        txtDescripcion2.setColumns(20);
+        txtDescripcion2.setLineWrap(true);
+        txtDescripcion2.setRows(5);
+        jScrollPane3.setViewportView(txtDescripcion2);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(txtNombreEspectaculo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreEspectaculos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel16)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtURL, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDuracion, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCosto2, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel13)
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel14)
+                            .addComponent(jLabel12))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCantEspectadoresMaxima, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                            .addComponent(txtCantEspectadoresMinima, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel12Layout.createSequentialGroup()
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreArtista)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombre2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel12Layout.createSequentialGroup()
+                            .addComponent(jLabel17)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(txtFechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombreArtista)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(txtNombre2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtNombreEspectaculos)
+                    .addComponent(txtNombreEspectaculo))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDuracion)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCantEspectadoresMinima)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCantEspectadoresMaxima)
+                    .addComponent(jLabel14))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtURL)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtCosto2)
+                    .addComponent(jLabel15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtFechaRegistro)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3))
+        );
+
+        jLabel3.setText("Espectaculos del paquete");
 
         jLabel4.setText("Nombre");
-        jPanel5.add(jLabel4);
-        jPanel5.add(filler1);
 
         txtNombre.setEditable(false);
-        jPanel5.add(txtNombre);
-
-        jPanel3.add(jPanel5);
-        jPanel3.add(filler8);
-        jPanel3.add(filler3);
-
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.X_AXIS));
 
         jLabel6.setText("Descripcion");
-        jPanel6.add(jLabel6);
-        jPanel6.add(filler7);
 
         txtDescripcion.setEditable(false);
         txtDescripcion.addActionListener(new java.awt.event.ActionListener() {
@@ -152,16 +286,10 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                 txtDescripcionActionPerformed(evt);
             }
         });
-        jPanel6.add(txtDescripcion);
-
-        jPanel3.add(jPanel6);
-        jPanel3.add(filler4);
-
-        jPanel7.setLayout(new javax.swing.BoxLayout(jPanel7, javax.swing.BoxLayout.X_AXIS));
 
         jLabel7.setText("Fecha Inicio");
-        jPanel7.add(jLabel7);
-        jPanel7.add(filler2);
+
+        jLabel10.setText("Fecha Final");
 
         txtFechaInicio.setEditable(false);
         txtFechaInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -169,39 +297,6 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                 txtFechaInicioActionPerformed(evt);
             }
         });
-        jPanel7.add(txtFechaInicio);
-
-        jPanel3.add(jPanel7);
-
-        jPanel1.setMinimumSize(new java.awt.Dimension(170, 50));
-        jPanel1.setPreferredSize(new java.awt.Dimension(170, 50));
-
-        FechaInicioDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        FechaInicioDia.setEnabled(false);
-        FechaInicioDia.setMinimumSize(new java.awt.Dimension(50, 30));
-        FechaInicioDia.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(FechaInicioDia);
-
-        FechaInicioMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        FechaInicioMes.setEnabled(false);
-        FechaInicioMes.setMinimumSize(new java.awt.Dimension(50, 30));
-        FechaInicioMes.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel1.add(FechaInicioMes);
-
-        FechaInicioAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
-        FechaInicioAnio.setEnabled(false);
-        FechaInicioAnio.setMinimumSize(new java.awt.Dimension(80, 30));
-        FechaInicioAnio.setName(""); // NOI18N
-        FechaInicioAnio.setPreferredSize(new java.awt.Dimension(80, 30));
-        jPanel1.add(FechaInicioAnio);
-
-        jPanel3.add(jPanel1);
-
-        jPanel10.setLayout(new javax.swing.BoxLayout(jPanel10, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel10.setText("Fecha Final");
-        jPanel10.add(jLabel10);
-        jPanel10.add(filler11);
 
         txtFechaFin.setEditable(false);
         txtFechaFin.addActionListener(new java.awt.event.ActionListener() {
@@ -209,61 +304,6 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                 txtFechaFinActionPerformed(evt);
             }
         });
-        jPanel10.add(txtFechaFin);
-
-        jPanel11.setLayout(new javax.swing.BoxLayout(jPanel11, javax.swing.BoxLayout.X_AXIS));
-        jPanel10.add(jPanel11);
-
-        jPanel3.add(jPanel10);
-
-        jPanel2.setMinimumSize(new java.awt.Dimension(170, 50));
-        jPanel2.setPreferredSize(new java.awt.Dimension(170, 50));
-
-        FechaFinDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        FechaFinDia.setEnabled(false);
-        FechaFinDia.setMinimumSize(new java.awt.Dimension(50, 30));
-        FechaFinDia.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel2.add(FechaFinDia);
-
-        FechaFinMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        FechaFinMes.setEnabled(false);
-        FechaFinMes.setMinimumSize(new java.awt.Dimension(50, 30));
-        FechaFinMes.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel2.add(FechaFinMes);
-
-        FechaFinAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
-        FechaFinAnio.setEnabled(false);
-        FechaFinAnio.setMinimumSize(new java.awt.Dimension(80, 30));
-        FechaFinAnio.setName(""); // NOI18N
-        FechaFinAnio.setPreferredSize(new java.awt.Dimension(80, 30));
-        jPanel2.add(FechaFinAnio);
-
-        jPanel3.add(jPanel2);
-        jPanel3.add(filler5);
-
-        jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.X_AXIS));
-
-        jLabel8.setText("Costo");
-        jPanel8.add(jLabel8);
-        jPanel8.add(filler9);
-
-        txtCosto.setEditable(false);
-        txtCosto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCostoActionPerformed(evt);
-            }
-        });
-        jPanel8.add(txtCosto);
-
-        jPanel3.add(jPanel8);
-        jPanel3.add(filler13);
-        jPanel3.add(filler21);
-
-        jPanel16.setLayout(new javax.swing.BoxLayout(jPanel16, javax.swing.BoxLayout.LINE_AXIS));
-
-        jLabel9.setText("Descuento");
-        jPanel16.add(jLabel9);
-        jPanel16.add(filler12);
 
         txtDescuento.setEditable(false);
         txtDescuento.addActionListener(new java.awt.event.ActionListener() {
@@ -271,16 +311,6 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                 txtDescuentoActionPerformed(evt);
             }
         });
-        jPanel16.add(txtDescuento);
-
-        jPanel3.add(jPanel16);
-        jPanel3.add(filler15);
-
-        jPanel9.setLayout(new javax.swing.BoxLayout(jPanel9, javax.swing.BoxLayout.LINE_AXIS));
-
-        jLabel11.setText("Fecha Compra");
-        jPanel9.add(jLabel11);
-        jPanel9.add(filler14);
 
         txtFechaCompra.setEditable(false);
         txtFechaCompra.addActionListener(new java.awt.event.ActionListener() {
@@ -288,110 +318,106 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
                 txtFechaCompraActionPerformed(evt);
             }
         });
-        jPanel9.add(txtFechaCompra);
 
-        jPanel3.add(jPanel9);
-
-        jPanel4.setMinimumSize(new java.awt.Dimension(170, 50));
-        jPanel4.setPreferredSize(new java.awt.Dimension(170, 50));
-
-        FechaCompraDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
-        FechaCompraDia.setEnabled(false);
-        FechaCompraDia.setMinimumSize(new java.awt.Dimension(50, 30));
-        FechaCompraDia.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(FechaCompraDia);
-
-        FechaCompraMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
-        FechaCompraMes.setEnabled(false);
-        FechaCompraMes.setMinimumSize(new java.awt.Dimension(50, 30));
-        FechaCompraMes.setPreferredSize(new java.awt.Dimension(50, 30));
-        jPanel4.add(FechaCompraMes);
-
-        FechaCompraAnio.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 2021, 1));
-        FechaCompraAnio.setEnabled(false);
-        FechaCompraAnio.setMinimumSize(new java.awt.Dimension(80, 30));
-        FechaCompraAnio.setName(""); // NOI18N
-        FechaCompraAnio.setPreferredSize(new java.awt.Dimension(80, 30));
-        jPanel4.add(FechaCompraAnio);
-
-        jPanel3.add(jPanel4);
-
-        btnModificar.setText("Modificar");
-        btnModificar.setEnabled(false);
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        txtCosto.setEditable(false);
+        txtCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                txtCostoActionPerformed(evt);
             }
         });
 
-        btnGuardar.setText("Guardar");
-        btnGuardar.setEnabled(false);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
+        jLabel11.setText("Fecha Compra");
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.setEnabled(false);
-        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarActionPerformed(evt);
-            }
-        });
+        jLabel9.setText("Descuento");
 
-        btnBuscar.setText("Buscar");
-
-        btnMostrar.setText("Mostrar");
-        btnMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnMostrarActionPerformed(evt);
-            }
-        });
+        jLabel8.setText("Costo");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(287, 287, 287))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnBuscar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMostrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(20, 20, 20))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFechaCompra))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(13, 13, 13)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addGap(12, 12, 12))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtDescuento, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtFechaInicio, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtCosto)
+                            .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnBuscar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnMostrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnModificar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCancelar)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFechaInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFechaFin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtFechaCompra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE))
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -409,10 +435,6 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCostoActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCancelarActionPerformed
-
     private void listPaquetesFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listPaquetesFocusGained
         // TODO add your handling code here:
         
@@ -420,76 +442,20 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
 
     private void listPaquetesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listPaquetesValueChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_listPaquetesValueChanged
-
-    private void btnMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMostrarActionPerformed
-        // TODO add your handling code here:
-        
         if(this.listPaquetes.getSelectedValue() != null){
             this.ICU.cargarDatosConsultaPaquete(this.listPaquetes.getSelectedValue(),this.txtNombre, this.txtDescripcion, this.txtFechaInicio, this.txtFechaFin, this.txtCosto, this.txtDescuento, this.txtFechaCompra);
-            this.btnModificar.setEnabled(true);
-            this.btnGuardar.setEnabled(true);
-            this.btnCancelar.setEnabled(true);
+//            this.btnModificar.setEnabled(true);
+//            this.btnGuardar.setEnabled(true);
+//            this.btnCancelar.setEnabled(true);
+            String nombrePaquete = this.listPaquetes.getSelectedValue();
+            
+            if (Fabrica.getInstance().getIControladorPaquete().getEspectaculos(nombrePaquete, listEspectaculos)){
+                //System.out.println("Funciona");
+            }
         }else{
             System.out.println("No hay ningún Paquete seleccionado");
         }
-        
-        
-    }//GEN-LAST:event_btnMostrarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-//        // TODO add your handling code here:
-        this.txtNombre.setEditable(true);
-        this.txtDescripcion.setEditable(true);
-        this.FechaInicioDia.setEnabled(true);
-        this.FechaInicioMes.setEnabled(true);
-        this.FechaInicioAnio.setEnabled(true);
-        this.FechaFinDia.setEnabled(true);
-        this.FechaFinMes.setEnabled(true);
-        this.FechaFinAnio.setEnabled(true);
-        this.txtCosto.setEditable(true);
-        this.txtDescuento.setEditable(true);
-        this.FechaCompraDia.setEnabled(true);
-        this.FechaCompraMes.setEnabled(true);
-        this.FechaCompraAnio.setEnabled(true);
-    }//GEN-LAST:event_btnModificarActionPerformed
-
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-        JFrame frame = new JFrame();
-        
-        Object[] options = {"Si", "No"};
-        int n = JOptionPane.showOptionDialog(frame,
-        "¿Está seguro que quiere guardar?",
-        "Confirmar",
-        JOptionPane.YES_NO_OPTION,
-        JOptionPane.QUESTION_MESSAGE,
-        null,     //do not use a custom Icon
-        options,  //the titles of buttons
-        options[0]); //default button title
-
-        String nombre = this.txtNombre.getText();
-        String descripcion = this.txtDescripcion.getText();
-        int inicio_dia = (int) this.FechaInicioDia.getValue();
-        int inicio_mes = (int) this.FechaInicioMes.getValue();
-        int inicio_anio = (int) this.FechaInicioAnio.getValue();
-        int final_dia = (int) this.FechaFinDia.getValue();
-        int final_mes = (int) this.FechaFinMes.getValue();
-        int final_anio = (int) this.FechaFinAnio.getValue();
-        String costo = this.txtCosto.getText();
-        String descuento = this.txtDescuento.getText();
-        int compra_dia = (int) this.FechaCompraDia.getValue();
-        int compra_mes = (int) this.FechaCompraMes.getValue();
-        int compra_anio = (int) this.FechaCompraAnio.getValue();
-        float x,y;
-        x=Float.parseFloat(costo);
-        y=Float.parseFloat(descuento);
-//        if(n == 0){
-//            this.ICU.modificarPaquete(nombre, descripcion,new DTFecha(inicio_dia,inicio_mes,inicio_anio),new DTFecha(final_dia,final_mes,final_anio),x,y,new DTFecha(compra_dia,compra_mes,compra_anio));
-//        }else{
-//            System.out.println("Cancelado");
-//        }
-    }//GEN-LAST:event_btnGuardarActionPerformed
+    }//GEN-LAST:event_listPaquetesValueChanged
 
     private void txtFechaFinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFechaFinActionPerformed
         // TODO add your handling code here:
@@ -503,64 +469,55 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescuentoActionPerformed
 
+    private void listEspectaculosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listEspectaculosValueChanged
+        // TODO add your handling code here:
+        IControladorEspectaculo ICE = Fabrica.getInstance().getIControladorEspectaculo();
+        ICE.llenarEspectaculos();
+        ICE.cargarDatosConsultaEspectaculo(listEspectaculos.getSelectedValue(), this.txtNombre2, this.txtNombreEspectaculos, this.txtDuracion, this.txtCantEspectadoresMinima, this.txtCantEspectadoresMaxima, this.txtURL, this.txtCosto2, this.txtFechaRegistro, this.txtDescripcion2);
+    }//GEN-LAST:event_listEspectaculosValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner FechaCompraAnio;
-    private javax.swing.JSpinner FechaCompraDia;
-    private javax.swing.JSpinner FechaCompraMes;
-    private javax.swing.JSpinner FechaFinAnio;
-    private javax.swing.JSpinner FechaFinDia;
-    private javax.swing.JSpinner FechaFinMes;
-    private javax.swing.JSpinner FechaInicioAnio;
-    private javax.swing.JSpinner FechaInicioDia;
-    private javax.swing.JSpinner FechaInicioMes;
-    private javax.swing.JButton btnBuscar;
-    private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnGuardar;
-    private javax.swing.JButton btnModificar;
-    private javax.swing.JButton btnMostrar;
-    private javax.swing.Box.Filler filler1;
-    private javax.swing.Box.Filler filler11;
-    private javax.swing.Box.Filler filler12;
-    private javax.swing.Box.Filler filler13;
-    private javax.swing.Box.Filler filler14;
-    private javax.swing.Box.Filler filler15;
-    private javax.swing.Box.Filler filler2;
-    private javax.swing.Box.Filler filler21;
-    private javax.swing.Box.Filler filler3;
-    private javax.swing.Box.Filler filler4;
-    private javax.swing.Box.Filler filler5;
-    private javax.swing.Box.Filler filler7;
-    private javax.swing.Box.Filler filler8;
-    private javax.swing.Box.Filler filler9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JList<String> listEspectaculos;
     private javax.swing.JList<String> listPaquetes;
+    private javax.swing.JLabel txtCantEspectadoresMaxima;
+    private javax.swing.JLabel txtCantEspectadoresMinima;
     private javax.swing.JTextField txtCosto;
+    private javax.swing.JLabel txtCosto2;
     private javax.swing.JTextField txtDescripcion;
+    private javax.swing.JTextArea txtDescripcion2;
     private javax.swing.JTextField txtDescuento;
+    private javax.swing.JLabel txtDuracion;
     private javax.swing.JTextField txtFechaCompra;
     private javax.swing.JTextField txtFechaFin;
     private javax.swing.JTextField txtFechaInicio;
+    private javax.swing.JLabel txtFechaRegistro;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JLabel txtNombre2;
+    private javax.swing.JLabel txtNombreArtista;
+    private javax.swing.JLabel txtNombreEspectaculo;
+    private javax.swing.JLabel txtNombreEspectaculos;
+    private javax.swing.JLabel txtURL;
     // End of variables declaration//GEN-END:variables
 }
