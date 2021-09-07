@@ -17,6 +17,7 @@ import java.io.Console;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Vector;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -248,6 +249,8 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Registrar espectador a función");
         setPreferredSize(new java.awt.Dimension(527, 711));
 
@@ -511,14 +514,6 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void platActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_platActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.ICE.obtenerEspectaculosPorPlataforma(espec, plat.getSelectedItem().toString());
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         if(this.funcTable.getSelectedRow() == -1){
@@ -576,6 +571,14 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.ICE.obtenerEspectaculosPorPlataforma(espec, plat.getSelectedItem().toString());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void platActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_platActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

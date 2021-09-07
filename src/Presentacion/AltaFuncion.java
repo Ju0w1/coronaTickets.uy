@@ -31,7 +31,6 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
     //private FuncionServicios servicioFuncion;
     private IControladorFuncion ICF;
     Map<String, Artista> artistas = new HashMap<>();
-    
     public AltaFuncion(){
         initComponents();
         
@@ -58,19 +57,18 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         txtNombre = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        Hora_Hr = new javax.swing.JSpinner();
-        Hora_Min = new javax.swing.JSpinner();
-        jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         Lista_Artistas = new javax.swing.JList<>();
         jLabel3 = new javax.swing.JLabel();
         Boton_Agregar_Artista = new javax.swing.JButton();
         Boton_Crear = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         Fecha_Inicio_Dia = new javax.swing.JSpinner();
         Fecha_Inicio_Mes = new javax.swing.JSpinner();
         Fecha_Inicio_Anio = new javax.swing.JSpinner();
+        Hora_Min = new javax.swing.JSpinner();
+        Hora_Hr = new javax.swing.JSpinner();
 
         jScrollPane1.setViewportView(jTree1);
 
@@ -78,33 +76,44 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setTitle("Alta funcion");
-        setMinimumSize(new java.awt.Dimension(566, 331));
-        setPreferredSize(new java.awt.Dimension(566, 331));
+        setMinimumSize(new java.awt.Dimension(340, 528));
+        setPreferredSize(new java.awt.Dimension(340, 528));
 
         jPanel2.setPreferredSize(new java.awt.Dimension(530, 279));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setText("Plataforma:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, -1, -1));
 
         PlataformaBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        PlataformaBox.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                PlataformaBoxItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(PlataformaBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 210, -1));
+        PlataformaBox.getAccessibleContext().setAccessibleName("plataformas");
 
         jLabel8.setText("Espetaculo:");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         EspectaculoBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         EspectaculoBox.setEnabled(false);
+        jPanel2.add(EspectaculoBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 210, -1));
+        EspectaculoBox.getAccessibleContext().setAccessibleName("espetaculo");
 
         jLabel9.setText("Nombre:");
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         txtNombre.setName("nombretxt"); // NOI18N
+        jPanel2.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 220, -1));
+        txtNombre.getAccessibleContext().setAccessibleName("nombre_text");
 
         jLabel10.setText("Fecha inicio");
+        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, 20));
 
         jLabel11.setText("Hora inicio");
-
-        Hora_Hr.setModel(new javax.swing.SpinnerNumberModel(1, 1, 24, 1));
-
-        Hora_Min.setModel(new javax.swing.SpinnerNumberModel(1, 1, 60, 1));
-
-        jLabel2.setText(":");
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 20));
 
         Lista_Artistas.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -113,7 +122,11 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(Lista_Artistas);
 
-        jLabel3.setText("Artistas invitados:");
+        jPanel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 188, 80));
+        jScrollPane2.getAccessibleContext().setAccessibleName("actoresAsignado");
+
+        jLabel3.setText("Seleccionar artistas invitados");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         Boton_Agregar_Artista.setText("Agregar Artista");
         Boton_Agregar_Artista.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +134,7 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
                 Boton_Agregar_ArtistaActionPerformed(evt);
             }
         });
+        jPanel2.add(Boton_Agregar_Artista, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 188, -1));
 
         Boton_Crear.setText("Crear");
         Boton_Crear.addActionListener(new java.awt.event.ActionListener() {
@@ -128,126 +142,31 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
                 Boton_CrearActionPerformed(evt);
             }
         });
+        jPanel2.add(Boton_Crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 80, -1));
 
         jButton3.setText("Cancelar");
         jButton3.setActionCommand("cancelar");
+        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
 
-        btnBuscar.setText("Buscar");
-        btnBuscar.setActionCommand("cancelar");
-        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText(":");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, 10, 20));
 
         Fecha_Inicio_Dia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
+        jPanel2.add(Fecha_Inicio_Dia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, -1, -1));
 
         Fecha_Inicio_Mes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
+        jPanel2.add(Fecha_Inicio_Mes, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, -1, -1));
 
         Fecha_Inicio_Anio.setModel(new javax.swing.SpinnerNumberModel(2021, 2021, null, 1));
         Fecha_Inicio_Anio.setPreferredSize(new java.awt.Dimension(50, 20));
+        jPanel2.add(Fecha_Inicio_Anio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 87, 28));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(PlataformaBox, 0, 132, Short.MAX_VALUE)
-                            .addComponent(txtNombre)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Fecha_Inicio_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Hora_Hr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(Fecha_Inicio_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(Hora_Min, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Fecha_Inicio_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addComponent(Boton_Crear, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3))
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(EspectaculoBox, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel3))
-                        .addComponent(Boton_Agregar_Artista, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(98, 98, 98))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(PlataformaBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscar))
-                .addGap(24, 24, 24)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(Fecha_Inicio_Dia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Fecha_Inicio_Mes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Fecha_Inicio_Anio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel11)
-                            .addComponent(Hora_Hr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Hora_Min, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(EspectaculoBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Boton_Agregar_Artista)
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
-                            .addComponent(Boton_Crear))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        Hora_Min.setModel(new javax.swing.SpinnerNumberModel(0, 0, 59, 1));
+        jPanel2.add(Hora_Min, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, -1, -1));
 
-        PlataformaBox.getAccessibleContext().setAccessibleName("plataformas");
-        EspectaculoBox.getAccessibleContext().setAccessibleName("espetaculo");
-        txtNombre.getAccessibleContext().setAccessibleName("nombre_text");
-        jScrollPane2.getAccessibleContext().setAccessibleName("actoresAsignado");
+        Hora_Hr.setModel(new javax.swing.SpinnerNumberModel(0, 0, 24, 1));
+        jPanel2.add(Hora_Hr, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,15 +174,12 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 569, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
 
         pack();
@@ -279,24 +195,7 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         System.out.println("Alta funcion estado de map artistas:"+this.artistas.isEmpty());
         DefaultListModel listModel1 = (DefaultListModel) this.Lista_Artistas.getModel();
         listModel1.removeElementAt(posicion);
-        //System.out.println(this.artistas.isEmpty());
-//        int dia=0,mes=0,anio=0;
-//        if (txtNombre.getText().equals("") || Fecha_Inicio_Dia.getText().equals("") || Fecha_Inicio_Mes.getText().equals("") || Fecha_Inicio_Anio.getText().equals("") || Hora_Hr.getText().equals("") || Hora_Min.getText().equals("")) {
-//            JOptionPane.showMessageDialog(this, "Ingrese todos los datos por favor");
-//        }else{
-//            //System.out.println(this.Lista_Artistas.getSelectedValue().toString());
-//            String nombre_artista=this.Lista_Artistas.getSelectedValue().toString();
-//            String nombre_funcion=txtNombre.getText();
-//            String id_funcion="";
-//            String id_artista="";
-//            dia=Integer.parseInt(Fecha_Inicio_Dia.getText());
-//            mes=Integer.parseInt(Fecha_Inicio_Mes.getText());
-//            anio=Integer.parseInt(Fecha_Inicio_Anio.getText());
-//            DTFecha funcion_vigente= new DTFecha(dia,mes,anio);
-//            this.ICF.Prueba(nombre_artista,id_funcion,id_artista,nombre_funcion,funcion_vigente);
-//            //funart_id funart_art_id fun_nombre funart_vigente  
-//        }
-        
+
     
     }//GEN-LAST:event_Boton_Agregar_ArtistaActionPerformed
 
@@ -328,15 +227,18 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_Boton_CrearActionPerformed
 
-    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+    private void PlataformaBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PlataformaBoxItemStateChanged
         // TODO add your handling code here:
-       // System.out.println(this.PlataformaBox.getSelectedItem().toString());
-       this.EspectaculoBox.setEnabled(true);
-       DefaultComboBoxModel modelo = (DefaultComboBoxModel) this.EspectaculoBox.getModel();
-       modelo.removeAllElements();
-       this.ICF.obtenerEspectaculo(EspectaculoBox, this.PlataformaBox.getSelectedItem().toString());
-        
-    }//GEN-LAST:event_btnBuscarActionPerformed
+       if(this.PlataformaBox.getSelectedItem() != null){
+           
+            this.EspectaculoBox.setEnabled(true);
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) this.EspectaculoBox.getModel();
+            modelo.removeAllElements();
+            this.ICF.obtenerEspectaculo(EspectaculoBox, this.PlataformaBox.getSelectedItem().toString());
+       }else{
+           JOptionPane.showMessageDialog(this, "Cargando plataformas");
+       }
+    }//GEN-LAST:event_PlataformaBoxItemStateChanged
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -350,7 +252,6 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
     private javax.swing.JSpinner Hora_Min;
     public static javax.swing.JList<String> Lista_Artistas;
     public static javax.swing.JComboBox<String> PlataformaBox;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

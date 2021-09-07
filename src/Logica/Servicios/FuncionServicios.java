@@ -18,6 +18,8 @@ import java.util.Map;
 import javax.swing.JComboBox;
 import Logica.Clases.Artista;
 import Logica.Clases.Funcion;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class FuncionServicios {
 
@@ -186,6 +188,10 @@ public class FuncionServicios {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+            if(ex.getErrorCode() == 1062 ){
+                JFrame j = new JFrame();
+                JOptionPane.showMessageDialog(j,"La plataforma '"+nombre+"' ya existe en la base de datos");
+            }
         }
         
     }

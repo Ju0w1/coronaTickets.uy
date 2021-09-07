@@ -43,7 +43,6 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        btnBuscarEspectaculos = new javax.swing.JButton();
         btnBuscarFuncion = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
@@ -54,18 +53,33 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         artTable = new javax.swing.JTable();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Consulta funcion");
         setToolTipText("");
+        setMinimumSize(new java.awt.Dimension(460, 477));
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Plataforma:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, -1));
 
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 187, -1));
+        jComboBox1.getAccessibleContext().setAccessibleName("plataformas");
 
         jLabel2.setText("Espetaculo");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 48, -1, -1));
 
         jComboBox2.setEnabled(false);
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -73,15 +87,10 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 45, 187, -1));
 
         jLabel10.setText("Funciones");
-
-        btnBuscarEspectaculos.setText("Buscar Espectáculos");
-        btnBuscarEspectaculos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarEspectaculosActionPerformed(evt);
-            }
-        });
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, -1, -1));
 
         btnBuscarFuncion.setText("Cargar Funciones");
         btnBuscarFuncion.setEnabled(false);
@@ -90,8 +99,10 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 btnBuscarFuncionActionPerformed(evt);
             }
         });
+        jPanel1.add(btnBuscarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 44, -1, -1));
 
         jLabel11.setText("(Seleccione una fila para ver los artistas)");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 91, -1, -1));
 
         funcTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -106,12 +117,16 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         ));
         jScrollPane6.setViewportView(funcTable1);
 
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, 420, 104));
+
         jButton1.setText("Mostrar Artistas");
+        jButton1.setEnabled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 226, -1, -1));
 
         lableArtistas.setText("Artistas");
 
@@ -134,7 +149,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(lableArtistas)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 383, Short.MAX_VALUE))
             .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
@@ -147,68 +162,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(165, 165, 165)
-                .addComponent(jButton1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel10)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnBuscarEspectaculos))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnBuscarFuncion)))))
-                        .addContainerGap(46, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEspectaculos))
-                .addGap(11, 11, 11)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarFuncion))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(4, 4, 4)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(202, 202, 202))
-        );
-
-        jComboBox1.getAccessibleContext().setAccessibleName("plataformas");
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 255, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -220,7 +174,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 15, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
         );
 
         pack();
@@ -234,24 +188,15 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
-    private void btnBuscarEspectaculosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEspectaculosActionPerformed
-        // TODO add your handling code here:
-        this.jComboBox2.setEnabled(true);
-        DefaultComboBoxModel modelo = (DefaultComboBoxModel) this.jComboBox2.getModel();
-        modelo.removeAllElements();
-        this.ICE.obtenerEspectaculosToComboBox(this.jComboBox2,this.jComboBox1.getSelectedItem().toString());
-        if(this.jComboBox2.getSelectedItem() == null){
-            JOptionPane.showMessageDialog(this, "La plataforma no tiene espectáculos registrados");
-            this.jComboBox2.setEnabled(false);
-            this.btnBuscarFuncion.setEnabled(false);
-        }else{
-            this.btnBuscarFuncion.setEnabled(true);
-        }
-    }//GEN-LAST:event_btnBuscarEspectaculosActionPerformed
-
     private void btnBuscarFuncionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarFuncionActionPerformed
         // TODO add your handling code here:
         this.ICE.obtenerTablaFunciones((DefaultTableModel) this.funcTable1.getModel(), this.jComboBox2.getSelectedItem().toString());
+        if(this.funcTable1.getModel().getRowCount() == 0){
+            JOptionPane.showMessageDialog(this, "No hay funciones registradas para el espectáculo");
+            this.jButton1.setEnabled(false);
+        }else{
+           this.jButton1.setEnabled(true);
+        }
     }//GEN-LAST:event_btnBuscarFuncionActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -261,19 +206,39 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         }else{
             
             this.ICE.obtenerArtistasDeFuncion((DefaultTableModel) this.artTable.getModel(), this.funcTable1.getModel().getValueAt(this.funcTable1.getSelectedRow(),0).toString());
-            if(this.artTable.getModel().getRowCount()>=0){
-                this.jPanel2.setVisible(true);
-            }else{
+            if(this.artTable.getModel().getRowCount()==0){
                 this.jPanel2.setVisible(false);
                 JOptionPane.showMessageDialog(this, "La función no tiene artistas asignados");
+            }else{
+                this.jPanel2.setVisible(true);
             }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        if(this.jComboBox1.getSelectedItem() != null){
+           
+            this.jComboBox2.setEnabled(true);
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) this.jComboBox2.getModel();
+            modelo.removeAllElements();
+            this.ICE.obtenerEspectaculosToComboBox(this.jComboBox2,this.jComboBox1.getSelectedItem().toString());
+            
+            if(this.jComboBox2.getSelectedItem() == null){
+                JOptionPane.showMessageDialog(this, "La plataforma no tiene espectáculos registrados");
+                this.jComboBox2.setEnabled(false);
+                this.btnBuscarFuncion.setEnabled(false);
+            }else{
+                this.btnBuscarFuncion.setEnabled(true);
+            }
+       }else{
+           JOptionPane.showMessageDialog(this, "Cargando plataformas");
+       }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable artTable;
-    private javax.swing.JButton btnBuscarEspectaculos;
     private javax.swing.JButton btnBuscarFuncion;
     private javax.swing.JTable funcTable1;
     private javax.swing.JButton jButton1;
