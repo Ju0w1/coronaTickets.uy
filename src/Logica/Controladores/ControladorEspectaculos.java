@@ -172,9 +172,14 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistas().getModel());
     }
 
-    public void obtenerArtistaPorNombre(String nombre) {
-        Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistasPorNombre(nombre).getModel());
+    public void obtenerArtistaPorNombre(String nick) {
+        Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistasPorNombre(nick).getModel());
     }
+    
+    public void obtenerArtistaPorNick(String nick) { //NUEVOOOOOO
+        Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistasPorNick(nick).getModel());
+    }
+    
 
     public boolean verificarNombreEspectaculo(String nombre) {
         return this.servicioEspectaculo.verificarExistenciaNombreEspectaculo(nombre);
