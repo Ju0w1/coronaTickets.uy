@@ -78,9 +78,9 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        labelPaqueteEspectaculos = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         listEspectaculosDePaquete = new javax.swing.JList<>();
+        labelPaqueteEspectaculos = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         txtNombreFP = new javax.swing.JLabel();
         txtDescripcionP_FechaF = new javax.swing.JLabel();
@@ -304,21 +304,15 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         jLabel13.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel13.setText("Descripción del espectáculo:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 27, Short.MAX_VALUE)
-        );
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPane5.setViewportView(listEspectaculosDePaquete);
+
+        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 31, -1, 118));
 
         labelPaqueteEspectaculos.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         labelPaqueteEspectaculos.setText("Espectáculos que ofrece el paquete:");
-
-        jScrollPane5.setViewportView(listEspectaculosDePaquete);
+        jPanel2.add(labelPaqueteEspectaculos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         txtNombreFP.setText("txtNombreFP");
 
@@ -358,20 +352,17 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(labelDescripcionP_FechaF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDescripcionP_FechaF))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(labelNombreFP)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombreFP))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(labelFechaInicioP_HoraInicioF)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFechaInicioP_HoraInicioF)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(labelDescripcionP_FechaF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtDescripcionP_FechaF))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(labelNombreFP)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtNombreFP))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(labelFechaInicioP_HoraInicioF)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtFechaInicioP_HoraInicioF))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(labelDescuentoP)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -457,13 +448,9 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelPaqueteEspectaculos)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 134, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -475,11 +462,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(labelPaqueteEspectaculos)
-                        .addGap(9, 9, 9)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton2)
