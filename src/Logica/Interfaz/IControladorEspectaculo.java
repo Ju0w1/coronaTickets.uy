@@ -34,7 +34,8 @@ public interface IControladorEspectaculo {
     public abstract void obtenerEspectaculosPorPlataforma(JList listPlataform, String nombrePlataforma);
     public abstract void obtenerPlataformas();
     public abstract void obtenerArtistas();
-    public abstract void obtenerArtistaPorNombre(String nombre);
+    public abstract void obtenerArtistaPorNick(String nombre);//NUEVOO
+    public abstract void obtenerArtistaPorNombre(String nick);
     public abstract void cargarDatosConsultaEspectaculo(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip);
     public abstract void cargarDatosFuncionConsultaEspectaculo(String nombreFuncion, JLabel nombreFun, JLabel fechaRegistro, JLabel horaInicio, JLabel fechaInicio);
     public abstract boolean verificarNombreEspectaculo(String nombre);

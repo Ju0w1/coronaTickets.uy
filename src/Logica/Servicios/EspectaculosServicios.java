@@ -244,6 +244,22 @@ public class EspectaculosServicios {
             return new JList();
         }
     }
+    public JList llenarListaArtistasPorNick(String nick) {
+        DefaultListModel demoList = new DefaultListModel();
+        try {
+            //Si está vacío muestro todos los Artistas
+                PreparedStatement status = conexion.prepareStatement("SELECT usuario.usu_nick FROM usuario WHERE usuario.usu_id IN(SELECT u2.usu_id FROM usuario as u2,artistas WHERE artistas.art_usu=u2.usu_id AND u2.usu_nick LIKE '" + nick + "%');"); //MUESTRO TODOS
+                ResultSet rs = status.executeQuery();
+                while (rs.next()) {
+                    demoList.addElement(rs.getString(1));
+                }
+                JList listd = new JList(demoList);
+                return listd;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return new JList();
+        }
+    }
 
     public JList llenarListaArtistasPorNombre(String nombre) {
         DefaultListModel demoList = new DefaultListModel();

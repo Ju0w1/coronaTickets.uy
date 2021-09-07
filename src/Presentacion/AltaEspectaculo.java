@@ -39,6 +39,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
      * Creates new form AltaEspectaculo
      */
     public AltaEspectaculo() {
+        
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
         this.ICE.obtenerPlataformasToComboBox(jComboBox1Plataformas);
@@ -50,6 +51,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
 //        jLabelErrorCantidadEspectadorMinima.setText("");
         controlCamposVacios();
         jLabelErrorCase.setForeground(Color.BLACK);
+        jLabelDescripcionTam.setVisible(false);
 //        jLabelErrorHoras.setText("");
 //        jLabelErrorMinutos.setText("");
     }
@@ -85,7 +87,6 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         txtMinutos = new javax.swing.JTextField();
         txtURL = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -94,24 +95,28 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jComboBox1Plataformas = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jComboBox1Plataformas = new javax.swing.JComboBox<>();
+        jLabelDescripcionTam = new javax.swing.JLabel();
         btnConfirmar = new javax.swing.JButton();
         jLabelErrorCase = new javax.swing.JLabel();
-        jLabelDescripcionTam = new javax.swing.JLabel();
 
-        jFrameBuscarArtista.setMinimumSize(new java.awt.Dimension(400, 330));
+        jFrameBuscarArtista.setMinimumSize(new java.awt.Dimension(340, 330));
         jFrameBuscarArtista.setResizable(false);
         jFrameBuscarArtista.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setMaximumSize(new java.awt.Dimension(405, 370));
-        jPanel2.setMinimumSize(new java.awt.Dimension(405, 370));
-        jPanel2.setPreferredSize(new java.awt.Dimension(405, 370));
+        jPanel2.setMaximumSize(new java.awt.Dimension(320, 370));
+        jPanel2.setMinimumSize(new java.awt.Dimension(320, 370));
+        jPanel2.setPreferredSize(new java.awt.Dimension(320, 370));
 
         jTextField1.setText("Filtrar por nick");
+        jTextField1.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                jTextField1CaretUpdate(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -138,12 +143,11 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField1)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -158,7 +162,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
                 .addGap(94, 94, 94))
         );
 
-        jFrameBuscarArtista.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 422, 288));
+        jFrameBuscarArtista.getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 330, 280));
 
         jFrameModificar.setMinimumSize(new java.awt.Dimension(516, 266));
         jFrameModificar.setResizable(false);
@@ -220,10 +224,12 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         );
 
         setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
         setTitle("Alta de Espectáculo");
-        setMaximumSize(new java.awt.Dimension(740, 540));
-        setMinimumSize(new java.awt.Dimension(740, 540));
-        setPreferredSize(new java.awt.Dimension(740, 540));
+        setMaximumSize(new java.awt.Dimension(540, 540));
+        setMinimumSize(new java.awt.Dimension(540, 540));
+        setPreferredSize(new java.awt.Dimension(540, 540));
         addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 formMouseMoved(evt);
@@ -290,8 +296,6 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
         jLabel3.setText("Descripción");
 
-        jLabel15.setText("Minutos");
-
         txtMinutos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMinutosActionPerformed(evt);
@@ -314,9 +318,9 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel4.setText("Duración del espectáculo");
+        jLabel4.setText("Duración del espectáculo(Minutos)");
 
-        jLabel5.setText("Cantidad de espectadores");
+        jLabel5.setText("Cantidad de espectadores:");
 
         txtCosto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -335,17 +339,9 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
         jLabel7.setText("Máxima");
 
-        jComboBox1Plataformas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1PlataformasActionPerformed(evt);
-            }
-        });
-
         jLabel8.setText("URL");
 
-        jLabel9.setText("Costo");
-
-        jLabel11.setText("$");
+        jLabel9.setText("Costo $");
 
         jButton3.setText("Seleccioanr");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -354,119 +350,106 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
+        jComboBox1Plataformas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1PlataformasActionPerformed(evt);
+            }
+        });
+
+        jLabelDescripcionTam.setText("jLabel11");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel10)
-                        .addGap(137, 137, 137)
-                        .addComponent(jComboBox1Plataformas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(172, 172, 172)
-                        .addComponent(txtURL, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addGap(151, 151, 151)
-                        .addComponent(jLabel11)
-                        .addGap(6, 6, 6)
-                        .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(11, 11, 11)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addGap(53, 53, 53)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtNombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton3))
+                            .addComponent(jComboBox1Plataformas, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtNombreEspectaculo, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel5)
-                                .addComponent(jLabel4))
-                            .addGap(51, 51, 51)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel15)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(txtMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel6)
-                                    .addGap(29, 29, 29)
-                                    .addComponent(txtCantidadMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(txtCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addContainerGap())
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(131, 131, 131)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(8, 8, 8)
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtURL, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidadMinima, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(64, 64, 64)
+                        .addComponent(jLabelDescripcionTam))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 45, Short.MAX_VALUE))
+            .addComponent(jScrollPane1)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(jLabel10))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
                     .addComponent(jComboBox1Plataformas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtNombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton3)))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtNombreArtista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
                     .addComponent(txtNombreEspectaculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelDescripcionTam))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel15)
                     .addComponent(txtMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
-                        .addComponent(txtCantidadMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel7)
-                        .addComponent(txtCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel6)
+                    .addComponent(txtCantidadMinima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(txtCantidadMaxima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel8))
-                    .addComponent(txtURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel11))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtURL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(15, 15, 15)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(txtCosto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         btnConfirmar.setText("Confirmar");
@@ -484,40 +467,31 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabelDescripcionTam.setText("0/255");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(12, 12, 12)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabelDescripcionTam)
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
+                .addGap(10, 10, 10)
                 .addComponent(jLabelErrorCase)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnConfirmar)
-                .addGap(77, 77, 77))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jLabelDescripcionTam)))
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnConfirmar)
-                    .addComponent(jLabelErrorCase))
-                .addGap(30, 30, 30))
+                    .addComponent(jLabelErrorCase)
+                    .addComponent(btnConfirmar))
+                .addContainerGap())
         );
 
         pack();
@@ -621,29 +595,33 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     
     
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        String nombrePlataforma= jComboBox1Plataformas.getSelectedItem().toString();
-        String nombreOrganizador= txtNombreArtista.getText();
-        String nombreEspectaculo= txtNombreEspectaculo.getText();
-        String descripcion = txtDescripcion.getText();
-        Double duracion= Double.parseDouble(txtMinutos.getText());
-        int cantEspectadoresMinima = Integer.parseInt(txtCantidadMinima.getText());
-        int cantEspectadoresMaxima = Integer.parseInt(txtCantidadMaxima.getText());
-        String URL = txtURL.getText();
-        Double Costo = Double.parseDouble(txtCosto.getText());
-        if(controlCamposCorrectos()==0){ //EN CASO DE QUE TODOS LOS DATOS INGRESADOS SEAN COHERENTES/CORRECTO SE PROCEDE A CARGAR LOS DATOS A LA DB
-            if (this.ICE.verificarNombreEspectaculo(nombreEspectaculo)==true) { //EN CASO DE QUE EL NOMBRE INGRESADO DE ESPECTÁCULO EXISTA SE PROCEDE CON LA OPCION DE MODIFICAR O CANCELAR EL CASO DE USO
-                Dimension desktopSize = jDesktopPane2.getSize();
-                Dimension jInternalFrameSize = jFrameModificar.getSize();
-                jFrameModificar.setLocation((jDesktopPane2.getWidth() - jInternalFrameSize.width)/2,
-                (jDesktopPane2.getHeight() - jInternalFrameSize.height)/2);
-                jFrameModificar.setVisible(true);
+        if (txtURL.getText().matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")){ // Expresion regular para comprobar la url
+            String nombrePlataforma= jComboBox1Plataformas.getSelectedItem().toString();
+            String nombreOrganizador= txtNombreArtista.getText();
+            String nombreEspectaculo= txtNombreEspectaculo.getText();
+            String descripcion = txtDescripcion.getText();
+            Double duracion= Double.parseDouble(txtMinutos.getText());
+            int cantEspectadoresMinima = Integer.parseInt(txtCantidadMinima.getText());
+            int cantEspectadoresMaxima = Integer.parseInt(txtCantidadMaxima.getText());
+            String URL = txtURL.getText();
+            Double Costo = Double.parseDouble(txtCosto.getText());
+            if(controlCamposCorrectos()==0){ //EN CASO DE QUE TODOS LOS DATOS INGRESADOS SEAN COHERENTES/CORRECTO SE PROCEDE A CARGAR LOS DATOS A LA DB
+                if (this.ICE.verificarNombreEspectaculo(nombreEspectaculo)==true) { //EN CASO DE QUE EL NOMBRE INGRESADO DE ESPECTÁCULO EXISTA SE PROCEDE CON LA OPCION DE MODIFICAR O CANCELAR EL CASO DE USO
+                    Dimension desktopSize = jDesktopPane2.getSize();
+                    Dimension jInternalFrameSize = jFrameModificar.getSize();
+                    jFrameModificar.setLocation((jDesktopPane2.getWidth() - jInternalFrameSize.width)/2,
+                    (jDesktopPane2.getHeight() - jInternalFrameSize.height)/2);
+                    jFrameModificar.setVisible(true);
+                }else{
+                    this.ICE.altaEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
+                    JOptionPane.showMessageDialog(this, "Espectáculo agregado exitosamente.");
+                    this.dispose();
+                }
             }else{
-                this.ICE.altaEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
-                JOptionPane.showMessageDialog(this, "Espectáculo agregado exitosamente.");
-                this.dispose();
+                controlCamposVacios();
             }
-        }else{
-            controlCamposVacios();
+        } else {
+            JOptionPane.showMessageDialog(this, "Link Web no valido");
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
@@ -709,20 +687,25 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        try{
-           this.ICE.obtenerArtistaPorNombre(jTextField1.getText());
-        }catch (java.lang.Exception e){ //SI INGRESA SOLO ESPACIOS LE SALE UNA ADVERTENCIA Y SE REINICIA EL JTEXTFIELD.
-            jTextField1.enable(false);
-            JOptionPane.showMessageDialog(null, "No puede ingresar solo espaciados, debe ingresar al menos una letra.", "ERROR:", JOptionPane.ERROR_MESSAGE);
-            jTextField1.enable(true);
-            jTextField1.setText("");
-            this.ICE.obtenerArtistaPorNombre(jTextField1.getText());
-        }
+//        try{
+//           this.ICE.obtenerArtistaPorNombre(jTextField1.getText());
+//        }catch (java.lang.Exception e){ //SI INGRESA SOLO ESPACIOS LE SALE UNA ADVERTENCIA Y SE REINICIA EL JTEXTFIELD.
+//            jTextField1.enable(false);
+//            JOptionPane.showMessageDialog(null, "No puede ingresar solo espaciados, debe ingresar al menos una letra.", "ERROR:", JOptionPane.ERROR_MESSAGE);
+//            jTextField1.enable(true);
+//            jTextField1.setText("");
+//            this.ICE.obtenerArtistaPorNombre(jTextField1.getText());
+//        }
     }//GEN-LAST:event_jTextField1KeyPressed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField1CaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_jTextField1CaretUpdate
+        // TODO add your handling code here:
+        this.ICE.obtenerArtistaPorNick(jTextField1.getText());
+    }//GEN-LAST:event_jTextField1CaretUpdate
 
     public void controlCamposVacios(){
         if(txtCantidadMaxima.getText().equalsIgnoreCase("") || txtCantidadMinima.getText().equalsIgnoreCase("") || txtCosto.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtMinutos.getText().equalsIgnoreCase("") || txtNombreArtista.getText().equalsIgnoreCase("") || txtNombreEspectaculo.getText().equalsIgnoreCase("") || txtURL.getText().equalsIgnoreCase("")){
@@ -832,9 +815,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     public static javax.swing.JFrame jFrameModificar;
     public static javax.swing.JLabel jLabel1;
     public static javax.swing.JLabel jLabel10;
-    public static javax.swing.JLabel jLabel11;
     public static javax.swing.JLabel jLabel12;
-    public static javax.swing.JLabel jLabel15;
     public static javax.swing.JLabel jLabel2;
     public static javax.swing.JLabel jLabel3;
     public static javax.swing.JLabel jLabel4;
