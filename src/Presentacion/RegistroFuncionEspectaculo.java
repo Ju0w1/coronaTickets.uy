@@ -84,7 +84,6 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         mes = new javax.swing.JSpinner();
         anio = new javax.swing.JSpinner();
         jLabel10 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         btnRegistrar = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -92,7 +91,6 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
         jButton6 = new javax.swing.JButton();
 
         jFrame1.setTitle("PROMO: Canjear tres registros por uno");
-        jFrame1.setMaximumSize(new java.awt.Dimension(516, 448));
         jFrame1.setMinimumSize(new java.awt.Dimension(516, 448));
         jFrame1.setResizable(false);
 
@@ -360,13 +358,6 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
 
         jLabel10.setText("Seleccionar espectador");
 
-        jButton5.setText("Seleccionar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-
         btnCancelar.setText("Cancelar");
         btnCancelar.setActionCommand("btnCancelarPlat");
 
@@ -408,25 +399,22 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnCancelar)
-                                .addGap(217, 217, 217)
-                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(9, 9, 9)
-                                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel10))
+                        .addContainerGap(59, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(272, 272, 272))
-                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton5)
-                                    .addComponent(jButton6))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(68, 68, 68))))
         );
         layout.setVerticalGroup(
@@ -441,14 +429,12 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnRegistrar))
-                .addGap(30, 30, 30))
+                .addGap(74, 74, 74))
         );
 
         pack();
@@ -456,14 +442,15 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
        // TODO add your handling code here:
+       if(this.espec.getSelectedValue()==null){
+           JOptionPane.showMessageDialog(this, "Debe seleccionar algune espetctáculo");
+       }else{
         String nomEspectaculo= espec.getSelectedValue();
         System.out.print(nomEspectaculo);
         this.ICE.obtenerTablaFunciones((DefaultTableModel) this.funcTable.getModel(), nomEspectaculo);
+           
+       }
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         
@@ -534,12 +521,16 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
-        LocalDateTime now = LocalDateTime.now();
-        String fun= this.funcTable.getModel().getValueAt(this.funcTable.getSelectedRow(),0).toString();
-        this.txtFuncion.setText(fun);
-        this.dia.setValue(now.getDayOfMonth());
-        this.mes.setValue(now.getMonthValue());
-        this.anio.setValue(now.getYear());
+        if(this.funcTable.getSelectedRow() == -1){
+            JOptionPane.showMessageDialog(this, "Debe seleccionar alguna fila de la tabla de funciones");
+        }else{
+            LocalDateTime now = LocalDateTime.now();
+            String fun= this.funcTable.getModel().getValueAt(this.funcTable.getSelectedRow(),0).toString();
+            this.txtFuncion.setText(fun);
+            this.dia.setValue(now.getDayOfMonth());
+            this.mes.setValue(now.getMonthValue());
+            this.anio.setValue(now.getYear());
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -601,7 +592,6 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JFrame jFrame1;
