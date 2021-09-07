@@ -713,7 +713,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField1CaretUpdate
 
     private void jComboBox1PlataformasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasItemStateChanged
-        this.ICE.obtenerLinkPlataforma(jComboBox1Plataformas.getSelectedItem().toString());
+        //this.ICE.obtenerLinkPlataforma(jComboBox1Plataformas.getSelectedItem().toString(),);
     }//GEN-LAST:event_jComboBox1PlataformasItemStateChanged
 
     public void controlCamposVacios(){

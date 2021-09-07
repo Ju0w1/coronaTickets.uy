@@ -67,6 +67,6 @@ public interface IControladorEspectaculo {
     public abstract boolean fechaInicioMayor(int diaUno, int mesUno, int anioUno,int diaDos, int mesDos,int anioDos);
     public void obtenerArtistasDeFuncion(DefaultTableModel tablaModelo, String nombreFuncion);
     public abstract void llenarEspectaculos();
-    public abstract void obtenerLinkPlataforma(String nombrePlataforma);
+    public abstract void obtenerLinkPlataforma(String nombrePlataforma, JLabel linkPlataforma);
 }
 

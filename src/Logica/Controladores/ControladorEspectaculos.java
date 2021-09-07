@@ -641,7 +641,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
     }
 
-    public void obtenerLinkPlataforma(String nombrePlataforma){
-        
+    public void obtenerLinkPlataforma(String nombrePlataforma, JLabel linkPlataforma){
+        //Llamar a función ServicioPlataforma para obtener el link de la plataforma y setearlo
     }
 }
