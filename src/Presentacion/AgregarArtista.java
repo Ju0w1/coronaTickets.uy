@@ -111,7 +111,7 @@ public class AgregarArtista extends javax.swing.JInternalFrame {
         SpinnerDia.setModel(new javax.swing.SpinnerNumberModel(1, 1, 31, 1));
         SpinnerDia.setName("SpinnerDia"); // NOI18N
 
-        SpinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, null, 12, 1));
+        SpinnerMes.setModel(new javax.swing.SpinnerNumberModel(1, 1, 12, 1));
         SpinnerMes.setName("SpinnerMes"); // NOI18N
 
         SpinnerAnio.setModel(new javax.swing.SpinnerNumberModel(1990, 1950, 2003, 1));

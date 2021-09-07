@@ -146,6 +146,11 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
 
         jButton3.setText("Cancelar");
         jButton3.setActionCommand("cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 430, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -239,6 +244,10 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
            JOptionPane.showMessageDialog(this, "Cargando plataformas");
        }
     }//GEN-LAST:event_PlataformaBoxItemStateChanged
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

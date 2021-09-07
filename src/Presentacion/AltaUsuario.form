@@ -228,8 +228,8 @@
         </Component>
         <Component class="javax.swing.JSpinner" name="SpinnerMes">
           <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-              <SpinnerModel initial="1" maximum="12" numberType="java.lang.Integer" stepSize="1" type="number"/>
+            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.SpinnerNumberModel(1, 1, 12, 1)" type="code"/>
             </Property>
             <Property name="name" type="java.lang.String" value="SpinnerMes" noResource="true"/>
           </Properties>
