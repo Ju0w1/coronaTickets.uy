@@ -51,6 +51,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextField;
 
 public class ControladorEspectaculos implements IControladorEspectaculo {
 
@@ -641,7 +642,13 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
     }
 
-    public void obtenerLinkPlataforma(String nombrePlataforma, JLabel linkPlataforma){
+    public void obtenerLinkPlataforma(String nombrePlataforma, JTextField linkPlataforma){
         //Llamar a función ServicioPlataforma para obtener el link de la plataforma y setearlo
+        String urlNueva = this.servicioEspectaculo.getLinkPlataforma(nombrePlataforma) + "/";
+        if (urlNueva.equals("/")){
+            linkPlataforma.setText("Seleccione una Plataforma");
+        } else {
+            linkPlataforma.setText(this.servicioEspectaculo.getLinkPlataforma(nombrePlataforma) + "/");
+        }
     }
 }

@@ -35,6 +35,7 @@ import javax.swing.UIManager;
 public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
     private IControladorEspectaculo ICE;
+    private String URLORIGINAL = "";
     /**
      * Creates new form AltaEspectaculo
      */
@@ -54,6 +55,7 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         jLabelDescripcionTam.setVisible(false);
 //        jLabelErrorHoras.setText("");
 //        jLabelErrorMinutos.setText("");
+    
     }
 
     /**
@@ -307,6 +309,16 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
+        txtURL.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtURLCaretUpdate(evt);
+            }
+        });
+        txtURL.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtURLFocusLost(evt);
+            }
+        });
         txtURL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtURLActionPerformed(evt);
@@ -600,33 +612,37 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     
     
     private void btnConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarActionPerformed
-        if (txtURL.getText().matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")){ // Expresion regular para comprobar la url
-            String nombrePlataforma= jComboBox1Plataformas.getSelectedItem().toString();
-            String nombreOrganizador= txtNombreArtista.getText();
-            String nombreEspectaculo= txtNombreEspectaculo.getText();
-            String descripcion = txtDescripcion.getText();
-            Double duracion= Double.parseDouble(txtMinutos.getText());
-            int cantEspectadoresMinima = Integer.parseInt(txtCantidadMinima.getText());
-            int cantEspectadoresMaxima = Integer.parseInt(txtCantidadMaxima.getText());
-            String URL = txtURL.getText();
-            Double Costo = Double.parseDouble(txtCosto.getText());
-            if(controlCamposCorrectos()==0){ //EN CASO DE QUE TODOS LOS DATOS INGRESADOS SEAN COHERENTES/CORRECTO SE PROCEDE A CARGAR LOS DATOS A LA DB
-                if (this.ICE.verificarNombreEspectaculo(nombreEspectaculo)==true) { //EN CASO DE QUE EL NOMBRE INGRESADO DE ESPECTÁCULO EXISTA SE PROCEDE CON LA OPCION DE MODIFICAR O CANCELAR EL CASO DE USO
-                    Dimension desktopSize = jDesktopPane2.getSize();
-                    Dimension jInternalFrameSize = jFrameModificar.getSize();
-                    jFrameModificar.setLocation((jDesktopPane2.getWidth() - jInternalFrameSize.width)/2,
-                    (jDesktopPane2.getHeight() - jInternalFrameSize.height)/2);
-                    jFrameModificar.setVisible(true);
-                }else{
-                    this.ICE.altaEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
-                    JOptionPane.showMessageDialog(this, "Espectáculo agregado exitosamente.");
-                    this.dispose();
-                }
-            }else{
-                controlCamposVacios();
-            }
+        if(txtURL.getText().compareTo(URLORIGINAL) < 0 || txtURL.getText().compareTo(URLORIGINAL) == 0){
+            JOptionPane.showMessageDialog(this, "URL no valida");
         } else {
-            JOptionPane.showMessageDialog(this, "Link Web no valido");
+            if (txtURL.getText().matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]")){ // Expresion regular para comprobar la url
+                String nombrePlataforma= jComboBox1Plataformas.getSelectedItem().toString();
+                String nombreOrganizador= txtNombreArtista.getText();
+                String nombreEspectaculo= txtNombreEspectaculo.getText();
+                String descripcion = txtDescripcion.getText();
+                Double duracion= Double.parseDouble(txtMinutos.getText());
+                int cantEspectadoresMinima = Integer.parseInt(txtCantidadMinima.getText());
+                int cantEspectadoresMaxima = Integer.parseInt(txtCantidadMaxima.getText());
+                String URL = txtURL.getText();
+                Double Costo = Double.parseDouble(txtCosto.getText());
+                if(controlCamposCorrectos()==0){ //EN CASO DE QUE TODOS LOS DATOS INGRESADOS SEAN COHERENTES/CORRECTO SE PROCEDE A CARGAR LOS DATOS A LA DB
+                    if (this.ICE.verificarNombreEspectaculo(nombreEspectaculo)==true) { //EN CASO DE QUE EL NOMBRE INGRESADO DE ESPECTÁCULO EXISTA SE PROCEDE CON LA OPCION DE MODIFICAR O CANCELAR EL CASO DE USO
+                        Dimension desktopSize = jDesktopPane2.getSize();
+                        Dimension jInternalFrameSize = jFrameModificar.getSize();
+                        jFrameModificar.setLocation((jDesktopPane2.getWidth() - jInternalFrameSize.width)/2,
+                        (jDesktopPane2.getHeight() - jInternalFrameSize.height)/2);
+                        jFrameModificar.setVisible(true);
+                    }else{
+                        this.ICE.altaEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
+                        JOptionPane.showMessageDialog(this, "Espectáculo agregado exitosamente.");
+                        this.dispose();
+                    }
+                }else{
+                    controlCamposVacios();
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Link Web no valido");
+            }
         }
     }//GEN-LAST:event_btnConfirmarActionPerformed
 
@@ -658,6 +674,9 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
 
     private void txtURLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtURLKeyPressed
         controlCamposVacios();
+        if(txtURL.getText().compareTo(URLORIGINAL) < 0){
+            txtURL.setText(URLORIGINAL);
+        }
     }//GEN-LAST:event_txtURLKeyPressed
 
     private void jComboBox1PlataformasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasActionPerformed
@@ -713,8 +732,23 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTextField1CaretUpdate
 
     private void jComboBox1PlataformasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasItemStateChanged
-        //this.ICE.obtenerLinkPlataforma(jComboBox1Plataformas.getSelectedItem().toString(),);
+        this.ICE.obtenerLinkPlataforma(jComboBox1Plataformas.getSelectedItem().toString(), this.txtURL);
+        this.URLORIGINAL=txtURL.getText();
     }//GEN-LAST:event_jComboBox1PlataformasItemStateChanged
+
+    private void txtURLCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtURLCaretUpdate
+        // TODO add your handling code here:
+//        if(txtURL.getText().compareTo(URLORIGINAL) < 0){
+//            txtURL.setText(URLORIGINAL);
+//        }
+    }//GEN-LAST:event_txtURLCaretUpdate
+
+    private void txtURLFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtURLFocusLost
+        // TODO add your handling code here:
+        if(txtURL.getText().compareTo(URLORIGINAL) < 0){
+            txtURL.setText(URLORIGINAL);
+        }
+    }//GEN-LAST:event_txtURLFocusLost
 
     public void controlCamposVacios(){
         if(txtCantidadMaxima.getText().equalsIgnoreCase("") || txtCantidadMinima.getText().equalsIgnoreCase("") || txtCosto.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtMinutos.getText().equalsIgnoreCase("") || txtNombreArtista.getText().equalsIgnoreCase("") || txtNombreEspectaculo.getText().equalsIgnoreCase("") || txtURL.getText().equalsIgnoreCase("")){

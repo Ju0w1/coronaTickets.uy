@@ -340,7 +340,7 @@ public class EspectaculosServicios {
     
     
     
-      public Map<String, Funcion> getMapFuncionesEspectaculoNombre(String espectaculoNombre) {
+    public Map<String, Funcion> getMapFuncionesEspectaculoNombre(String espectaculoNombre) {
         Map<String, Funcion> resultado = new HashMap<>();
         Map<String, Artista> artistas = new HashMap<>();
         Espectaculo espectaculo;
@@ -691,6 +691,17 @@ public class EspectaculosServicios {
             ex.printStackTrace();
         }
     }
-    
-
+    public String getLinkPlataforma(String nombrePlataforma){
+        String url = "";
+        try {
+        PreparedStatement status = conexion.prepareStatement("SELECT valores_tipo.vp_valor_1 FROM valores_tipo WHERE valores_tipo.vp_nombre='" + nombrePlataforma + "'");
+            ResultSet rs = status.executeQuery();
+            if(rs.next()){
+                url=rs.getString(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return url;
+    }
 }
