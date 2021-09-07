@@ -76,6 +76,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         this.plataformas = new HashMap<>();
         this.espectaculos = new HashMap<>();
         this.servicioFuncion = new FuncionServicios();
+        this.servicioPlataforma = new PlataformaServicio();
     }
 
     public static ControladorEspectaculos getInstance() {
@@ -640,5 +641,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
     }
 
-
+    public void obtenerLinkPlataforma(String nombrePlataforma){
+        
+    }
 }

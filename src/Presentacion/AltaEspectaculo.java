@@ -350,6 +350,11 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
             }
         });
 
+        jComboBox1Plataformas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1PlataformasItemStateChanged(evt);
+            }
+        });
         jComboBox1Plataformas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1PlataformasActionPerformed(evt);
@@ -706,6 +711,10 @@ public class AltaEspectaculo extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         this.ICE.obtenerArtistaPorNick(jTextField1.getText());
     }//GEN-LAST:event_jTextField1CaretUpdate
+
+    private void jComboBox1PlataformasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1PlataformasItemStateChanged
+        this.ICE.obtenerLinkPlataforma(jComboBox1Plataformas.getSelectedItem().toString());
+    }//GEN-LAST:event_jComboBox1PlataformasItemStateChanged
 
     public void controlCamposVacios(){
         if(txtCantidadMaxima.getText().equalsIgnoreCase("") || txtCantidadMinima.getText().equalsIgnoreCase("") || txtCosto.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtDescripcion.getText().equalsIgnoreCase("") || txtMinutos.getText().equalsIgnoreCase("") || txtNombreArtista.getText().equalsIgnoreCase("") || txtNombreEspectaculo.getText().equalsIgnoreCase("") || txtURL.getText().equalsIgnoreCase("")){
