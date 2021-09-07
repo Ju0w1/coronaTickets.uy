@@ -10,6 +10,7 @@
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Servicios/PlataformaServicio.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Clases/Espectador.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Clases/Funcion.java</file>
+            <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/ConsultaPaquete.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/AltaEspectaculo.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/DataTypes/DTTimeStamp.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Controladores/ControladorEspectaculos.java</file>
@@ -18,7 +19,12 @@
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/ConsultaFuncion.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Fabrica.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/ConsultaEspectaculo.java</file>
+            <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Servicios/FuncionServicios.java</file>
+            <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Controladores/ControladorPaquete.java</file>
+            <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Interfaz/IControladorPaquete.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Interfaz/IControladorUsuario.java</file>
+            <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Servicios/PaquetesServicios.java</file>
+            <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Interfaz/IControladorFuncion.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Clases/Plataforma.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Clases/Espectaculo.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/AltaEspectaculoModificar.java</file>
@@ -31,6 +37,7 @@
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/ConsultaUsuario.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/DataTypes/DTFecha.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/AltaPlataforma.java</file>
+            <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Controladores/ControladorFuncion.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Clases/Paquete.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Logica/Clases/Usuario.java</file>
             <file>file:/C:/Users/milto/Documents/LABORATORIO/coronaTickets.uy/src/Presentacion/AgregarArtista.java</file>
