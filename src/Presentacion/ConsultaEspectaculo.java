@@ -304,11 +304,12 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
         jLabel13.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         jLabel13.setText("Descripción del espectáculo:");
 
+        jPanel2.setPreferredSize(new java.awt.Dimension(268, 275));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPane5.setViewportView(listEspectaculosDePaquete);
 
-        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 31, -1, 118));
+        jPanel2.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 31, 250, 118));
 
         labelPaqueteEspectaculos.setFont(new java.awt.Font("sansserif", 1, 12)); // NOI18N
         labelPaqueteEspectaculos.setText("Espectáculos que ofrece el paquete:");
@@ -450,7 +451,7 @@ public class ConsultaEspectaculo extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 134, Short.MAX_VALUE))))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
