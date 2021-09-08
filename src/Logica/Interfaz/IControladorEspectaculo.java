@@ -22,6 +22,8 @@ import javax.swing.JTextArea;
 import javax.swing.JList; //NUEVO
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JTextField;
+
 
 /**
  *
@@ -67,5 +69,6 @@ public interface IControladorEspectaculo {
     public abstract boolean fechaInicioMayor(int diaUno, int mesUno, int anioUno,int diaDos, int mesDos,int anioDos);
     public void obtenerArtistasDeFuncion(DefaultTableModel tablaModelo, String nombreFuncion);
     public abstract void llenarEspectaculos();
+    public abstract void obtenerLinkPlataforma(String nombrePlataforma, JTextField linkPlataforma);
 }
 
