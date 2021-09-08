@@ -219,20 +219,22 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
         if(this.jComboBox1.getSelectedItem() != null){
            
-            this.jComboBox2.setEnabled(true);
             DefaultComboBoxModel modelo = (DefaultComboBoxModel) this.jComboBox2.getModel();
             modelo.removeAllElements();
             this.ICE.obtenerEspectaculosToComboBox(this.jComboBox2,this.jComboBox1.getSelectedItem().toString());
             
             if(this.jComboBox2.getSelectedItem() == null){
-                JOptionPane.showMessageDialog(this, "La plataforma no tiene espectáculos registrados");
                 this.jComboBox2.setEnabled(false);
                 this.btnBuscarFuncion.setEnabled(false);
+                this.funcTable1.setEnabled(false);
+                DefaultTableModel model = (DefaultTableModel) this.funcTable1.getModel();
+                model.setRowCount(0);
             }else{
-                this.btnBuscarFuncion.setEnabled(true);
+                this.jComboBox2.setEnabled(true);
+                this.btnBuscarFuncion.setEnabled(true); 
             }
        }else{
-           JOptionPane.showMessageDialog(this, "Cargando plataformas");
+           //JOptionPane.showMessageDialog(this, "Cargando plataformas");
        }
     }//GEN-LAST:event_jComboBox1ItemStateChanged
 

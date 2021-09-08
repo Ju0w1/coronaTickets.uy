@@ -247,7 +247,7 @@ public class AltaFuncion extends javax.swing.JInternalFrame {
             modelo.removeAllElements();
             this.ICF.obtenerEspectaculo(EspectaculoBox, this.PlataformaBox.getSelectedItem().toString());
        }else{
-           JOptionPane.showMessageDialog(this, "Cargando plataformas");
+           //JOptionPane.showMessageDialog(this, "Cargando plataformas");
        }
     }//GEN-LAST:event_PlataformaBoxItemStateChanged
 
