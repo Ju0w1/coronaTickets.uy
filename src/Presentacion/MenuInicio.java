@@ -80,6 +80,7 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenuItem19.setText("jMenuItem19");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("CoronaTickets.uy");
         setMinimumSize(new java.awt.Dimension(1200, 800));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
