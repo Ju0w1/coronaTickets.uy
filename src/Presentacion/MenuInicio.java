@@ -8,6 +8,12 @@ package Presentacion;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -21,14 +27,19 @@ public class MenuInicio extends javax.swing.JFrame {
      * Creates new form MenuInicio
      */
     public MenuInicio() {
-        initComponents();
-//        Image imagen;
-//        try {
-//            imagen = new ImageIcon(getClass().getResource("\\imagenCoronaTickets.png")).getImage();
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "Não foi possivel ler a imagem !");
-//
-//        }
+        try {
+            initComponents();
+            URL url = null;
+            try {
+                url = new URL("https://i.imgur.com/CQ7tT9L.png");
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(MenuInicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            Image image = ImageIO.read(url);
+            this.setIconImage(new ImageIcon(image).getImage());
+        } catch (IOException ex) {
+            Logger.getLogger(MenuInicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
