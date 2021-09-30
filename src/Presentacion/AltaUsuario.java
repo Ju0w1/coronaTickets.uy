@@ -58,7 +58,7 @@ public class AltaUsuario extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Alta Usuario");
+        setTitle("Alta de Usuario(Espectador)");
         setPreferredSize(new java.awt.Dimension(540, 340));
 
         txtNombre.addActionListener(new java.awt.event.ActionListener() {

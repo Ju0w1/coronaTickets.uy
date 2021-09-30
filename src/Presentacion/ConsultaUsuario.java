@@ -74,7 +74,7 @@ public class ConsultaUsuario extends javax.swing.JInternalFrame {
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
-        setTitle("Espectadores");
+        setTitle("Consulta/Modificar Espectador");
         setMinimumSize(new java.awt.Dimension(900, 500));
         setName(""); // NOI18N
         setPreferredSize(new java.awt.Dimension(880, 460));
