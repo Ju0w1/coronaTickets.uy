@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica.servicios;
+package Logica.Servicio;
 
 import Logica.DataTypes.DTFecha;
 import Persistencia.ConexionDB;

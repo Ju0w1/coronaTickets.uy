@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Logica.Servicios;
+package Logica.Servicio;
 
-import Logica.Clases.Plataforma;
+import Logica.Clases.Espectaculo;
 import Logica.DataTypes.DTFecha;
 import Persistencia.ConexionDB;
 import java.sql.Date;
@@ -13,27 +13,29 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
+
 /**
  *
  * @author 59898
  */
-public class PlataformaServicio {
-    public PlataformaServicio(){}
+public class EspetaculoServicio {
+    
+    public EspetaculoServicio(){}
     
     private Connection conexion = new ConexionDB().getConexion();
-        
-    public ArrayList<String> llenarComboPlataforma()
+
+    public ArrayList<String> llenarComboEspectaculos(int plataforma)
     {
         ArrayList<String> lista = new ArrayList<String>();
         try{
-            ResultSet result = conexion.createStatement().executeQuery("SELECT * FROM valores_tipo WHERE dt_id = 1");
+            ResultSet result = conexion.createStatement().executeQuery("SELECT * FROM espectaculos WHERE espec_plataforma = "+plataforma);
                try{
                    while(result.next())
                    {
-                       lista.add(result.getString("vp_nombre"));
+                       lista.add(result.getString("espec_nombre"));
                    }
                }catch(Exception e)
                {
@@ -44,5 +46,4 @@ public class PlataformaServicio {
         }
         return lista;
     }
-    
 }

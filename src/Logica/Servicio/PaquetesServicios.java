@@ -1,4 +1,4 @@
-package Logica.Servicios;
+package Logica.Servicio;
 
 import Logica.DataTypes.DTFecha;
 import Persistencia.ConexionDB;

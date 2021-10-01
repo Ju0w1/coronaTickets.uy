@@ -9,7 +9,7 @@ import javax.swing.JTextField;
 import Logica.Clases.Paquete;
 import java.util.HashMap;
 import Logica.Interfaz.IControladorPaquete;
-import Logica.Servicios.PaquetesServicios;
+import Logica.Servicio.PaquetesServicios;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;

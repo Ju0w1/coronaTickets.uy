@@ -10,11 +10,11 @@ import java.util.Map;
 import Logica.Clases.Espectaculo;
 import Logica.Clases.Plataforma;
 import Logica.Interfaz.IControladorEspectaculo;
-import Logica.Servicios.EspectaculosServicios;
+import Logica.Servicio.EspectaculosServicios;
 import java.util.HashMap;
 import Logica.Clases.Plataforma; //NUEVO
 import Logica.Interfaz.IControladorEspectaculo;
-import Logica.Servicios.EspectaculosServicios;
+import Logica.Servicio.EspectaculosServicios;
 import java.util.Iterator; //NUEVO
 import javax.swing.DefaultListModel; //NUEVO
 import javax.swing.JComboBox; //NUEVO
@@ -23,14 +23,14 @@ import Logica.Clases.Paquete; // NUEVO
 
 import Logica.DataTypes.DTFecha;
 import java.util.HashMap;
-import Logica.Servicios.EspetaculoServicio;
-import Logica.Servicios.PlataformaServicio;
+import Logica.Servicio.EspetaculoServicio;
+import Logica.Servicio.PlataformaServicio;
 import java.text.ParseException;
 import java.util.Map;
 import Logica.Clases.Plataforma;
 import Logica.Clases.Paquete;
 import Logica.Interfaz.IControladorEspectaculo;
-import Logica.Servicios.PaquetesServicios;
+import Logica.Servicio.PaquetesServicios;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
@@ -44,8 +44,8 @@ import Logica.Clases.Funcion;
 import Logica.Clases.Paquete;
 import Logica.Clases.Registro;
 import Logica.DataTypes.DTFecha;
-import Logica.Servicios.FuncionServicios;
-import Logica.Servicios.PaquetesServicios;
+import Logica.Servicio.FuncionServicios;
+import Logica.Servicio.PaquetesServicios;
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.HashMap;

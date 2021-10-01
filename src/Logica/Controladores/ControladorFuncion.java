@@ -21,8 +21,8 @@ import java.sql.SQLException;
 import javax.swing.JComboBox;
 import Logica.Clases.Artista;
 import Logica.Clases.Funcion;
-import logica.servicios.ArtistasServicios;
-import Logica.Servicios.FuncionServicios;
+import Logica.Servicio.ArtistasServicios;
+import Logica.Servicio.FuncionServicios;
 
 
 public class ControladorFuncion implements IControladorFuncion{

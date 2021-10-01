@@ -44,15 +44,15 @@ public class ConexionDB {
         }     
         
         switch (caso) {
-            case "host":  return prop.getProperty("host");
+            case "host":  return "127.0.0.1";//prop.getProperty("host");
        
-            case "port":  return prop.getProperty("port");
+            case "port":  return "4306";//prop.getProperty("port");
                      
-            case "db":  return prop.getProperty("db");
+            case "db":  return "coronaticket";//prop.getProperty("db");
                      
-            case "user":  return prop.getProperty("user");
+            case "user":  return "root";//prop.getProperty("user");
                      
-            case "pass":  return prop.getProperty("pass");
+            case "pass":  return "";//prop.getProperty("pass");
 
             default: return "";
               

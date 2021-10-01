@@ -14,7 +14,7 @@ import Logica.Interfaz.IControladorUsuario;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import Logica.Clases.Artista;
-import Logica.servicios.UsuariosServicios;
+import Logica.Servicio.UsuariosServicios;
 import java.util.Arrays;
 import java.util.HashMap;
 

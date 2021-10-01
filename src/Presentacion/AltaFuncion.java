@@ -23,7 +23,7 @@ import javax.swing.JDialog;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import Logica.Servicios.FuncionServicios;
+import Logica.Servicio.FuncionServicios;
 
 
 public class AltaFuncion extends javax.swing.JInternalFrame {
