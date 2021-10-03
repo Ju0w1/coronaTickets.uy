@@ -15,8 +15,11 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import Logica.Clases.Artista;
 import Logica.Servicio.UsuariosServicios;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -79,6 +82,24 @@ public class ControladorUsuario implements IControladorUsuario{
             }
         } else { // TODO OK
             return true;
+        }
+        return true;
+    }
+    
+    public boolean login(String user, String password) {
+        try {
+            Usuario usuario = (Usuario) servicioUsuarios.getUser(user);
+            System.out.println("usu: " + usuario.getEmail());
+            if (usuario == null) {
+                return false;
+            } else if (password.equals(usuario.getContrasenia())) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
     }

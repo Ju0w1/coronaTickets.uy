@@ -37,6 +37,29 @@ public class UsuariosServicios {
         return new DTFecha(Integer.parseInt(partes[2]),Integer.parseInt(partes[1]),Integer.parseInt(partes[0]));
     }
     
+    public Usuario getUser(String user) throws SQLException {
+        try {
+            Usuario resultado = new Usuario();
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario");
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                String nick = rs.getString("usu_nick");
+                String mail = rs.getString("usu_mail");
+                String nombre = rs.getString("usu_nombre");
+                String apellido = rs.getString("usu_apellido");
+                String password = rs.getString("usu_contrasenia");
+                if (mail.equals(user) || nick.equals(user)) {
+                    resultado = new Usuario(nick, nombre, apellido, mail, password);
+                }
+                //String nickname, String nombre, String apellido, String email, String contrasenia
+            }
+            rs.close();
+            return resultado;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
     
     public Map<String, Usuario> getUsers() {
         Map<String, Usuario> resultado = new HashMap<>();

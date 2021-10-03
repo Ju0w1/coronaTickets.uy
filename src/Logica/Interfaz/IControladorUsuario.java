@@ -24,5 +24,6 @@ public interface IControladorUsuario {
     public abstract void modificarEspectador(String email,String nombre, String apellido, DTFecha fecha);
     public abstract void modificarArtista(String email,String nombre, String apellido, DTFecha fecha, String descripcion, String biografia, String url);
     //public abstract static boolean contains(final int[] arr, final int key);
+    public abstract boolean login(String user, String password);
     public abstract boolean controlFecha(int dia, int mes,int anio);
 }

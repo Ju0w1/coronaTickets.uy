@@ -8,6 +8,8 @@ public class Usuario {
     private String apellido;
     private String email;
     private DTFecha nacimiento;
+    private String contrasenia;
+    private String url_imagen;
     
     public Usuario(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
         this.nombre = nombre;
@@ -15,6 +17,19 @@ public class Usuario {
         this.nickname= nickname;
         this.email= email;
         this.nacimiento= nacimiento;
+    }
+    
+    // PARA PRUEBA DE LOGIN
+    public Usuario() {
+
+    }
+    
+    public Usuario(String nickname, String nombre, String apellido, String email, String contrasenia) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nickname= nickname;
+        this.email= email;
+        this.contrasenia = contrasenia;
     }
 
     public Usuario(String string, String string0) {
@@ -41,6 +56,14 @@ public class Usuario {
         this.nacimiento= nacimiento;
     }
     
+    public void setContrasenia(String contra){
+        this.contrasenia = contra;
+    }
+    
+    public void setImagen(String img){
+        this.url_imagen = img;
+    }
+    
     public String getNickname(){
          return this.nickname;
     }
@@ -59,6 +82,14 @@ public class Usuario {
     
     public DTFecha getNacimiento(){
         return this.nacimiento;
+    }
+    
+    public String getContrasenia(){
+        return this.contrasenia;
+    }
+    
+    public String getImagen(){
+        return this.url_imagen;
     }
     
 }

@@ -32,17 +32,17 @@ public class ConexionDB {
     
     public String LeerProperties(String caso) {
         
-        Properties prop = new Properties();
-        InputStream archivo = null;
-
-        try {
-            archivo = new FileInputStream(System.getProperty("user.dir") + "\\Config.properties");
-            prop.load(archivo);
-
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, e.getMessage());
-        }     
-        
+//        Properties prop = new Properties();
+//        InputStream archivo = null;
+//
+//        try {
+//            archivo = new FileInputStream(System.getProperty("user.dir") + "\\Config.properties");
+//            prop.load(archivo);
+//
+//        } catch (IOException e) {
+//            JOptionPane.showMessageDialog(null, e.getMessage());
+//        }     
+//        
         switch (caso) {
             case "host":  return "127.0.0.1";//prop.getProperty("host");
        
