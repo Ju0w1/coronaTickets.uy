@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import Logica.Clases.Artista;
 import Logica.Servicio.UsuariosServicios;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -117,6 +118,16 @@ public class ControladorUsuario implements IControladorUsuario{
         if (this.servicioUsuarios.checkUsuario(nickname, email) == false){
             //this.espectadores.put(email, new Espectador(nickname,nombre,apellido,email,nacimiento));
             this.servicioUsuarios.addUsuario(nickname, nombre, apellido, email, nacimiento);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public boolean addEspectador(String nickname, String password1, String email, String nombre, String apellido, String nacimiento, String imagen) {
+        if (this.servicioUsuarios.checkUsuario(nickname, email) == false){
+            //this.espectadores.put(email, new Espectador(nickname,nombre,apellido,email,nacimiento));
+            this.servicioUsuarios.addUsuario( nickname,  password1,  email,  nombre,  apellido,  nacimiento, imagen);
             return true;
         } else {
             return false;

@@ -156,6 +156,24 @@ public class UsuariosServicios {
         return true;
     }
     
+    public boolean addUsuario(String nickname, String password1, String email, String nombre, String apellido, String nacimiento, String imagen) {
+        try {
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario (usu_nick,usu_nombre,usu_apellido,usu_mail,usu_nacimiento, usu_contrasenia, usu_imagen) VALUES (?,?,?,?,?,SHA2(?, 256),?)");
+            status.setString (1, nickname);
+            status.setString (2, nombre);
+            status.setString (3, apellido);
+            status.setString (4, email);
+            status.setString (5, nacimiento);
+            status.setString (6, password1);
+            status.setString (7, imagen);
+            status.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    
     public void modificarEspectador(String nombre, String apellido, DTFecha fecha, String email){
         try{
             PreparedStatement status = conexion.prepareStatement("UPDATE usuario SET usu_nombre = ?, usu_apellido= ?, usu_nacimiento = ? WHERE usu_mail = ?");
