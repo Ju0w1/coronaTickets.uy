@@ -31,4 +31,5 @@ public interface IControladorUsuario {
     public abstract boolean controlFecha(int dia, int mes,int anio);
     public abstract Map<String, Usuario> obtenerUsuarios(); 
     public abstract Artista obtenerArtista(int idUsuario);
+    public abstract Usuario obtenerEspectador(int idUsuario);
 }

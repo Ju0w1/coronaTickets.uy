@@ -11,6 +11,8 @@ public class Usuario {
     private DTFecha nacimiento;
     private String contrasenia;
     private String url_imagen;
+    private int seguidores;
+    private int seguidos;
     
     public Usuario(String nickname, String nombre, String apellido, String email, DTFecha nacimiento) {
         this.nombre = nombre;
@@ -93,7 +95,7 @@ public class Usuario {
         return this.url_imagen;
     }
     
-    public Usuario(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String contrasenia, String url_imagen) {
+    public Usuario(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String contrasenia, String url_imagen, int seguidores, int seguidos) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nickname= nickname;
@@ -101,6 +103,15 @@ public class Usuario {
         this.nacimiento= nacimiento;
         this.contrasenia=contrasenia;
         this.url_imagen=url_imagen;
+        this.seguidores=seguidores;
+        this.seguidos=seguidos;
+    }
+    
+    public int getSeguidores (){
+        return this.seguidores;
+    }
+    public int getSeguidos (){
+        return this.seguidos;
     }
     
 }

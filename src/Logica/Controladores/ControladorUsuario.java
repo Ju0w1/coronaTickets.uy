@@ -318,5 +318,15 @@ public class ControladorUsuario implements IControladorUsuario{
         Artista artista = servicioArtista.getArtista(idUsuario);
         return artista;
     };
+    
+    public Usuario obtenerEspectador(int idUsuario){
+        Usuario usuario = null;
+        try {
+            usuario = servicioUsuarios.getUser(idUsuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuario;
+    }
 
 }

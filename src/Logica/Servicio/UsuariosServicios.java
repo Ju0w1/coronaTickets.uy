@@ -273,8 +273,10 @@ public class UsuariosServicios {
                 DTFecha nacimineto = dateToDTFecha(rs.getDate("usu_nacimiento"));
                 String password = rs.getString("usu_contrasenia");
                 String imagen = rs.getString("usu_imagen");
+                int seguidores=this.getSeguidores(rs.getInt("usu_id"));
+                int seguidos=this.getSiguiendo(rs.getInt("usu_id"));
                 
-                resultado.put(nick, new Usuario(nick, nombre, apellido, mail, nacimineto, password, imagen));
+                resultado.put(nick, new Usuario(nick, nombre, apellido, mail, nacimineto, password, imagen, seguidores, seguidos));
 
                 //String nickname, String nombre, String apellido, String email, String contrasenia
             }
@@ -315,5 +317,30 @@ public class UsuariosServicios {
         }
         return seguidores;
     }
-
+    public Usuario getUser(int usuId) throws SQLException {
+        try {
+            Usuario resultado = null;
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario WHERE usuario.usu_id=?");
+            status.setInt(1, usuId);
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                String nick = rs.getString("usu_nick");
+                String mail = rs.getString("usu_mail");
+                String nombre = rs.getString("usu_nombre");
+                String apellido = rs.getString("usu_apellido");
+                DTFecha nacimineto = dateToDTFecha(rs.getDate("usu_nacimiento"));
+                String password = rs.getString("usu_contrasenia");
+                String imagen = rs.getString("usu_imagen");
+                int seguidores=this.getSeguidores(rs.getInt("usu_id"));
+                int seguidos=this.getSiguiendo(rs.getInt("usu_id"));
+                
+                resultado= new Usuario(nick, nombre, apellido, mail, nacimineto, password, imagen, seguidores, seguidos);
+            }
+            rs.close();
+            return resultado;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 }

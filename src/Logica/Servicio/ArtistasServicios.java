@@ -74,7 +74,7 @@ public class ArtistasServicios {
             int seguidos=servicioUsuarios.getSiguiendo(usuId);
             
             if(rs.next()) {
-                resultado=new Artista(rs.getString("U.usu_nick"),rs.getString("U.usu_nombre"),rs.getString("U.usu_apellido"),rs.getString("U.usu_mail"),dateToDTFecha(rs.getDate("U.usu_nacimiento")),rs.getString("A.art_descripcion"),rs.getString("A.art_biografia"),rs.getString("A.art_url"),seguidores,seguidos);   
+                resultado=new Artista(rs.getString("U.usu_nick"),rs.getString("U.usu_nombre"),rs.getString("U.usu_apellido"),rs.getString("U.usu_mail"),dateToDTFecha(rs.getDate("U.usu_nacimiento")),rs.getString("A.art_descripcion"),rs.getString("A.art_biografia"),rs.getString("A.art_url"));   
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
