@@ -63,4 +63,22 @@ public class ArtistasServicios {
         }
         return true;
     }
+    public Artista getArtista(int usuId) { //Se obtiene todo los datos de un artistas con sus respectivos segudiores y seguidos.
+        Artista resultado = null;
+        UsuariosServicios servicioUsuarios = new UsuariosServicios();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM artistas as a, usuario as U WHERE A.art_usu=U.usu_id AND U.usu_id=?");
+            status.setInt(1, usuId);
+            ResultSet rs = status.executeQuery();
+            int seguidores=servicioUsuarios.getSeguidores(usuId);
+            int seguidos=servicioUsuarios.getSiguiendo(usuId);
+            
+            if(rs.next()) {
+                resultado=new Artista(rs.getString("U.usu_nick"),rs.getString("U.usu_nombre"),rs.getString("U.usu_apellido"),rs.getString("U.usu_mail"),dateToDTFecha(rs.getDate("U.usu_nacimiento")),rs.getString("A.art_descripcion"),rs.getString("A.art_biografia"),rs.getString("A.art_url"),seguidores,seguidos);   
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return resultado;
+    }
 }

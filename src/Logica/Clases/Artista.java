@@ -6,6 +6,8 @@ public class Artista extends Usuario {
     private String descripcion;
     private String biografia;
     private String linkWeb;
+    private int seguidores;
+    private int seguidos;
     public Artista(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String descripcion, String biografia, String linkWeb){
         super (nickname, nombre, apellido, email, nacimiento);
         this.descripcion=descripcion;
@@ -29,5 +31,13 @@ public class Artista extends Usuario {
     }
     public String getLinkWeb (){
         return this.linkWeb;
+    }
+    public Artista(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String descripcion, String biografia, String linkWeb, int seguidores, int seguidos){
+            super (nickname, nombre, apellido, email, nacimiento);
+            this.descripcion=descripcion;
+            this.biografia=biografia;
+            this.linkWeb=linkWeb;
+            this.seguidores=seguidores;
+            this.seguidos=seguidos;
     }    
 }

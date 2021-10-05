@@ -14,6 +14,7 @@ import Logica.Interfaz.IControladorUsuario;
 import javax.swing.JTextArea;
 import javax.swing.table.DefaultTableModel;
 import Logica.Clases.Artista;
+import Logica.Servicio.ArtistasServicios;
 import Logica.Servicio.UsuariosServicios;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -38,9 +39,12 @@ public class ControladorUsuario implements IControladorUsuario{
 
     private UsuariosServicios servicioUsuarios;
     private static ControladorUsuario instancia;
+    
+    private ArtistasServicios servicioArtista;
 
     public ControladorUsuario() {
         this.servicioUsuarios = new UsuariosServicios();
+        this.servicioArtista = new ArtistasServicios();
         //this.espectadores = new HashMap<>();
         //this.artistas = new HashMap<>();
     }
@@ -299,7 +303,7 @@ public class ControladorUsuario implements IControladorUsuario{
         url.setText(a.getLinkWeb());
     }
     
-    public Map<String, Usuario> obtenerUsuarios(){
+    public Map<String, Usuario> obtenerUsuarios(){ //Se obtienen todos los usuarios(Tanto artistas como Espectadores) con los campos actualizados (Versión web)
         try {
             Map<String, Usuario> usuarios = servicioUsuarios.getAllUsers();
             return usuarios;
@@ -309,6 +313,10 @@ public class ControladorUsuario implements IControladorUsuario{
             return null;
         }
         
+    };
+    public Artista obtenerArtista(int idUsuario){ //Se obtiene toda la información de un Artista (Incluye cantidad de seguidores y seguidos)
+        Artista artista = servicioArtista.getArtista(idUsuario);
+        return artista;
     };
 
 }

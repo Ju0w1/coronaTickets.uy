@@ -285,5 +285,35 @@ public class UsuariosServicios {
             return null;
         }
     }
+     public int getSeguidores(int usuId){
+        int seguidores=0;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_id) as seguidores FROM seguidores WHERE seguidores.usu_id=?");
+            status.setInt(1, usuId);
+            ResultSet rs = status.executeQuery();
+            
+            if(rs.next()) {
+                seguidores=rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return seguidores;
+    }
+    public int getSiguiendo(int usuId){
+        int seguidores=0;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_seguidor) as siguiendo FROM seguidores WHERE seguidores.usu_seguidor=?");
+            status.setInt(1, usuId);
+            ResultSet rs = status.executeQuery();
+            
+            if(rs.next()) {
+                seguidores=rs.getInt(1);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return seguidores;
+    }
 
 }
