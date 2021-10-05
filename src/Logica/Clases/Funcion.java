@@ -67,4 +67,10 @@ public class Funcion {
         public Espectaculo getEspectaculo(){
             return this.espectaculo;
         }
+        public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro){
+            this.nombre= nombre;
+            this.fecha= fecha;
+            this.horaInicio= horaInicio;
+            this.fechaRegistro= fechaRegistro;
+        }
 }

@@ -16,6 +16,6 @@ public interface IControladorFuncion {
     public abstract void obtenerEspectaculo(JComboBox espectaculos, String nombrePlataforma);
     public abstract void Prueba(String nombre_artista,String id_funcion,String id_artista,String nombre_funcion,DTFecha funcion_vigente);
     public abstract Artista obtenerArtista(String nickname);
-    
+    public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int idUsuario); //Nuevo WebVersion
     
 }

@@ -237,5 +237,20 @@ public class FuncionServicios {
             ex.printStackTrace();
         }
     }
+   
+   public Map<String, Funcion> getMapRegistroDeFuncionesDeUsuario(int usuId) {
+        Map<String, Funcion> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT funcion.* FROM funcion,usuario_funcion WHERE funcion.fun_id=usuario_funcion.funcion_id AND usuario_funcion.usu_id=?");
+            status1.setInt(1, usuId);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("fun_nombre"), new Funcion(rs.getString("fun_nombre"), rs.getDate("fun_fecha_inicio"), rs.getTime("fun_hora_inicio"), rs.getDate("fun_fecha_registro")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
     
 }

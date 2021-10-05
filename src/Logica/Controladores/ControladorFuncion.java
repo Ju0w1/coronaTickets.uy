@@ -108,6 +108,11 @@ public class ControladorFuncion implements IControladorFuncion{
         this.servicioFunciones.AgregarArtista(nombre_artista,id_funcion,id_artista,nombre_funcion,funcion_vigente);
     }
     
+    public Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int usuId){
+        Map<String, Funcion> funciones = servicioFunciones.getMapRegistroDeFuncionesDeUsuario(usuId);
+        return funciones;
+    }
+    
     
 }
     
