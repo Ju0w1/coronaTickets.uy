@@ -298,5 +298,17 @@ public class ControladorUsuario implements IControladorUsuario{
         areaBiografia.setText(a.getBiografia());
         url.setText(a.getLinkWeb());
     }
+    
+    public Map<String, Usuario> obtenerUsuarios(){
+        try {
+            Map<String, Usuario> usuarios = servicioUsuarios.getAllUsers();
+            return usuarios;
+        } catch (SQLException ex) {
+            System.out.println(ex);
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+        
+    };
 
 }

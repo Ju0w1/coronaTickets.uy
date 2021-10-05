@@ -259,5 +259,31 @@ public class UsuariosServicios {
         }
         return false; // No existe el usuario
     }
+    
+    public Map<String, Usuario> getAllUsers() throws SQLException {
+        try {
+            Map<String, Usuario> resultado = new HashMap<>();
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario");
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                String nick = rs.getString("usu_nick");
+                String mail = rs.getString("usu_mail");
+                String nombre = rs.getString("usu_nombre");
+                String apellido = rs.getString("usu_apellido");
+                DTFecha nacimineto = dateToDTFecha(rs.getDate("usu_nacimiento"));
+                String password = rs.getString("usu_contrasenia");
+                String imagen = rs.getString("usu_imagen");
+                
+                resultado.put(nick, new Usuario(nick, nombre, apellido, mail, nacimineto, password, imagen));
+
+                //String nickname, String nombre, String apellido, String email, String contrasenia
+            }
+            rs.close();
+            return resultado;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
 
 }

@@ -28,4 +28,5 @@ public interface IControladorUsuario {
     //public abstract static boolean contains(final int[] arr, final int key);
     public abstract boolean login(String user, String password);
     public abstract boolean controlFecha(int dia, int mes,int anio);
+    public abstract Map<String, Usuario> obtenerUsuarios();
 }

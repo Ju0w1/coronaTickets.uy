@@ -1,6 +1,7 @@
 package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
+import java.sql.Date;
 
 public class Usuario {
     private String nickname;
@@ -90,6 +91,16 @@ public class Usuario {
     
     public String getImagen(){
         return this.url_imagen;
+    }
+    
+    public Usuario(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String contrasenia, String url_imagen) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nickname= nickname;
+        this.email= email;
+        this.nacimiento= nacimiento;
+        this.contrasenia=contrasenia;
+        this.url_imagen=url_imagen;
     }
     
 }
