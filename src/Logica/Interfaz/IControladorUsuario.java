@@ -29,7 +29,7 @@ public interface IControladorUsuario {
     //public abstract static boolean contains(final int[] arr, final int key);
     public abstract boolean login(String user, String password);
     public abstract boolean controlFecha(int dia, int mes,int anio);
-    public abstract Map<String, Usuario> obtenerUsuarios(); 
-    public abstract Artista obtenerArtista(int idUsuario);
-    public abstract Usuario obtenerEspectador(int idUsuario);
+    public abstract Map<String, Usuario> obtenerUsuarios(); //Nuevo WebVersion
+    public abstract Artista obtenerArtista(int idUsuario); //Nuevo WebVersion
+    public abstract Usuario obtenerEspectador(int idUsuario); //Nuevo WebVersion
 }

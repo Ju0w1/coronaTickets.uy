@@ -47,6 +47,7 @@ import Logica.DataTypes.DTFecha;
 import Logica.Servicio.FuncionServicios;
 import Logica.Servicio.PaquetesServicios;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
 import javax.swing.JTable;
@@ -650,5 +651,17 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         } else {
             linkPlataforma.setText(this.servicioEspectaculo.getLinkPlataforma(nombrePlataforma) + "/");
         }
+    }
+    public Map<String, Espectaculo> obtenerEspectaculosAceptadosDeArtista(int idArtista){
+        Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosAceptados(idArtista);
+        return espectaculos;
+    }
+    public Map<String, Espectaculo> obtenerEspectaculosRechazadosDeArtista(int idArtista){
+        Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosRechazados(idArtista);
+        return espectaculos;
+    }
+    public Map<String, Espectaculo> obtenerEspectaculosIngresadosDeArtista(int idArtista){
+        Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosIngresados(idArtista);
+        return espectaculos;
     }
 }

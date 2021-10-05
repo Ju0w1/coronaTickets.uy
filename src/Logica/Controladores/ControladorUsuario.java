@@ -319,7 +319,7 @@ public class ControladorUsuario implements IControladorUsuario{
         return artista;
     };
     
-    public Usuario obtenerEspectador(int idUsuario){
+    public Usuario obtenerEspectador(int idUsuario){ //Se obtiene toda la información de un Espectador en específico (Incluye cantidad de seguidores y seguidos)
         Usuario usuario = null;
         try {
             usuario = servicioUsuarios.getUser(idUsuario);

@@ -287,7 +287,7 @@ public class UsuariosServicios {
             return null;
         }
     }
-     public int getSeguidores(int usuId){
+     public int getSeguidores(int usuId){ //Se obtiene la cantidad de seguidores de un Usuario
         int seguidores=0;
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_id) as seguidores FROM seguidores WHERE seguidores.usu_id=?");
@@ -302,7 +302,7 @@ public class UsuariosServicios {
         }
         return seguidores;
     }
-    public int getSiguiendo(int usuId){
+    public int getSiguiendo(int usuId){ //Se obtiene la cantidad de siguiendo de un Usuario
         int seguidores=0;
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_seguidor) as siguiendo FROM seguidores WHERE seguidores.usu_seguidor=?");
@@ -317,7 +317,7 @@ public class UsuariosServicios {
         }
         return seguidores;
     }
-    public Usuario getUser(int usuId) throws SQLException {
+    public Usuario getUser(int usuId) throws SQLException { //Se obtiene TODA la información específica de un usuario (Incluye cantidad de seguidores y seguidos)
         try {
             Usuario resultado = null;
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario WHERE usuario.usu_id=?");

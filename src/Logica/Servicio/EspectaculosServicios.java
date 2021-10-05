@@ -704,4 +704,50 @@ public class EspectaculosServicios {
         }
         return url;
     }
+    
+    public Map<String, Espectaculo> getMapEspectaculosAceptados(int artistaId) {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='a' AND espetaculos.espec_artista=?");
+            status1.setInt(1, artistaId);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    public Map<String, Espectaculo> getMapEspectaculosRechazados(int artistaId) {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='r' AND espetaculos.espec_artista=?");
+            status1.setInt(1, artistaId);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    public Map<String, Espectaculo> getMapEspectaculosIngresados(int artistaId) {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='i' AND espetaculos.espec_artista=?");
+            status1.setInt(1, artistaId);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+    
 }

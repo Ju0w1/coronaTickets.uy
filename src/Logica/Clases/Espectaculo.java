@@ -18,6 +18,8 @@ public class Espectaculo {
     private double Costo;
     private double Duracion;
     private Date Fecha_Registro;
+    private String estado;
+    private String url_imagen;
     
     public Espectaculo(){
         
@@ -92,6 +94,20 @@ public class Espectaculo {
     }
     public void setFecha(Date fecha){
         this.Fecha_Registro=fecha;
+    }
+    
+    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date Fregistro, String estado, String url_imagen){
+        this.Nombre=nombre;
+        this.Artista=Artista;
+        this.Descripcion=descr;
+        this.Cant_min_espectadores=min;
+        this.Cant_max_espectadores=max;
+        this.Url=url;
+        this.Costo=costo;
+        this.Duracion=duracion;
+        this.Fecha_Registro=Fregistro;
+        this.estado=estado;
+        this.url_imagen=url_imagen;
     }
     
 }
