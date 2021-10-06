@@ -3,12 +3,12 @@ package Logica.Clases;
 import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
 import java.sql.Date;
+import java.util.Map;
 
 
 
 
 public class Espectaculo {
-    
     private String Nombre;
     private int Artista;
     private String Descripcion;
@@ -18,12 +18,15 @@ public class Espectaculo {
     private double Costo;
     private double Duracion;
     private Date Fecha_Registro;
+    private String estado;
+    private Map<String, Categoria> categorias;
+    private String urlImagen;
     
     public Espectaculo(){
         
     }
     
-    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date Fregistro){
+    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date Fregistro, String estado, Map<String, Categoria> categorias, String urlImagen){
         this.Nombre=nombre;
         this.Artista=Artista;
         this.Descripcion=descr;
@@ -33,6 +36,9 @@ public class Espectaculo {
         this.Costo=costo;
         this.Duracion=duracion;
         this.Fecha_Registro=Fregistro;
+        this.estado=estado;
+        this.categorias=categorias;
+        this.urlImagen=urlImagen;
     }
     
     public Espectaculo(int id, int organizador, int plataforma, String nombre, String descripcion, double duracion, int espectmax, int especmin, String url, String fecha, double costo) {
@@ -67,6 +73,15 @@ public class Espectaculo {
     public Date getFecha(){
         return this.Fecha_Registro;
     }
+    public String getEstado (){
+        return this.estado;
+    }
+    public Map<String, Categoria> getCategoria (){
+        return this.categorias;
+    }
+    public String getUrlIamgen (){
+        return this.urlImagen;
+    }
     
     //Setters
     public void setNombre(String nom_x){
@@ -93,5 +108,13 @@ public class Espectaculo {
     public void setFecha(Date fecha){
         this.Fecha_Registro=fecha;
     }
-    
+    public void setEstado (String estado){
+        this.estado=estado;
+    }
+    public void setCategoria (Map<String, Categoria> categorias){
+        this.categorias=categorias;
+    }
+    public void setUrlImagen (String urlImagen){
+        this.urlImagen=urlImagen;
+    }
 }

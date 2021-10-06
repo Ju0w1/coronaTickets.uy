@@ -29,6 +29,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import Logica.Clases.Artista;
+import Logica.Clases.Categoria;
 import Logica.Clases.Funcion;
 import Logica.DataTypes.DTFecha;
 import Logica.Clases.Paquete; //NUEVO
@@ -47,11 +48,18 @@ public class EspectaculosServicios {
 
     public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> resultado = new HashMap<>();
+        Map<String, Categoria> categorias = new HashMap<>();
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos");
-            ResultSet rs = status.executeQuery();
-            while (rs.next()) {
-                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro")));
+            ResultSet rs1 = status.executeQuery();
+            while (rs1.next()) {
+                PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND atEspec.cat_id=?");
+                status2.setString(1, rs1.getString("espec_id"));
+                ResultSet rs2 = status2.executeQuery();
+                while (rs2.next()) {
+                    categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
+                }
+                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -60,7 +68,7 @@ public class EspectaculosServicios {
         return resultado;
     }
     
-    public Map<String, Espectaculo> getEspectaculosSegunPlataforma(String nombrePlataforma) {
+    /*public Map<String, Espectaculo> getEspectaculosSegunPlataforma(String nombrePlataforma) {
         Map<String, Espectaculo> resultado = new HashMap<>();
         //String nombre,int Artista,String descr,int min,int max, String url, double costo,int duracion,String Fregistro)
         try {
@@ -84,9 +92,72 @@ public class EspectaculosServicios {
 
         }
         return resultado;
+    }*/
+    
+    public Map<String, Espectaculo> getEspectaculosCorrectamente(String nomPlataforma, String nomCategoria) {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        Map<String, Categoria> categorias = new HashMap<>();
+        if (nomPlataforma.isEmpty() && (!nomCategoria.isEmpty())){
+            try {
+                PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos AS espec WHERE espec.estado= 'a' AND espec.espec_id IN (SELECT espec_id FROM categorias_espectaculos as catEspec, categorias AS cat WHERE catEspec.cat_id=cat.cat_id AND cat.cat_nombre=?)");
+                status1.setString(1, nomCategoria);
+                ResultSet rs1 = status1.executeQuery();
+                while (rs1.next()) {
+                    PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND atEspec.cat_id=?");
+                    ResultSet rs2 = status2.executeQuery();
+                    status2.setString(1, rs1.getString("espec_id"));
+                    while (rs2.next()) {
+                        categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
+                    }
+                    resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                }
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
+        }
+        else{
+            if ((!nomPlataforma.isEmpty()) && nomCategoria.isEmpty()){
+                try {
+                    PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.estado= 'a' AND espetaculos.espec_plataforma IN (SELECT valores_tipo.vp_id from valores_tipo WHERE valores_tipo.vp_nombre=?)");
+                    status1.setString(1, nomPlataforma);
+                    ResultSet rs1 = status1.executeQuery();
+                    while (rs1.next()) {
+                        PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND atEspec.cat_id=?");
+                        status2.setString(1, rs1.getString("espec_id"));
+                        ResultSet rs2 = status2.executeQuery();
+                        while (rs2.next()) {
+                            categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
+                        }
+                        resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+
+                }
+            }
+           /*else{
+                if ((!nomPlataforma.isEmpty()) && (!nomCategoria.isEmpty())){
+                    try { //Falta cambiar
+                        PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos AS espec WHERE espec.estado= 'a' AND espec.espec_id IN (SELECT espec_id FROM categorias_espectaculos as catEspec, categorias AS cat WHERE catEspec.cat_id=cat.cat_id AND cat.cat_nombre=?)");
+                        status1.setString(1, nomCategoria);
+                        ResultSet rs1 = status1.executeQuery();
+                        while (rs1.next()) {
+                            PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND atEspec.cat_id=?");
+                            ResultSet rs2 = status2.executeQuery();
+                            status2.setString(1, rs1.getString("espec_id"));
+                            while (rs2.next()) {
+                                categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
+                            }
+                            resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }*/
+        }
+        return resultado;
     }
-    
-    
 
     public Map<String, Plataforma> getPlataformas() {
         Map<String, Plataforma> resultado = new HashMap<>();
@@ -338,8 +409,6 @@ public class EspectaculosServicios {
         }
     }
     
-    
-    
     public Map<String, Funcion> getMapFuncionesEspectaculoNombre(String espectaculoNombre) {
         Map<String, Funcion> resultado = new HashMap<>();
         Map<String, Artista> artistas = new HashMap<>();
@@ -351,7 +420,7 @@ public class EspectaculosServicios {
             while (rs1.next()) {
                 artistas=getMapArtistas(rs1.getString("fun_id"));
                 espectaculo=getEspecaculo(rs1.getString("fun_id"));
-                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas, rs1.getString("fun_imagen")));
 
             }
         } catch (SQLException ex1) {
@@ -393,12 +462,19 @@ public class EspectaculosServicios {
       
     public Map<String, Espectaculo> getMapEspectaculoDePaquete(String paqueteId) {
         Map<String, Espectaculo> resultado = new HashMap<>();
+        Map<String, Categoria> categorias = new HashMap<>();
         try {
             PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_id IN (SELECT paquete_espetaculos.paqespec_espec_id FROM paquete_espetaculos,paquetes WHERE paquete_espetaculos.paqespec_paq_id=paquetes.paq_id AND paquetes.paq_nombre=?)");
             status1.setString(1, paqueteId);
-            ResultSet rs = status1.executeQuery();
-            while (rs.next()) {
-                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro")));
+            ResultSet rs1 = status1.executeQuery();
+            while (rs1.next()) {
+                PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND atEspec.cat_id=?");
+                status2.setString(1, rs1.getString("espec_id"));
+                ResultSet rs2 = status2.executeQuery();
+                while (rs2.next()) {
+                    categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
+                }
+                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
@@ -425,8 +501,6 @@ public class EspectaculosServicios {
         return map;
 
     }
-    
-    
 
     //NUEVO
     public String getidPaquete(String paq_seleccionado){
@@ -521,14 +595,14 @@ public class EspectaculosServicios {
         }
         return false;
     }
-
-      public Espectaculo getEspecaculo(String funcionId){
+    public Espectaculo getEspecaculo(String funcionId){
+        Map<String, Categoria> categorias = new HashMap<>();
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos, funcion WHERE espetaculos.espec_id=funcion.fun_espec_id AND funcion.fun_id=?");
             status.setString(1, funcionId);
             ResultSet rs = status.executeQuery();
             while(rs.next()){
-                Espectaculo rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"));
+                Espectaculo rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), categorias, rs.getString("espec_imagen"));
                 return rslt;
             }
         }catch (SQLException ex){
@@ -551,7 +625,8 @@ public class EspectaculosServicios {
         }
         return rslt;
     }
-     public Map<String, Funcion> getMapFunciones(int espectaculoId) {
+     
+    public Map<String, Funcion> getMapFunciones(int espectaculoId) {
         Map<String, Funcion> resultado = new HashMap<>();
         Map<String, Artista> artistas;
         Espectaculo espectaculo;
@@ -562,7 +637,7 @@ public class EspectaculosServicios {
             while (rs1.next()) {
                 artistas=getMapArtistas(rs1.getString("fun_id"));
                 espectaculo=getEspecaculo(rs1.getString("fun_id"));
-                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"),rs1.getDate("fun_fecha_registro"), espectaculo, artistas, rs1.getString("fun_imagen")));
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
