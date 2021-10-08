@@ -20,6 +20,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JList;
@@ -228,18 +229,38 @@ public class PaquetesServicios{
         }
         return null;
     }
+//    public Paquete getAllPaquete(String ID_paq){
+//       Paquete a = null;
+//       int i_=Integer.parseInt(ID_paq);  
+//       try {
+//            Statement status = conexion.createStatement();
+//            ResultSet rs = status.executeQuery("SELECT * FROM paquetes as P WHERE P.paq_id ='"+i_+"'");
+//            
+//            if(rs.next()) {
+//                //dateToDTFecha(rs.getDate("paq_fecha_inicio"));
+//                //dateToDTFecha(rs.getDate("paq_fecha_fin"));
+//                //
+//                a = new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"),dateToDTFecha(rs.getDate("paq_fecha_inicio")),dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"),rs.getFloat("paq_descuento"),dateToDTFecha(rs.getDate("paq_fecha_compra")));
+//                System.out.println(a.getNombre());
+//            }
+//    } catch (SQLException ex) {
+//            ex.printStackTrace();
+//        }
+//       return a;
+//   }
     
-    public Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario) {
+    public Map<String, Paquete> getPaqueteV2() {
         Map<String, Paquete> resultado = new HashMap<>();
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT paquetes.* FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_usu_id=paquetes.paq_id AND compra_paquetes.compra_usu_id=?)");
-            status.setInt(1, idUsuario);
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes");
             ResultSet rs = status.executeQuery();
+            
             while (rs.next()) {
-                //dateToDTFecha(rs.getDate("paq_fecha_inicio"));
-                //UTILIZAR AQUÍ EL NUEVO resultado.put QUE UTILIZA DIETER EN CONSUTLA PAQUETES
-                //resultado.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra")))); 
-
+                dateToDTFecha(rs.getDate("paq_fecha_inicio"));
+                //dateToDTFecha(rs.getDate("paq_fecha_alta"));
+                resultado.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra")) ,rs.getString("paq_imagen") , dateToDTFecha(rs.getDate("paq_fecha_alta")), rs.getBoolean("paq_vigente"))); 
+                //String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, float Costo_, Float Descuento_, DTFecha Fecha_Compra_,String url_, DTFecha Fecha_alta_, boolean vigencia_)
+                //System.out.println("Nombre: "+ rs.getString("paq_nombre")+"Descripcion: "+ rs.getString("paq_descripcion")+"Costo: "+ rs.getFloat("paq_costo")+"Descuento: "+ rs.getFloat("paq_descuento"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

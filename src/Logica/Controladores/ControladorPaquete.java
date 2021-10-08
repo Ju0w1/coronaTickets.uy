@@ -128,4 +128,13 @@ public class ControladorPaquete implements IControladorPaquete{
         Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuario(idUsuario);
         return paquetes;
     }
+//    public Paquete PruebaPaquete(String ID_paq){
+//        //ResultSet rs = this.servicioPaq.getAllPaquete(nombre_);
+//        Paquete a = this.servicioPaq.getAllPaquete(ID_paq);
+//        return a;
+//    }
+    public Map<String, Paquete> getPaquetesV2(){
+        Map<String, Paquete> paquetes = servicioPaq.getPaqueteV2();
+        return paquetes;
+    };
 }
