@@ -124,4 +124,8 @@ public class ControladorPaquete implements IControladorPaquete{
         }
         return false;
     }
+    public Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario){
+        Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuario(idUsuario);
+        return paquetes;
+    }
 }

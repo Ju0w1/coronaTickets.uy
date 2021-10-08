@@ -14,4 +14,5 @@ public interface IControladorPaquete {
     //public abstract void modificarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFinal, float costo, float descuento,DTFecha fechaCompra);
     public abstract void obtenerPaqueteEspectaculo(JList listEspec, String espectaculoNombre);
     public abstract boolean getEspectaculos(String nombrePaquete, JList listEspectaculos);
+    public abstract Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario);
 }
