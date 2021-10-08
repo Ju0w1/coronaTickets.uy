@@ -3,32 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Clases/Espectador.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Interfaz/IControladorPaquete.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Presentacion/AgregarPaquete.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Interfaz/IControladorEspectaculo.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Servicio/ArtistasServicios.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Persistencia/ConexionDB.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Clases/Espectaculo.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Presentacion/AltaUsuario.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Clases/Artista.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Servicio/UsuariosServicios.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Controladores/ControladorUsuario.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Clases/Registro.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Presentacion/AgregarArtista.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Interfaz/IControladorUsuario.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Presentacion/ConsultaEspectaculo.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Presentacion/ConsultaArtista.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Interfaz/IControladorFuncion.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Clases/Funcion.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Controladores/ControladorFuncion.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Clases/Usuario.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Controladores/ControladorEspectaculos.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Presentacion/ConsultaUsuario.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Servicio/EspectaculosServicios.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Presentacion/AltaEspectaculo.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Servicio/EspetaculoServicio.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/coronaTickets.uy/src/Logica/Servicio/FuncionServicios.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Servicio/UsuariosServicios.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Controladores/ControladorUsuario.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Servicio/PaquetesServicios.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Persistencia/ConexionDB.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Paquete.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Presentacion/MenuInicio.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Controladores/ControladorPaquete.java</file>
+            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Usuario.java</file>
         </group>
     </open-files>
 </project-private>
