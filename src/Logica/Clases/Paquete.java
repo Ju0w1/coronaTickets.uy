@@ -33,6 +33,10 @@ public class Paquete {
         this.Fecha_Compra= Fecha_Compra_;
     }
 
+    public Paquete() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
   
     
     public void setNombre(String nombre){
@@ -59,6 +63,19 @@ public class Paquete {
         this.Descuento=descuento;
     }
     
+    public void setUrl(String url){
+        this.url_imagen=url;
+    }
+    
+    public void setFechaAlta(DTFecha fechaAlta){
+        this.Fecha_Alta=fechaAlta;
+    }
+    
+    public void setVigencia(boolean vigente){
+        this.vigente=vigente;
+    }
+
+    
     public String getNombre(){
         return this.Nombre;
     }
@@ -82,13 +99,26 @@ public class Paquete {
     public Float getDescuento(){
         return this.Descuento;
     }
+    
+    public String getUrl(){
+        return this.url_imagen;
+    }
+    
+    public DTFecha getFechaAlta(){
+        return this.Fecha_Alta;
+    }
+    
+    public boolean getVigencia(){
+        return this.vigente;
+    }
+    
     public void setFecha_Compra(DTFecha fecha_compra){
         this.Fecha_Compra= fecha_compra;
     }
     public DTFecha getFecha_Compra(){
         return this.Fecha_Compra;
     }
-    public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, float Costo_, Float Descuento_, DTFecha Fecha_Compra_,String url_, DTFecha Fecha_alta_, boolean vigencia_) {
+    public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, float Costo_, float Descuento_, DTFecha Fecha_Compra_,String url_, DTFecha Fecha_alta_, boolean vigencia_) {
         this.Nombre=nombre_;
         this.Descripcion=Descripcion_;
         this.Fecha_Inicio= Fecha_Inicio_;

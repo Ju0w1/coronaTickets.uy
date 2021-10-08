@@ -16,4 +16,5 @@ public interface IControladorPaquete {
     public abstract boolean getEspectaculos(String nombrePaquete, JList listEspectaculos);
     public abstract Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario);
 //    public abstract Paquete PruebaPaquete(String ID_paq);
+    public abstract Map<String, Paquete> getPaquetesV2();
 }

@@ -113,7 +113,6 @@ public class ControladorFuncion implements IControladorFuncion{
         return funciones;
     }
     
-    
 }
     
      

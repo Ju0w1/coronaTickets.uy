@@ -11,6 +11,7 @@ import Logica.Fabrica;
 import Logica.Interfaz.IControladorPaquete;
 import Logica.Interfaz.IControladorEspectaculo;
 import java.awt.Component;
+import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -35,9 +36,14 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
         //DefaultListModel modelo = (DefaultListModel) listUsuarios.getModel();
         this.ICU = Fabrica.getInstance().getIControladorPaquete();
         this.ICU.obtenerPaquete(this.listPaquetes);
+
+        Map<String,Paquete> paquetes = ICU.getPaquetesV2();
         
-        
-        
+        if(paquetes.isEmpty()){
+            System.out.println("Vacio");
+        }else{
+            System.out.println("NO, longitud: "+paquetes.size());
+        }
     }
     
     //this.getContentPane().setLayout(new FlowLayout());

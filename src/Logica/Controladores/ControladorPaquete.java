@@ -133,8 +133,9 @@ public class ControladorPaquete implements IControladorPaquete{
 //        Paquete a = this.servicioPaq.getAllPaquete(ID_paq);
 //        return a;
 //    }
+    @Override
     public Map<String, Paquete> getPaquetesV2(){
-        Map<String, Paquete> paquetes = servicioPaq.getPaqueteV2();
-        return paquetes;
+        Map<String, Paquete> paquetess = servicioPaq.getPaqueteV2();
+        return paquetess;
     };
 }
