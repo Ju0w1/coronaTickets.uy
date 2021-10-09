@@ -94,6 +94,16 @@ public class EspectaculosServicios {
         return resultado;
     }*/
     
+    public Map<String, Categoria> getMapCategorias() throws SQLException {
+        Map<String, Categoria> categorias = new HashMap<>();
+        PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM categorias");
+        ResultSet rs1 = status1.executeQuery();
+        while (rs1.next()) {
+                categorias.put(rs1.getString("cat_nombre"), new Categoria(rs1.getString("cat_nombre")));
+        }
+        return categorias;
+    }
+    
     public Map<String, Espectaculo> getEspectaculosCorrectamente(String nomPlataforma, String nomCategoria) {
         Map<String, Espectaculo> resultado = new HashMap<>();
         Map<String, Categoria> categorias = new HashMap<>();
@@ -104,8 +114,8 @@ public class EspectaculosServicios {
                 ResultSet rs1 = status1.executeQuery();
                 while (rs1.next()) {
                     PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND atEspec.cat_id=?");
-                    ResultSet rs2 = status2.executeQuery();
                     status2.setString(1, rs1.getString("espec_id"));
+                    ResultSet rs2 = status2.executeQuery();
                     while (rs2.next()) {
                         categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
                     }
@@ -267,6 +277,21 @@ public class EspectaculosServicios {
         try {
             Statement status = conexion.createStatement();
             ResultSet rs = status.executeQuery("SELECT vp_nombre FROM valores_tipo WHERE tp_id = 1");
+            while (rs.next()) {
+                aux.addItem(rs.getString(1));
+            }
+            return aux;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return new JComboBox();
+        }
+    }
+    
+    public JComboBox llenarComboBoxCategorias() {
+        JComboBox aux = new JComboBox();
+        try {
+            Statement status = conexion.createStatement();
+            ResultSet rs = status.executeQuery("SELECT cat_nombre FROM categorias");
             while (rs.next()) {
                 aux.addItem(rs.getString(1));
             }
@@ -751,7 +776,7 @@ public class EspectaculosServicios {
         return rslt;
     }
     
-    public void registrarFuncion(String idFuncion, String idEspectador, Date fechaRegistro){
+    public void registrarFuncion(String idFuncion, String idEspectador, Date fechaRegistro, String metodo){
         try {
             PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario_funcion (funcion_id,usu_id,fechaRegistro,canjeado) VALUES (?,?,?,?)");
             System.out.println("aaaaaaaaaaa"+idFuncion);
@@ -759,8 +784,12 @@ public class EspectaculosServicios {
             status.setInt (1, Integer.parseInt(idFuncion));
             status.setInt (2, Integer.parseInt(idEspectador));
             status.setDate(3, fechaRegistro);
-            status.setBoolean(4, false);
-            
+            if (metodo.contains("canje")){
+                status.setBoolean(4, true);
+            }
+            else{
+                status.setBoolean(4, false);
+            }
             status.execute();  
         } catch (SQLException ex) {
             ex.printStackTrace();
