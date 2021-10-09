@@ -18,6 +18,7 @@ public class Espectaculo {
     private double Costo;
     private double Duracion;
     private Date Fecha_Registro;
+    private String plataforma;
     private String estado;
     private Map<String, Categoria> categorias;
     private String urlImagen;

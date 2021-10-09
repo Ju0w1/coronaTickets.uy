@@ -510,9 +510,9 @@ public class RegistroFuncionEspectaculo extends javax.swing.JInternalFrame {
        }else{
         String nomEspectaculo= espec.getSelectedValue();
         System.out.print(nomEspectaculo);
-        if (this.ICE.getPaquetesVigentes(nickUsuario, nomEspectaculo)){ //no se que deberia pasarle porque hay que crear la ventana?
+        /*if (this.ICE.getPaquetesVigentes(nickUsuario, nomEspectaculo)){ //no se que deberia pasarle porque hay que crear la ventana?
            //Si hay paquetes comprados por el usuario con este espectaculo se le permite seleccionarlos
-        }
+        }*/
         this.ICE.obtenerTablaFunciones((DefaultTableModel) this.funcTable.getModel(), nomEspectaculo);
            
        }
