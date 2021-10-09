@@ -27,6 +27,13 @@ public class Funcion {
             this.urlImagen=urlImagen;
         }
         
+        public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro){
+            this.nombre= nombre;
+            this.fecha= fecha;
+            this.horaInicio= horaInicio;
+            this.fechaRegistro= fechaRegistro;
+        }
+        
         public void setNombre(String nombre_){
             this.nombre=nombre_;
         }

@@ -121,7 +121,7 @@ public class Espectaculo {
         this.Duracion=duracion;
         this.Fecha_Registro=Fregistro;
         this.estado=estado;
-        this.url_imagen=url_imagen;
+        this.urlImagen=url_imagen;
     }
     
     public void setEstado (String estado){

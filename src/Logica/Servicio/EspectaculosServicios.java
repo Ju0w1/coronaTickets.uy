@@ -373,22 +373,6 @@ public class EspectaculosServicios {
         return false;
     }
     
-    // 123
-     public Map<String, Plataforma> getPlataformas() {
-        Map<String, Plataforma> resultado = new HashMap<>();
-        try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM valores_tipo");
-            ResultSet rs = status.executeQuery();
-            while (rs.next()) {
-                resultado.put(rs.getString("vp_nombre"), new Plataforma(rs.getString("vp_nombre"), rs.getString("vp_valor_1"), rs.getString("vp_valor_2")));
-                System.out.println("Nombre Plataforma: " + rs.getString("vp_nombre"));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-
-        }
-        return resultado;
-    }
 
     public JComboBox llenarComboBoxPlataformas() {
         JComboBox aux = new JComboBox();
@@ -531,28 +515,6 @@ public class EspectaculosServicios {
         }
     }
   
-        
-    
-    public boolean verificarExistenciaNombreEspectaculo(String nombreEspectaculo) {
-        String nombrePlataformaAux = null;
-        try {
-            PreparedStatement status = conexion.prepareStatement("SELECT espec_nombre FROM espetaculos WHERE espec_nombre=?");
-            status.setString(1, nombreEspectaculo);
-            ResultSet rs = status.executeQuery();
-            while (rs.next()) {
-                nombrePlataformaAux = rs.getString(1);
-            }
-            if(nombreEspectaculo.equalsIgnoreCase(nombrePlataformaAux)){
-                return true;
-            }
-            else{
-                return false;
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
     
     public Map<String, Funcion> getMapFuncionesEspectaculoNombre(String espectaculoNombre) {
         Map<String, Funcion> resultado = new HashMap<>();
