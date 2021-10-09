@@ -34,7 +34,7 @@ public interface IControladorEspectaculo {
     public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen);
     public abstract void obtenerPlataformasToList(JList listPlataform);
     public abstract void obtenerEspectaculos(JList listPlataform);
-    public abstract void obtenerEspectaculosPorPlataforma(JList listPlataform, String nombrePlataforma);
+    public abstract void obtenerEspectaculosCorrectamente(JList listPlataform, String nombrePlataforma, String nombreCategoria);
     public abstract void obtenerPlataformas();
     public abstract void obtenerArtistas();
     public abstract void obtenerArtistaPorNick(String nombre);//NUEVOO
@@ -60,7 +60,8 @@ public interface IControladorEspectaculo {
     public abstract void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento , JList listaEspectaculos);
     public void obtenerPaquetes(JList listPaquetes); //NUEVO
     public void obtenerPlataformasToComboBox(JComboBox comboBoxPlataformas); //NUEVO
-    public void obtenerEspectaculosToComboBox(JComboBox comboEspectaculos, String nombrePlataforma); //NUEVO
+    public void obtenerCategoriasToComboBox(JComboBox listCat);
+    public void obtenerEspectaculosToComboBox(JComboBox comboEspectaculos, String nombrePlataforma, String nombreCategoria); //NUEVO
     //public void cargarDatosFunciones(DefaultTableModel modeloTabla, String nombreEspectaculo); //NUEVO
     public void obtenerEspectaculosPP(JList listEspectaculos, String paq_seleccionado, String plat_seleccionada); //NUEVO
     public boolean agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO

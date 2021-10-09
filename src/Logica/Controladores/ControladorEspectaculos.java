@@ -137,9 +137,14 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     }
 
     public void obtenerPlataformasToComboBox(JComboBox listPlataform) {
-        //listPlataform = this.servicioEspectaculo.llenarComboBoxPlataformas();
         for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount(); i++) {
             listPlataform.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
+        }
+    }
+    
+    public void obtenerCategoriasToComboBox(JComboBox listCat) {
+        for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxCategorias().getItemCount(); i++) {
+            listCat.addItem(this.servicioEspectaculo.llenarComboBoxCategorias().getItemAt(i).toString());
         }
     }
 
@@ -170,8 +175,8 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         this.espectaculos = servicioEspectaculo.getEspectaculos();
     }
 
-    public void obtenerEspectaculosPorPlataforma(JList listaEspectaculos, String nombrePlataforma) {
-        this.espectaculos = servicioEspectaculo.getEspectaculosSegunPlataforma(nombrePlataforma);
+    public void obtenerEspectaculosCorrectamente(JList listaEspectaculos, String nombrePlataforma, String nombreCategoria) {
+        this.espectaculos = servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria);
         DefaultListModel listModel1 = new DefaultListModel();
         Iterator iterator = this.espectaculos.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -500,42 +505,23 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     public void obtenerTablaFunciones(DefaultTableModel tablaModelo, String nomEspectaculo) {
         String id = servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
         int idEsp = Integer.parseInt(id);
-        //System.out.println(id);
         Map<String, Funcion> mapFunciones = servicioEspectaculo.getMapFunciones(idEsp);
-//        /Funcion f;
         int i = 0;
-
         tablaModelo.setRowCount(0);
-
         int tamanioFun = mapFunciones.size();
         Object[][] data = new Object[tamanioFun][2];
-
         for (int n = 0; n < tamanioFun; n++) {
             for (Map.Entry<String, Funcion> entry : mapFunciones.entrySet()) {
-
                 data[n][0] = entry.getKey();
                 data[n][1] = entry.getValue();
-                //String datos[] = data[i][1].
                 n++;
             }
         }
         for (int j = 0; j < tamanioFun; j++) {
-            //String data[] = {this.usuarios.get(i).getNombre(), this.usuarios.get(i).getApellido(), this.usuarios.get(i).getCedula()};
             Funcion f = (Funcion) data[j][1];
-            //System.err.println(e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getMes());
-            //String fecha = e.getNacimiento().getDia()+"/"+e.getNacimiento().getMes()+"/"+e.getNacimiento().getAnio();
             String datos[] = {f.getNombre(), f.getEspectaculo().getNombre(), f.getFecha().toString(), f.getHoraInicio().toString()};
             tablaModelo.addRow(datos);
         }
-
-//        for (Map.Entry entry : mapFunciones.entrySet()) {
-//            f= (Funcion) entry.getValue();
-//            tablaFunciones.setValueAt(f.getNombre(), i, 0);
-//            tablaFunciones.setValueAt(f.getEspectaculo().getNombre(), i, 1);
-//            tablaFunciones.setValueAt(f.getFecha(), i, 2);
-//            tablaFunciones.setValueAt(f.getHoraInicio(), i, 3);
-//            i++;
-//        }
     }
 
     public int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha) {
@@ -557,7 +543,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
                     if (puedeCanjearRegistrosPrevios(registros, espectadorNom, nomFuncion) == true) {
                         rslt = 1;//llamar a una ventana en la que seleccionar los registros a canjear
                     } else {
-                        servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
+                        servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha, "");
                         rslt = 0; //el registro ya fue realizado
                     }
 
@@ -565,7 +551,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
                     rslt = 2; //Llamar a presentacion y cambiar datos
                 }
             } else { //Si no hay registros pervios
-                servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
+                servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha, "");
                 rslt = 0; //el registro ya fue realizado
             }
         }
@@ -604,8 +590,6 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     }
 
     public void canjearTresRegistrosPrevios(String nomFuncion, String espectadorNom, Date fecha, DefaultTableModel tabla) {
-        /*LocalDateTime now = LocalDateTime.now();
-        Date fechaRegistro= new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());*/
         tabla.setRowCount(0);
         int rslt;
         String idFuncion = servicioEspectaculo.getIdFuncion(nomFuncion);
@@ -629,12 +613,19 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         String idEspectador = servicioEspectaculo.getIdUsuario(espectadorNom);
         servicioFuncion.actualizarEstadoDeCanjeRegistro(idFuncion1,idFuncion2,idFuncion3,idEspectador);
         String idFuncion = servicioEspectaculo.getIdFuncion(nombreFuncion);
-        servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha);
+        servicioEspectaculo.registrarFuncion(idFuncion, idEspectador, fecha, "canje");
     }
     @Override
-    public void obtenerEspectaculosToComboBox(JComboBox comboEspectaculos, String nombrePlataforma) {
-        for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxEspectaculos(nombrePlataforma).getItemCount(); i++) {
+    public void obtenerEspectaculosToComboBox(JComboBox comboEspectaculos, String nombrePlataforma, String nombreCategoria) {
+        /*for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxEspectaculos(nombrePlataforma).getItemCount(); i++) {
             comboEspectaculos.addItem(this.servicioEspectaculo.llenarComboBoxEspectaculos(nombrePlataforma).getItemAt(i).toString());
+        }*/
+        /*for (int i = 0; i < this.servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria).size(); i++) {
+            comboEspectaculos.addItem(this.servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria).get(i).getNombre());
+        }*/
+        Map<String, Espectaculo> espec=this.servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria);
+        for (Map.Entry entry : espec.entrySet()) {
+            comboEspectaculos.addItem(entry.getKey());
         }
     }
 

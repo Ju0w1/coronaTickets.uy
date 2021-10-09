@@ -24,7 +24,8 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
     public ConsultaFuncion() {
         initComponents();
         this.ICE = Fabrica.getInstance().getIControladorEspectaculo();
-        this.ICE.obtenerPlataformasToComboBox(this.jComboBox1);
+        this.ICE.obtenerPlataformasToComboBox(this.plat);
+        this.ICE.obtenerCategoriasToComboBox(cat);
         this.jPanel2.setVisible(false);
     }
 
@@ -39,7 +40,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cat = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
@@ -52,6 +53,8 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         lableArtistas = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         artTable = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        plat = new javax.swing.JComboBox<>();
 
         setClosable(true);
         setIconifiable(true);
@@ -62,24 +65,24 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setText("Plataforma:");
+        jLabel1.setText("Plataforma");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 14, -1, -1));
 
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+        cat.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
+                catItemStateChanged(evt);
             }
         });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                catActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 11, 187, -1));
-        jComboBox1.getAccessibleContext().setAccessibleName("plataformas");
+        jPanel1.add(cat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 40, 187, -1));
+        cat.getAccessibleContext().setAccessibleName("plataformas");
 
         jLabel2.setText("Espetaculo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 48, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         jComboBox2.setEnabled(false);
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,10 +90,10 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 jComboBox2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 45, 187, -1));
+        jPanel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 187, -1));
 
         jLabel10.setText("Funciones");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, -1, -1));
 
         btnBuscarFuncion.setText("Cargar Funciones");
         btnBuscarFuncion.setEnabled(false);
@@ -99,10 +102,10 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 btnBuscarFuncionActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(281, 44, -1, -1));
+        jPanel1.add(btnBuscarFuncion, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 80, -1, -1));
 
         jLabel11.setText("(Seleccione una fila para ver los artistas)");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 91, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         funcTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,7 +120,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         ));
         jScrollPane6.setViewportView(funcTable1);
 
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 116, 420, 104));
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 420, 104));
 
         jButton1.setText("Mostrar Artistas");
         jButton1.setEnabled(false);
@@ -126,7 +129,7 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 226, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, -1, -1));
 
         lableArtistas.setText("Artistas");
 
@@ -162,7 +165,22 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 255, -1, -1));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+
+        jLabel3.setText("Categoría");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, -1, -1));
+
+        plat.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                platItemStateChanged(evt);
+            }
+        });
+        plat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                platActionPerformed(evt);
+            }
+        });
+        jPanel1.add(plat, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 10, 187, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,9 +198,9 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void catActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_catActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_catActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
@@ -215,13 +233,13 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void catItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_catItemStateChanged
         // TODO add your handling code here:
-        if(this.jComboBox1.getSelectedItem() != null){
+        if(this.cat.getSelectedItem() != null){
            
             DefaultComboBoxModel modelo = (DefaultComboBoxModel) this.jComboBox2.getModel();
             modelo.removeAllElements();
-            this.ICE.obtenerEspectaculosToComboBox(this.jComboBox2,this.jComboBox1.getSelectedItem().toString());
+            this.ICE.obtenerEspectaculosToComboBox(this.jComboBox2, "", this.cat.getSelectedItem().toString());
             
             if(this.jComboBox2.getSelectedItem() == null){
                 this.jComboBox2.setEnabled(false);
@@ -236,24 +254,53 @@ public class ConsultaFuncion extends javax.swing.JInternalFrame {
        }else{
            //JOptionPane.showMessageDialog(this, "Cargando plataformas");
        }
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_catItemStateChanged
+
+    private void platItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_platItemStateChanged
+        // TODO add your handling code here:
+                if(this.cat.getSelectedItem() != null){
+           
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) this.jComboBox2.getModel();
+            modelo.removeAllElements();
+            this.ICE.obtenerEspectaculosToComboBox(this.jComboBox2, this.cat.getSelectedItem().toString(), "");
+            
+            if(this.jComboBox2.getSelectedItem() == null){
+                this.jComboBox2.setEnabled(false);
+                this.btnBuscarFuncion.setEnabled(false);
+                this.funcTable1.setEnabled(false);
+                DefaultTableModel model = (DefaultTableModel) this.funcTable1.getModel();
+                model.setRowCount(0);
+            }else{
+                this.jComboBox2.setEnabled(true);
+                this.btnBuscarFuncion.setEnabled(true); 
+            }
+       }else{
+           //JOptionPane.showMessageDialog(this, "Cargando plataformas");
+       }
+    }//GEN-LAST:event_platItemStateChanged
+
+    private void platActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_platActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_platActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable artTable;
     private javax.swing.JButton btnBuscarFuncion;
+    private javax.swing.JComboBox<String> cat;
     private javax.swing.JTable funcTable1;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lableArtistas;
+    private javax.swing.JComboBox<String> plat;
     // End of variables declaration//GEN-END:variables
 }
