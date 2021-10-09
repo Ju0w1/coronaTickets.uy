@@ -16,6 +16,7 @@ public class Funcion {
         private Espectaculo espectaculo;
         private Map<String, Artista> artistas;
         private String urlImagen;
+        private boolean estado;
         
         public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas, String urlImagen){
             this.nombre= nombre;
@@ -56,6 +57,10 @@ public class Funcion {
         public void setUrlImagen (String urlImagen){
             this.urlImagen=urlImagen;
         }
+        
+        public void setEstado(boolean estado_){
+            this.estado=estado_;
+        }
   
         public String getNombre(){
             return this.nombre;
@@ -79,7 +84,22 @@ public class Funcion {
         public Espectaculo getEspectaculo(){
             return this.espectaculo;
         }
-        public String getUrlIamgen (){
+        public String getUrlImagen (){
             return this.urlImagen;
+        }
+        
+        public Boolean getEstado(){
+            return this.estado;
+        }
+        
+        public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas, String imagen_, boolean estado_){
+            this.nombre= nombre;
+            this.fecha= fecha;
+            this.horaInicio= horaInicio;
+            this.fechaRegistro= fechaRegistro;
+            this.espectaculo=espectaculo;
+            this.artistas=artistas;
+            this.urlImagen=imagen_;
+            this.estado=estado_;
         }
 }

@@ -17,7 +17,9 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JComboBox;
 import Logica.Clases.Artista;
+import Logica.Clases.Espectaculo;
 import Logica.Clases.Funcion;
+import java.sql.Time;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -252,5 +254,36 @@ public class FuncionServicios {
         }
         return resultado;
     }
+    
+    public void AltaFuncionV2(Funcion f){
+        String f_nombre=f.getNombre();
+        Date f_fecha_inicio=f.getFecha();
+        Time f_horaInicio=f.getHoraInicio();
+        Date f_fechaRegistro=f.getFechaRegistro();
+        Espectaculo f_espectaculo=f.getEspectaculo();
+        Map<String, Artista> f_artistas=f.getArtistas();
+        String f_url_imagen=f.getUrlImagen();
+        boolean f_estado=f.getEstado();
+        
+        try{   
+            Statement status = conexion.createStatement();
+            ResultSet rs = status.executeQuery("SELECT * FROM funcion");
+            //fun_nombre,fun_fecha_registro,fun_hora_inicio,fun_fecha_inicio) VALUES (?,?,?,?,?)");
+            if(rs.next()){
+                PreparedStatement status2 = conexion.prepareStatement("INSERT INTO funcion (fun_espec_id,fun_nombre,fun_fecha_registro,fun_hora_inicio,fun_fecha_inicio,fun_imagen,fun_estado) VALUES (?,?,?,?,?,?,?)");
+                    status2.setInt(1, rs.getInt(1));
+                    status2.setString (2, f_nombre);
+                    status2.setString (3, f_fechaRegistro.getYear() + "-" +  f_fechaRegistro.getMonth() + "-" + f_fechaRegistro.getDay());
+                    status2.setString (4, f_horaInicio.getHours()+ ":" +  f_horaInicio.getMinutes()+":"+ f_horaInicio.getSeconds());
+                    status2.setString (5, f_fecha_inicio.getYear() + "-" +  f_fecha_inicio.getMonth() + "-" + f_fecha_inicio.getDay());
+                    status2.setString(6, f_url_imagen);
+                    status2.setBoolean(7, f_estado);
+                    status2.execute();
+            }
+        }
+        catch(SQLException ex){
+            ex.printStackTrace();
+        }
+   }
     
 }

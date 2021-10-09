@@ -20,9 +20,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JComboBox;
 import Logica.Clases.Artista;
+import Logica.Clases.Espectaculo;
 import Logica.Clases.Funcion;
 import Logica.Servicio.ArtistasServicios;
 import Logica.Servicio.FuncionServicios;
+import java.sql.Date;
+import java.sql.Time;
 
 
 public class ControladorFuncion implements IControladorFuncion{
@@ -112,6 +115,14 @@ public class ControladorFuncion implements IControladorFuncion{
         Map<String, Funcion> funciones = servicioFunciones.getMapRegistroDeFuncionesDeUsuario(usuId);
         return funciones;
     }
+    
+    @Override
+    public void AltaFuncionV2(String nombre_, Date fecha_, Time horaInicio_, Date fechaRegistro_, Espectaculo espectaculo_, Map<String, Artista> artistas_, String imagen_, boolean estado_){
+        //(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas, String imagen_, boolean estado_)
+        Funcion f = new Funcion(nombre_,fecha_,horaInicio_,fechaRegistro_,espectaculo_,artistas_,imagen_,estado_);
+        this.servicioFunciones.AltaFuncionV2(f);
+    }
+    
     
 }
     
