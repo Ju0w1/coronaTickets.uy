@@ -29,6 +29,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import Logica.Clases.Artista;
+import Logica.Clases.Categoria;
 import Logica.Clases.Funcion;
 import Logica.DataTypes.DTFecha;
 import Logica.Clases.Paquete; //NUEVO
@@ -45,6 +46,141 @@ public class EspectaculosServicios {
     }
     private Connection conexion = new ConexionDB().getConexion();
 
+    //123 
+    public boolean addCategoria(String nombre){
+        try {
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO categorias (DEFAULT, cat_nombre) VALUES (?)");
+            status.setString (1, nombre);
+            status.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    //123
+    public boolean checkCategoria(String nombre){
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM categorias WHERE cat_nombre=?");
+            status.setString(1, nombre);
+            ResultSet rs = status.executeQuery();
+            if (rs.next()){
+                return true;
+            }// existe la categoria
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; // No existe la categoria
+        }
+        return false;
+    }
+    
+    //123
+     public Map<String, Categoria> getCategorias() {
+        Map<String, Categoria> resultado = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM categorias");
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("cat_id"), new Categoria(rs.getString("cat_nombre")));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+        return resultado;
+    }
+    //123
+     public boolean addCategorias_Espectaculos(String nombreEspectaculo, String nombreCategoria){
+        int cat_id = 1;
+        int espec_id = 1;
+        try {
+            //Obtengo el ID de la Categoria segun el nombreCategoria que recibo por parametro
+            PreparedStatement status = conexion.prepareStatement("SELECT cat_id FROM categorias WHERE cat_nombre=?");
+            status.setString(1, nombreCategoria);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                cat_id = rs.getInt(1);
+            } 
+            //Obtengo el ID del Espectaculo segun el nombreEspectaculo que recibo por parametro
+            PreparedStatement status2 = conexion.prepareStatement("SELECT espec_id FROM espetaculos WHERE espec_nombre=?");
+            status2.setString(1, nombreEspectaculo);
+            ResultSet rs2 = status2.executeQuery();
+            while (rs2.next()) {
+                espec_id = rs2.getInt(1);
+            }
+            // Insert el espectaculo con su categoria asociada
+            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO categorias_espectaculos (cat_id, espec_id) VALUES (?,?)");
+            status3.setInt (1, cat_id);
+            status3.setInt (2, espec_id);
+            status3.execute();
+        
+        }catch (SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+    
+     
+     public void addEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen) {
+        LocalDateTime now = LocalDateTime.now();
+        Date today = new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());
+        int id_plataforma = 1, id_usuario = 1;
+        try { //PRIMERO OBTENGO EL ID DE LA PLATAFORMA SEGUN EL NOMBRE OBTENIDO POR PARAMETRO
+            PreparedStatement status = conexion.prepareStatement("SELECT valores_tipo.vp_id FROM valores_tipo WHERE valores_tipo.vp_nombre=?");
+            status.setString(1, nombrePlataforma);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                id_plataforma = rs.getInt(1);
+            } //SEGUNDO OBTENGO EL ID DEL ARTISTA SEGUN EL NICK DEL ARTISTA POR PARAMETRO
+            PreparedStatement status2 = conexion.prepareStatement("SELECT artistas.art_id FROM artistas where artistas.art_usu IN(SELECT usuario.usu_id FROM usuario WHERE usuario.usu_nick=?)");
+            status2.setString(1, nombreOrganizador);
+            ResultSet rs2 = status2.executeQuery();
+            
+            if (rs2.next()) {
+                id_usuario = rs2.getInt(1);
+            } //TERCERO INSERTO EL NUEVO ESPECTACULO
+            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO espetaculos (espec_artista, espec_plataforma, espec_nombre, espec_descripcion, espec_duracion, espec_cant_min_espect, espec_cant_max_espect, espec_url, espec_fecha_registro, espec_costo, espec_estado, espec_imagen) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)");
+            status3.setInt(1, id_usuario);
+            status3.setInt(2, id_plataforma);
+            status3.setString(3, nombreEspectaculo);
+            status3.setString(4, descripcion);
+            status3.setDouble(5, duracion);
+            status3.setInt(6, cantEspectadoresMinima);
+            status3.setInt(7, cantEspectadoresMaxima);
+            status3.setString(8, URL);
+            status3.setDate(9, today);
+            status3.setDouble(10, Costo);
+            status3.setString(11, estado);
+            status3.setString(12, imagen);
+            System.out.println(status3.toString());
+            status3.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    public boolean verificarExistenciaNombreEspectaculo(String nombreEspectaculo) {
+        String nombrePlataformaAux = null;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT espec_nombre FROM espetaculos WHERE espec_nombre=?");
+            status.setString(1, nombreEspectaculo);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                nombrePlataformaAux = rs.getString(1);
+            }
+            if(nombreEspectaculo.equalsIgnoreCase(nombrePlataformaAux)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    } 
+     
     public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> resultado = new HashMap<>();
         try {
@@ -84,26 +220,9 @@ public class EspectaculosServicios {
 
         }
         return resultado;
-    }
+    } 
     
-    
-
-    public Map<String, Plataforma> getPlataformas() {
-        Map<String, Plataforma> resultado = new HashMap<>();
-        try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM valores_tipo");
-            ResultSet rs = status.executeQuery();
-            while (rs.next()) {
-                resultado.put(rs.getString("vp_nombre"), new Plataforma(rs.getString("vp_nombre"), rs.getString("vp_valor_1"), rs.getString("vp_valor_2")));
-                System.out.println("Nombre Plataforma: " + rs.getString("vp_nombre"));
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-
-        }
-        return resultado;
-    }
-    
+       
     public boolean addPlataforma(String nombre, String url, String descripcion){
         String id;
         try { // Busco el id del "tipo" con nombre "Plataforma" en la base y si no existe la creo
@@ -155,40 +274,21 @@ public class EspectaculosServicios {
         return false;
     }
     
-    public void addEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo) {
-        LocalDateTime now = LocalDateTime.now();
-        Date today = new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());
-        int id_plataforma = 1, id_usuario = 1;
-        try { //PRIMERO OBTENGO EL ID DE LA PLATAFORMA SEGUN EL NOMBRE OBTENIDO POR PARAMETRO
-            PreparedStatement status = conexion.prepareStatement("SELECT valores_tipo.vp_id FROM valores_tipo WHERE valores_tipo.vp_nombre=?");
-            status.setString(1, nombrePlataforma);
+    // 123
+     public Map<String, Plataforma> getPlataformas() {
+        Map<String, Plataforma> resultado = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM valores_tipo");
             ResultSet rs = status.executeQuery();
             while (rs.next()) {
-                id_plataforma = rs.getInt(1);
-            } //SEGUNDO OBTENGO EL ID DEL ARTISTA SEGUN EL NICK DEL ARTISTA POR PARAMETRO
-            PreparedStatement status2 = conexion.prepareStatement("SELECT artistas.art_id FROM artistas where artistas.art_usu IN(SELECT usuario.usu_id FROM usuario WHERE usuario.usu_nick=?)");
-            status2.setString(1, nombreOrganizador);
-            ResultSet rs2 = status2.executeQuery();
-            
-            if (rs2.next()) {
-                id_usuario = rs2.getInt(1);
-            } //TERCERO INSERTO EL NUEVO ESPECTACULO
-            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO espetaculos (espec_artista, espec_plataforma, espec_nombre, espec_descripcion, espec_duracion, espec_cant_min_espect, espec_cant_max_espect, espec_url, espec_fecha_registro, espec_costo) VALUES (?,?,?,?,?,?,?,?,?,?)");
-            status3.setInt(1, id_usuario);
-            status3.setInt(2, id_plataforma);
-            status3.setString(3, nombreEspectaculo);
-            status3.setString(4, descripcion);
-            status3.setDouble(5, duracion);
-            status3.setInt(6, cantEspectadoresMinima);
-            status3.setInt(7, cantEspectadoresMaxima);
-            status3.setString(8, URL);
-            status3.setDate(9, today);
-            status3.setDouble(10, Costo);
-            System.out.println(status3.toString());
-            status3.execute();
+                resultado.put(rs.getString("vp_nombre"), new Plataforma(rs.getString("vp_nombre"), rs.getString("vp_valor_1"), rs.getString("vp_valor_2")));
+                System.out.println("Nombre Plataforma: " + rs.getString("vp_nombre"));
+            }
         } catch (SQLException ex) {
             ex.printStackTrace();
+
         }
+        return resultado;
     }
 
     public JComboBox llenarComboBoxPlataformas() {
@@ -316,30 +416,8 @@ public class EspectaculosServicios {
             return new DTFecha(0,0,0);
         }
     }
-    
-    public boolean verificarExistenciaNombreEspectaculo(String nombreEspectaculo) {
-        String nombrePlataformaAux = null;
-        try {
-            PreparedStatement status = conexion.prepareStatement("SELECT espec_nombre FROM espetaculos WHERE espec_nombre=?");
-            status.setString(1, nombreEspectaculo);
-            ResultSet rs = status.executeQuery();
-            while (rs.next()) {
-                nombrePlataformaAux = rs.getString(1);
-            }
-            if(nombreEspectaculo.equalsIgnoreCase(nombrePlataformaAux)){
-                return true;
-            }
-            else{
-                return false;
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return false;
-        }
-    }
-    
-    
-    
+  
+        
     public Map<String, Funcion> getMapFuncionesEspectaculoNombre(String espectaculoNombre) {
         Map<String, Funcion> resultado = new HashMap<>();
         Map<String, Artista> artistas = new HashMap<>();

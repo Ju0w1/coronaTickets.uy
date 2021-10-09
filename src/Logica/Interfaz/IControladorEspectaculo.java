@@ -5,6 +5,7 @@
  */
 package Logica.Interfaz;
 
+import Logica.Clases.Categoria;
 import Logica.Clases.Espectaculo;
 import javax.swing.JComboBox;
 //import java.util.*;
@@ -24,13 +25,13 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 
-
+import Logica.Clases.Plataforma;
 /**
  *
  * @author Admin
  */
 public interface IControladorEspectaculo {
-    public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo);
+    public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen);
     public abstract void obtenerPlataformasToList(JList listPlataform);
     public abstract void obtenerEspectaculos(JList listPlataform);
     public abstract void obtenerEspectaculosPorPlataforma(JList listPlataform, String nombrePlataforma);
@@ -42,7 +43,11 @@ public interface IControladorEspectaculo {
     public abstract void cargarDatosFuncionConsultaEspectaculo(String nombreFuncion, JLabel nombreFun, JLabel fechaRegistro, JLabel horaInicio, JLabel fechaInicio);
     public abstract boolean verificarNombreEspectaculo(String nombre);
     public abstract boolean addPlataforma(String nombre, String url, String descripcion);
+    public abstract boolean addCategoria(String nombre);
+    public abstract void addCategorias_Espectaculos(String nombreEspectaculo, String nombreCategoria);
     public abstract Map<String, Espectaculo> getEspectaculos();
+    public abstract Map<String, Plataforma> getPlataformas();
+    public abstract Map<String, Categoria> getCategorias();
     public abstract boolean crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion);
     public abstract String obtenerDescripcion(String nombre);
     public abstract String[] obtenerFecha(String nombre,int fecha);

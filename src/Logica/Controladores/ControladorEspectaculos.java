@@ -6,6 +6,7 @@
 package Logica.Controladores;
 
 import Logica.Clases.Artista;
+import Logica.Clases.Categoria;
 import java.util.Map;
 import Logica.Clases.Espectaculo;
 import Logica.Clases.Plataforma;
@@ -92,9 +93,34 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
         return espectaculos;
     }
+    //123
+    public Map<String, Plataforma> getPlataformas() {
+        Map<String, Plataforma> plataformas = servicioEspectaculo.getPlataformas();
+        return plataformas;
+    }
+    
+    //123
+    public Map<String, Categoria> getCategorias() {
+        Map<String, Categoria> categorias = servicioEspectaculo.getCategorias();
+        return categorias;
+    }
+     //123
+     public boolean addCategoria(String nombre){
+        if (this.servicioEspectaculo.checkCategoria(nombre) == false){
+            this.servicioEspectaculo.addCategoria(nombre);
+            return true;
+        } else {
+            return false;
+        }
+    }
+     
+     //123
+     public void addCategorias_Espectaculos(String nombreEspectaculo, String nombreCategoria){
+          this.servicioEspectaculo.addCategorias_Espectaculos(nombreEspectaculo, nombreCategoria);
+     }
 
     public boolean addPlataforma(String nombre, String url, String descripcion) {
-        if (this.servicioEspectaculo.checkPlataforma(nombre)) {
+        if (this.servicioEspectaculo.checkCategoria(nombre)) {
             return false;
         }
         if (this.servicioEspectaculo.addPlataforma(nombre, url, descripcion)) {
@@ -103,9 +129,11 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         return false;
     }
+    
+   
 
-    public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo) {
-        this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo);
+    public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen) {
+        this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo, estado, imagen);
     }
 
     public void obtenerPlataformasToComboBox(JComboBox listPlataform) {
