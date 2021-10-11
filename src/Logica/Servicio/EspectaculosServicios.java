@@ -120,9 +120,38 @@ public class EspectaculosServicios {
         }
         return true;
     }
+     
+     public void addCategoria_Espectaculo(String nombreEspectaculo, String nombreCategoria){
+        int cat_id = 1;
+        int espec_id = 1;
+        try {
+            //Obtengo el ID de la Categoria segun el nombreCategoria que recibo por parametro
+            PreparedStatement status = conexion.prepareStatement("SELECT cat_id FROM categorias WHERE cat_nombre=?");
+            status.setString(1, nombreCategoria);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                cat_id = rs.getInt(1);
+            } 
+            //Obtengo el ID del Espectaculo segun el nombreEspectaculo que recibo por parametro
+            PreparedStatement status2 = conexion.prepareStatement("SELECT espec_id FROM espetaculos WHERE espec_nombre=?");
+            status2.setString(1, nombreEspectaculo);
+            ResultSet rs2 = status2.executeQuery();
+            while (rs2.next()) {
+                espec_id = rs2.getInt(1);
+            }
+            // Insert el espectaculo con su categoria asociada
+            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO categorias_espectaculos (cat_id, espec_id) VALUES (?,?)");
+            status3.setInt (1, cat_id);
+            status3.setInt (2, espec_id);
+            status3.execute();
+        
+        }catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
     
      
-     public void addEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen) {
+     public void addEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String categorias) {
         LocalDateTime now = LocalDateTime.now();
         Date today = new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());
         int id_plataforma = 1, id_usuario = 1;
@@ -151,10 +180,17 @@ public class EspectaculosServicios {
             status3.setString(8, URL);
             status3.setDate(9, today);
             status3.setDouble(10, Costo);
-            status3.setString(11, estado);
+            status3.setBoolean(11, true);
             status3.setString(12, imagen);
             System.out.println(status3.toString());
             status3.execute();
+            
+            //CUARTO INSERTO EN CATEGORIA_ESPECTACULO LOS LAS CATEGORIAS DEL ESPECTACULO
+            String[] cat = categorias.split(",");
+            for (String cat1 : cat) {
+                addCategoria_Espectaculo(nombreEspectaculo, cat1);
+            }
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
