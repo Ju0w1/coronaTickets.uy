@@ -94,14 +94,22 @@ public class ControladorUsuario implements IControladorUsuario{
     public boolean login(String user, String password) {
         try {
             Usuario usuario = (Usuario) servicioUsuarios.getUser(user);
-            System.out.println("usu: " + usuario.getEmail());
+            boolean isPassCorrect = servicioUsuarios.verificarPassword(user, password);
+            if(isPassCorrect){
+                return true;
+            }
+            else{
+                return false;
+            }
+            
+            /*System.out.println("usu: " + usuario.getEmail());
             if (usuario == null) {
                 return false;
             } else if (password.equals(usuario.getContrasenia())) {
                 return true;
             } else {
                 return false;
-            }
+            }*/
         } catch (SQLException ex) {
             System.out.println(ex);
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);

@@ -343,4 +343,29 @@ public class UsuariosServicios {
             return null;
         }
     }
+    public boolean verificarPassword(String userNick, String userPass) {
+        try {
+            Usuario resultado = null;
+            PreparedStatement status = conexion.prepareStatement("select usu_nick from usuario where usu_nick=? and clave=SHA2(?, 256)");
+            status.setString(1, userNick);
+            status.setString(1, userPass);
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                if (rs.getString("usu_nick").equalsIgnoreCase(userNick)) {
+                    rs.close();
+                    return true;
+                }
+                else{
+                    return false;
+                }
+            }
+            else{
+                return false;
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
 }
