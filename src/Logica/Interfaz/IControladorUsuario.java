@@ -32,4 +32,5 @@ public interface IControladorUsuario {
     public abstract Map<String, Usuario> obtenerUsuarios(); //Nuevo WebVersion
     public abstract Artista obtenerArtista(int idUsuario); //Nuevo WebVersion
     public abstract Usuario obtenerEspectador(int idUsuario); //Nuevo WebVersion
+    public abstract String esEspectador(String nickname); //Nuevo WebVersion
 }

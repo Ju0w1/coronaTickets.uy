@@ -370,4 +370,27 @@ public class UsuariosServicios {
             return false;
         }
     }
+    
+    public String checkearTipoUsuario(String nickname){
+        String tipo = "";
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usuario.usu_nick FROM usuario WHERE usuario.usu_nick=? AND usuario.usu_id IN(SELECT artistas.art_usu FROM artistas)");
+            status.setString(1, nickname);
+            ResultSet rs = status.executeQuery();
+            if(rs.next()){
+                String nick = rs.getString("usu_nick");
+                if(nick.equals(nickname)){
+                    tipo = "artista";
+                }    
+            }else{
+                tipo = "espectador";
+            }  
+            return tipo;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            tipo = "error";
+            return tipo;
+        }
+        
+    }
 }

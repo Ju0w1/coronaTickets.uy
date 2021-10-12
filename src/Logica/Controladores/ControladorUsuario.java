@@ -337,4 +337,8 @@ public class ControladorUsuario implements IControladorUsuario{
         return usuario;
     }
 
+    public String esEspectador(String nickname){
+        String tipo = servicioUsuarios.checkearTipoUsuario(nickname);
+        return tipo;
+    }
 }
