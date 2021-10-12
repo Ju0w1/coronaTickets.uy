@@ -346,9 +346,11 @@ public class UsuariosServicios {
     public boolean verificarPassword(String userNick, String userPass) {
         try {
             Usuario resultado = null;
-            PreparedStatement status = conexion.prepareStatement("select usu_nick from usuario where usu_nick=? and clave=SHA2(?, 256)");
+            PreparedStatement status = conexion.prepareStatement("select usu_nick from usuario where usu_nick=? and usu_contrasenia=SHA2(?, 256) OR usu_mail=? and usu_contrasenia=SHA2(?, 256)");
             status.setString(1, userNick);
-            status.setString(1, userPass);
+            status.setString(2, userPass);
+            status.setString(3, userNick);
+            status.setString(4, userPass);
             ResultSet rs = status.executeQuery();
             if (rs.next()) {
                 if (rs.getString("usu_nick").equalsIgnoreCase(userNick)) {
