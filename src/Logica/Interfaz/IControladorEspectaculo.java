@@ -30,7 +30,7 @@ import Logica.Clases.Plataforma;
  * @author Admin
  */
 public interface IControladorEspectaculo {
-    public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String categorias);
+    public abstract void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String [] categorias);
     public abstract void obtenerPlataformasToList(JList listPlataform);
     public abstract void obtenerEspectaculos(JList listPlataform);
     public abstract void obtenerEspectaculosCorrectamente(JList listPlataform, String nombrePlataforma, String nombreCategoria);

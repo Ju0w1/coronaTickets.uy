@@ -151,7 +151,7 @@ public class EspectaculosServicios {
     }
     
      
-     public void addEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String categorias) {
+     public void addEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String [] categorias) {
         LocalDateTime now = LocalDateTime.now();
         Date today = new Date(now.getYear() - 1900, now.getMonthValue() - 1, now.getDayOfMonth());
         int id_plataforma = 1, id_usuario = 1;
@@ -186,9 +186,11 @@ public class EspectaculosServicios {
             status3.execute();
             
             //CUARTO INSERTO EN CATEGORIA_ESPECTACULO LOS LAS CATEGORIAS DEL ESPECTACULO
-            String[] cat = categorias.split(",");
-            for (String cat1 : cat) {
-                addCategoria_Espectaculo(nombreEspectaculo, cat1);
+            
+            
+            for(int i = 0; i< categorias.length; i++){
+                System.out.println(categorias[i]);
+                addCategoria_Espectaculo(nombreEspectaculo, categorias[i]);
             }
             
         } catch (SQLException ex) {
