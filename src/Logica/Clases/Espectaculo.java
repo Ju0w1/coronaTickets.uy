@@ -27,7 +27,7 @@ public class Espectaculo {
         
     }
     
-    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date Fregistro, String estado, Map<String, Categoria> categorias, String urlImagen){
+    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date fRegistro, String plataforma, String estado, Map<String, Categoria> categorias, String urlImagen){
         this.Nombre=nombre;
         this.Artista=Artista;
         this.Descripcion=descr;
@@ -36,7 +36,8 @@ public class Espectaculo {
         this.Url=url;
         this.Costo=costo;
         this.Duracion=duracion;
-        this.Fecha_Registro=Fregistro;
+        this.Fecha_Registro=fRegistro;
+        this.plataforma=plataforma;
         this.estado=estado;
         this.categorias=categorias;
         this.urlImagen=urlImagen;
@@ -73,6 +74,9 @@ public class Espectaculo {
     }
     public Date getFecha(){
         return this.Fecha_Registro;
+    }
+    public String getPlataforma(){
+        return this.plataforma;
     }
     public String getEstado (){
         return this.estado;
@@ -126,6 +130,9 @@ public class Espectaculo {
     
     public void setEstado (String estado){
         this.estado=estado;
+    }
+    public void setPlataforma (String plataforma){
+        this.plataforma=plataforma;
     }
     public void setCategoria (Map<String, Categoria> categorias){
         this.categorias=categorias;

@@ -194,7 +194,7 @@ public class EspectaculosServicios {
                 while (rs2.next()) {
                     categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
                 }
-                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_plataforma"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -255,7 +255,7 @@ public class EspectaculosServicios {
                     while (rs2.next()) {
                         categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
                     }
-                    resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                    resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_plataforma"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
@@ -274,7 +274,7 @@ public class EspectaculosServicios {
                         while (rs2.next()) {
                             categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
                         }
-                        resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                        resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_plataforma"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
                     }
                 } catch (SQLException ex) {
                     ex.printStackTrace();
@@ -581,7 +581,7 @@ public class EspectaculosServicios {
                 while (rs2.next()) {
                     categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
                 }
-                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_plataforma"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
@@ -709,7 +709,7 @@ public class EspectaculosServicios {
             status.setString(1, funcionId);
             ResultSet rs = status.executeQuery();
             while(rs.next()){
-                Espectaculo rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), categorias, rs.getString("espec_imagen"));
+                Espectaculo rslt= new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_plataforma"), rs.getString("espec_estado"), categorias, rs.getString("espec_imagen"));
                 return rslt;
             }
         }catch (SQLException ex){

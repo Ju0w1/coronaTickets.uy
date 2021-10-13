@@ -138,4 +138,11 @@ public class ControladorPaquete implements IControladorPaquete{
         Map<String, Paquete> paquetess = servicioPaq.getPaqueteV2();
         return paquetess;
     };
+    
+    //Funciones para la parte WEB
+    public Map<String, Paquete> obtenerMapPaquetesVigentesEspectaculoUsuario (String nickUsuario, String nomEspectaculo){
+        Map<String, Paquete> mapPaquetes=servicioPaq.obtenerMapPaquetesVigentesEspectaculoUsuario(nickUsuario, nomEspectaculo);
+        return mapPaquetes;
+    }
+    
 }

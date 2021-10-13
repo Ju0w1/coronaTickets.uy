@@ -5,6 +5,7 @@
  */
 package Logica.Interfaz;
 
+import Logica.Clases.Artista;
 import Logica.Clases.Categoria;
 import Logica.Clases.Espectaculo;
 import javax.swing.JComboBox;
@@ -57,6 +58,9 @@ public interface IControladorEspectaculo {
     public abstract ArrayList<String> cargarPlataforma();
     public abstract ArrayList<String> cargarEspectaculos(int plataforma);
     public abstract void obtenerListaFunciones(JList listFunciones);
+    public Map<String, Funcion> obtenerMapFunciones(String nomEspectaculo);
+    public Map<String, Artista> obtenerMapArtistasDeFuncion(String nomFuncion);
+    public Map<String, Espectaculo> obtenerMapEspectaculos(String nombrePlataforma, String nombreCategoria);
     public abstract void cargarDatosPaqueteConsultaEspectaculo(String nombreEspectaculo, String nombrePaquete, JLabel nombre, JLabel descripcion, JLabel fechaInicio, JLabel fechaFin, JLabel costo, JLabel Descuento , JList listaEspectaculos);
     public void obtenerPaquetes(JList listPaquetes); //NUEVO
     public void obtenerPlataformasToComboBox(JComboBox comboBoxPlataformas); //NUEVO
