@@ -238,7 +238,7 @@ public class FuncionServicios {
         }
     }
    
-   public Map<String, Funcion> getMapRegistroDeFuncionesDeUsuario(int usuId) {
+    public Map<String, Funcion> getMapRegistroDeFuncionesDeUsuario(int usuId) {
         Map<String, Funcion> resultado = new HashMap<>();
         try {
             PreparedStatement status1 = conexion.prepareStatement("SELECT funcion.* FROM funcion,usuario_funcion WHERE funcion.fun_id=usuario_funcion.funcion_id AND usuario_funcion.usu_id=?");
@@ -249,8 +249,25 @@ public class FuncionServicios {
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
+            return null;
         }
         return resultado;
+    }
+    
+    public int getIdporNickEspectador(String espectadorNick) {
+        int espectadorId=-1;
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT u.usu_id FROM usuario as u WHERE u.usu_nick=?");
+            status1.setString(1, espectadorNick);
+            ResultSet rs = status1.executeQuery();
+            if (rs.next()) {
+                espectadorId=rs.getInt(1);
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+            return -1;
+        }
+        return espectadorId;
     }
     
 }

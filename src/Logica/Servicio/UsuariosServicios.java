@@ -343,4 +343,45 @@ public class UsuariosServicios {
             return null;
         }
     }
+    public Usuario getUserPorNick(String nickUsuario) throws SQLException { //Se obtiene TODA la información específica de un usuario
+        Usuario resultado = null;
+        PreparedStatement status = conexion.prepareStatement("SELECT * FROM usuario WHERE usuario.usu_nick=?");
+        status.setString(1, nickUsuario);
+        try {
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                String nick = rs.getString("usu_nick");
+                String mail = rs.getString("usu_mail");
+                String nombre = rs.getString("usu_nombre");
+                String apellido = rs.getString("usu_apellido");
+                DTFecha nacimineto = dateToDTFecha(rs.getDate("usu_nacimiento"));
+                String password = rs.getString("usu_contrasenia");
+                String imagen = rs.getString("usu_imagen");
+                int seguidores=this.getSeguidores(rs.getInt("usu_id"));
+                int seguidos=this.getSiguiendo(rs.getInt("usu_id"));
+                
+                resultado= new Usuario(nick, nombre, apellido, mail, nacimineto, password, imagen, seguidores, seguidos);
+            }
+            rs.close();
+            return resultado;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+//    public int getIdporNickEspectador(String espectadorNick) throws SQLException {
+//        int espectadorId=-1;
+//        PreparedStatement status1 = conexion.prepareStatement("SELECT u.usu_id FROM usuario as u WHERE u.usu_nick=?");
+//        status1.setString(1, espectadorNick);
+//        try {
+//            ResultSet rs = status1.executeQuery();
+//            if (rs.next()) {
+//                espectadorId=rs.getInt(1);
+//            }
+//        } catch (SQLException ex1) {
+//            ex1.printStackTrace();
+//            return -1;
+//        }
+//        return espectadorId;
+//    }
 }

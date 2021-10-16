@@ -31,5 +31,7 @@ public interface IControladorUsuario {
     public abstract boolean controlFecha(int dia, int mes,int anio);
     public abstract Map<String, Usuario> obtenerUsuarios(); //Nuevo WebVersion
     public abstract Artista obtenerArtista(int idUsuario); //Nuevo WebVersion
+    public abstract Artista obtenerArtistaPorNick(String nickUsuario); //Nuevo WebVersion MILTON
     public abstract Usuario obtenerEspectador(int idUsuario); //Nuevo WebVersion
+    public abstract Usuario obtenerEspectadorPorNick(String nickUsuario); //Nuevo WebVersion MILTON
 }

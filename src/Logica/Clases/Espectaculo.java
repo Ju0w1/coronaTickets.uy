@@ -27,6 +27,11 @@ public class Espectaculo {
         
     }
     
+    public Espectaculo(String nombre, String plataforma){
+        this.Nombre=nombre;
+        this.plataforma=plataforma;
+    }
+    
     public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date Fregistro, String estado, Map<String, Categoria> categorias, String urlImagen){
         this.Nombre=nombre;
         this.Artista=Artista;
@@ -83,6 +88,9 @@ public class Espectaculo {
     public String getUrlIamgen (){
         return this.urlImagen;
     }
+    public String getPlataforma (){
+        return this.plataforma;
+    }
     
     //Setters
     public void setNombre(String nom_x){
@@ -122,6 +130,21 @@ public class Espectaculo {
         this.Fecha_Registro=Fregistro;
         this.estado=estado;
         this.urlImagen=url_imagen;
+    }
+    
+    public Espectaculo(String nombre,int Artista,String descr,int min,int max, String url, double costo,double duracion,Date Fregistro, String estado, String url_imagen, String plataforma){
+        this.Nombre=nombre;
+        this.Artista=Artista;
+        this.Descripcion=descr;
+        this.Cant_min_espectadores=min;
+        this.Cant_max_espectadores=max;
+        this.Url=url;
+        this.Costo=costo;
+        this.Duracion=duracion;
+        this.Fecha_Registro=Fregistro;
+        this.estado=estado;
+        this.urlImagen=url_imagen;
+        this.plataforma = plataforma;
     }
     
     public void setEstado (String estado){

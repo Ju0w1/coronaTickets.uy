@@ -30,6 +30,7 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
      * Creates new form ConsultaUsuario
      */
     private IControladorPaquete ICU;
+    private IControladorEspectaculo ICE = Fabrica.getInstance().getIControladorEspectaculo();
     
     public ConsultaPaquete() {
         initComponents();
@@ -480,7 +481,6 @@ public class ConsultaPaquete extends javax.swing.JInternalFrame {
 
     private void listEspectaculosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listEspectaculosValueChanged
         // TODO add your handling code here:
-        IControladorEspectaculo ICE = Fabrica.getInstance().getIControladorEspectaculo();
         ICE.llenarEspectaculos();
         ICE.cargarDatosConsultaEspectaculo(listEspectaculos.getSelectedValue(), this.txtNombre2, this.txtNombreEspectaculos, this.txtDuracion, this.txtCantEspectadoresMinima, this.txtCantEspectadoresMaxima, this.txtURL, this.txtCosto2, this.txtFechaRegistro, this.txtDescripcion2);
     }//GEN-LAST:event_listEspectaculosValueChanged

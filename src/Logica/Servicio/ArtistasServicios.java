@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import Logica.Clases.Artista;
 import Logica.Clases.Paquete;
+import java.util.Set;
 
 
 public class ArtistasServicios {
@@ -29,8 +30,7 @@ public class ArtistasServicios {
         return new DTFecha(Integer.parseInt(partes[2]),Integer.parseInt(partes[1]),Integer.parseInt(partes[0]));
     }
     
-    
-     public Map<String, Artista> getArtista() {
+    public Map<String, Artista> getArtista() {
         Map<String, Artista> resultado = new HashMap<>();
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM artistas as a, usuario as U WHERE A.art_usu=U.usu_id");
@@ -63,6 +63,7 @@ public class ArtistasServicios {
         }
         return true;
     }
+    
     public Artista getArtista(int usuId) { //Se obtiene todo los datos de un artistas con sus respectivos segudiores y seguidos.
         Artista resultado = null;
         UsuariosServicios servicioUsuarios = new UsuariosServicios();
@@ -78,6 +79,25 @@ public class ArtistasServicios {
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    public Artista getArtistaPorNick(String usuNick) { //Se obtiene todo los datos de un artistas(POR NICK) con sus respectivos segudiores y seguidos.
+        Artista resultado = null;
+        UsuariosServicios servicioUsuarios = new UsuariosServicios();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM artistas as a, usuario as U WHERE A.art_usu=U.usu_id AND U.usu_nick=?");
+            status.setString(1, usuNick);
+            ResultSet rs = status.executeQuery();
+            if(rs.next()) {
+                int seguidores=servicioUsuarios.getSeguidores(rs.getInt("U.usu_id"));
+                int seguidos=servicioUsuarios.getSiguiendo(rs.getInt("U.usu_id"));
+                resultado=new Artista(rs.getString("U.usu_nick"),rs.getString("U.usu_nombre"),rs.getString("U.usu_apellido"),rs.getString("U.usu_mail"),dateToDTFecha(rs.getDate("U.usu_nacimiento")),rs.getString("A.art_descripcion"),rs.getString("A.art_biografia"),rs.getString("A.art_url"), rs.getString("U.usu_contrasenia"), rs.getString("usu_imagen"), seguidores, seguidos);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
         }
         return resultado;
     }
