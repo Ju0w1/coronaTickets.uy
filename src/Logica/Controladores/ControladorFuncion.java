@@ -23,15 +23,17 @@ import Logica.Clases.Artista;
 import Logica.Clases.Funcion;
 import Logica.Servicio.ArtistasServicios;
 import Logica.Servicio.FuncionServicios;
+import Logica.Servicio.UsuariosServicios;
 
 
 public class ControladorFuncion implements IControladorFuncion{
     
     private Map<String, Funcion> funciones;
+    //private UsuariosServicios servicioUsuarios;
     private FuncionServicios servicioFunciones;
-    
     private Map<String, Artista> artistas;
     private ArtistasServicios servicioArt;
+   
     
     private static ControladorFuncion instancia;
 
@@ -108,12 +110,17 @@ public class ControladorFuncion implements IControladorFuncion{
         this.servicioFunciones.AgregarArtista(nombre_artista,id_funcion,id_artista,nombre_funcion,funcion_vigente);
     }
     
-    public Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int usuId){
-        Map<String, Funcion> funciones = servicioFunciones.getMapRegistroDeFuncionesDeUsuario(usuId);
-        return funciones;
-    }
-    
+//    public Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int usuId){
+//        Map<String, Funcion> funciones = servicioFunciones.getMapRegistroDeFuncionesDeUsuario(usuId);
+//        return funciones;
+//    }
+//    public Map<String, Funcion> getRegistroDeFuncionesDeUsuarioPorNick(String usuNick){
+//        int usuid = servicioFunciones.getIdporNickEspectador(usuNick);
+//        if (usuid == -1){
+//            return null;
+//        } else {
+//            Map<String, Funcion> funciones = getRegistroDeFuncionesDeUsuario(usuid);
+//            return funciones;
+//        }
+//    }
 }
-    
-     
- 

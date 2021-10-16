@@ -327,6 +327,12 @@ public class ControladorUsuario implements IControladorUsuario{
         return artista;
     };
     
+    public Artista obtenerArtistaPorNick(String nickUsuario){ //Se obtiene toda la información de un Artista
+        Artista artista = servicioArtista.getArtistaPorNick(nickUsuario);
+        return artista;
+    };
+    
+    
     public Usuario obtenerEspectador(int idUsuario){ //Se obtiene toda la información de un Espectador en específico (Incluye cantidad de seguidores y seguidos)
         Usuario usuario = null;
         try {
@@ -336,6 +342,16 @@ public class ControladorUsuario implements IControladorUsuario{
         }
         return usuario;
     }
+    public Usuario obtenerEspectadorPorNick(String nickUsuario){ //Se obtiene toda la información de un Espectador en específico
+        Usuario usuario = null;
+        try {
+            usuario = servicioUsuarios.getUserPorNick(nickUsuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return usuario;
+    }
+    
 
     public String esEspectador(String nickname){
         String tipo = servicioUsuarios.checkearTipoUsuario(nickname);

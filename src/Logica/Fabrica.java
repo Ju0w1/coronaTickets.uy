@@ -21,6 +21,10 @@ public class Fabrica {
         return instancia;
     }
     
+    public IControladorFuncion getIControladorFuncion() {
+        IControladorFuncion ControladorF = ControladorFuncion.getInstance();
+        return ControladorF; //To change body of generated methods, choose Tools | Templates.
+    }
      public IControladorEspectaculo getIControladorEspectaculo() {
         IControladorEspectaculo ControladorE = ControladorEspectaculos.getInstance();
         return ControladorE; //To change body of generated methods, choose Tools | Templates.
@@ -29,10 +33,6 @@ public class Fabrica {
     public IControladorPaquete getIControladorPaquete() {
         IControladorPaquete ControladorP = ControladorPaquete.getInstance();
         return ControladorP; //To change body of generated methods, choose Tools | Templates.
-    }
-    public IControladorFuncion getIControladorFuncion() {
-        IControladorFuncion ControladorF = ControladorFuncion.getInstance();
-        return ControladorF; //To change body of generated methods, choose Tools | Templates.
     }
 
      public IControladorUsuario getIControladorUsuario() {

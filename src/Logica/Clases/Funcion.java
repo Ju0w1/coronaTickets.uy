@@ -16,6 +16,7 @@ public class Funcion {
         private Espectaculo espectaculo;
         private Map<String, Artista> artistas;
         private String urlImagen;
+
         
         public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas, String urlImagen){
             this.nombre= nombre;
@@ -32,6 +33,14 @@ public class Funcion {
             this.fecha= fecha;
             this.horaInicio= horaInicio;
             this.fechaRegistro= fechaRegistro;
+        }
+        
+        public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo){
+            this.nombre= nombre;
+            this.fecha= fecha;
+            this.horaInicio= horaInicio;
+            this.fechaRegistro= fechaRegistro;
+            this.espectaculo=espectaculo;
         }
         
         public void setNombre(String nombre_){

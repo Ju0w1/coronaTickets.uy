@@ -12,6 +12,15 @@ public class Artista extends Usuario {
         this.biografia=biografia;
         this.linkWeb=linkWeb;
     }
+    
+    public Artista(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String descripcion, String biografia, String linkWeb, String contrasenia, String url_imagen, int seguidores, int seguidos){
+        super (nickname, nombre, apellido, email, nacimiento, contrasenia, url_imagen, seguidores, seguidos);
+        this.descripcion=descripcion;
+        this.biografia=biografia;
+        this.linkWeb=linkWeb;
+    }
+    
+    
     public void setDescripcion (String descripcion){
         this.descripcion=descripcion;
     }

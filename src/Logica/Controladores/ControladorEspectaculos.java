@@ -51,6 +51,7 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
@@ -185,8 +186,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         listaEspectaculos.setModel(listModel1);
     }
-    @Override
-        public void llenarEspectaculos() {
+    public void llenarEspectaculos() {
         this.espectaculos = servicioEspectaculo.getEspectaculos();
     }
 
@@ -673,6 +673,15 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosAceptados(idArtista);
         return espectaculos;
     }
+    public Map<String, Espectaculo> obtenerEspectaculosAceptadosDeArtistaPorNick(String nickArtista){
+        int idArtista = servicioEspectaculo.getIdporNickArtista(nickArtista);
+        if (idArtista == -1){
+            return null;
+        } else {
+            Map<String, Espectaculo> espectaculos = obtenerEspectaculosAceptadosDeArtista(idArtista);
+            return espectaculos;
+        }
+    }
     public Map<String, Espectaculo> obtenerEspectaculosRechazadosDeArtista(int idArtista){
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosRechazados(idArtista);
         return espectaculos;
@@ -704,5 +713,25 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Map<String, Espectaculo> mapEspectaculos=servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria);
         return mapEspectaculos;
     }
+    public Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int usuId){
+        Map<String, Funcion> funciones = servicioEspectaculo.getMapRegistroDeFuncionesDeUsuario(usuId);
+        return funciones;
+    }
+    public Map<String, Funcion> getRegistroDeFuncionesDeUsuarioPorNick(String usuNick){
+        
+        int usuId = servicioEspectaculo.getIdporNickEspectador(usuNick);
+        if (usuId == -1){
+            return null;
+        } else {
+            Map<String, Funcion> funciones = getRegistroDeFuncionesDeUsuario(usuId);
+            return funciones;
+        }
+    }
+    
+//    public Map<int, Categoria> getCategorias(){
+//        
+//        
+//        
+//    }
     
 }

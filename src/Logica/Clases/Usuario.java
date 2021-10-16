@@ -106,6 +106,15 @@ public class Usuario {
         this.seguidores=seguidores;
         this.seguidos=seguidos;
     }
+    public Usuario(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String url_imagen) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.nickname= nickname;
+        this.email= email;
+        this.nacimiento= nacimiento;
+        this.url_imagen=url_imagen;
+    }
+    
     
     public int getSeguidores (){
         return this.seguidores;
