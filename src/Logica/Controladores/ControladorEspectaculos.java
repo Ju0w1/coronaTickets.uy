@@ -89,22 +89,26 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         return instancia;
     }
 
+    @Override
     public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
         return espectaculos;
     }
     //123
+    @Override
     public Map<String, Plataforma> getPlataformas() {
         Map<String, Plataforma> plataformas = servicioEspectaculo.getPlataformas();
         return plataformas;
     }
     
     //123
+    @Override
     public Map<String, Categoria> getCategorias() {
         Map<String, Categoria> categorias = servicioEspectaculo.getCategorias();
         return categorias;
     }
      //123
+    @Override
      public boolean addCategoria(String nombre){
         if (this.servicioEspectaculo.checkCategoria(nombre) == false){
             this.servicioEspectaculo.addCategoria(nombre);
@@ -115,10 +119,12 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     }
      
      //123
+    @Override
      public void addCategorias_Espectaculos(String nombreEspectaculo, String nombreCategoria){
           this.servicioEspectaculo.addCategorias_Espectaculos(nombreEspectaculo, nombreCategoria);
      }
 
+    @Override
     public boolean addPlataforma(String nombre, String url, String descripcion) {
         if (this.servicioEspectaculo.checkCategoria(nombre)) {
             return false;
@@ -135,19 +141,26 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String[] categorias) {
         this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo, estado, imagen, categorias);
     }
+    @Override
+    public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen) {
+        this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo, estado, imagen);
+    }
 
+    @Override
     public void obtenerPlataformasToComboBox(JComboBox listPlataform) {
         for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxPlataformas().getItemCount(); i++) {
             listPlataform.addItem(this.servicioEspectaculo.llenarComboBoxPlataformas().getItemAt(i).toString());
         }
     }
     
+    @Override
     public void obtenerCategoriasToComboBox(JComboBox listCat) {
         for (int i = 0; i < this.servicioEspectaculo.llenarComboBoxCategorias().getItemCount(); i++) {
             listCat.addItem(this.servicioEspectaculo.llenarComboBoxCategorias().getItemAt(i).toString());
         }
     }
 
+    @Override
     public void obtenerPlataformasToList(JList listPlataform) {
         this.plataformas = servicioEspectaculo.getPlataformas();
         DefaultListModel listModel1 = new DefaultListModel();
@@ -160,6 +173,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         listPlataform.setModel(listModel1);
     }
 
+    @Override
     public void obtenerEspectaculos(JList listaEspectaculos) {
         this.espectaculos = servicioEspectaculo.getEspectaculos();
         DefaultListModel listModel1 = new DefaultListModel();
@@ -171,10 +185,12 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         listaEspectaculos.setModel(listModel1);
     }
+    @Override
         public void llenarEspectaculos() {
         this.espectaculos = servicioEspectaculo.getEspectaculos();
     }
 
+    @Override
     public void obtenerEspectaculosCorrectamente(JList listaEspectaculos, String nombrePlataforma, String nombreCategoria) {
         this.espectaculos = servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria);
         DefaultListModel listModel1 = new DefaultListModel();
@@ -187,10 +203,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         listaEspectaculos.setModel(listModel1);
     }
 
-    public void obtenerFuncionesDeEspectaculo() {
-        //CONTINUAR
-    }
-
+    @Override
     public void cargarDatosConsultaEspectaculo(String espectaculoNombre, JLabel nombreApellido, JLabel nombreEspectaculo, JLabel duracion, JLabel espectMin, JLabel espectMax, JLabel URL, JLabel costo, JLabel fecha, JTextArea descrip) {
         Espectaculo e = (Espectaculo) this.espectaculos.get(espectaculoNombre);
         nombreApellido.setText(Integer.toString(e.getArtista()));
@@ -204,43 +217,28 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         descrip.setText(e.getDescripcion());
     }
 
+    @Override
     public void obtenerArtistas() {
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistas().getModel());
     }
 
+    @Override
     public void obtenerArtistaPorNombre(String nick) {
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistasPorNombre(nick).getModel());
     }
     
+    @Override
     public void obtenerArtistaPorNick(String nick) { //NUEVOOOOOO
         Presentacion.AltaEspectaculo.jListArtistas.setModel(this.servicioEspectaculo.llenarListaArtistasPorNick(nick).getModel());
     }
     
 
+    @Override
     public boolean verificarNombreEspectaculo(String nombre) {
         return this.servicioEspectaculo.verificarExistenciaNombreEspectaculo(nombre);
     }
 
-    public void consultaEspectaculo() {
-
-    }
-
-    public void altaFuncionEspectaculo() {
-
-    }
-
-    public void consultaFuncionEspectaculo() {
-
-    }
-
-    public void registroFuncionEspectaculo() {
-
-    }
-
-    public void crearPaqueteEspectaculos() {
-
-    }
-
+    @Override
     public void obtenerListaFunciones(JList listFunciones) {
         this.funciones = servicioEspectaculo.getMapFuncionesEspectaculoNombre(Presentacion.ConsultaEspectaculo.txtNombreEspectaculo.getText());
         DefaultListModel listModel1 = new DefaultListModel();
@@ -683,4 +681,28 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosIngresados(idArtista);
         return espectaculos;
     }
+    
+    //Funciones para la parte WEB
+
+    @Override
+    public Map<String, Funcion> obtenerMapFunciones(String nomEspectaculo) {
+        String id = servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
+        int idEsp = Integer.parseInt(id);
+        Map<String, Funcion> mapFunciones = servicioEspectaculo.getMapFunciones(idEsp);
+        return mapFunciones;
+    }
+    
+    @Override
+    public Map<String, Artista> obtenerMapArtistasDeFuncion(String nomFuncion) {
+        String idFuncion = this.servicioEspectaculo.getIdFuncion(nomFuncion);
+        Map<String, Artista> artistasEnFuncion = this.servicioEspectaculo.getMapArtistas(idFuncion);
+        return artistasEnFuncion;
+    }
+    
+    @Override
+    public Map<String, Espectaculo> obtenerMapEspectaculos(String nombrePlataforma, String nombreCategoria) {
+        Map<String, Espectaculo> mapEspectaculos=servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria);
+        return mapEspectaculos;
+    }
+    
 }

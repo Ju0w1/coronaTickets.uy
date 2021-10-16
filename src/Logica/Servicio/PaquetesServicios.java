@@ -340,4 +340,30 @@ public class PaquetesServicios{
         return resultado;
     }
     
+    public Map<String, Paquete> getPaquetesUsuario(String nickUsuario){
+        Map<String, Paquete> mapPaquetes = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_usu_id=paquetes.paq_id AND compra_paquetes.compra_usu_id IN (SELECT usu_id FROM usuario, paquete_espetaculos WHERE usuario.usu_id=paquete_espetaculos.paqespec_paq_id AND usuario.usu_nick = ?))");
+            status.setString(1, nickUsuario);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                mapPaquetes.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra")) ,rs.getString("paq_imagen") , dateToDTFecha(rs.getDate("paq_fecha_alta")), rs.getBoolean("paq_vigente")));
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return mapPaquetes;
+    }
+    
+    public Map<String, Paquete> obtenerMapPaquetesVigentesEspectaculoUsuario(String nickUsuario, String nomEspectaculo){
+        Map<String, Paquete> mapPaquetesEspectaculo = getPaquetesDeEspectaculo(nomEspectaculo);
+        Map<String, Paquete> mapPaquetesUsuario = getPaquetesUsuario(nickUsuario);
+        for (Map.Entry entry : mapPaquetesUsuario.entrySet()) {
+            if (!mapPaquetesEspectaculo.containsKey(entry.getKey())) {
+                mapPaquetesUsuario.remove(entry.getKey());
+            }
+        }
+        return mapPaquetesUsuario;
+    }
+    
 }
