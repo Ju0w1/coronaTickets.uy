@@ -36,6 +36,37 @@ public class ControladorPaquete implements IControladorPaquete{
         return instancia;
     }
     
+   
+     public void actualizarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen){
+         //123
+         Paquete paquete = new Paquete();
+         paquete.setNombre(nombre);
+         paquete.setDescripcion(descripcion);
+         paquete.setFecha_Inicio(fechaInicio);
+         paquete.setFecha_Fin(fechaFin);
+         paquete.setDescuento(descuento);
+         paquete.setUrl(imagen);
+         this.servicioPaq.actualizarPaquete(paquete);     
+     }
+    
+    
+     public boolean addPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen){
+        //123
+         if (this.servicioPaq.verificarPaquete(nombre) == false){
+            Paquete paquete = new Paquete();
+            paquete.setNombre(nombre);
+            paquete.setDescripcion(descripcion);
+            paquete.setFecha_Inicio(fechaInicio);
+            paquete.setFecha_Fin(fechaFin);
+            paquete.setDescuento(descuento);
+            paquete.setUrl(imagen);
+            this.servicioPaq.addPaquete(paquete);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     @Override
     public Map<String, Paquete> getPaquetes(){
         Map<String, Paquete> paquetes = servicioPaq.getPaquete();
@@ -47,6 +78,8 @@ public class ControladorPaquete implements IControladorPaquete{
         float y=Float.parseFloat(descuento);
         this.paquetes.put(nombre, new Paquete(nombre,descripcion,Finicio,Ffinal,x,y,Fcompra));
     }
+  
+   
     
     
     public void obtenerPaquete(JList listEspec){

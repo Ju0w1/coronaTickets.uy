@@ -130,5 +130,7 @@ public class Paquete {
         this.url_imagen= url_;
         this.vigente= vigencia_;
     }
+    
+    
 }
 

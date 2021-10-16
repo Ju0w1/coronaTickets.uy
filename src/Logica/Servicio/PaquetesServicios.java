@@ -32,6 +32,61 @@ public class PaquetesServicios{
     }
     private Connection conexion = new ConexionDB().getConexion();
     
+   
+    public void actualizarPaquete(Paquete paquete) {
+                
+         //'2021-02-02' ejemplo de fecha
+         int anioInicio = paquete.getFecha_Inicio().getAnio();
+         int mesInicio = paquete.getFecha_Inicio().getMes();
+         int diaInicio = paquete.getFecha_Inicio().getDia();
+         
+         int anioFin = paquete.getFecha_Fin().getAnio();
+         int mesFin = paquete.getFecha_Fin().getMes();
+         int diaFin = paquete.getFecha_Fin().getDia();
+         
+        try {
+            PreparedStatement status = conexion.prepareStatement("UPDATE paquetes SET paq_descripcion = ?, paq_fecha_inicio = ?, paq_fecha_fin = ?, paq_descuento = ?, paq_imagen = ? WHERE paq_nombre = ?");
+            status.setString (1, paquete.getDescripcion());
+            status.setString (2, anioInicio+"-"+mesInicio+"-"+diaInicio);
+            status.setString (3, anioFin+"-"+mesFin+"-"+diaFin);
+            status.setFloat (4, paquete.getDescuento());
+            status.setString (5, paquete.getUrl());
+            status.setString (5, paquete.getNombre());
+            status.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+        
+  
+     public boolean addPaquete(Paquete paquete) {
+         
+         //'2021-02-02' ejemplo de fecha
+         int anioInicio = paquete.getFecha_Inicio().getAnio();
+         int mesInicio = paquete.getFecha_Inicio().getMes();
+         int diaInicio = paquete.getFecha_Inicio().getDia();
+         
+         int anioFin = paquete.getFecha_Fin().getAnio();
+         int mesFin = paquete.getFecha_Fin().getMes();
+         int diaFin = paquete.getFecha_Fin().getDia();
+         
+        try {
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO paquetes (paq_nombre, paq_descripcion, paq_fecha_inicio, paq_fecha_fin, paq_descuento, paq_imagen) VALUES (?,?,?,?,?,?)");
+            status.setString (1, paquete.getNombre());
+            status.setString (2, paquete.getDescripcion());
+            status.setString (3, anioInicio+"-"+mesInicio+"-"+diaInicio);
+            status.setString (4, anioFin+"-"+mesFin+"-"+diaFin);
+            status.setFloat (5, paquete.getDescuento());
+            status.setString (6, paquete.getUrl());
+            status.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    
+    }
 
     public DTFecha dateToDTFecha(Date fecha){
         if(fecha != null){
