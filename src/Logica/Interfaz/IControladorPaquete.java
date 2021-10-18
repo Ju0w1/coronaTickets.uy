@@ -18,7 +18,7 @@ public interface IControladorPaquete {
     public Map<String, Paquete> obtenerMapPaquetesVigentesEspectaculoUsuario (String nickUsuario, String nomEspectaculo);
 //    public abstract Paquete PruebaPaquete(String ID_paq);
     public abstract Map<String, Paquete> getPaquetesV2();
-    
+    public void compraPaquete (String nickUsuario, String nomPaquete); //Parte web
     //123
     public abstract boolean addPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen); // Para el caso de uso crear paquete de espectaculos
     public abstract void actualizarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen); // En caso de que exista un paquete de espectáculos con dicho nombre, el artista puede modificar los datos que ingresó
