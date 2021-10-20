@@ -80,9 +80,12 @@ public interface IControladorEspectaculo {
     public abstract void llenarEspectaculos();
     public abstract void obtenerLinkPlataforma(String nombrePlataforma, JTextField linkPlataforma);
     public abstract Map<String, Espectaculo> obtenerEspectaculosAceptadosDeArtista(int idArtista); //Nuevo WebVersion
-    public abstract Map<String, Espectaculo> obtenerEspectaculosAceptadosDeArtistaPorNick(String nickArtista); //Nuevo WebVersion MILTON
     public abstract Map<String, Espectaculo> obtenerEspectaculosRechazadosDeArtista(int idArtista); //Nuevo WebVersion
     public abstract Map<String, Espectaculo> obtenerEspectaculosIngresadosDeArtista(int idArtista); //Nuevo WebVersion
+    
+    public abstract Map<String, Espectaculo> obtenerEspectaculosAceptadosDeArtistaPorNick(String nickArtista); //Nuevo WebVersion MILTON
+    public abstract Map<String, Espectaculo> obtenerEspectaculosRechazadosDeArtistaPorNick(String nickArtista); //Nuevo WebVersion MILTON
+    public abstract Map<String, Espectaculo> obtenerEspectaculosIngresadosDeArtistaPorNick(String nickArtista); //Nuevo WebVersion MILTON
     
     public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int idUsuario); //Nuevo WebVersion
     public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuarioPorNick(String usuNick); //Nuevo WebVersion MILTON

@@ -93,6 +93,7 @@ public class Espectaculo {
         return this.urlImagen;
     }
     
+
     //Setters
     public void setNombre(String nom_x){
         this.Nombre=nom_x;

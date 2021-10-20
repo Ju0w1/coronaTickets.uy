@@ -307,19 +307,22 @@ public class PaquetesServicios{
     public Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario) {
         Map<String, Paquete> resultado = new HashMap<>();
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT paquetes.* FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_usu_id=paquetes.paq_id AND compra_paquetes.compra_usu_id=?)");
+            //PreparedStatement status = conexion.prepareStatement("SELECT paquetes.* FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_usu_id=paquetes.paq_id AND compra_paquetes.compra_usu_id=?)");
+            PreparedStatement status = conexion.prepareStatement("SELECT paquetes.* FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_paq_id=paquetes.paq_id AND compra_paquetes.compra_usu_id=?");
             status.setInt(1, idUsuario);
             ResultSet rs = status.executeQuery();
             while (rs.next()) {
                 //dateToDTFecha(rs.getDate("paq_fecha_inicio"));
                 //UTILIZAR AQUÍ EL NUEVO resultado.put QUE UTILIZA DIETER EN CONSUTLA PAQUETES
                 //resultado.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra"))));
+                resultado.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra")) ,rs.getString("paq_imagen") , dateToDTFecha(rs.getDate("paq_fecha_alta")), rs.getBoolean("paq_vigente"))); 
+                //resultado.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra")) ,rs.getString("paq_imagen") , dateToDTFecha(rs.getDate("paq_fecha_alta")), rs.getBoolean("paq_vigente")));
             }
         }catch (SQLException ex) {
             ex.printStackTrace();
         }
         return resultado;
-    }            
+    }
     
     public Map<String, Paquete> getPaqueteV2() {
         Map<String, Paquete> resultado = new HashMap<>();

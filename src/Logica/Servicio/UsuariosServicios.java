@@ -419,6 +419,21 @@ public class UsuariosServicios {
             return null;
         }
     }
+    public int getIdPorNick(String nick) throws SQLException{
+        int id=-1;
+        PreparedStatement status = conexion.prepareStatement("SELECT usu_id FROM usuario WHERE usuario.usu_nick=?");
+        status.setString(1, nick);
+        try {
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
+    
 //    public int getIdporNickEspectador(String espectadorNick) throws SQLException {
 //        int espectadorId=-1;
 //        PreparedStatement status1 = conexion.prepareStatement("SELECT u.usu_id FROM usuario as u WHERE u.usu_nick=?");
