@@ -86,7 +86,8 @@ public interface IControladorEspectaculo {
     
     public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int idUsuario); //Nuevo WebVersion
     public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuarioPorNick(String usuNick); //Nuevo WebVersion MILTON
-    
+    public abstract Map<String, Espectaculo> obtenerMapEspectaculosDePaquete(String nombrePaquete); //nuevo WebVersion PABLO
+    public abstract Espectaculo getEspectaculoPorNombre(String nombreEspectaculo); //nuevo WebVersion PABLO
     //public abstract Map<int, Categoria> getCategorias();
 }
 

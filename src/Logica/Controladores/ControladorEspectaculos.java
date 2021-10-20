@@ -728,6 +728,16 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
     }
     
+    public Map<String, Espectaculo> obtenerMapEspectaculosDePaquete(String nombrePaquete) {
+        Map<String, Espectaculo> mapEspectaculos=servicioEspectaculo.getEspectaculosDePaquete(nombrePaquete);
+        return mapEspectaculos;
+    }
+    
+    public Espectaculo getEspectaculoPorNombre(String nombreEspectaculo){
+        Espectaculo resultado = servicioEspectaculo.getEspectaculoPorNombre(nombreEspectaculo);
+        System.out.println("LLega el nombre:"+resultado.getNombre());
+        return resultado;
+    }
 //    public Map<int, Categoria> getCategorias(){
 //        
 //        

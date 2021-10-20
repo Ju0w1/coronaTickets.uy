@@ -1047,5 +1047,38 @@ public class EspectaculosServicios {
         return resultado;
     }
     
+    public Map<String, Espectaculo> getEspectaculosDePaquete(String nombrePlataforma){
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espec_id IN (SELECT paqespec_espec_id FROM paquete_espetaculos WHERE paqespec_paq_id IN (SELECT paq_id FROM paquetes WHERE paq_nombre = ?))");
+            status1.setString(1, nombrePlataforma);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
     
+    public Espectaculo getEspectaculoPorNombre(String nombreEspectaculo){
+        Espectaculo resultado = new Espectaculo();
+        
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espec_nombre=?");
+            status1.setString(1, nombreEspectaculo);
+            ResultSet rs = status1.executeQuery();
+            if (rs.next()) {
+                System.out.println(rs.getString("espec_nombre"));
+                resultado = new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen"));
+            }else{
+                System.out.println("No se encontró el espectáculo:"+ nombreEspectaculo);
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
 }
