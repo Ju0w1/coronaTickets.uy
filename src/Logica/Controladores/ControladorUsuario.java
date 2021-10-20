@@ -357,4 +357,13 @@ public class ControladorUsuario implements IControladorUsuario{
         String tipo = servicioUsuarios.checkearTipoUsuario(nickname);
         return tipo;
     }
+    public int getIdEspectadorPorNick(String nickUsuario){
+        int id=-1;
+        try {
+            id = servicioUsuarios.getIdPorNick(nickUsuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
 }

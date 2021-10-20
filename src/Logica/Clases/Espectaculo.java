@@ -92,10 +92,7 @@ public class Espectaculo {
     public String getUrlIamgen (){
         return this.urlImagen;
     }
-    public String getPlataforma (){
-        return this.plataforma;
-    }
-    
+
     //Setters
     public void setNombre(String nom_x){
         this.Nombre=nom_x;

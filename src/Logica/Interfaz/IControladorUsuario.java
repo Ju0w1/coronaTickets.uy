@@ -35,4 +35,5 @@ public interface IControladorUsuario {
     public abstract Usuario obtenerEspectador(int idUsuario); //Nuevo WebVersion
     public abstract String esEspectador(String nickname); //Nuevo WebVersion
     public abstract Usuario obtenerEspectadorPorNick(String nickUsuario); //Nuevo WebVersion MILTON
+    public abstract int getIdEspectadorPorNick(String nickUsuario); //Nuevo WebVersion MILTON
 }
