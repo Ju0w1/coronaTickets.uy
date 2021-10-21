@@ -485,4 +485,21 @@ public class UsuariosServicios {
             ex.printStackTrace();
         }
     }
+     
+     public boolean addArtista(String nickname, String descripcion, String biografia,String link) throws SQLException {
+        int id = getIdPorNick(nickname);
+        
+        try {
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO artistas (art_usu, art_descripcion, art_biografia, art_url) VALUES (?,?,?,?)");
+            status.setInt (1, id);
+            status.setString (2, descripcion);
+            status.setString (3, biografia);
+            status.setString (4, link);
+            status.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 }
