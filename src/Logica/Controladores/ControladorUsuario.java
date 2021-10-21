@@ -366,4 +366,12 @@ public class ControladorUsuario implements IControladorUsuario{
         }
         return id;
     }
+    
+    public void modificarUsuarioEspectador(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen){
+        servicioUsuarios.modificarEspectadorWeb(usuNick,usuMail,usuNombre,usuApelliedo,usuNacimiento,usuImagen);
+    }
+    
+    public void modificarUsuarioArtista(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen, String artDescripcion, String artBiografia, String artUrl){
+        servicioUsuarios.modificarArtistaWeb(usuNick,usuMail,usuNombre,usuApelliedo,usuNacimiento,usuImagen,artDescripcion,artBiografia,artUrl);
+    }
 }

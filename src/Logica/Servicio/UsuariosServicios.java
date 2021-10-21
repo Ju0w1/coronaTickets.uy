@@ -449,4 +449,40 @@ public class UsuariosServicios {
 //        }
 //        return espectadorId;
 //    }
+    
+    public void modificarEspectadorWeb(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen){
+        try {
+            PreparedStatement status = conexion.prepareStatement("update usuario set usuario.usu_nombre =?, usuario.usu_apellido=?, usuario.usu_nacimiento=?, usuario.usu_imagen=? where usuario.usu_nick=? OR usuario.usu_mail=?");
+            status.setString(1, usuNombre);
+            status.setString(2, usuApelliedo);
+            status.setDate(3, usuNacimiento);
+            status.setString(4, usuImagen);
+            status.setString(5, usuNick);
+            status.setString(6, usuMail);
+            ResultSet rs = status.executeQuery();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+     public void modificarArtistaWeb(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen, String artDescripcion, String artBiografia, String artUrl){
+        try {
+            PreparedStatement status = conexion.prepareStatement("update usuario,artistas set usuario.usu_nombre =?, usuario.usu_apellido=?, usuario.usu_nacimiento=?, usuario.usu_imagen=?, artistas.art_biografia=?, artistas.art_descripcion=?, artistas.art_url=? where usuario.usu_nick=? AND usuario.usu_id=artistas.art_usu");
+            status.setString(1, usuNombre);
+            status.setString(2, usuApelliedo);
+            status.setDate(3, usuNacimiento);
+            status.setString(4, usuImagen);
+            
+            status.setString(5, artBiografia);
+            status.setString(6, artDescripcion);
+            status.setString(7, artUrl);
+            
+            status.setString(8, usuNick);
+            ResultSet rs = status.executeQuery();
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }
