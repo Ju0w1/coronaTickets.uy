@@ -182,4 +182,10 @@ public class ControladorPaquete implements IControladorPaquete{
         return mapPaquetes;
     }
     
+    @Override
+    public Map<String, Paquete> getPaquetesArtistas(String nick_){
+        Map<String, Paquete> paquetess = servicioPaq.obtenerPaqueteArtista(nick_);
+        return paquetess;
+    };
+    
 }
