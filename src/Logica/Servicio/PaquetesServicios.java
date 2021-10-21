@@ -171,6 +171,24 @@ public class PaquetesServicios{
         }
     }
     
+    public void altaPaquete(String nombre,String fechaInicio, String fechaFin,String fechaCreado,double descuento,String descripcion, String imagen)
+    {
+        try{
+            PreparedStatement statement = conexion.prepareStatement("INSERT INTO paquetes(paq_nombre, paq_descripcion,paq_descuento,paq_fecha_inicio,paq_fecha_fin,paq_fecha_alta,paq_imagen,paq_vigente) VALUES(?,?,?,?,?,?,?,?)");
+            statement.setString(1, nombre);
+            statement.setString(2, descripcion);
+            statement.setDouble(3, descuento); //Descuento
+            statement.setString(4, fechaInicio); //Fecha inicio
+            statement.setString(5, fechaFin); //Fecha fin
+            statement.setString(6, fechaCreado); //Fecha creado
+            statement.setString(7, imagen); //Imagen
+            statement.setBoolean(8, true); //Vigente
+            statement.execute();
+        } catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
     public void updatePaquete(String nombre,Date fechaInicio, Date fechaFin, int descuento, String descripcion)
     {
         try{

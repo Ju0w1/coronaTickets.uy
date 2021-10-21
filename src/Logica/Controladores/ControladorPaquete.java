@@ -49,6 +49,9 @@ public class ControladorPaquete implements IControladorPaquete{
          this.servicioPaq.actualizarPaquete(paquete);     
      }
     
+    public void altaPaquete(String nombre,String fechaInicio, String fechaFin,String fechaCreado,double descuento,String descripcion, String imagen){
+        this.servicioPaq.altaPaquete(nombre, fechaInicio, fechaFin, fechaCreado, descuento, descripcion, imagen);
+    }
     
      public boolean addPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen){
         //123

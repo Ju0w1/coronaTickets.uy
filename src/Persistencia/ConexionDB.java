@@ -48,7 +48,7 @@ public class ConexionDB {
        
             case "port":  return "4306";//prop.getProperty("port");
                      
-            case "db":  return "coronaticket";//prop.getProperty("db");
+            case "db":  return "coronaticket3";//prop.getProperty("db");
                      
             case "user":  return "root";//prop.getProperty("user");
                      
