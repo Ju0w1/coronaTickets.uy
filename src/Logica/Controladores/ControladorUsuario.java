@@ -18,6 +18,7 @@ import Logica.Servicio.ArtistasServicios;
 import Logica.Servicio.UsuariosServicios;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -265,6 +266,11 @@ public class ControladorUsuario implements IControladorUsuario {
             tablaModelo.addRow(datos);
         }
     }
+    
+    public ArrayList<String> obtenerArtistasNicks() {
+        ArrayList<String> Nicksartistas = servicioUsuarios.getNicknamesArtistas();
+        return Nicksartistas;
+    }
 
     public void obtenerArtistasBuscador(DefaultTableModel tablaModelo, String nick) {
         this.artistasBuscados = this.servicioUsuarios.getArtistasBuscador(nick);
@@ -389,5 +395,11 @@ public class ControladorUsuario implements IControladorUsuario {
             Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         return true;
+    }
+    
+    public Map<String, Usuario> getArtistas(){
+        Map<String, Usuario> artistas = new HashMap<>();
+        artistas = servicioUsuarios.getArtistas();
+        return artistas;
     }
 }

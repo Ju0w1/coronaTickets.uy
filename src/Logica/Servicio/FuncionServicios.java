@@ -163,26 +163,30 @@ public class FuncionServicios {
                 status2.execute();
                 
                 String idFuncion = this.servicioEspectaculo.getIdFuncion(nombre);
+                for(Map.Entry<String, Artista> entry : artistas.entrySet()){
+                    System.out.println("Artsita: "+entry.getValue().getNickname());
+                }
                 
                 for(Map.Entry<String, Artista> entry : artistas.entrySet()){
                     try {
                         Statement statusID = conexion.createStatement();
-                        ResultSet rsID = statusID.executeQuery("SELECT A.art_id FROM usuario as U, artistas as A WHERE U.usu_id=A.art_usu AND U.usu_nick='"+entry.getKey()+"'");
+                        ResultSet rsID = statusID.executeQuery("SELECT A.art_id FROM usuario as U, artistas as A WHERE U.usu_id=A.art_usu AND U.usu_nick='"+entry.getValue().getNickname()+"'");
                         int artID = 0;
                         if(rsID.next()){
-                            artID=rs.getInt(1);
+                            artID=rsID.getInt(1);
+                            System.out.println("ID DEL ARTISTA A AGREGAR:"+artID);
+                            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO funcion_artista (funart_fun_id,funart_art_id) VALUES (?,?)");
+                            status3.setInt (1, Integer.parseInt(idFuncion));
+                            status3.setInt (2, artID);
+                            //status3.setString (3, nombre_funcion);
+                            status3.execute();
+                            
                         }
-                        
-                        PreparedStatement status3 = conexion.prepareStatement("INSERT INTO funcion_artista (funart_fun_id,funart_art_id) VALUES (?,?)");
-                        status3.setInt (1, Integer.parseInt(idFuncion));
-                        status3.setInt (2, artID);
-                        //status3.setString (3, nombre_funcion);
-                        status3.execute();
-                        return true;
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
                 }
+                return true;
             }else{
                 System.out.println("No encontró el nombre de espectáculo");
                 return false;
@@ -196,7 +200,6 @@ public class FuncionServicios {
             }
             return false;
         }
-        return false;
     }
     
    public Artista getArtista(String nickname){

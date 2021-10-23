@@ -20,6 +20,7 @@ import java.util.Map;
 import Logica.Clases.Artista;
 import Logica.Clases.Espectador;
 import Logica.Clases.Usuario;
+import java.util.ArrayList;
 /**
  *
  * @author LucasCiceri
@@ -101,7 +102,20 @@ public class UsuariosServicios {
         return resultado;
     }
     
-    
+    public ArrayList<String> getNicknamesArtistas() {
+        ArrayList<String> mylist = new ArrayList<String>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usu_nick FROM usuario,artistas WHERE usuario.usu_id = artistas.art_usu");
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                mylist.add(rs.getString("usu_nick"));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return mylist;
+    }
     
     public Map<String, Usuario> getArtistas() {
         Map<String, Usuario> resultado = new HashMap<>();

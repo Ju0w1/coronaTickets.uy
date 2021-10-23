@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import Logica.Clases.Espectador;
 import Logica.Clases.Usuario;
 import java.sql.Date;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 public interface IControladorUsuario {
     //public abstract Map<String, Usuario> getUsuarios();
@@ -16,6 +17,7 @@ public interface IControladorUsuario {
     public abstract void obtenerEspectadores(DefaultTableModel modelo);
     public abstract void obtenerEspectadoresBuscador(DefaultTableModel modelo,String nick);
     public abstract void obtenerArtistas(DefaultTableModel modelo);
+    public abstract ArrayList<String> obtenerArtistasNicks(); // Nuevo WebVersion PABLO
     public abstract void obtenerArtistasBuscador(DefaultTableModel tablaModelo, String nick);
     //public abstract void obtenerEspectadores(JList listEspec, DefaultTableModel modelo);
     public abstract Map<String, Usuario> getUsuarios();
@@ -39,4 +41,5 @@ public interface IControladorUsuario {
     public abstract void modificarUsuarioEspectador(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen); //Nuevo WebVersion
     public abstract void modificarUsuarioArtista(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen, String artDescripcion, String artBiografia, String artUrl); //Nuevo WebVersion
     public abstract boolean addArtista(String nickname, String descripcion, String biografia, String link); //Nuevo WebVersion
+    public abstract Map<String, Usuario> getArtistas(); // Nuevo WebVersion PABLO
 }

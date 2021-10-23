@@ -6,7 +6,7 @@ import Logica.Controladores.ControladorUsuario;
 import Logica.Interfaz.IControladorPaquete;
 import Logica.Controladores.ControladorPaquete;
 import Logica.Interfaz.IControladorFuncion;
-import logica.Controladores.ControladorFuncion;
+import Logica.Controladores.ControladorFuncion;
 
 /**
  *
