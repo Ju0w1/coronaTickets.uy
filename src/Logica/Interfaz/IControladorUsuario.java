@@ -42,4 +42,5 @@ public interface IControladorUsuario {
     public abstract void modificarUsuarioArtista(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen, String artDescripcion, String artBiografia, String artUrl); //Nuevo WebVersion
     public abstract boolean addArtista(String nickname, String descripcion, String biografia, String link); //Nuevo WebVersion
     public abstract Map<String, Usuario> getArtistas(); // Nuevo WebVersion PABLO
+    public abstract int getIdUsuarioUsingIdArtista(int idUsuario); //Nuevo WebVersion
 }

@@ -402,4 +402,13 @@ public class ControladorUsuario implements IControladorUsuario {
         artistas = servicioUsuarios.getArtistas();
         return artistas;
     }
+    public int getIdUsuarioUsingIdArtista(int idUsuario){
+        int id=-1;
+        try {
+            id = this.servicioUsuarios.getIdUsuarioUsingIdArtista(idUsuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
 }
