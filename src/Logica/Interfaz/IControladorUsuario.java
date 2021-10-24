@@ -43,4 +43,6 @@ public interface IControladorUsuario {
     public abstract boolean addArtista(String nickname, String descripcion, String biografia, String link); //Nuevo WebVersion
     public abstract Map<String, Usuario> getArtistas(); // Nuevo WebVersion PABLO
     public abstract int getIdUsuarioUsingIdArtista(int idUsuario); //Nuevo WebVersion
+    public abstract void seguirUsuario(String usuario, String usuarioASeguir); // Para el caso de uso "Seguir a un usuario"
+    public abstract void dejarDeSeguirUsuario(String usuario, String usuarioADejar); // Para el caso de uso "Dejar de seguir a un usuario"
 }
