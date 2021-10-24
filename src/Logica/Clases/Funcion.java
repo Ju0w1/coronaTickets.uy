@@ -91,4 +91,19 @@ public class Funcion {
         public String getUrlIamgen (){
             return this.urlImagen;
         }
-}
+        
+        public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Map<String, Artista> artistas, String urlImagen){
+            this.nombre= nombre;
+            this.fecha= fecha;
+            this.horaInicio= horaInicio;
+            this.fechaRegistro= fechaRegistro;
+            this.artistas=artistas;
+            this.urlImagen=urlImagen;
+        }
+        
+        
+        public Funcion(){
+            
+        }
+}       
+        

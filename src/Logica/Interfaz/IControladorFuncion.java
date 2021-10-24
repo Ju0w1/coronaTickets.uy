@@ -18,5 +18,5 @@ public interface IControladorFuncion {
     public abstract Artista obtenerArtista(String nickname);
 //    public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int idUsuario); //Nuevo WebVersion
 //    public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuarioPorNick(String usuNick); //Nuevo WebVersion MILTON
-    
+    public abstract Funcion obtenerFuncion(String nombreFuncion);
 }

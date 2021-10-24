@@ -122,5 +122,7 @@ public class Usuario {
     public int getSeguidos (){
         return this.seguidos;
     }
-    
+    public Usuario(String nick){
+        this.nickname=nick;
+    }
 }
