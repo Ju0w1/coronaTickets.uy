@@ -226,10 +226,11 @@ public class EspectaculosServicios {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos");
             ResultSet rs1 = status.executeQuery();
             while (rs1.next()) {
-                PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND catEspec.espec_id=?");
-                status2.setString(1, rs1.getString(1));
-                ResultSet rs2 = status2.executeQuery();
                 Map<String, Categoria> categorias = new HashMap<>();
+                PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND catEspec.espec_id=?");
+                status2.setString(1, rs1.getString("espec_id"));
+                ResultSet rs2 = status2.executeQuery();
+                //Map<String, Categoria> categorias = new HashMap<>();
                 while (rs2.next()) {
                     categorias.put(rs2.getString(1), new Categoria(rs2.getString(1)));
                 }
