@@ -204,6 +204,54 @@ public class FuncionServicios {
             return false;
         }
     }
+    public void addFuncionWEB(String nombreEspec, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map <String,Artista> artistas, String urlImagen) {
+        try {
+            System.out.println(artistas.isEmpty());
+            Statement status1 = conexion.createStatement();
+            ResultSet rs = status1.executeQuery("SELECT espec_id FROM espetaculos WHERE espec_nombre='"+nombreEspec+"'");
+            System.out.println("entró");
+            if(rs.next()){
+                System.out.println("entró");
+                PreparedStatement status2 = conexion.prepareStatement("INSERT INTO funcion (fun_espec_id,fun_nombre,fun_fecha_registro,fun_hora_inicio,fun_fecha_inicio,fun_imagen) VALUES (?,?,?,?,?,?)");
+                status2.setInt(1, rs.getInt(1));
+                status2.setString (2, nombre);
+                status2.setString (3, fecha_registro.getAnio() + "-" +  fecha_registro.getMes() + "-" + fecha_registro.getDia());
+                status2.setString (4, hora_inicio.getHora() + ":" +  hora_inicio.getMinuto()+":"+ hora_inicio.getSegundo());
+                status2.setString (5, fecha_comienzo.getAnio() + "-" +  fecha_comienzo.getMes() + "-" + fecha_comienzo.getDia());
+                status2.setString(6, urlImagen);
+                status2.execute();
+                
+                String idFuncion = this.servicioEspectaculo.getIdFuncion(nombre);
+                for(Map.Entry<String, Artista> entry : artistas.entrySet()){
+                    System.out.println("Artsita: "+entry.getValue().getNickname());
+                }
+                
+                for(Map.Entry<String, Artista> entry : artistas.entrySet()){
+                    try {
+                        Statement statusID = conexion.createStatement();
+                        ResultSet rsID = statusID.executeQuery("SELECT A.art_id FROM usuario as U, artistas as A WHERE U.usu_id=A.art_usu AND U.usu_nick='"+entry.getValue().getNickname()+"'");
+                        int artID = 0;
+                        if(rsID.next()){
+                            artID=rsID.getInt(1);
+                            System.out.println("ID DEL ARTISTA A AGREGAR:"+artID);
+                            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO funcion_artista (funart_fun_id,funart_art_id) VALUES (?,?)");
+                            status3.setInt (1, Integer.parseInt(idFuncion));
+                            status3.setInt (2, artID);
+                            //status3.setString (3, nombre_funcion);
+                            status3.execute();
+                            
+                        }
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }else{
+                System.out.println("No encontró el nombre de espectáculo");
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
     
    public Artista getArtista(String nickname){
        Artista a = null;

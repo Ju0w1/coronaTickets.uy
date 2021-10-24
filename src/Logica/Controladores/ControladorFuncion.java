@@ -60,6 +60,9 @@ public class ControladorFuncion implements IControladorFuncion{
             return false;
         }
     }
+    public void addFuncionWEB(String nombreEspec, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map <String,Artista> artistas, String urlImagen) {
+        this.servicioFunciones.addFuncionWEB(nombreEspec, nombre, fecha_registro, hora_inicio, fecha_comienzo, artistas,urlImagen);
+    }
     
     public void obtenerPlataformas(JComboBox PlataformaBox){
         for(int i=0;i<this.servicioFunciones.llenarListaPlataformas().getItemCount();i++){
