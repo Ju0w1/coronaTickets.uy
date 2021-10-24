@@ -30,6 +30,86 @@ public class UsuariosServicios {
     }
     private Connection conexion = new ConexionDB().getConexion();
 
+    public void addSeguidor(String usuario, String usuarioASeguir) {
+        // el "usuario" va a seguir al "usuarioASeguir"
+        int usuario_id = 1; // sigue a alguien = usu_seguidor
+        int usuarioASeguir_id = 1; // tiene seguidores = usu_id en base de datos
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usu_id FROM usuario WHERE usu_nick=?");
+            status.setString(1, usuario);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                usuario_id = rs.getInt(1);
+            }
+            PreparedStatement status2 = conexion.prepareStatement("SELECT usu_id FROM usuario WHERE usu_nick=?");
+            status2.setString(1, usuarioASeguir);
+            ResultSet rs2 = status2.executeQuery();
+            while (rs2.next()) {
+                usuarioASeguir_id = rs2.getInt(1);
+            }
+               
+            if (checkSeguidor(usuario_id, usuarioASeguir_id)){
+            // verificar si existe la relacion entre esos usuarios
+            // Si existe, solo cambio el valor de "activo" de la tabla para 1
+                PreparedStatement status3 = conexion.prepareStatement("UPDATE seguidores SET activo=? WHERE usu_id=? AND usu_seguidor=?");
+                status3.setInt (1, 1);
+                status3.setInt (2, usuarioASeguir_id);
+                status3.setInt (3, usuario_id);
+                status3.execute();
+            }else{
+                PreparedStatement status4 = conexion.prepareStatement("INSERT INTO seguidores (usu_id,usu_seguidor,activo) VALUES (?,?,?)");
+                status4.setInt (1, usuarioASeguir_id);
+                status4.setInt (2, usuario_id);
+                status4.setInt (3, 1);
+                status4.execute();
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }   
+    }
+
+    public void dejardeSeguir(String usuario, String usuarioADejar){
+        int usuario_id = 1; // sigue a alguien = usu_seguidor
+        int usuarioADejar_id = 1; // tiene seguidores = usu_id en base de datos
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usu_id FROM usuario WHERE usu_nick=?");
+            status.setString(1, usuario);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                usuario_id = rs.getInt(1);
+            }
+            PreparedStatement status2 = conexion.prepareStatement("SELECT usu_id FROM usuario WHERE usu_nick=?");
+            status2.setString(1, usuarioADejar);
+            ResultSet rs2 = status2.executeQuery();
+            while (rs2.next()) {
+                usuarioADejar_id = rs2.getInt(1);
+            }
+            PreparedStatement status3 = conexion.prepareStatement("UPDATE seguidores SET activo=? WHERE usu_id=? AND usu_seguidor=?");
+                status3.setInt (1, 0);
+                status3.setInt (2, usuarioADejar_id);
+                status3.setInt (3, usuario_id);
+                status3.execute();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }   
+    }
+    
+    public boolean checkSeguidor(int usuario_id, int usuarioASeguir_id){
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM seguidores WHERE usu_id=? AND usu_seguidor=?");
+            status.setInt(1,  usuarioASeguir_id);
+            status.setInt(2, usuario_id);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                return true; // existe el seguimiento
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false; // No existe el seguimiento
+        }
+        return false;
+    }
+
     public DTFecha dateToDTFecha(Date fecha){
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaDB = dateFormat.format(fecha);
