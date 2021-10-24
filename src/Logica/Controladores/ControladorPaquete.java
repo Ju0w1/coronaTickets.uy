@@ -10,8 +10,12 @@ import Logica.Clases.Paquete;
 import java.util.HashMap;
 import Logica.Interfaz.IControladorPaquete;
 import Logica.Servicio.PaquetesServicios;
+import java.sql.Date;
+//import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,6 +41,7 @@ public class ControladorPaquete implements IControladorPaquete{
     }
     
    
+    @Override
      public void actualizarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen){
          //123
          Paquete paquete = new Paquete();
@@ -53,6 +58,7 @@ public class ControladorPaquete implements IControladorPaquete{
         this.servicioPaq.altaPaquete(nombre, fechaInicio, fechaFin, fechaCreado, descuento, descripcion, imagen);
     }
     
+    @Override
      public boolean addPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen){
         //123
          if (this.servicioPaq.verificarPaquete(nombre) == false){
@@ -85,6 +91,7 @@ public class ControladorPaquete implements IControladorPaquete{
    
     
     
+    @Override
     public void obtenerPaquete(JList listEspec){
         this.paquetes = this.servicioPaq.getPaquete();
         DefaultListModel listModel1 = new DefaultListModel();
@@ -146,6 +153,7 @@ public class ControladorPaquete implements IControladorPaquete{
         FCompra.setText(fechaCm);
         
     }
+    @Override
     public boolean getEspectaculos(String nombrePaquete,JList listEspectaculos){
         ResultSet rs = this.servicioPaq.getEspectaculos(nombrePaquete);
         DefaultListModel listModel1 = new DefaultListModel();
@@ -161,6 +169,7 @@ public class ControladorPaquete implements IControladorPaquete{
         return false;
     }
     
+    @Override
     public Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario){
         Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuario(idUsuario);
         return paquetes;
@@ -177,9 +186,19 @@ public class ControladorPaquete implements IControladorPaquete{
     };
     
     //Funciones para la parte WEB
+    @Override
     public Map<String, Paquete> obtenerMapPaquetesVigentesEspectaculoUsuario (String nickUsuario, String nomEspectaculo){
         Map<String, Paquete> mapPaquetes=servicioPaq.obtenerMapPaquetesVigentesEspectaculoUsuario(nickUsuario, nomEspectaculo);
         return mapPaquetes;
+    }
+    
+    @Override
+    public void compraPaquete (String nickUsuario, String nomPaquete){
+        int idUsuario, idPaquete;
+        Date fecha=new Date(Calendar.getInstance().getTime().getTime());
+        idPaquete=servicioPaq.getIdPaquete(nomPaquete);
+        idUsuario=servicioPaq.getIdUsuario(nickUsuario);
+        servicioPaq.registrarCompraPaquete(idUsuario, idPaquete, fecha);
     }
     
 }
