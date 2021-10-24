@@ -355,6 +355,10 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     public ArrayList<String> cargarPlataforma() {
         return this.servicioPlataforma.llenarComboPlataforma();
     }
+    
+    public ArrayList<String> obtenerEspectaculosDeArtistaQueNoEstanEnPaquete(String paq_seleccionado, String plat_seleccionada, String nick) {
+        return this.servicioEspectaculo.getEspectaculosPPWEB(paq_seleccionado,plat_seleccionada,nick);
+    }
 
     public ArrayList<String> cargarEspectaculos(int plataforma) {
         return this.servicioEspetaculo.llenarComboEspectaculos(plataforma);

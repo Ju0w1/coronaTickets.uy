@@ -35,6 +35,7 @@ import Logica.DataTypes.DTFecha;
 import Logica.Clases.Paquete; //NUEVO
 import Logica.Clases.Registro;
 import Logica.Clases.Usuario;
+import java.util.ArrayList;
 
 /**
  *
@@ -711,6 +712,33 @@ public class EspectaculosServicios {
             ex.printStackTrace();
         }
         return map;
+    
+    }
+    public ArrayList<String> getEspectaculosPPWEB(String paq_seleccionado, String plat_seleccionada, String nick){
+        
+        ArrayList<String> espectaculos = new ArrayList<>();
+        int idArtista = getIdporNickArtista(nick);
+        String idpaquete = getidPaquete(paq_seleccionado);
+        String idplataforma = getidPlataforma(plat_seleccionada);
+        try {
+            //SELECT espec_nombre FROM espetaculos WHERE espec_plataforma = 1 AND espec_artista = 4 AND espec_nombre NOT IN (SELECT E.espec_nombre FROM espetaculos E, paquete_espetaculos P WHERE E.espec_id = P.paqespec_espec_id AND P.paqespec_paq_id = 9);
+            PreparedStatement status = conexion.prepareStatement("SELECT espec_nombre FROM espetaculos WHERE espec_plataforma =? AND espec_artista=? AND espec_nombre NOT IN (SELECT E.espec_nombre FROM espetaculos as E, paquete_espetaculos as P WHERE E.espec_id = P.paqespec_espec_id AND P.paqespec_paq_id = ?)"); 
+            status.setInt(1, Integer.parseInt(idplataforma));
+            status.setInt(2, idArtista);
+            status.setInt(3, Integer.parseInt(idpaquete));
+            
+            ResultSet rs = status.executeQuery();
+            if(rs.next() && rs.isLast()){
+                espectaculos.add(rs.getString(1));
+            }else{
+                while (rs.next()) {
+                    espectaculos.add(rs.getString(1));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return espectaculos;
     
     }
     //NUEVO
