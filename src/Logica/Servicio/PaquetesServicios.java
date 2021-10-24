@@ -425,4 +425,49 @@ public class PaquetesServicios{
         }
     }      
     
+    public Map<String, Paquete> obtenerPaqueteArtista(String nick){
+        Map<String, Paquete> mapPaquetes = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT espec_id FROM espetaculos as E Where E.espec_artista IN (SELECT art_id FROM usuario as U, artistas as A WHERE U.usu_id=A.art_id AND U.usu_nick=?)");
+            status.setString(1, nick);
+            ResultSet rs = status.executeQuery();
+            rs.next();
+            String id_espectaculo=rs.getString("espec_id");
+            try{
+                PreparedStatement status2 = conexion.prepareStatement("SELECT * FROM paquetes WHERE paquetes.paq_id IN(SELECT PE.paqespec_paq_id FROM paquete_espetaculos as PE WHERE PE.paqespec_espec_id='"+id_espectaculo+"')");
+                ResultSet rs2 = status2.executeQuery();
+                while (rs2.next()) {
+                    mapPaquetes.put(rs2.getString("paq_nombre"), new Paquete(rs2.getString("paq_nombre"), rs2.getString("paq_descripcion"), dateToDTFecha(rs2.getDate("paq_fecha_inicio")), dateToDTFecha(rs2.getDate("paq_fecha_fin")),rs2.getFloat("paq_costo"), rs2.getFloat("paq_descuento"), dateToDTFecha(rs2.getDate("paq_fecha_compra")) ,rs2.getString("paq_imagen") , dateToDTFecha(rs2.getDate("paq_fecha_alta")), rs2.getBoolean("paq_vigente")));
+                }
+            }
+            catch (SQLException ex){
+                ex.printStackTrace();
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return mapPaquetes;
+    }
+    public void AgregarEspec_Paq(String nom_espec, String nom_paq){
+        try{
+            PreparedStatement status = conexion.prepareStatement("SELECT espetaculos.espec_id FROM espetaculos WHERE espec_nombre='"+nom_espec+"'");
+            ResultSet rs = status.executeQuery();
+            rs.next();
+            int id_espectaculo=rs.getInt("espec_id");
+            //---------------------------------------------
+            PreparedStatement status2 = conexion.prepareStatement("SELECT paquetes.paq_id FROM paquetes WHERE paq_nombre='"+nom_paq+"'");
+            ResultSet rs2 = status2.executeQuery();
+            rs2.next();
+            int id_paquete=rs2.getInt("paq_id");
+            //----------------------------------------------
+            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO paquete_espetaculos (paqespec_paq_id, paqespec_espec_id) VALUES (?,?)");
+            status3.setInt(1, id_paquete);
+            status3.setInt(2, id_espectaculo);
+            System.out.println(status3.toString());
+            status3.execute();
+        }
+        catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 }
