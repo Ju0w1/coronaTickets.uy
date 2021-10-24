@@ -394,7 +394,6 @@ public class PaquetesServicios{
             ResultSet rs = status.executeQuery();
             rs.next();
             String id_espectaculo=rs.getString("espec_id");
-            
             try{
                 PreparedStatement status2 = conexion.prepareStatement("SELECT * FROM paquetes WHERE paquetes.paq_id IN(SELECT PE.paqespec_paq_id FROM paquete_espetaculos as PE WHERE PE.paqespec_espec_id='"+id_espectaculo+"')");
                 ResultSet rs2 = status2.executeQuery();
@@ -410,5 +409,26 @@ public class PaquetesServicios{
         }
         return mapPaquetes;
     }
-    
+    public void AgregarEspec_Paq(String nom_espec, String nom_paq){
+        try{
+            PreparedStatement status = conexion.prepareStatement("SELECT espetaculos.espec_id FROM espetaculos WHERE espec_nombre='"+nom_espec+"'");
+            ResultSet rs = status.executeQuery();
+            rs.next();
+            int id_espectaculo=rs.getInt("espec_id");
+            //---------------------------------------------
+            PreparedStatement status2 = conexion.prepareStatement("SELECT paquetes.paq_id FROM paquetes WHERE paq_nombre='"+nom_paq+"'");
+            ResultSet rs2 = status2.executeQuery();
+            rs2.next();
+            int id_paquete=rs2.getInt("paq_id");
+            //----------------------------------------------
+            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO paquete_espetaculos (paqespec_paq_id, paqespec_espec_id) VALUES (?,?)");
+            status3.setInt(1, id_paquete);
+            status3.setInt(2, id_espectaculo);
+            System.out.println(status3.toString());
+            status3.execute();
+        }
+        catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
 }
