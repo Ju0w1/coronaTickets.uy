@@ -1005,11 +1005,25 @@ public class EspectaculosServicios {
         return resultado;
     }
     
-    public Map<String, Espectaculo> getMapEspectaculosIngresados(int artistaId) {
+    public Map<String, Espectaculo> getMapEspectaculosIngresadosArtista(int artistaId) {
         Map<String, Espectaculo> resultado = new HashMap<>();
         try {
             PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='i' AND espetaculos.espec_artista=?");
             status1.setInt(1, artistaId);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    public Map<String, Espectaculo> getMapEspectaculosIngresados() {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='i' ");
             ResultSet rs = status1.executeQuery();
             while (rs.next()) {
                 resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
@@ -1089,4 +1103,21 @@ public class EspectaculosServicios {
         }
         return resultado;
     }
+    
+    public void aceptarEspectaculo (String idEspectaculo, boolean aceptado){
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("UPDATE espetaculos SET espec_estado=? WHERE espec_id=?");
+            if (aceptado){
+                status1.setString(1, "a");
+            }
+            else{
+                status1.setString(1, "r");
+            }
+            status1.setString(2, idEspectaculo);
+            ResultSet rs = status1.executeQuery();
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+    }
+    
 }
