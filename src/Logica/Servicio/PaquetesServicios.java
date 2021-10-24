@@ -27,12 +27,13 @@ import javax.swing.JList;
 
 
 public class PaquetesServicios{
-
+    private EspectaculosServicios servicioEspectaculo;
     public PaquetesServicios() {
+        this.servicioEspectaculo = new EspectaculosServicios();
     }
     private Connection conexion = new ConexionDB().getConexion();
     
-   
+    
     public void actualizarPaquete(Paquete paquete) {
                 
          //'2021-02-02' ejemplo de fecha
@@ -469,5 +470,25 @@ public class PaquetesServicios{
         catch(SQLException ex){
             ex.printStackTrace();
         }
+    }
+    public Map<String, Paquete> getPaqueteDeEspectaculo(String especName) {
+        int id = Integer.parseInt(this.servicioEspectaculo.getIdEspectaculo(especName));
+        Map<String, Paquete> resultado = new HashMap<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes WHERE paquetes.paq_id IN(select p2.paqespec_paq_id FROM paquete_espetaculos as p2 WHERE p2.paqespec_espec_id=?)");
+            status.setInt(1, id);
+            ResultSet rs = status.executeQuery();
+            
+            while (rs.next()) {
+                dateToDTFecha(rs.getDate("paq_fecha_inicio"));
+                //dateToDTFecha(rs.getDate("paq_fecha_alta"));
+                resultado.put(rs.getString("paq_nombre"), new Paquete(rs.getString("paq_nombre"), rs.getString("paq_descripcion"), dateToDTFecha(rs.getDate("paq_fecha_inicio")), dateToDTFecha(rs.getDate("paq_fecha_fin")),rs.getFloat("paq_costo"), rs.getFloat("paq_descuento"), dateToDTFecha(rs.getDate("paq_fecha_compra")) ,rs.getString("paq_imagen") , dateToDTFecha(rs.getDate("paq_fecha_alta")), rs.getBoolean("paq_vigente"))); 
+                //String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, float Costo_, Float Descuento_, DTFecha Fecha_Compra_,String url_, DTFecha Fecha_alta_, boolean vigencia_)
+                //System.out.println("Nombre: "+ rs.getString("paq_nombre")+"Descripcion: "+ rs.getString("paq_descripcion")+"Costo: "+ rs.getFloat("paq_costo")+"Descuento: "+ rs.getFloat("paq_descuento"));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return resultado;
     }
 }

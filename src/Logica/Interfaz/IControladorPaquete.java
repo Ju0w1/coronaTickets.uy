@@ -25,4 +25,5 @@ public interface IControladorPaquete {
     public abstract void actualizarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen); // En caso de que exista un paquete de espectáculos con dicho nombre, el artista puede modificar los datos que ingresó
     public abstract Map<String, Paquete> getPaquetesArtistas(String nick_);
     public abstract void AgregarEspPaq(String nom_espec, String nom_paq);
+    public abstract Map<String, Paquete> getPaqueteDeEspectaculo(String especName);
 }

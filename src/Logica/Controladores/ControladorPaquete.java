@@ -209,4 +209,8 @@ public class ControladorPaquete implements IControladorPaquete{
     public void AgregarEspPaq(String nom_espec, String nom_paq){
         servicioPaq.AgregarEspec_Paq(nom_espec, nom_paq);
     }
+    public Map<String, Paquete> getPaqueteDeEspectaculo(String especName) {
+        Map<String, Paquete> paquetess = servicioPaq.getPaqueteDeEspectaculo(especName);
+        return paquetess;
+    }
 }
