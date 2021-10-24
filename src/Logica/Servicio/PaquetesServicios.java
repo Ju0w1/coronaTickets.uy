@@ -450,15 +450,23 @@ public class PaquetesServicios{
     }
     public void AgregarEspec_Paq(String nom_espec, String nom_paq){
         try{
-            PreparedStatement status = conexion.prepareStatement("SELECT espetaculos.espec_id FROM espetaculos WHERE espec_nombre='"+nom_espec+"'");
+            
+            PreparedStatement status = conexion.prepareStatement("SELECT espetaculos.espec_id FROM espetaculos WHERE espec_nombre=?");
+            status.setString(1, nom_espec);
             ResultSet rs = status.executeQuery();
-            rs.next();
-            int id_espectaculo=rs.getInt("espec_id");
+            int id_espectaculo = 0;
+            if(rs.next()){
+                id_espectaculo=rs.getInt("espec_id");
+            }
+            
             //---------------------------------------------
-            PreparedStatement status2 = conexion.prepareStatement("SELECT paquetes.paq_id FROM paquetes WHERE paq_nombre='"+nom_paq+"'");
+            PreparedStatement status2 = conexion.prepareStatement("SELECT paquetes.paq_id FROM paquetes WHERE paq_nombre=?");
+            status2.setString(1, nom_paq);
             ResultSet rs2 = status2.executeQuery();
-            rs2.next();
-            int id_paquete=rs2.getInt("paq_id");
+            int id_paquete=0;
+            if(rs2.next()){
+                id_paquete=rs2.getInt("paq_id");
+            }
             //----------------------------------------------
             PreparedStatement status3 = conexion.prepareStatement("INSERT INTO paquete_espetaculos (paqespec_paq_id, paqespec_espec_id) VALUES (?,?)");
             status3.setInt(1, id_paquete);

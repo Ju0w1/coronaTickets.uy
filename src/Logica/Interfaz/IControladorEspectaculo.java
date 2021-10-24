@@ -92,5 +92,6 @@ public interface IControladorEspectaculo {
     public abstract Map<String, Espectaculo> obtenerMapEspectaculosDePaquete(String nombrePaquete); //nuevo WebVersion PABLO
     public abstract Espectaculo getEspectaculoPorNombre(String nombreEspectaculo); //nuevo WebVersion PABLO
     //public abstract Map<int, Categoria> getCategorias();
+    public abstract ArrayList<String> obtenerEspectaculosDeArtistaQueNoEstanEnPaquete(String paq_seleccionado, String plat_seleccionada, String nick); //nuevo WebVersion PABLO
 }
 
