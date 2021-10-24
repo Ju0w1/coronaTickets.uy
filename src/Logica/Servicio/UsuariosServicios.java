@@ -502,4 +502,18 @@ public class UsuariosServicios {
         }
         return true;
     }
+    public int getIdUsuarioUsingIdArtista(int idArtista) throws SQLException{
+        int id = -1;
+        PreparedStatement status = conexion.prepareStatement("SELECT artistas.art_usu FROM artistas WHERE artistas.art_id=?");
+        status.setInt(1, idArtista);
+        try {
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
 }

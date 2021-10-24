@@ -221,11 +221,12 @@ public class EspectaculosServicios {
      
     public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> resultado = new HashMap<>();
-        Map<String, Categoria> categorias = new HashMap<>();
+        
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos");
             ResultSet rs1 = status.executeQuery();
             while (rs1.next()) {
+                Map<String, Categoria> categorias = new HashMap<>();
                 PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND catEspec.espec_id=?");
                 status2.setString(1, rs1.getString("espec_id"));
                 ResultSet rs2 = status2.executeQuery();

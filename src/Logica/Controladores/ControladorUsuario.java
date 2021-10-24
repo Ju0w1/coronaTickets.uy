@@ -390,4 +390,14 @@ public class ControladorUsuario implements IControladorUsuario {
         }
         return true;
     }
+    
+    public int getIdUsuarioUsingIdArtista(int idUsuario){
+        int id=-1;
+        try {
+            id = this.servicioUsuarios.getIdUsuarioUsingIdArtista(idUsuario);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
 }
