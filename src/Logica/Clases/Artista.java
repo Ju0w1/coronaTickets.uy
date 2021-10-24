@@ -19,7 +19,9 @@ public class Artista extends Usuario {
         this.biografia=biografia;
         this.linkWeb=linkWeb;
     }
-    
+    public Artista(String nick){
+        super (nick);
+    }
     
     public void setDescripcion (String descripcion){
         this.descripcion=descripcion;

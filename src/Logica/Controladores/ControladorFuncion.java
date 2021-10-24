@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package logica.Controladores;
+package Logica.Controladores;
 
 import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
@@ -109,7 +109,23 @@ public class ControladorFuncion implements IControladorFuncion{
     public void Prueba(String nombre_artista, String id_funcion, String id_artista, String nombre_funcion, DTFecha funcion_vigente) {
         this.servicioFunciones.AgregarArtista(nombre_artista,id_funcion,id_artista,nombre_funcion,funcion_vigente);
     }
-    
+
+    /**
+     *
+     * @param nombreFuncion
+     * @return
+     */
+    @Override
+    public Funcion obtenerFuncion(String nombreFuncion){
+        if( this.servicioFunciones.obtenerFuncion(nombreFuncion)==null){
+            //System.out.println("LAPUTAMADREEEEEEEEE");
+            return null;
+        } else {
+            //System.out.println("LAPUTAMADREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+            Funcion fun = this.servicioFunciones.obtenerFuncion(nombreFuncion);
+            return fun;
+        }
+    }
 //    public Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int usuId){
 //        Map<String, Funcion> funciones = servicioFunciones.getMapRegistroDeFuncionesDeUsuario(usuId);
 //        return funciones;

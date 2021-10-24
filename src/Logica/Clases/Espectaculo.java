@@ -86,7 +86,7 @@ public class Espectaculo {
     public String getEstado (){
         return this.estado;
     }
-    public Map<String, Categoria> getCategoria (){
+    public Map<String, Categoria> getCategorias(){
         return this.categorias;
     }
     public String getUrlIamgen (){
@@ -160,5 +160,8 @@ public class Espectaculo {
     }
     public void setUrlImagen (String urlImagen){
         this.urlImagen=urlImagen;
+    }
+    public Espectaculo(String nombre){
+        this.Nombre=nombre;
     }
 }

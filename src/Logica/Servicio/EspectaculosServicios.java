@@ -221,18 +221,25 @@ public class EspectaculosServicios {
      
     public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> resultado = new HashMap<>();
-        Map<String, Categoria> categorias = new HashMap<>();
+        String plataforma="";
         try {
             PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos");
             ResultSet rs1 = status.executeQuery();
             while (rs1.next()) {
-                PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND catEspec.cat_id=?");
-                status2.setString(1, rs1.getString("espec_id"));
+                PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND catEspec.espec_id=?");
+                status2.setString(1, rs1.getString(1));
                 ResultSet rs2 = status2.executeQuery();
+                Map<String, Categoria> categorias = new HashMap<>();
                 while (rs2.next()) {
-                    categorias.put(rs2.getString("cat_nombre"), new Categoria(rs2.getString("cat_nombre")));
+                    categorias.put(rs2.getString(1), new Categoria(rs2.getString(1)));
                 }
-                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), rs1.getString("espec_plataforma"), rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+                PreparedStatement status3 = conexion.prepareStatement("SELECT vp_nombre FROM valores_tipo WHERE  valores_tipo.vp_id=?");
+                status3.setInt(1, rs1.getInt("espec_plataforma"));
+                ResultSet rs3 = status3.executeQuery();
+                if (rs3.next()) {
+                    plataforma = rs3.getString(1);
+                }
+                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), plataforma, rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

@@ -17,7 +17,10 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JComboBox;
 import Logica.Clases.Artista;
+import Logica.Clases.Espectaculo;
 import Logica.Clases.Funcion;
+import static java.lang.Integer.parseInt;
+import java.sql.Time;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -268,6 +271,41 @@ public class FuncionServicios {
             return -1;
         }
         return espectadorId;
+    }
+    
+    public Funcion obtenerFuncion(String nombreFuncion){
+        Funcion resultado = null;
+        Map<String, Artista> artistas = new HashMap<>();
+ 
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion WHERE funcion.fun_nombre=?");
+            status1.setString(1, nombreFuncion);
+            ResultSet rs = status1.executeQuery();
+            
+            
+            //idFuncion = Integer.parseInt(rs.getString("fun_id"));
+            //int idFuncion = rs.getInt("fun_id");
+
+            if(rs.next()) { // OBTENGO LA FUNCION AHORA TRAIGO EL MAP DE ARTISTAS QUE ESTAN INVITADOS
+                PreparedStatement status2 = conexion.prepareStatement("SELECT usuario.usu_nick FROM usuario, artistas WHERE usuario.usu_id=artistas.art_usu AND art_id IN (SELECT artistas.art_id FROM artistas, funcion_artista WHERE funcion_artista.funart_art_id=artistas.art_id AND funcion_artista.funart_fun_id=" + rs.getString(1) + ")");
+                //status2.setInt(1, idFuncion);
+                ResultSet rs2 = status2.executeQuery();
+                while(rs2.next()){
+                    artistas.put(rs2.getString(1), new Artista(rs2.getString(1)));
+                }
+                PreparedStatement status3 = conexion.prepareStatement("SELECT espetaculos.espec_nombre FROM espetaculos, funcion WHERE funcion.fun_espec_id=espetaculos.espec_id AND funcion.fun_id=" + rs.getString(1));
+                
+                ResultSet rs3 = status3.executeQuery();
+                if(rs3.next()){
+                    resultado = new Funcion(rs.getString("fun_nombre"), rs.getDate("fun_fecha_inicio"), rs.getTime("fun_hora_inicio"), rs.getDate("fun_fecha_registro"), new Espectaculo(rs3.getString(1)), artistas, rs.getString("fun_imagen"));
+                }
+            }
+            return resultado;
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+            return null;
+        }
+        //return resultado;
     }
     
 }
