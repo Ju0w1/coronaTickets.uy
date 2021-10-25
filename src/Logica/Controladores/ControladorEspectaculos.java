@@ -770,13 +770,11 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         return resultado;
     }
     
-    @Override
     public Map<String, Espectaculo> getMapEspectaculoIngresados(){
         Map<String, Espectaculo> mapEspectaculos=servicioEspectaculo.getMapEspectaculosIngresados();
         return mapEspectaculos;
     }
     
-    @Override
     public void aceptarEspectaculos (String nomEspectaculo, boolean aceptado){
         String idEspectaculo=servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
         servicioEspectaculo.aceptarEspectaculo(idEspectaculo, aceptado);

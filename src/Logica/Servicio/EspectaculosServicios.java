@@ -50,7 +50,7 @@ public class EspectaculosServicios {
     //123 
     public boolean addCategoria(String nombre){
         try {
-            PreparedStatement status = conexion.prepareStatement("INSERT INTO categorias (DEFAULT, cat_nombre) VALUES (?)");
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO categorias (cat_nombre) VALUES (?)");
             status.setString (1, nombre);
             status.execute();
         } catch (SQLException ex) {
