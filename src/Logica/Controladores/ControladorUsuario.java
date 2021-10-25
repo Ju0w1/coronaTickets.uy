@@ -419,4 +419,16 @@ public class ControladorUsuario implements IControladorUsuario {
         }
         return id;
     }
+    public boolean loSigo(String yo, String usuario){
+        try {
+            if (this.servicioUsuarios.loSigo(yo, usuario) == true){
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 }
