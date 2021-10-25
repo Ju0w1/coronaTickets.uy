@@ -169,7 +169,7 @@ public class ControladorPaquete implements IControladorPaquete{
         return false;
     }
     
-    @Override
+    
     public Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario){
         Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuario(idUsuario);
         return paquetes;
@@ -213,5 +213,10 @@ public class ControladorPaquete implements IControladorPaquete{
     public Map<String, Paquete> getPaqueteDeEspectaculo(String especName) {
         Map<String, Paquete> paquetess = servicioPaq.getPaqueteDeEspectaculo(especName);
         return paquetess;
+    }
+    public int getIdUsuario(String nickUsuario){
+        int x=0;
+        x=servicioPaq.getIdUsuario(nickUsuario);
+        return x;
     }
 }

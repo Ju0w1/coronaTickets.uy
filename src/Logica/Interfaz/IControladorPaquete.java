@@ -26,4 +26,5 @@ public interface IControladorPaquete {
     public abstract Map<String, Paquete> getPaquetesArtistas(String nick_);
     public abstract void AgregarEspPaq(String nom_espec, String nom_paq);
     public abstract Map<String, Paquete> getPaqueteDeEspectaculo(String especName);
+    public abstract int getIdUsuario(String nickUsuario);
 }

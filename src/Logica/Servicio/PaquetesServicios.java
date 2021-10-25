@@ -394,7 +394,9 @@ public class PaquetesServicios{
             PreparedStatement status = conexion.prepareStatement("SELECT paq_id FROM paquetes WHERE paq_nombre = ?");
             status.setString(1, nomPaquete);
             ResultSet rs = status.executeQuery();
-            idPaquete=rs.getInt("paq_id");
+            if(rs.next()){
+                idPaquete=rs.getInt("paq_id");
+            }
         }catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -407,7 +409,9 @@ public class PaquetesServicios{
             PreparedStatement status = conexion.prepareStatement("SELECT usu_id FROM usuario WHERE usu_nick = ?");
             status.setString(1, nickUsuario);
             ResultSet rs = status.executeQuery();
-            idUsuario=rs.getInt("usu_id");
+            if(rs.next()){
+               idUsuario=rs.getInt("usu_id"); 
+            }
         }catch (SQLException ex) {
             ex.printStackTrace();
         }
@@ -416,10 +420,9 @@ public class PaquetesServicios{
     
     public void registrarCompraPaquete(int idUsuario, int idPaquete, Date fecha){
         try {
-            PreparedStatement status = conexion.prepareStatement("INSERT INTO paquetes (compra_paq_id, compra_usu_id, compra_fecha) VALUES (?,?,?)");
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO compra_paquetes (compra_paq_id, compra_usu_id, compra_fecha) VALUES (?,?,now())");
             status.setString (1, Integer.toString(idPaquete));
             status.setString (2, Integer.toString(idUsuario));
-            status.setString (3, fecha.getYear()+"-"+fecha.getMonth()+"-"+fecha.getDay());
             status.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
