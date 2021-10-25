@@ -29,20 +29,20 @@ public interface IControladorUsuario {
     public abstract void modificarEspectador(String email,String nombre, String apellido, DTFecha fecha);
     public abstract void modificarArtista(String email,String nombre, String apellido, DTFecha fecha, String descripcion, String biografia, String url);
     //public abstract static boolean contains(final int[] arr, final int key);
-    public abstract boolean login(String user, String password);
+    public abstract boolean login(String user, String password); //Nuevo WebVersion FEDERICO
     public abstract boolean controlFecha(int dia, int mes,int anio);
-    public abstract Map<String, Usuario> obtenerUsuarios(); //Nuevo WebVersion
-    public abstract Artista obtenerArtista(int idUsuario); //Nuevo WebVersion
+    public abstract Map<String, Usuario> obtenerUsuarios(); //Nuevo WebVersion FEDERICO
+    public abstract Artista obtenerArtista(int idUsuario); //Nuevo WebVersion FEDERICO
     public abstract Artista obtenerArtistaPorNick(String nickUsuario); //Nuevo WebVersion MILTON
-    public abstract Usuario obtenerEspectador(int idUsuario); //Nuevo WebVersion
+    public abstract Usuario obtenerEspectador(int idUsuario); //Nuevo WebVersion FEDERICO
     public abstract String esEspectador(String nickname); //Nuevo WebVersion
     public abstract Usuario obtenerEspectadorPorNick(String nickUsuario); //Nuevo WebVersion MILTON
     public abstract int getIdEspectadorPorNick(String nickUsuario); //Nuevo WebVersion MILTON
-    public abstract void modificarUsuarioEspectador(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen); //Nuevo WebVersion
-    public abstract void modificarUsuarioArtista(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen, String artDescripcion, String artBiografia, String artUrl); //Nuevo WebVersion
-    public abstract boolean addArtista(String nickname, String descripcion, String biografia, String link); //Nuevo WebVersion
+    public abstract void modificarUsuarioEspectador(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen); //Nuevo WebVersion FEDERICO
+    public abstract void modificarUsuarioArtista(String usuNick,String usuMail, String usuNombre, String usuApelliedo, Date usuNacimiento, String usuImagen, String artDescripcion, String artBiografia, String artUrl); //Nuevo WebVersion FEDERICO
+    public abstract boolean addArtista(String nickname, String descripcion, String biografia, String link); //Nuevo WebVersion FEDERICO
     public abstract Map<String, Usuario> getArtistas(); // Nuevo WebVersion PABLO
-    public abstract int getIdUsuarioUsingIdArtista(int idUsuario); //Nuevo WebVersion
+    public abstract int getIdUsuarioUsingIdArtista(int idUsuario); //Nuevo WebVersion FEDERICO
     public abstract void seguirUsuario(String usuario, String usuarioASeguir); // Para el caso de uso "Seguir a un usuario"
     public abstract void dejarDeSeguirUsuario(String usuario, String usuarioADejar); // Para el caso de uso "Dejar de seguir a un usuario"
     public abstract boolean loSigo(String yo, String usuario);
