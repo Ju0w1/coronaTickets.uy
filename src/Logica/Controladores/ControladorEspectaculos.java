@@ -703,7 +703,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     
     
     public Map<String, Espectaculo> obtenerEspectaculosIngresadosDeArtista(int idArtista){
-        Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosIngresados(idArtista);
+        Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosIngresadosArtista(idArtista);
         return espectaculos;
     }
     public Map<String, Espectaculo> obtenerEspectaculosIngresadosDeArtistaPorNick(String nickArtista){
@@ -711,7 +711,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         if (idArtista == -1){
             return null;
         } else {
-            Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosIngresados(idArtista);
+            Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosIngresadosArtista(idArtista);
             return espectaculos;
         }
     }
@@ -738,10 +738,14 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Map<String, Espectaculo> mapEspectaculos=servicioEspectaculo.getEspectaculosCorrectamente(nombrePlataforma, nombreCategoria);
         return mapEspectaculos;
     }
+    
+    @Override
     public Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int usuId){
         Map<String, Funcion> funciones = servicioEspectaculo.getMapRegistroDeFuncionesDeUsuario(usuId);
         return funciones;
     }
+    
+    @Override
     public Map<String, Funcion> getRegistroDeFuncionesDeUsuarioPorNick(String usuNick){
         
         int usuId = servicioEspectaculo.getIdporNickEspectador(usuNick);
@@ -753,20 +757,29 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
     }
     
+    @Override
     public Map<String, Espectaculo> obtenerMapEspectaculosDePaquete(String nombrePaquete) {
         Map<String, Espectaculo> mapEspectaculos=servicioEspectaculo.getEspectaculosDePaquete(nombrePaquete);
         return mapEspectaculos;
     }
     
+    @Override
     public Espectaculo getEspectaculoPorNombre(String nombreEspectaculo){
         Espectaculo resultado = servicioEspectaculo.getEspectaculoPorNombre(nombreEspectaculo);
         System.out.println("LLega el nombre:"+resultado.getNombre());
         return resultado;
     }
-//    public Map<int, Categoria> getCategorias(){
-//        
-//        
-//        
-//    }
+    
+    @Override
+    public Map<String, Espectaculo> getMapEspectaculoIngresados(){
+        Map<String, Espectaculo> mapEspectaculos=servicioEspectaculo.getMapEspectaculosIngresados();
+        return mapEspectaculos;
+    }
+    
+    @Override
+    public void aceptarEspectaculos (String nomEspectaculo, boolean aceptado){
+        String idEspectaculo=servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
+        servicioEspectaculo.aceptarEspectaculo(idEspectaculo, aceptado);
+    }
     
 }
