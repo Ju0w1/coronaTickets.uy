@@ -61,7 +61,8 @@ public class UsuariosServicios {
                 PreparedStatement status4 = conexion.prepareStatement("INSERT INTO seguidores (usu_id,usu_seguidor,activo) VALUES (?,?,?)");
                 status4.setInt (1, usuarioASeguir_id);
                 status4.setInt (2, usuario_id);
-                status4.setInt (3, 1);
+                status4.setBoolean (3, true);
+                System.out.println(status4);
                 status4.execute();
             }
         } catch (SQLException ex) {
@@ -384,7 +385,7 @@ public class UsuariosServicios {
      public int getSeguidores(int usuId){ //Se obtiene la cantidad de seguidores de un Usuario
         int seguidores=0;
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_id) as seguidores FROM seguidores WHERE seguidores.usu_id=?");
+            PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_id) as seguidores FROM seguidores WHERE seguidores.activo=1 AND seguidores.usu_id=?");
             status.setInt(1, usuId);
             ResultSet rs = status.executeQuery();
             
@@ -399,7 +400,7 @@ public class UsuariosServicios {
     public int getSiguiendo(int usuId){ //Se obtiene la cantidad de siguiendo de un Usuario
         int seguidores=0;
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_seguidor) as siguiendo FROM seguidores WHERE seguidores.usu_seguidor=?");
+            PreparedStatement status = conexion.prepareStatement("SELECT COUNT(seguidores.usu_seguidor) as siguiendo FROM seguidores WHERE seguidores.activo=1 AND seguidores.usu_seguidor=?");
             status.setInt(1, usuId);
             ResultSet rs = status.executeQuery();
             
@@ -610,4 +611,24 @@ public class UsuariosServicios {
         }
         return id;
     }
+    public boolean loSigo(String yo, String usuario) throws SQLException{
+        int yoID = this.getIdPorNick(yo);
+        int usuarioID = this.getIdPorNick(usuario);
+        PreparedStatement status = conexion.prepareStatement("SELECT * FROM seguidores WHERE seguidores.usu_id=? AND seguidores.usu_seguidor=? AND seguidores.activo=1");
+        status.setInt(1, usuarioID);
+        status.setInt(2, yoID);
+        try {
+            ResultSet rs = status.executeQuery();
+            if(rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    
 }
