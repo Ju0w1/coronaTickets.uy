@@ -14,7 +14,7 @@ public interface IControladorPaquete {
     //public abstract void modificarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFinal, float costo, float descuento,DTFecha fechaCompra);
     public abstract void obtenerPaqueteEspectaculo(JList listEspec, String espectaculoNombre);
     public abstract boolean getEspectaculos(String nombrePaquete, JList listEspectaculos);
-    public abstract Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario);
+    public abstract Map<String, Paquete> getPaquetesQueComproUsuario(int idUsuario); //Nuevo WebVersion FEDERICO
     public Map<String, Paquete> obtenerMapPaquetesVigentesEspectaculoUsuario (String nickUsuario, String nomEspectaculo);
 //    public abstract Paquete PruebaPaquete(String ID_paq);
     public abstract Map<String, Paquete> getPaquetesV2();
@@ -25,6 +25,6 @@ public interface IControladorPaquete {
     public abstract void actualizarPaquete(String nombre, String descripcion, DTFecha fechaInicio, DTFecha fechaFin, Float descuento, String imagen); // En caso de que exista un paquete de espectáculos con dicho nombre, el artista puede modificar los datos que ingresó
     public abstract Map<String, Paquete> getPaquetesArtistas(String nick_);
     public abstract void AgregarEspPaq(String nom_espec, String nom_paq);
-    public abstract Map<String, Paquete> getPaqueteDeEspectaculo(String especName);
-    public abstract int getIdUsuario(String nickUsuario);
+    public abstract Map<String, Paquete> getPaqueteDeEspectaculo(String especName); //Nuevo WebVersion FEDERICO
+    public abstract int getIdUsuario(String nickUsuario); //Nuevo WebVersion FEDERICO
 }
