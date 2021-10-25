@@ -86,6 +86,7 @@ public interface IControladorEspectaculo {
     public abstract Map<String, Espectaculo> obtenerEspectaculosAceptadosDeArtistaPorNick(String nickArtista); //Nuevo WebVersion MILTON
     public abstract Map<String, Espectaculo> obtenerEspectaculosRechazadosDeArtistaPorNick(String nickArtista); //Nuevo WebVersion MILTON
     public abstract Map<String, Espectaculo> obtenerEspectaculosIngresadosDeArtistaPorNick(String nickArtista); //Nuevo WebVersion MILTON
+    public abstract Map<String, Espectaculo> getMapEspectaculoIngresados(); //Nuevo WebVersion FACUNDO
     
     public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int idUsuario); //Nuevo WebVersion
     public abstract Map<String, Funcion> getRegistroDeFuncionesDeUsuarioPorNick(String usuNick); //Nuevo WebVersion MILTON
@@ -93,5 +94,6 @@ public interface IControladorEspectaculo {
     public abstract Espectaculo getEspectaculoPorNombre(String nombreEspectaculo); //nuevo WebVersion PABLO
     //public abstract Map<int, Categoria> getCategorias();
     public abstract ArrayList<String> obtenerEspectaculosDeArtistaQueNoEstanEnPaquete(String paq_seleccionado, String plat_seleccionada, String nick); //nuevo WebVersion PABLO
+    public abstract void aceptarEspectaculos (String nomEspectaculo, boolean aceptado); //Nuevo WebVersion FACUNDO
 }
 

@@ -1142,7 +1142,7 @@ public class EspectaculosServicios {
                 status1.setString(1, "r");
             }
             status1.setString(2, idEspectaculo);
-            ResultSet rs = status1.executeQuery();
+            status1.execute();
         } catch (SQLException ex1) {
             ex1.printStackTrace();
         }

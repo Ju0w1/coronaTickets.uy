@@ -74,6 +74,7 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
+        aceptar_rechazar = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
@@ -180,6 +181,14 @@ public class MenuInicio extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem2);
+
+        aceptar_rechazar.setText("Aceptar/Rechazar");
+        aceptar_rechazar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                aceptar_rechazarActionPerformed(evt);
+            }
+        });
+        jMenu3.add(aceptar_rechazar);
 
         jMenu7.add(jMenu3);
 
@@ -417,6 +426,17 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_jMenuItem18ActionPerformed
 
+    private void aceptar_rechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptar_rechazarActionPerformed
+        // TODO add your handling code here:
+        AceptarORechazarEspectaculo ventana = new AceptarORechazarEspectaculo();
+        this.jDesktopPane2.add(ventana);
+        Dimension desktopSize = jDesktopPane2.getSize();
+        Dimension jInternalFrameSize = ventana.getSize();
+        ventana.setLocation((desktopSize.width - jInternalFrameSize.width)/2,
+        (desktopSize.height- jInternalFrameSize.height)/2);
+        ventana.setVisible(true);
+    }//GEN-LAST:event_aceptar_rechazarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -447,6 +467,7 @@ public class MenuInicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem aceptar_rechazar;
     public static javax.swing.JDesktopPane jDesktopPane2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
