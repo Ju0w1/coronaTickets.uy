@@ -224,7 +224,7 @@ public class EspectaculosServicios {
         Map<String, Espectaculo> resultado = new HashMap<>();
         String plataforma="";
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos");
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espec_estado='a'");
             ResultSet rs1 = status.executeQuery();
             while (rs1.next()) {
                 Map<String, Categoria> categorias = new HashMap<>();
