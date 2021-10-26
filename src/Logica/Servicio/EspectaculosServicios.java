@@ -181,7 +181,7 @@ public class EspectaculosServicios {
             status3.setString(8, URL);
             status3.setDate(9, today);
             status3.setDouble(10, Costo);
-            status3.setBoolean(11, true);
+            status3.setString(11, estado);
             status3.setString(12, imagen);
             System.out.println(status3.toString());
             status3.execute();
@@ -1020,12 +1020,19 @@ public class EspectaculosServicios {
     
     public Map<String, Espectaculo> getMapEspectaculosRechazados(int artistaId) {
         Map<String, Espectaculo> resultado = new HashMap<>();
+        String plataforma;
         try {
             PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='r' AND espetaculos.espec_artista=?");
             status1.setInt(1, artistaId);
             ResultSet rs = status1.executeQuery();
             while (rs.next()) {
-                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+                PreparedStatement status2 = conexion.prepareStatement("SELECT vp_nombre FROM valores_tipo as p, espetaculos as e WHERE p.vp_id=e.espec_plataforma AND e.espec_nombre='" + rs.getString("espec_nombre") + "'");
+                ResultSet rs2 = status2.executeQuery();
+                if(rs2.next()){
+                    plataforma = rs2.getString(1);
+                //resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+                    resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen"), plataforma));
+                }
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
@@ -1033,20 +1040,33 @@ public class EspectaculosServicios {
         return resultado;
     }
     
+    
+    
+    
+    
     public Map<String, Espectaculo> getMapEspectaculosIngresadosArtista(int artistaId) {
         Map<String, Espectaculo> resultado = new HashMap<>();
+        String plataforma;
         try {
             PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='i' AND espetaculos.espec_artista=?");
             status1.setInt(1, artistaId);
             ResultSet rs = status1.executeQuery();
             while (rs.next()) {
-                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+                PreparedStatement status2 = conexion.prepareStatement("SELECT vp_nombre FROM valores_tipo as p, espetaculos as e WHERE p.vp_id=e.espec_plataforma AND e.espec_nombre='" + rs.getString("espec_nombre") + "'");
+                ResultSet rs2 = status2.executeQuery();
+                if(rs2.next()){
+                    plataforma = rs2.getString(1);
+                //resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+                    resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen"), plataforma));
+                }
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
         }
         return resultado;
     }
+    
+    
     
     public Map<String, Espectaculo> getMapEspectaculosIngresados() {
         Map<String, Espectaculo> resultado = new HashMap<>();
@@ -1054,7 +1074,7 @@ public class EspectaculosServicios {
             PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='i' ");
             ResultSet rs = status1.executeQuery();
             while (rs.next()) {
-                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_URL"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen"),rs.getString("espec_plataforma")));
             }
         } catch (SQLException ex1) {
             ex1.printStackTrace();
