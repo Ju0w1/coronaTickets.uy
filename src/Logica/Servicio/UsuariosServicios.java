@@ -554,7 +554,7 @@ public class UsuariosServicios {
             status.setString(4, usuImagen);
             status.setString(5, usuNick);
             status.setString(6, usuMail);
-            ResultSet rs = status.executeQuery();
+            status.execute();
             
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -574,7 +574,7 @@ public class UsuariosServicios {
             status.setString(7, artUrl);
             
             status.setString(8, usuNick);
-            ResultSet rs = status.executeQuery();
+            status.execute();
             
         } catch (SQLException ex) {
             ex.printStackTrace();
