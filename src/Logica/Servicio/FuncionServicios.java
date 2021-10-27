@@ -226,25 +226,28 @@ public class FuncionServicios {
                     System.out.println("Artsita: "+entry.getValue().getNickname());
                 }
                 
-                for(Map.Entry<String, Artista> entry : artistas.entrySet()){
-                    try {
-                        Statement statusID = conexion.createStatement();
-                        ResultSet rsID = statusID.executeQuery("SELECT A.art_id FROM usuario as U, artistas as A WHERE U.usu_id=A.art_usu AND U.usu_nick='"+entry.getValue().getNickname()+"'");
-                        int artID = 0;
-                        if(rsID.next()){
-                            artID=rsID.getInt(1);
-                            System.out.println("ID DEL ARTISTA A AGREGAR:"+artID);
-                            PreparedStatement status3 = conexion.prepareStatement("INSERT INTO funcion_artista (funart_fun_id,funart_art_id) VALUES (?,?)");
-                            status3.setInt (1, Integer.parseInt(idFuncion));
-                            status3.setInt (2, artID);
-                            //status3.setString (3, nombre_funcion);
-                            status3.execute();
-                            
+                if(!artistas.isEmpty()){
+                    for(Map.Entry<String, Artista> entry : artistas.entrySet()){
+                        try {
+                            Statement statusID = conexion.createStatement();
+                            ResultSet rsID = statusID.executeQuery("SELECT A.art_id FROM usuario as U, artistas as A WHERE U.usu_id=A.art_usu AND U.usu_nick='"+entry.getValue().getNickname()+"'");
+                            int artID = 0;
+                            if(rsID.next()){
+                                artID=rsID.getInt(1);
+                                System.out.println("ID DEL ARTISTA A AGREGAR:"+artID);
+                                PreparedStatement status3 = conexion.prepareStatement("INSERT INTO funcion_artista (funart_fun_id,funart_art_id) VALUES (?,?)");
+                                status3.setInt (1, Integer.parseInt(idFuncion));
+                                status3.setInt (2, artID);
+                                //status3.setString (3, nombre_funcion);
+                                status3.execute();
+
+                            }
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
                         }
-                    } catch (SQLException ex) {
-                        ex.printStackTrace();
                     }
                 }
+                
             }else{
                 System.out.println("No encontró el nombre de espectáculo");
             }

@@ -722,7 +722,7 @@ public class EspectaculosServicios {
         String idplataforma = getidPlataforma(plat_seleccionada);
         try {
             //SELECT espec_nombre FROM espetaculos WHERE espec_plataforma = 1 AND espec_artista = 4 AND espec_nombre NOT IN (SELECT E.espec_nombre FROM espetaculos E, paquete_espetaculos P WHERE E.espec_id = P.paqespec_espec_id AND P.paqespec_paq_id = 9);
-            PreparedStatement status = conexion.prepareStatement("SELECT espec_nombre FROM espetaculos WHERE espec_plataforma =? AND espec_artista=? AND espec_nombre NOT IN (SELECT E.espec_nombre FROM espetaculos as E, paquete_espetaculos as P WHERE E.espec_id = P.paqespec_espec_id AND P.paqespec_paq_id = ?)"); 
+            PreparedStatement status = conexion.prepareStatement("SELECT espec_nombre FROM espetaculos WHERE espec_estado='a' AND espec_plataforma =? AND espec_artista=? AND espec_nombre NOT IN (SELECT E.espec_nombre FROM espetaculos as E, paquete_espetaculos as P WHERE E.espec_id = P.paqespec_espec_id AND P.paqespec_paq_id = ?)"); 
             status.setInt(1, Integer.parseInt(idplataforma));
             status.setInt(2, idArtista);
             status.setInt(3, Integer.parseInt(idpaquete));
