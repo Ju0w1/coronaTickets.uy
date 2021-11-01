@@ -219,4 +219,12 @@ public class ControladorPaquete implements IControladorPaquete{
         x=servicioPaq.getIdUsuario(nickUsuario);
         return x;
     }
+    public boolean isNombrePaqueteUsado(String nombre){
+        if(this.servicioPaq.verificarPaquete(nombre) == true){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

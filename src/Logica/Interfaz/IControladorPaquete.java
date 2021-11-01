@@ -27,4 +27,5 @@ public interface IControladorPaquete {
     public abstract void AgregarEspPaq(String nom_espec, String nom_paq);
     public abstract Map<String, Paquete> getPaqueteDeEspectaculo(String especName); //Nuevo WebVersion FEDERICO
     public abstract int getIdUsuario(String nickUsuario); //Nuevo WebVersion FEDERICO
+    public abstract boolean isNombrePaqueteUsado(String nombre); //Nuevo WebVersion.
 }
