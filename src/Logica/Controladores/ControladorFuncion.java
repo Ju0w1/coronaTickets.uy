@@ -129,6 +129,10 @@ public class ControladorFuncion implements IControladorFuncion{
             return fun;
         }
     }
+    
+    public boolean checkearFuncionExistenteWeb(String nombre){
+        return this.servicioFunciones.checkearFuncionExistente(nombre);
+    }
 //    public Map<String, Funcion> getRegistroDeFuncionesDeUsuario(int usuId){
 //        Map<String, Funcion> funciones = servicioFunciones.getMapRegistroDeFuncionesDeUsuario(usuId);
 //        return funciones;

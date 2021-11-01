@@ -114,6 +114,20 @@ public class FuncionServicios {
         }
     }
     
+    public boolean checkearFuncionExistente(String nombre){
+        boolean response = false;
+        try {
+            Statement status = conexion.createStatement();
+            ResultSet rs = status.executeQuery("SELECT * FROM funcion WHERE fun_nombre ='"+nombre+"'");
+            if(rs.next()) {
+                response = true;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+       return response;
+    }
+    
     public void AgregarArtista(String nick_artista, String id_funcion, String id_artista, String nombre_funcion, DTFecha funcion_vigente){
         int prueba_id_funcion=0,prueba_id=0;
         try{
