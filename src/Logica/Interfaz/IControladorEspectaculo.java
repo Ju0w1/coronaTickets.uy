@@ -98,5 +98,6 @@ public interface IControladorEspectaculo {
     //public abstract Map<int, Categoria> getCategorias();
     public abstract ArrayList<String> obtenerEspectaculosDeArtistaQueNoEstanEnPaquete(String paq_seleccionado, String plat_seleccionada, String nick); //nuevo WebVersion PABLO
     public abstract void aceptarEspectaculos (String nomEspectaculo, boolean aceptado); //Nuevo WebVersion FACUNDO
+    
 }
 
