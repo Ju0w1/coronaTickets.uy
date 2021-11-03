@@ -812,8 +812,15 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         String idUsuario = this.servicioEspectaculo.getIdUsuario(nick);
         System.out.println("POST"+idFuncion);
         System.out.println("POST"+idUsuario);
-        this.servicioEspectaculo.registrarFuncionWEB(idFuncion, idUsuario, "no");
+        this.servicioEspectaculo.registrarFuncionWEB(idFuncion, idUsuario, "");
     }
     
+    public Map<String, Paquete> obtenerPaquetesSinCanjear(String nick, String nombreFuncion){
+        int idUsuario = Integer.parseInt(servicioEspectaculo.getIdUsuario(nick));
+        int idFuncion = Integer.parseInt(servicioEspectaculo.getIdFuncion(nombreFuncion));
+        
+        Map<String, Paquete> paquetes = servicioPaquete.getPaquetesQueComproUsuarioSinCanjear(idUsuario, idFuncion);
+        return paquetes;
+    }
     
 }

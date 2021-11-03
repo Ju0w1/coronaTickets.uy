@@ -503,14 +503,14 @@ public class PaquetesServicios{
         return resultado;
     }
     
-    public Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idEspectaculo, int idFuncion) {
+    public Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idFuncion) {
         Map<String, Paquete> resultado = new HashMap<>();
         try {
             //PreparedStatement status = conexion.prepareStatement("SELECT paquetes.* FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_usu_id=paquetes.paq_id AND compra_paquetes.compra_usu_id=?)");
-            PreparedStatement status = conexion.prepareStatement("SELECT paquetes.* FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_paq_id=paquetes.paq_id AND compra_paquetes.compra_usu_id=? AND paquetes.paq_fecha_fin >= now() AND paquetes.paq_id IN (SELECT pe.paqespec_paq_id FROM paquete_espetaculos as pe, funcion as f WHERE f.fun_espec_id=pe.paqespec_espec_id AND pe.paqespec_espec_id=? AND f.fun_id=?);");
+            PreparedStatement status = conexion.prepareStatement("SELECT paquetes.* FROM paquetes, compra_paquetes WHERE compra_paquetes.compra_paq_id=paquetes.paq_id AND compra_paquetes.compra_usu_id=? AND paquetes.paq_fecha_fin >= now() AND paquetes.paq_id IN (SELECT pe.paqespec_paq_id FROM paquete_espetaculos as pe, funcion as f WHERE f.fun_espec_id=pe.paqespec_espec_id AND f.fun_id=?);");
             status.setInt(1, idUsuario);
-            status.setInt(2, idEspectaculo);
-            status.setInt(3, idFuncion);
+            //status.setInt(2, idEspectaculo);
+            status.setInt(2, idFuncion);
             ResultSet rs = status.executeQuery();
             while (rs.next()) {
                 //dateToDTFecha(rs.getDate("paq_fecha_inicio"));

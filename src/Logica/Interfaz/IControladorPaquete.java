@@ -28,5 +28,5 @@ public interface IControladorPaquete {
     public abstract Map<String, Paquete> getPaqueteDeEspectaculo(String especName); //Nuevo WebVersion FEDERICO
     public abstract int getIdUsuario(String nickUsuario); //Nuevo WebVersion FEDERICO
     public abstract boolean isNombrePaqueteUsado(String nombre); //Nuevo WebVersion.
-    public abstract Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idEspectaculo, int idFuncion); //nuevo WebVersion FEDERICO.
+    public abstract Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idFuncion); //nuevo WebVersion FEDERICO.
 }

@@ -858,7 +858,7 @@ public class EspectaculosServicios {
     public Map<String, Registro> registrosPrevios(String idEspectador){
         Map<String, Registro> resultado = new HashMap<>();
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.usu_id='"+idEspectador+"'");
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM usuario_funcion AS usfu WHERE usfu.usu_id='"+idEspectador+"' AND usfu.canjeado = 0");
             ResultSet rs1 = status1.executeQuery();
             while (rs1.next()) {
                 PreparedStatement status2 = conexion.prepareStatement("SELECT usu_nick FROM usuario AS u WHERE u.usu_id="+rs1.getInt("usu_id"));

@@ -228,8 +228,8 @@ public class ControladorPaquete implements IControladorPaquete{
         }
     }
     
-    public Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idEspectaculo, int idFuncion){
-        Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuarioSinCanjear(idUsuario, idEspectaculo, idFuncion);
+    public Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idFuncion){
+        Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuarioSinCanjear(idUsuario, idFuncion);
         return paquetes;
     }
 }
