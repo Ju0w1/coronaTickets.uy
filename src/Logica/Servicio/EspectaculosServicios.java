@@ -812,8 +812,9 @@ public class EspectaculosServicios {
         Map<String, Artista> artistas;
         Espectaculo espectaculo;
         try {
-            
-            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id="+espectaculoId);
+            //Se obtienen las funciones vigentes
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id="+espectaculoId+" AND (f.fun_fecha_inicio > now() OR (f.fun_fecha_inicio = current_date() AND f.fun_hora_inicio >= current_time()));");
+                                                                   
             ResultSet rs1 = status1.executeQuery();
             while (rs1.next()) {
                 artistas=getMapArtistas(rs1.getString("fun_id"));
@@ -930,6 +931,25 @@ public class EspectaculosServicios {
         }
         //return rslt;
         return rslt;
+    }
+    
+    public void registrarFuncionWEB(String idFuncion, String idEspectador, String canjeado){
+        System.out.println("FUNCION A AGREGAR:"+idFuncion);
+        System.out.println("ESPECTADOR A AGREGAR:"+idEspectador);
+        try {
+            PreparedStatement status = conexion.prepareStatement("INSERT INTO usuario_funcion (funcion_id,usu_id,fechaRegistro,canjeado) VALUES (?,?,now(),?)");
+            status.setInt (1, Integer.parseInt(idFuncion));
+            status.setInt (2, Integer.parseInt(idEspectador));
+            if (canjeado.contains("canje")){
+                status.setBoolean(3, true);
+            }
+            else{
+                status.setBoolean(3, false);
+            }
+            status.execute();  
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
     
     public void registrarFuncion(String idFuncion, String idEspectador, Date fechaRegistro, String metodo){

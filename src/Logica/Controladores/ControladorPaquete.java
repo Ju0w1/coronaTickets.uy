@@ -227,4 +227,9 @@ public class ControladorPaquete implements IControladorPaquete{
             return false;
         }
     }
+    
+    public Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idEspectaculo, int idFuncion){
+        Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuarioSinCanjear(idUsuario, idEspectaculo, idFuncion);
+        return paquetes;
+    }
 }

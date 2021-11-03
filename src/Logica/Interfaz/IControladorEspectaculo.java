@@ -70,10 +70,13 @@ public interface IControladorEspectaculo {
     public boolean agregarEspectaculoAlPaquete(String espec_seleccionada, String paq_seleccionado); //NUEVO
     public abstract void obtenerTablaFunciones (DefaultTableModel tablaModelo, String nomEspectaculo);
     public abstract int registroFuncionEspectaculo(String nomFuncion, String espectadorNom, Date fecha);
+    public abstract void registroFuncionWEB(String idFuncion, String idEspectador);
     public abstract Boolean yaRegistradoAFuncion(Map<String, Registro> registros, String espectadorNom, String nomFuncion);
     public abstract boolean puedeCanjearRegistrosPrevios(Map<String, Registro> registros, String espectadorNom, String nomFuncion);
     public abstract void canjearTresRegistrosPrevios(String nomFuncion, String espectadorNom, Date fecha, DefaultTableModel tabla);
+    public abstract Map<String, Registro> obtenerRegistrosPreviosDeEspectador(String nick); //Nuevo WebVersion 
     public abstract void actualizarEstadoDeRegistros(String idFuncion,String registro1, String registro2, String registro3, String espectadorNom, Date fecha);
+    public abstract void actualizarEstadoDeRegistrosWEB(String idFuncion,String registro1, String registro2, String registro3, String espectadorNom);
     public abstract boolean controlFecha(int dia, int mes,int anio);
     public abstract boolean fechaInicioMayor(int diaUno, int mesUno, int anioUno,int diaDos, int mesDos,int anioDos);
     public void obtenerArtistasDeFuncion(DefaultTableModel tablaModelo, String nombreFuncion);

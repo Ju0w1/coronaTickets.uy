@@ -591,6 +591,21 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
     }
 
+    public Map<String, Registro> obtenerRegistrosPreviosDeEspectador(String nick){
+        String idUsuario = servicioEspectaculo.getIdUsuario(nick);
+        Map<String, Registro> registros = servicioEspectaculo.registrosPrevios(idUsuario);
+        Registro r;
+        Map<String, Registro> filtrado = new HashMap<>();
+        for (Map.Entry entry : registros.entrySet()) {
+            r = (Registro) entry.getValue();
+            if (r.getEspectador().equals(nick) && r.getCanjeado()==false) {
+                filtrado.put(r.getFuncion(), new Registro(r.getEspectador(), r.getFuncion(), r.getFecha(),r.getCanjeado()));
+                        //(String nickEspectador, String nomFuncion, Date fechaRegistro, Boolean canjeado)
+            }
+        }
+        return registros;
+    }
+    
     public void canjearTresRegistrosPrevios(String nomFuncion, String espectadorNom, Date fecha, DefaultTableModel tabla) {
         tabla.setRowCount(0);
         int rslt;
@@ -606,6 +621,16 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
             }
             System.out.println(espectadorNom);
         }
+    }
+    
+    public void actualizarEstadoDeRegistrosWEB(String nombreFuncion, String registro1, String registro2, String registro3, String espectadorNom) {
+        String idFuncion1 = servicioEspectaculo.getIdFuncion(registro1);
+        String idFuncion2 = servicioEspectaculo.getIdFuncion(registro2);
+        String idFuncion3 = servicioEspectaculo.getIdFuncion(registro3);
+        String idEspectador = servicioEspectaculo.getIdUsuario(espectadorNom);
+        servicioFuncion.actualizarEstadoDeCanjeRegistro(idFuncion1,idFuncion2,idFuncion3,idEspectador);
+        String idFuncion = servicioEspectaculo.getIdFuncion(nombreFuncion);
+        this.servicioEspectaculo.registrarFuncionWEB(idFuncion, idEspectador, "canje");
     }
     
     public void actualizarEstadoDeRegistros(String nombreFuncion, String registro1, String registro2, String registro3, String espectadorNom, Date fecha) {
@@ -779,5 +804,16 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         String idEspectaculo=servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
         servicioEspectaculo.aceptarEspectaculo(idEspectaculo, aceptado);
     }
+    
+    public void registroFuncionWEB(String nombreFuncion, String nick){
+        System.out.println("PRE:"+nombreFuncion);
+        System.out.println("PRE:"+nick);
+        String idFuncion = this.servicioEspectaculo.getIdFuncion(nombreFuncion);
+        String idUsuario = this.servicioEspectaculo.getIdUsuario(nick);
+        System.out.println("POST"+idFuncion);
+        System.out.println("POST"+idUsuario);
+        this.servicioEspectaculo.registrarFuncionWEB(idFuncion, idUsuario, "no");
+    }
+    
     
 }

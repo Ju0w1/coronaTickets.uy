@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 import javax.swing.JList;
 import javax.swing.JTextField;
 import Logica.Clases.Funcion;
+import Logica.Clases.Registro;
 
 public interface IControladorFuncion {
     public abstract boolean addFuncion(String espec_id, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map<String,Artista> artistas);
