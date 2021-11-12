@@ -140,7 +140,21 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
    
 
     public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String[] categorias) {
-        this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo, estado, imagen, categorias);
+        if(this.servicioEspectaculo.getEspectaculoPorNombre(nombreEspectaculo).getNombre().equals("")){
+            this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo, estado, imagen, categorias);
+        }
+    }
+    
+    public boolean altaEspectaculoWEB(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String[] categorias) {
+        if(this.servicioEspectaculo.getEspectaculoPorNombre(nombreEspectaculo).getNombre()==null){
+            System.out.println("NO SE ENCONTRÓ, PUEDE AGREGAR: "+this.servicioEspectaculo.getEspectaculoPorNombre(nombreEspectaculo).getNombre());
+            this.servicioEspectaculo.addEspectaculo(nombrePlataforma, nombreOrganizador, nombreEspectaculo, descripcion, duracion, cantEspectadoresMinima, cantEspectadoresMaxima, URL, Costo, estado, imagen, categorias);
+            return true;
+  
+        }else{
+            System.out.println("SE ENCONTÓ, NO PUEDE AGREGAR: "+this.servicioEspectaculo.getEspectaculoPorNombre(nombreEspectaculo).getNombre());
+            return false;
+        }
     }
 
 //    public void altaEspectaculo(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen) {

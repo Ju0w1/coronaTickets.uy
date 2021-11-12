@@ -65,7 +65,8 @@ public class ConexionDB {
             try {
                 Driver driver = new com.mysql.jdbc.Driver();
                 DriverManager.registerDriver(driver);
-                conexion = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db+"?characterEncoding=utf8", user, pass);
+                
+                conexion = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db, user, pass);
                 System.out.println("Conectado");
             } catch (SQLException ex) {
                 ex.printStackTrace();

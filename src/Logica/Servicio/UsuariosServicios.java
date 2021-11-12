@@ -261,6 +261,7 @@ public class UsuariosServicios {
             status.setString (5, nacimiento);
             status.setString (6, password1);
             status.setString (7, imagen);
+            System.out.println(nacimiento);
             status.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();

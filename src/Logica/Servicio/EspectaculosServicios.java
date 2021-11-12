@@ -184,16 +184,16 @@ public class EspectaculosServicios {
             status3.setString(11, estado);
             status3.setString(12, imagen);
             System.out.println(status3.toString());
-            status3.execute();
-            
-            //CUARTO INSERTO EN CATEGORIA_ESPECTACULO LOS LAS CATEGORIAS DEL ESPECTACULO
-            
-            
-            for(int i = 0; i< categorias.length; i++){
-                System.out.println(categorias[i]);
-                addCategoria_Espectaculo(nombreEspectaculo, categorias[i]);
+            try{
+                status3.execute(); 
+                //CUARTO INSERTO EN CATEGORIA_ESPECTACULO LOS LAS CATEGORIAS DEL ESPECTACULO
+                for(int i = 0; i< categorias.length; i++){
+                    System.out.println(categorias[i]);
+                    addCategoria_Espectaculo(nombreEspectaculo, categorias[i]);
+                }
+            }catch (SQLException ex) {
+                ex.printStackTrace();
             }
-            
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

@@ -99,5 +99,7 @@ public interface IControladorEspectaculo {
     public abstract ArrayList<String> obtenerEspectaculosDeArtistaQueNoEstanEnPaquete(String paq_seleccionado, String plat_seleccionada, String nick); //nuevo WebVersion PABLO
     public abstract void aceptarEspectaculos (String nomEspectaculo, boolean aceptado); //Nuevo WebVersion FACUNDO
     public abstract Map<String, Paquete> obtenerPaquetesSinCanjear(String nick, String nombreFuncion); ////Nuevo WebVersion PABLO
+    public abstract boolean altaEspectaculoWEB(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String[] categorias); //nuevo WebVersion PABLO
+    
 }
 
