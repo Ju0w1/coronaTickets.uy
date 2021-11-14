@@ -53,7 +53,5 @@ public class Artista extends Usuario implements Serializable{
     public String getLinkWeb (){
         return this.linkWeb;
     }   
-    public Artista(){
-        
-    }
+
 }
