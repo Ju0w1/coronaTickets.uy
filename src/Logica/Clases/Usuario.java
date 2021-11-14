@@ -1,9 +1,10 @@
 package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Usuario {
+public class Usuario implements Serializable{
     private String nickname;
     private String nombre;
     private String apellido;

@@ -1,5 +1,6 @@
 package Logica.Clases;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map;
  *
  * @author Admin
  */
-public class Funcion {
+public class Funcion implements Serializable{
         private String nombre;
         private Date fecha;
         private Time horaInicio;
@@ -17,7 +18,7 @@ public class Funcion {
         private Map<String, Artista> artistas;
         private String urlImagen;
 
-        
+
         public Funcion(String nombre, Date fecha, Time horaInicio, Date fechaRegistro, Espectaculo espectaculo, Map<String, Artista> artistas, String urlImagen){
             this.nombre= nombre;
             this.fecha= fecha;

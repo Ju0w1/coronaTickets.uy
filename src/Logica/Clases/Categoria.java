@@ -5,11 +5,13 @@
  */
 package Logica.Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Davila
  */
-public class Categoria {
+public class Categoria implements Serializable{
     private String nombre;
 
     public Categoria(String nombre) {
@@ -22,6 +24,10 @@ public class Categoria {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    public Categoria(){
+        
     }
     
 }

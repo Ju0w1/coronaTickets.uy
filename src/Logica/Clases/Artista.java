@@ -1,8 +1,9 @@
 package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
+import java.io.Serializable;
 
-public class Artista extends Usuario {
+public class Artista extends Usuario implements Serializable{
     private String descripcion;
     private String biografia;
     private String linkWeb;
@@ -41,4 +42,7 @@ public class Artista extends Usuario {
     public String getLinkWeb (){
         return this.linkWeb;
     }   
+    public Artista(){
+        
+    }
 }
