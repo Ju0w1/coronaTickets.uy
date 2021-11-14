@@ -24,6 +24,8 @@ import Logica.Clases.Funcion;
 import Logica.Servicio.ArtistasServicios;
 import Logica.Servicio.FuncionServicios;
 import Logica.Servicio.UsuariosServicios;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class ControladorFuncion implements IControladorFuncion{
@@ -128,6 +130,12 @@ public class ControladorFuncion implements IControladorFuncion{
             Funcion fun = this.servicioFunciones.obtenerFuncion(nombreFuncion);
             return fun;
         }
+    }
+    
+    public List<String> artistasDeFuncion(String nombreFuncion){
+        List<String> artistas = new ArrayList<>();
+        artistas = this.servicioFunciones.artistasDeFuncion(nombreFuncion);
+        return artistas;
     }
     
     public boolean checkearFuncionExistenteWeb(String nombre){

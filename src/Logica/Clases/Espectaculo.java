@@ -2,13 +2,14 @@ package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
 import Logica.DataTypes.DTTimeStamp;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Map;
 
 
 
 
-public class Espectaculo {
+public class Espectaculo implements Serializable{
     private String Nombre;
     private int Artista;
     private String Descripcion;

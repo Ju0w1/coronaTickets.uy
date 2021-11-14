@@ -21,6 +21,7 @@ import Logica.Clases.Espectaculo;
 import Logica.Clases.Funcion;
 import static java.lang.Integer.parseInt;
 import java.sql.Time;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -376,6 +377,36 @@ public class FuncionServicios {
         //return resultado;
     }
     
-    
+    public List<String> artistasDeFuncion(String nombreFuncion){
+        List<String> artistas = new ArrayList<>();
+        
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion WHERE funcion.fun_nombre=?");
+            status1.setString(1, nombreFuncion);
+            ResultSet rs = status1.executeQuery();
+            
+            
+            //idFuncion = Integer.parseInt(rs.getString("fun_id"));
+            //int idFuncion = rs.getInt("fun_id");
+
+            if(rs.next()) { // OBTENGO LA FUNCION AHORA TRAIGO EL MAP DE ARTISTAS QUE ESTAN INVITADOS
+                PreparedStatement status2 = conexion.prepareStatement("SELECT usuario.usu_nick FROM usuario, artistas WHERE usuario.usu_id=artistas.art_usu AND art_id IN (SELECT artistas.art_id FROM artistas, funcion_artista WHERE funcion_artista.funart_art_id=artistas.art_id AND funcion_artista.funart_fun_id=" + rs.getString(1) + ")");
+                //status2.setInt(1, idFuncion);
+                ResultSet rs2 = status2.executeQuery();
+                
+                while(rs2.next()){
+                    artistas.add(rs2.getString(1));
+
+                }
+
+            }
+            return artistas;
+
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+            return null;
+        }
+        
+    }
     
 }
