@@ -29,4 +29,5 @@ public interface IControladorPaquete {
     public abstract int getIdUsuario(String nickUsuario); //Nuevo WebVersion FEDERICO
     public abstract boolean isNombrePaqueteUsado(String nombre); //Nuevo WebVersion.
     public abstract Map<String, Paquete> getPaquetesQueComproUsuarioSinCanjear(int idUsuario, int idFuncion); //nuevo WebVersion FEDERICO.
+    public abstract Paquete obtenerPaquetePorNombre(String nombre);
 }

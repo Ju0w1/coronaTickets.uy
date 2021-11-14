@@ -6,12 +6,13 @@
 package Logica.Clases;
 
 import Logica.DataTypes.DTFecha;
+import java.io.Serializable;
 
 /**
  *
  * @author Admin
  */
-public class Paquete {
+public class Paquete implements Serializable{
     private String Nombre;
     private String Descripcion;
     private DTFecha Fecha_Inicio;
@@ -35,6 +36,16 @@ public class Paquete {
         this.url_imagen= url_;
         this.vigente= vigencia_;
     }
+
+    public Paquete(String Nombre, String Descripcion, DTFecha Fecha_Inicio, DTFecha Fecha_Fin, Float Costo, Float Descuento, String url_imagen) {
+        this.Nombre = Nombre;
+        this.Descripcion = Descripcion;
+        this.Fecha_Inicio = Fecha_Inicio;
+        this.Fecha_Fin = Fecha_Fin;
+        this.Costo = Costo;
+        this.Descuento = Descuento;
+        this.url_imagen = url_imagen;
+    }
     
     public Paquete(String nombre_, String Descripcion_, DTFecha Fecha_Inicio_, DTFecha Fecha_Fin_, float Costo_, Float Descuento_, DTFecha Fecha_Compra_) {
         this.Nombre=nombre_;
@@ -49,7 +60,7 @@ public class Paquete {
     
     
     public Paquete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       
     }
     
     public void setNombre(String nombre){

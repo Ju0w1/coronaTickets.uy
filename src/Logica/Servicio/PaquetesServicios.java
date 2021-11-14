@@ -524,4 +524,26 @@ public class PaquetesServicios{
         }
         return resultado;
     }
+    
+
+    
+    public Paquete obtenerPaquetePorNombre(String nombre){
+        System.out.println("EN EL SERVICIO EL NOMBRE:" +nombre);
+        Paquete paq = new Paquete();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM paquetes WHERE paquetes.paq_nombre='"+nombre+"'");
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                Date fechaInicio = rs.getDate("paq_fecha_inicio");
+                Date fechaFin = rs.getDate("paq_fecha_fin");
+                DTFecha fechaInicioDT = dateToDTFecha(fechaInicio);
+                DTFecha fechaFinDT = dateToDTFecha(fechaFin);
+                paq = new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"),fechaInicioDT,fechaFinDT,rs.getFloat("paq_costo"),rs.getFloat("paq_descuento"),rs.getString("paq_imagen"));
+                System.out.println("PAQUETE: "+paq.getNombre()+paq.getDescripcion()+paq.getFecha_Fin());
+            }
+        }catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return paq;
+    }
 }

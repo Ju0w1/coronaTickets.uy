@@ -232,4 +232,9 @@ public class ControladorPaquete implements IControladorPaquete{
         Map<String, Paquete> paquetes = servicioPaq.getPaquetesQueComproUsuarioSinCanjear(idUsuario, idFuncion);
         return paquetes;
     }
+    
+    public Paquete obtenerPaquetePorNombre(String nombre){
+        Paquete paquete = this.servicioPaq.obtenerPaquetePorNombre(nombre);
+        return paquete;
+    }
 }
