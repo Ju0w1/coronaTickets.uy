@@ -19,8 +19,19 @@ public class Artista extends Usuario {
         this.biografia=biografia;
         this.linkWeb=linkWeb;
     }
+    public Artista(String nickname, String nombre, String apellido, String email, DTFecha nacimiento, String descripcion, String biografia, String linkWeb, String imagen){
+        super (nickname, nombre, apellido, email, nacimiento, imagen);
+        this.descripcion=descripcion;
+        this.biografia=biografia;
+        this.linkWeb=linkWeb;
+    }
+    
     public Artista(String nick){
         super (nick);
+    }
+
+    public Artista() {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public void setDescripcion (String descripcion){
