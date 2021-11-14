@@ -46,4 +46,6 @@ public interface IControladorUsuario {
     public abstract void seguirUsuario(String usuario, String usuarioASeguir); // Para el caso de uso "Seguir a un usuario"
     public abstract void dejarDeSeguirUsuario(String usuario, String usuarioADejar); // Para el caso de uso "Dejar de seguir a un usuario"
     public abstract boolean loSigo(String yo, String usuario);
+    public abstract int getSeguidores(int idUser); //Nuevo API-REST MILTON
+    public abstract int getSeguidos(int idUser); //Nuevo API-REST MILTON
 }

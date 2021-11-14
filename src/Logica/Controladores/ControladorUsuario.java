@@ -431,4 +431,11 @@ public class ControladorUsuario implements IControladorUsuario {
         }
         return false;
     }
+    
+    public int getSeguidores(int idUser){
+        return this.servicioUsuarios.getSeguidores(idUser);
+    }
+    public int getSeguidos(int idUser){
+        return this.servicioUsuarios.getSiguiendo(idUser);
+    }
 }
