@@ -1112,9 +1112,11 @@ public class EspectaculosServicios {
             status1.setInt(1, artistaId);
             ResultSet rs = status1.executeQuery();
             while (rs.next()) {
-                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_url"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen"),rs.getString("espec_plataforma")));
+                //                                                                                                                                                                                                                                                                                                                                                                                           
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_url"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
                 
-                /* - Por si solo los nombre y fotos quieren mostrar:
+                // - Por si solo los nombre y fotos quieren mostrar:
+                /*
                 Espectaculo espectaculo = new Espectaculo();
                 espectaculo.setNombre(rs.getString("espec_nombre"));
                 espectaculo.setUrlImagen(rs.getString("espec_imagen"));
