@@ -9,6 +9,8 @@ import javax.swing.JList;
 import javax.swing.JTextField;
 import Logica.Clases.Funcion;
 import Logica.Clases.Registro;
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 
 public interface IControladorFuncion {
@@ -24,4 +26,5 @@ public interface IControladorFuncion {
     public abstract Funcion obtenerFuncion(String nombreFuncion);
     public abstract boolean checkearFuncionExistenteWeb(String nombre);
     public abstract List<String> artistasDeFuncion(String nombreFuncion); //WEB VERSION PABLO
+    public abstract void addFuncionWEBV2(String nombreEspec, String nombre, Date fecha_registro, Time hora_inicio, Date fecha_comienzo,List<String> artistas, String urlImagen);
 }
