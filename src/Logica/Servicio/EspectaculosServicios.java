@@ -864,11 +864,11 @@ public class EspectaculosServicios {
                 PreparedStatement status2 = conexion.prepareStatement("SELECT usu_nick FROM usuario AS u WHERE u.usu_id="+rs1.getInt("usu_id"));
                 ResultSet rs2 = status2.executeQuery();
                 if(rs2.next()){
-                    System.out.println("Entra al primer if");
+
                     PreparedStatement status3 = conexion.prepareStatement("SELECT fun_nombre FROM funcion AS f WHERE f.fun_id="+rs1.getInt("funcion_id"));
                     ResultSet rs3 = status3.executeQuery();
                     if(rs3.next()){
-                        System.out.println("Entra al segundo if");
+
                         resultado.put(rs1.getString("funcion_id"), new Registro(rs2.getString(1), rs3.getString(1), rs1.getDate("fechaRegistro"),rs1.getBoolean("canjeado")));
                     }
                 }  

@@ -539,7 +539,7 @@ public class PaquetesServicios{
                 DTFecha fechaInicioDT = dateToDTFecha(fechaInicio);
                 DTFecha fechaFinDT = dateToDTFecha(fechaFin);
                 paq = new Paquete(rs.getString("paq_nombre"),rs.getString("paq_descripcion"),fechaInicioDT,fechaFinDT,rs.getFloat("paq_costo"),rs.getFloat("paq_descuento"),rs.getString("paq_imagen"));
-                System.out.println("PAQUETE: "+paq.getNombre()+paq.getDescripcion()+paq.getFecha_Fin());
+                System.out.println("PAQUETE costo: "+rs.getFloat("paq_costo"));
             }
         }catch (SQLException ex) {
             ex.printStackTrace();
