@@ -10,8 +10,9 @@ import java.util.List;
  * @author facun
  */
 public interface IControladorPremio {
-   public abstract boolean addPremio (String nickEspectador, String descripcion, String funcion, int cantidad, Date fecha);
-   
+   public abstract boolean addPremio (String nickEspectador, String descripcion, String funcion, int cantidad);
+   public abstract boolean premiarEspectadores (String nomFuncion);
    public abstract List<String> getFuncionesArtistaRealizadas(String nickArtista, String nomEspectaculo);
    public abstract boolean premiosRealizados (String nomfuncion);
+   public abstract List<String> getEspectadoresPremiados(String nomFuncion);
 }
