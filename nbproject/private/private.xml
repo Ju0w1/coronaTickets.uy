@@ -3,9 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Servicio/UsuariosServicios.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Servicio/ArtistasServicios.java</file>
-            <file>file:/C:/Users/pabli/Documents/NetBeansProjects/laboratorioProgramacionAplicaciones/src/Logica/Clases/Artista.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Servicio/EspectaculosServicios.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Servicio/PremioServicios.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Servicio/FuncionServicios.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Interfaz/IControladorEspectaculo.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Controladores/ControladorFuncion.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Servicio/UsuariosServicios.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Controladores/ControladorPremios.java</file>
+            <file>file:/C:/Proyectos%20NetBeans/coronaTickets.uy/src/Logica/Interfaz/IControladorPremio.java</file>
         </group>
     </open-files>
 </project-private>
