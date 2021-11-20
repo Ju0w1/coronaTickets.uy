@@ -67,7 +67,7 @@ public class ControladorFuncion implements IControladorFuncion{
     public void addFuncionWEB(String nombreEspec, String nombre, DTFecha fecha_registro, DTTimeStamp hora_inicio, DTFecha fecha_comienzo, Map <String,Artista> artistas, String urlImagen) {
         this.servicioFunciones.addFuncionWEB(nombreEspec, nombre, fecha_registro, hora_inicio, fecha_comienzo, artistas,urlImagen);
     }
-    public void addFuncionWEBV2(String nombreEspec, String nombre, Date fecha_registro, Time hora_inicio, Date fecha_comienzo,List<String> artistas, String urlImagen) {
+    public void addFuncionWEBV2(String nombreEspec, String nombre, String fecha_registro, String hora_inicio, String fecha_comienzo,List<String> artistas, String urlImagen) {
         this.servicioFunciones.addFuncionWEBV2(nombreEspec, nombre, fecha_registro, hora_inicio, fecha_comienzo, artistas, urlImagen);
     }
     

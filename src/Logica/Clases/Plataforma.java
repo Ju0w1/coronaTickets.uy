@@ -1,7 +1,9 @@
 package Logica.Clases;
 
+import java.io.Serializable;
 
-public class Plataforma {
+
+public class Plataforma implements Serializable{
     private String Nombre;
     private String Descripcion;
     private String Url;
@@ -12,8 +14,8 @@ public class Plataforma {
         this.Url=url;
     }
     
-    public Plataforma(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Plataforma() {
+        
     }
     //Getters
     public String getNombre(){

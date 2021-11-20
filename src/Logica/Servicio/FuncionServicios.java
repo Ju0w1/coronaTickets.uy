@@ -270,7 +270,7 @@ public class FuncionServicios {
             ex.printStackTrace();
         }
     }
-    public void addFuncionWEBV2(String nombreEspec, String nombre, Date fecha_registro, Time hora_inicio, Date fecha_comienzo, List<String> artistas, String urlImagen) {
+    public void addFuncionWEBV2(String nombreEspec, String nombre, String fecha_registro, String hora_inicio, String fecha_comienzo, List<String> artistas, String urlImagen) {
         try {
             System.out.println(artistas.isEmpty());
             Statement status1 = conexion.createStatement();
@@ -281,9 +281,9 @@ public class FuncionServicios {
                 PreparedStatement status2 = conexion.prepareStatement("INSERT INTO funcion (fun_espec_id,fun_nombre,fun_fecha_registro,fun_hora_inicio,fun_fecha_inicio,fun_imagen) VALUES (?,?,?,?,?,?)");
                 status2.setInt(1, rs.getInt(1));
                 status2.setString (2, nombre);
-                status2.setDate(3, fecha_registro);
-                status2.setTime(4, hora_inicio);
-                status2.setDate(5, fecha_comienzo);
+                status2.setString(3, fecha_registro);
+                status2.setString(4, hora_inicio);
+                status2.setString(5, fecha_comienzo);
                 status2.setString(6, urlImagen);
                 status2.execute();
                 
