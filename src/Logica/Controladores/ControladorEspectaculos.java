@@ -837,4 +837,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         return paquetes;
     }
     
+    public void FinalizarEspec(String nom_espec){
+        servicioEspectaculo.FinalizarEspec(nom_espec);
+    }
 }

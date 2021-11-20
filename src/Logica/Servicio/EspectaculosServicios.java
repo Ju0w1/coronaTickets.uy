@@ -1187,5 +1187,24 @@ public class EspectaculosServicios {
             ex1.printStackTrace();
         }
     }
-    
+    public boolean FinalizarEspec(String espec_nombre){
+    boolean finalizado=false;
+        try{
+            PreparedStatement status = conexion.prepareStatement("UPDATE espetaculos SET espec_estado=? WHERE espec_nombre=?");
+            status.setString(1, "f");
+            status.setString(2, espec_nombre);
+            //status.setInt(3, espec_id);
+            status.execute();
+            finalizado=true;
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        
+        if(finalizado){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }
