@@ -194,6 +194,8 @@ public class ControladorPaquete implements IControladorPaquete{
     
     @Override
     public void compraPaquete (String nickUsuario, String nomPaquete){
+        System.out.println("usuNick: "+nickUsuario);
+        System.out.println("nomPaq: "+nomPaquete);
         int idUsuario, idPaquete;
         Date fecha=new Date(Calendar.getInstance().getTime().getTime());
         idPaquete=servicioPaq.getIdPaquete(nomPaquete);

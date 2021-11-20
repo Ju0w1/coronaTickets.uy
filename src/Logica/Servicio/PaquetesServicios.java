@@ -419,10 +419,12 @@ public class PaquetesServicios{
     }
     
     public void registrarCompraPaquete(int idUsuario, int idPaquete, Date fecha){
+        System.out.println("idusu: "+idUsuario);
+        System.out.println("idpaq: "+idPaquete);
         try {
             PreparedStatement status = conexion.prepareStatement("INSERT INTO compra_paquetes (compra_paq_id, compra_usu_id, compra_fecha) VALUES (?,?,now())");
-            status.setString (1, Integer.toString(idPaquete));
-            status.setString (2, Integer.toString(idUsuario));
+            status.setInt (1, idPaquete);
+            status.setInt (2, idUsuario);
             status.execute();
         } catch (SQLException ex) {
             ex.printStackTrace();
