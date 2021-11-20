@@ -101,5 +101,8 @@ public interface IControladorEspectaculo {
     public abstract Map<String, Paquete> obtenerPaquetesSinCanjear(String nick, String nombreFuncion); ////Nuevo WebVersion PABLO
     public abstract boolean altaEspectaculoWEB(String nombrePlataforma, String nombreOrganizador, String nombreEspectaculo, String descripcion, Double duracion, int cantEspectadoresMinima, int cantEspectadoresMaxima, String URL, Double Costo, String estado, String imagen, String[] categorias); //nuevo WebVersion PABLO
     public abstract void FinalizarEspec(String nom_espec);
+    
+    public abstract Map<String, Espectaculo> obtenerEspectaculosFinalizadosDeArtistaPorNick(String nickArtista); // nuevo, caso de uso: consulta espectaculo finalizado
+    public abstract Espectaculo obtenerEspectaculoPorNombre(String nombreEspectaculo); // Nuevo, caso de uso: consulta espectaculo finalizado. Devuelve un espectaculo dado un nombre
 }
 

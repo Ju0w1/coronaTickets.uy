@@ -24,7 +24,7 @@ public class PlataformaServicio {
     public PlataformaServicio(){}
     
     private Connection conexion = new ConexionDB().getConexion();
-        
+       
     public ArrayList<String> llenarComboPlataforma()
     {
         ArrayList<String> lista = new ArrayList<String>();

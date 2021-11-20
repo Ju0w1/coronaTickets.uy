@@ -1102,6 +1102,65 @@ public class EspectaculosServicios {
         return resultado;
     }
     
+    public Map<String, Espectaculo> getMapEspectaculosFinaliazados(int artistaId) {
+        // Tarea 3: 
+        // Caso de uso: Consulta espectaculo Finalizado.
+        // "El sistema lista los espectáculos finalizados que organizó el artista" 
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_estado='f' AND espetaculos.espec_artista=?");
+            status1.setInt(1, artistaId);
+            ResultSet rs = status1.executeQuery();
+            while (rs.next()) {
+                //                                                                                                                                                                                                                                                                                                                                                                                           
+                resultado.put(rs.getString("espec_nombre"), new Espectaculo(rs.getString("espec_nombre"), rs.getInt("espec_artista"), rs.getString("espec_descripcion"), rs.getInt("espec_cant_min_espect"), rs.getInt("espec_cant_max_espect"), rs.getString("espec_url"), rs.getDouble("espec_Costo") , rs.getInt("espec_duracion"), rs.getDate("espec_fecha_registro"), rs.getString("espec_estado"), rs.getString("espec_imagen")));
+                
+                // - Por si solo los nombre y fotos quieren mostrar:
+                /*
+                Espectaculo espectaculo = new Espectaculo();
+                espectaculo.setNombre(rs.getString("espec_nombre"));
+                espectaculo.setUrlImagen(rs.getString("espec_imagen"));
+                resultado.put(rs.getString("espec_nombre"), espectaculo);
+                */
+                
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    public Espectaculo getEspectaculoPorId(int idEspectaculo){
+        // Tarea 3: 
+        // Caso de uso: Consulta espectaculo Finalizado.
+        // "El usuario elige uno de ellos y " el sistema devuelve todos los datos del espectáculo"
+        Map<String, Categoria> categorias = new HashMap<>();
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT cat.cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND catEspec.espec_id=?");
+            status1.setInt(1, idEspectaculo);
+            ResultSet rs1 = status1.executeQuery();
+            while(rs1.next()){
+                categorias.put(rs1.getString("cat_nombre"), new Categoria(rs1.getString("cat_nombre")));
+            }
+            PreparedStatement status2 = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espetaculos.espec_id=?");
+            status2.setInt(1, idEspectaculo);
+            ResultSet rs2 = status2.executeQuery();      
+            if(rs2.next()) {
+               PreparedStatement status3 = conexion.prepareStatement("SELECT vp_nombre FROM valores_tipo WHERE vp_id=?");
+               status3.setInt(1, rs2.getInt("espec_plataforma"));
+               ResultSet rs3 = status3.executeQuery();
+               if(rs3.next()) {
+                   
+                   Espectaculo espectaculo = new Espectaculo(rs3.getString("espec_nombre"), rs3.getInt("espec_artista"), rs3.getString("espec_descripcion"), rs3.getInt("espec_cant_min_espect"), rs3.getInt("espec_cant_max_espect"), rs3.getString("espec_url"), rs3.getDouble("espec_Costo") , rs3.getInt("espec_duracion"), rs3.getDate("espec_fecha_registro"), rs2.getString("vp_nombre") ,rs3.getString("espec_estado"), categorias, rs3.getString("espec_imagen"));
+                   return espectaculo;
+                }
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return null;
+    }
+    
     public Map<String, Funcion> getMapRegistroDeFuncionesDeUsuario(int usuId) {
         Map<String, Funcion> resultado = new HashMap<>();
         String id="";

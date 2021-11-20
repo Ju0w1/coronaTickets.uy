@@ -89,7 +89,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         return instancia;
     }
-
+    
     @Override
     public Map<String, Espectaculo> getEspectaculos() {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
@@ -753,6 +753,22 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
             Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosIngresadosArtista(idArtista);
             return espectaculos;
         }
+    }
+       
+    public Map<String, Espectaculo> obtenerEspectaculosFinalizadosDeArtistaPorNick(String nickArtista){
+        int idArtista = servicioEspectaculo.getIdporNickArtista(nickArtista);
+        if(idArtista == -1){
+            return null;
+        }else{
+            Map<String, Espectaculo> espectaculos = servicioEspectaculo.getMapEspectaculosFinaliazados(idArtista);
+            return espectaculos;
+        }  
+    }
+    
+    public Espectaculo obtenerEspectaculoPorNombre(String nombreEspectaculo){
+        String stringidEspectaculo = servicioEspectaculo.getIdEspectaculo(nombreEspectaculo);
+        int idEspectaculo = Integer.parseInt(stringidEspectaculo);
+        return servicioEspectaculo.getEspectaculoPorId(idEspectaculo);
     }
     
     //Funciones para la parte WEB
