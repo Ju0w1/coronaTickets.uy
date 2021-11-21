@@ -27,9 +27,9 @@ public class ControladorPremios implements IControladorPremio {
         return instancia;
     }
     
-    @Override
-    public boolean addPremio (String nickEspectador, String descripcion, String nomfuncion, int cantidad){ //añade un premio a la correspondiente tabla
-        if (this.servicioPremios.addPremio(descripcion, nomfuncion, cantidad)){
+
+    public boolean addPremio (String descripcion, String nomEspec, int cantidad){ //añade un premio a la correspondiente tabla
+        if (this.servicioPremios.addPremio(descripcion, nomEspec, cantidad)){
             return true;
         } else {
             return false;

@@ -109,17 +109,17 @@ public class PremioServicios {
         return espectadores;
     }
     
-    public boolean addPremio(String descripcion, String nomfuncion, int cantidad){
+    public boolean addPremio(String descripcion, String nomEspectaculo, int cantidad){
         try {
             Statement status1 = conexion.createStatement();
-            ResultSet rs1 = status1.executeQuery("SELECT * FROM funcion WHERE fun_nombre='"+nomfuncion+"'");
+            ResultSet rs1 = status1.executeQuery("SELECT * FROM espetaculos WHERE espec_nombre='"+nomEspectaculo+"'");
             
             System.out.println("entró");
             if(rs1.next()){
                 System.out.println("entró");
                 //
                 PreparedStatement status3 = conexion.prepareStatement("INSERT INTO premios (id_espectaculo,premio_descripcion,premio_cantidad) VALUES (?,?,?)");
-                status3.setInt(1, rs1.getInt("fun_espec_id"));
+                status3.setInt(1, rs1.getInt("espec_id"));
                 status3.setString (2, descripcion);
                 status3.setInt(3, cantidad);
                 status3.execute();
