@@ -853,7 +853,11 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         return paquetes;
     }
     
-    public void FinalizarEspec(String nom_espec){
-        servicioEspectaculo.FinalizarEspec(nom_espec);
+    public boolean FinalizarEspec(String nom_espec){
+        if(this.servicioEspectaculo.FinalizarEspec(nom_espec)){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
