@@ -1,11 +1,13 @@
 package Logica.Controladores;
 
+import Logica.Clases.Premio;
 import Logica.Interfaz.IControladorPremio;
 import Logica.Servicio.FuncionServicios;
 import Logica.Servicio.PremioServicios;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -85,6 +87,11 @@ public class ControladorPremios implements IControladorPremio {
         List<String> funciones = new ArrayList<>();
         funciones = this.servicioPremios.getEspectadoresPremiados(nomFuncion);
         return funciones;
+    }
+    
+    public List<Premio> getPremiosDeEspectador(String nick){  //DADO UN NICK DE ESPECTADOR DEVUELVE UN MAP DE PREMIOS
+        List<Premio> premios = this.servicioPremios.getPremiosDeEspectador(nick);        
+        return premios;
     }
   
 }

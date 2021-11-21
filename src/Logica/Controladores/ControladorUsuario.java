@@ -438,4 +438,13 @@ public class ControladorUsuario implements IControladorUsuario {
     public int getSeguidos(int idUser){
         return this.servicioUsuarios.getSiguiendo(idUser);
     }
+    public int getEspectadorIdPorNick(String nick){
+        int id = 0;
+        try {
+            id = this.servicioUsuarios.getIdPorNick(nick);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
 }

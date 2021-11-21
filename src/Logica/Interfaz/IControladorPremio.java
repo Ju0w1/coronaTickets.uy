@@ -15,4 +15,5 @@ public interface IControladorPremio {
    public abstract List<String> getFuncionesArtistaRealizadas(String nickArtista, String nomEspectaculo);
    public abstract boolean premiosRealizados (String nomfuncion);
    public abstract List<String> getEspectadoresPremiados(String nomFuncion);
+   public abstract List<Premio> getPremiosDeEspectador(String nick); //MILTON 
 }

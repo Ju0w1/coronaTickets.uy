@@ -48,4 +48,6 @@ public interface IControladorUsuario {
     public abstract boolean loSigo(String yo, String usuario);
     public abstract int getSeguidores(int idUser); //Nuevo API-REST MILTON
     public abstract int getSeguidos(int idUser); //Nuevo API-REST MILTON
+    public abstract int getEspectadorIdPorNick(String nick);
+    
 }

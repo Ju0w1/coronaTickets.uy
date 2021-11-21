@@ -1,6 +1,10 @@
 package Logica.Servicio;
 
 import Logica.Clases.Artista;
+import Logica.Clases.Funcion;
+import Logica.Clases.Premio;
+import Logica.Clases.Usuario;
+import Logica.Fabrica;
 import Persistencia.ConexionDB;
 import java.sql.Connection;
 import java.sql.Date;
@@ -252,5 +256,23 @@ public class PremioServicios {
             return null;
         }
     }
+    
+    public List<Premio> getPremiosDeEspectador(String nick){
+        List<Premio> premios = new ArrayList<>();
+        int idUser = Fabrica.getInstance().getIControladorUsuario().getIdEspectadorPorNick(nick); // Obtenengo el Id del usuario
+        try {            
+            PreparedStatement status1 = conexion.prepareStatement("SELECT premios.*, funcion.fun_nombre from premios, premios_espectadores, usuario, funcion WHERE funcion.fun_id=premios_espectadores.id_funcion AND usuario.usu_id=premios_espectadores.id_espectador AND premios_espectadores.id_prem_espec=premios.id_premio AND usuario.usu_id= ?");
+            status1.setInt(1, idUser);
+            ResultSet rs = status1.executeQuery();
+            while(rs.next()) {
+                premios.add(new Premio(new Usuario(nick),rs.getString("premio_descripcion"),new Funcion(rs.getString("fun_nombre"))));
+            }
+            return premios;
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+            return null;
+        }
+    }
+    
     
 }

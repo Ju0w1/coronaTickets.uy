@@ -106,5 +106,8 @@ public class Funcion implements Serializable{
         public Funcion(){
             
         }
+        public Funcion(String nombre){
+            this.nombre= nombre;
+        }
 }       
         

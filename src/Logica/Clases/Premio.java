@@ -20,6 +20,11 @@ public class Premio implements Serializable{
         this.funcion=funcion;
         this.fecha=fecha;
     }
+    public Premio(Usuario espectador, String descripcion, Funcion funcion){
+        this.espectador=espectador;
+        this.descripcion=descripcion;
+        this.funcion=funcion;
+    }
     
     //Getters
     public Usuario getEspectador(){
