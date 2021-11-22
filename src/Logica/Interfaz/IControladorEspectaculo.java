@@ -46,6 +46,7 @@ public interface IControladorEspectaculo {
     public abstract boolean addCategoria(String nombre);
     public abstract void addCategorias_Espectaculos(String nombreEspectaculo, String nombreCategoria);
     public abstract Map<String, Espectaculo> getEspectaculos();
+    public abstract Map<String, Espectaculo> getEspectaculosFinalizados(); //NUEVO PARA WEB
     public abstract Map<String, Plataforma> getPlataformas();
     public abstract Map<String, Categoria> getCategorias();
     public abstract boolean crearPaquete(String nombre, DTFecha fechaInicio, DTFecha fechaFin, int descuento, String descripcion);

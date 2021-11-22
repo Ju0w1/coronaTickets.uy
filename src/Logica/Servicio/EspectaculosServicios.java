@@ -250,6 +250,36 @@ public class EspectaculosServicios {
         return resultado;
     }
     
+    public Map<String, Espectaculo> getEspectaculosFinalizados() {
+        Map<String, Espectaculo> resultado = new HashMap<>();
+        String plataforma="";
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT * FROM espetaculos WHERE espec_estado='f'");
+            ResultSet rs1 = status.executeQuery();
+            while (rs1.next()) {
+                Map<String, Categoria> categorias = new HashMap<>();
+                PreparedStatement status2 = conexion.prepareStatement("SELECT cat_nombre FROM categorias AS cat, categorias_espectaculos AS catEspec WHERE  cat.cat_id=catEspec.cat_id AND catEspec.espec_id=?");
+                status2.setString(1, rs1.getString("espec_id"));
+                ResultSet rs2 = status2.executeQuery();
+                //Map<String, Categoria> categorias = new HashMap<>();
+                while (rs2.next()) {
+                    categorias.put(rs2.getString(1), new Categoria(rs2.getString(1)));
+                }
+                PreparedStatement status3 = conexion.prepareStatement("SELECT vp_nombre FROM valores_tipo WHERE  valores_tipo.vp_id=?");
+                status3.setInt(1, rs1.getInt("espec_plataforma"));
+                ResultSet rs3 = status3.executeQuery();
+                if (rs3.next()) {
+                    plataforma = rs3.getString(1);
+                }
+                resultado.put(rs1.getString("espec_nombre"), new Espectaculo(rs1.getString("espec_nombre"), rs1.getInt("espec_artista"), rs1.getString("espec_descripcion"), rs1.getInt("espec_cant_min_espect"), rs1.getInt("espec_cant_max_espect"), rs1.getString("espec_URL"), rs1.getDouble("espec_Costo") , rs1.getInt("espec_duracion"), rs1.getDate("espec_fecha_registro"), plataforma, rs1.getString("espec_estado"), categorias, rs1.getString("espec_imagen")));
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            
+        }
+        return resultado;
+    }
+    
     /*public Map<String, Espectaculo> getEspectaculosSegunPlataforma(String nombrePlataforma) {
         Map<String, Espectaculo> resultado = new HashMap<>();
         //String nombre,int Artista,String descr,int min,int max, String url, double costo,int duracion,String Fregistro)

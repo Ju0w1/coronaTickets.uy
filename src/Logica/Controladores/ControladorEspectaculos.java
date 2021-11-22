@@ -95,6 +95,11 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculos();
         return espectaculos;
     }
+    
+    public Map<String, Espectaculo> getEspectaculosFinalizados(){
+        Map<String, Espectaculo> espectaculos = servicioEspectaculo.getEspectaculosFinalizados();
+        return espectaculos;
+    }
     //123
     @Override
     public Map<String, Plataforma> getPlataformas() {
