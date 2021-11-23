@@ -1435,6 +1435,24 @@ public class EspectaculosServicios {
         }
         
         return espectadores;
-        
+    }    
+        public Map<String, Funcion> getMapFuncionesSinFechaRestriction(int espectaculoId) {
+        Map<String, Funcion> resultado = new HashMap<>();
+        Map<String, Artista> artistas;
+        Espectaculo espectaculo;
+        try {
+            //Se obtienen las funciones vigentes
+            PreparedStatement status1 = conexion.prepareStatement("SELECT * FROM funcion AS f WHERE f.fun_espec_id=" + espectaculoId + ";");
+
+            ResultSet rs1 = status1.executeQuery();
+            while (rs1.next()) {
+                artistas = getMapArtistas(rs1.getString("fun_id"));
+                espectaculo = getEspecaculo(rs1.getString("fun_id"));
+                resultado.put(rs1.getString("fun_nombre"), new Funcion(rs1.getString("fun_nombre"), rs1.getDate("fun_fecha_inicio"), rs1.getTime("fun_hora_inicio"), rs1.getDate("fun_fecha_registro"), espectaculo, artistas, rs1.getString("fun_imagen")));
+            }
+        } catch (SQLException ex1) {
+            ex1.printStackTrace();
+        }
+        return resultado;
     }
 }

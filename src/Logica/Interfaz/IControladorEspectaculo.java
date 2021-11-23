@@ -113,5 +113,6 @@ public interface IControladorEspectaculo {
     public abstract void desmarcarFavorito(String nickname, String espec); //Nuevo WebVersion FEDERICO, desmarcar favorito.
     public abstract int getFavoritos(String nombreEspec); //Nuevo WebVersion FEDERICO, Obtengo cantidad de favoritos de un espectáculo.
     public abstract Map<String,Usuario> listarEspectadoresRegistradosAFuncion(String nombreFuncion);
+    public abstract Map<String, Funcion> getMapFuncionesSinFechaRestriction(String nomEspectaculo); //Nuevo WebVersion FEDERICO, Obtengo todas las funciones de un espectáculo independientemente de si están vigentes o no.
 }
 

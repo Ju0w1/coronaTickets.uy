@@ -900,4 +900,10 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
         }
         return espectadores;
     }
+    public Map<String, Funcion> getMapFuncionesSinFechaRestriction(String nomEspectaculo) {
+        String id = servicioEspectaculo.getIdEspectaculo(nomEspectaculo);
+        int idEsp = Integer.parseInt(id);
+        Map<String, Funcion> mapFunciones = servicioEspectaculo.getMapFuncionesSinFechaRestriction(idEsp);
+        return mapFunciones;
+    }
 }

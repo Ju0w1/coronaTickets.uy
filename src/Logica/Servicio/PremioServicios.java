@@ -145,7 +145,7 @@ public class PremioServicios {
         }
     }
     
-    public boolean premiarEspectador(String nomFuncion, String nickEspectador, Date fecha){
+    public boolean premiarEspectador(String nomFuncion, String nickEspectador){
         try {
             Statement status1 = conexion.createStatement();
             ResultSet rs1 = status1.executeQuery("SELECT * FROM funcion WHERE fun_nombre='"+nomFuncion+"'");
@@ -153,18 +153,17 @@ public class PremioServicios {
             //
             int idEspectador=getIdEspectador(nickEspectador);
             int idPremio=getIdPremio(nomFuncion);
-            PreparedStatement status2 = conexion.prepareStatement("INSERT INTO premios_espectadores (id_prem_espec,id_espectador,id_funcion,premio_espec_fecha) VALUES (?,?,?,?)");
+            PreparedStatement status2 = conexion.prepareStatement("INSERT INTO premios_espectadores (id_prem_espec,id_espectador,id_funcion,fecha_sorteo) VALUES (?,?,?,now())");
             status2.setInt(1, idPremio);
-            status2.setInt(2, rs1.getInt("fun_id"));
-            status2.setInt (3, idEspectador);
-            status2.setDate (4, fecha);
+            status2.setInt(3, rs1.getInt("fun_id"));
+            status2.setInt (2, idEspectador);
             status2.execute();
             //
             return true;
         }
         catch (SQLException ex) {
-            JFrame j = new JFrame();
-            JOptionPane.showMessageDialog(j,"No se pudo premiar al espectador '"+nickEspectador+"' ");
+            //JFrame j = new JFrame();
+            //JOptionPane.showMessageDialog(j,"No se pudo premiar al espectador '"+nickEspectador+"' ");
             return false;
         }         
     }
