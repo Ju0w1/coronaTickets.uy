@@ -46,13 +46,13 @@ public class ConexionDB {
         switch (caso) {
             case "host":  return "127.0.0.1";//prop.getProperty("host");
        
-            case "port":  return "4306";//prop.getProperty("port");
+            case "port":  return "3306";//prop.getProperty("port");
                      
-            case "db":  return "para_romper4";//prop.getProperty("db");
+            case "db":  return "coronaticket6";//prop.getProperty("db");
                      
             case "user":  return "root";//prop.getProperty("user");
                      
-            case "pass":  return "";//prop.getProperty("pass");
+            case "pass":  return "federico12349";//prop.getProperty("pass");
 
             default: return "";
               
@@ -66,7 +66,7 @@ public class ConexionDB {
                 Driver driver = new com.mysql.jdbc.Driver();
                 DriverManager.registerDriver(driver);
                 
-                conexion = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db, user, pass);
+                conexion = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+db+"?characterEncoding=utf8", user, pass);
                 System.out.println("Conectado");
             } catch (SQLException ex) {
                 ex.printStackTrace();

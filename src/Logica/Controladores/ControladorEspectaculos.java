@@ -886,4 +886,7 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     public void desmarcarFavorito(String nickname, String espec){
         servicioEspectaculo.desmarcarFavorito(nickname, espec);
     }
+    public int getFavoritos(String nombreEspec){
+        return servicioEspectaculo.getFavoritos(nombreEspec);
+    }
 }
