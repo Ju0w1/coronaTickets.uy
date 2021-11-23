@@ -177,7 +177,7 @@ public class PremioServicios {
             int idArtista=getIdEspectador(nickArtista);
             int idEspectaculo=getIdEspectaculo(nomEspectaculo);
             
-            PreparedStatement status1 = conexion.prepareStatement("SELECT funcion.fun_nombre FROM funcion, funcion_artista WHERE funcion.fun_id=funcion_artista.funart_art_id AND funcion_artista.funart_art_id=? AND funcion.fun_espec_id=?");
+            PreparedStatement status1 = conexion.prepareStatement("SELECT funcion.fun_nombre FROM funcion, funcion_artista WHERE funcion.fun_id=funcion_artista.funart_fun_id AND funcion_artista.funart_art_id=? AND funcion.fun_espec_id=?");
             status1.setInt(1, idArtista);
             status1.setInt(2, idEspectaculo);
             ResultSet rs = status1.executeQuery();
@@ -261,7 +261,7 @@ public class PremioServicios {
         List<Premio> premios = new ArrayList<>();
         int idUser = Fabrica.getInstance().getIControladorUsuario().getIdEspectadorPorNick(nick); // Obtenengo el Id del usuario
         try {
-            PreparedStatement status1 = conexion.prepareStatement("SELECT premios.*, funcion.fun_nombre, premios_espectadores.fecha_sorteo from premios, premios_espectadores, usuario, funcion WHERE funcion.fun_id=premios_espectadores.id_funcion AND usuario.usu_id=premios_espectadores.id_espectador AND premios_espectadores.id_prem_espec=premios.id_premio AND usuario.usu_id= ?");
+            PreparedStatement status1 = conexion.prepareStatement("SELECT premios_espectadores.*, premios.*, funcion.fun_nombre from premios_espectadores, usuario, premios, funcion WHERE funcion.fun_id=premios_espectadores.id_funcion AND premios_espectadores.id_espectador=usuario.usu_id AND premios.id_premio=premios_espectadores.premio_id AND usuario.usu_id= ?");
             status1.setInt(1, idUser);
             ResultSet rs = status1.executeQuery();
             while(rs.next()) {
