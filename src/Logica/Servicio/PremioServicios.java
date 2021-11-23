@@ -162,8 +162,8 @@ public class PremioServicios {
             return true;
         }
         catch (SQLException ex) {
-            JFrame j = new JFrame();
-            JOptionPane.showMessageDialog(j,"No se pudo premiar al espectador '"+nickEspectador+"' ");
+            //JFrame j = new JFrame();
+            //JOptionPane.showMessageDialog(j,"No se pudo premiar al espectador '"+nickEspectador+"' ");
             return false;
         }         
     }
