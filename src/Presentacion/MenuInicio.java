@@ -5,6 +5,8 @@
  */
 package Presentacion;
 
+import Logica.Fabrica;
+import Logica.Interfaz.IControladorDatosDePrueba;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -22,13 +24,15 @@ import javax.swing.JOptionPane;
  * @author pabli
  */
 public class MenuInicio extends javax.swing.JFrame {
-
+    private IControladorDatosDePrueba ICD;
+    
     /**
      * Creates new form MenuInicio
      */
     public MenuInicio() {
         try {
             initComponents();
+            this.ICD = Fabrica.getInstance().getIControladorDatosDePrueba();
             URL url = null;
             try {
                 url = new URL("https://i.imgur.com/CQ7tT9L.png");
@@ -85,6 +89,8 @@ public class MenuInicio extends javax.swing.JFrame {
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenuItem13 = new javax.swing.JMenuItem();
         jMenuItem18 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
 
         jMenuItem14.setText("jMenuItem14");
 
@@ -266,6 +272,18 @@ public class MenuInicio extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu7);
 
+        jMenu5.setText("Datos de prueba");
+
+        jMenuItem5.setText("Cargar");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu5.add(jMenuItem5);
+
+        jMenuBar1.add(jMenu5);
+
         setJMenuBar(jMenuBar1);
 
         pack();
@@ -437,6 +455,11 @@ public class MenuInicio extends javax.swing.JFrame {
         ventana.setVisible(true);
     }//GEN-LAST:event_aceptar_rechazarActionPerformed
 
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+       ICD.cargarDatosDePrueba();
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -473,6 +496,7 @@ public class MenuInicio extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenu jMenu8;
@@ -491,6 +515,7 @@ public class MenuInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;

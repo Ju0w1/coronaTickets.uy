@@ -1,4 +1,5 @@
 package Logica;
+import Logica.Controladores.ControladorDatosDePrueba;
 import Logica.Interfaz.IControladorUsuario;
 import Logica.Interfaz.IControladorEspectaculo;
 import Logica.Controladores.ControladorEspectaculos;
@@ -9,6 +10,7 @@ import Logica.Interfaz.IControladorFuncion;
 import Logica.Controladores.ControladorFuncion;
 import Logica.Interfaz.IControladorPremio;
 import Logica.Controladores.ControladorPremios;
+import Logica.Interfaz.IControladorDatosDePrueba;
 
 /**
  *
@@ -44,5 +46,10 @@ public class Fabrica {
     public IControladorPremio getIControladorPremio() {
         IControladorPremio ControladorP = ControladorPremios.getInstance();
         return ControladorP; //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public IControladorDatosDePrueba getIControladorDatosDePrueba() {
+        IControladorDatosDePrueba ControladorD = ControladorDatosDePrueba.getInstance();
+        return ControladorD; //To change body of generated methods, choose Tools | Templates.
     }
 }
