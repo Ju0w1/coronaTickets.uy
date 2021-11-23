@@ -49,13 +49,13 @@ public class ControladorPremios implements IControladorPremio {
             if (cantPremios>espectadores.size()){
                 for (int i = 0; i < espectadores.size(); i++) {
                     System.out.println(espectadores.get(i));
-                    this.servicioPremios.premiarEspectador(nomFuncion, espectadores.get(i), fechaActual);
+                    this.servicioPremios.premiarEspectador(nomFuncion, espectadores.get(i));
                 }
             }
             else{
                 for (int i = 0; i < cantPremios; i++) {
                     System.out.println(espectadores.get(i));
-                    this.servicioPremios.premiarEspectador(nomFuncion, espectadores.get(i), fechaActual);
+                    this.servicioPremios.premiarEspectador(nomFuncion, espectadores.get(i));
                 }
             }
             return true;
