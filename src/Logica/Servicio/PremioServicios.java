@@ -153,7 +153,7 @@ public class PremioServicios {
             //
             int idEspectador=getIdEspectador(nickEspectador);
             int idPremio=getIdPremio(nomFuncion);
-            PreparedStatement status2 = conexion.prepareStatement("INSERT INTO premios_espectadores (id_prem_espec,id_espectador,id_funcion,premio_espec_fecha) VALUES (?,?,?,now())");
+            PreparedStatement status2 = conexion.prepareStatement("INSERT INTO premios_espectadores (id_prem_espec,id_espectador,id_funcion,fecha_sorteo) VALUES (?,?,?,now())");
             status2.setInt(1, idPremio);
             status2.setInt(3, rs1.getInt("fun_id"));
             status2.setInt (2, idEspectador);
