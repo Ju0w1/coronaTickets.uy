@@ -107,7 +107,7 @@ public interface IControladorEspectaculo {
     public abstract Espectaculo obtenerEspectaculoPorNombre(String nombreEspectaculo); // Nuevo, caso de uso: consulta espectaculo finalizado. Devuelve un espectaculo dado un nombre
 
     public abstract boolean checkFavorito(int usuario_id, int espec_id); //Nuevo WebVersion FEDERICO, verificar si anteriormente ya ha marcado como favorito.
-    public abstract boolean yaEsFavorito(int usuario_id, int espec_id); //Nuevo WebVersion FEDERICO, verificar si anteriormente ya ha marcado como favorito.
+    public abstract boolean yaEsFavorito(String nickname, String espec); //Nuevo WebVersion FEDERICO, verificar si anteriormente ya ha marcado como favorito.
     public abstract void marcarEspectaculoFavorito(String nickname, String espec); //Nuevo WebVersion FEDERICO, setear favorito como activo.
     public abstract void desmarcarFavorito(String nickname, String espec); //Nuevo WebVersion FEDERICO, desmarcar favorito.
     public abstract int getFavoritos(String nombreEspec); //Nuevo WebVersion FEDERICO, Obtengo cantidad de favoritos de un espectáculo.

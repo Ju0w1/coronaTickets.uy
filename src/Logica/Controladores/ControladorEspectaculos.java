@@ -873,8 +873,8 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
              return false;
          }
      }
-     public  boolean yaEsFavorito(int usuario_id, int espec_id){
-         if(servicioEspectaculo.yaEsFavorito(usuario_id, espec_id)){
+     public  boolean yaEsFavorito(String nickname, String espec){
+         if(servicioEspectaculo.yaEsFavorito(nickname, espec)){
              return true;
          }else{
              return false;

@@ -1302,13 +1302,26 @@ public class EspectaculosServicios {
         return false;
     }
 
-    public boolean yaEsFavorito(int usuario_id, int espec_id) {
+    public boolean yaEsFavorito(String nickname, String espec) {
+        int usuario_id = 0, espec_fav_id = 0;
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT * FROM favoritos WHERE usu_id=? AND espec_id=? AND vigencia=1");
-            status.setInt(1, usuario_id);
-            status.setInt(2, espec_id);
+            PreparedStatement status = conexion.prepareStatement("SELECT usu_id FROM usuario WHERE usu_nick=?");
+            status.setString(1, nickname);
             ResultSet rs = status.executeQuery();
             while (rs.next()) {
+                usuario_id = rs.getInt(1);
+            }
+            PreparedStatement status2 = conexion.prepareStatement("SELECT espec_id FROM espetaculos WHERE espec_nombre=?");
+            status2.setString(1, espec);
+            ResultSet rs2 = status2.executeQuery();
+            while (rs2.next()) {
+                espec_fav_id = rs2.getInt(1);
+            }
+            PreparedStatement statusNew = conexion.prepareStatement("SELECT * FROM favoritos WHERE usu_id=? AND espec_id=? AND vigencia=1");
+            statusNew.setInt(1, usuario_id);
+            statusNew.setInt(2, espec_fav_id);
+            ResultSet rsNew = statusNew.executeQuery();
+            while (rsNew.next()) {
                 return true; // Ya es favorito
             }
         } catch (SQLException ex) {
@@ -1336,7 +1349,7 @@ public class EspectaculosServicios {
             }
             //Verifico si anteriormente era favorito, dejó de ser favorito y ahora quiere volver a ponerlo en favorito:
             if (checkFavorito(usuario_id, espec_fav_id)) {
-                if (yaEsFavorito(usuario_id, espec_fav_id) == true) {
+                if (yaEsFavorito(nickname, espec) == true) {
                     desmarcarFavorito(nickname, espec);
                 } else {
                     PreparedStatement status3 = conexion.prepareStatement("UPDATE favoritos SET vigencia=? WHERE usu_id=? AND espec_id=?");
