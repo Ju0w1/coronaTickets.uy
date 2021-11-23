@@ -26,6 +26,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextField;
 
 import Logica.Clases.Plataforma;
+import Logica.Clases.Usuario;
 /**
  *
  * @author Admin
@@ -111,5 +112,6 @@ public interface IControladorEspectaculo {
     public abstract void marcarEspectaculoFavorito(String nickname, String espec); //Nuevo WebVersion FEDERICO, setear favorito como activo.
     public abstract void desmarcarFavorito(String nickname, String espec); //Nuevo WebVersion FEDERICO, desmarcar favorito.
     public abstract int getFavoritos(String nombreEspec); //Nuevo WebVersion FEDERICO, Obtengo cantidad de favoritos de un espectáculo.
+    public abstract Map<String,Usuario> listarEspectadoresRegistradosAFuncion(String nombreFuncion);
 }
 

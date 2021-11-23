@@ -30,6 +30,7 @@ import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 import Logica.Clases.Artista;
 import Logica.Clases.Categoria;
+import Logica.Clases.Espectador;
 import Logica.Clases.Funcion;
 import Logica.DataTypes.DTFecha;
 import Logica.Clases.Paquete; //NUEVO
@@ -1411,5 +1412,29 @@ public class EspectaculosServicios {
             ex.printStackTrace();
         }
         return favoritos;
+    }
+    
+    public Map<String,Usuario> listarEspectadoresRegistradosAFuncion(String idFuncion){
+        Map<String,Usuario> espectadores = new HashMap<>();
+        
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usuario.* FROM usuario, usuario_funcion WHERE usuario.usu_id = usuario_funcion.usu_id AND usuario_funcion.funcion_id = ?");
+            status.setString(1, idFuncion);
+            ResultSet rs = status.executeQuery();
+            
+            while(rs.next()){
+                Usuario e = new Usuario();
+                e.setNickname(rs.getString("usu_nick"));
+                e.setNombre(rs.getString("usu_nombre"));
+                e.setNickname(rs.getString("usu_imagen"));
+                espectadores.put(rs.getString("usu_nick"), e);
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return espectadores;
+        
     }
 }

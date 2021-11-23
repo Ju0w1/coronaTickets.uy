@@ -44,6 +44,7 @@ import javax.swing.JTextArea;
 import Logica.Clases.Funcion;
 import Logica.Clases.Paquete;
 import Logica.Clases.Registro;
+import Logica.Clases.Usuario;
 import Logica.DataTypes.DTFecha;
 import Logica.Servicio.FuncionServicios;
 import Logica.Servicio.PaquetesServicios;
@@ -888,5 +889,15 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
     }
     public int getFavoritos(String nombreEspec){
         return servicioEspectaculo.getFavoritos(nombreEspec);
+    }
+    public Map<String,Usuario> listarEspectadoresRegistradosAFuncion(String nombreFuncion){
+        Map<String,Usuario> espectadores = new HashMap<>();
+        String idF = this.servicioEspectaculo.getIdFuncion(nombreFuncion);
+        try {
+            espectadores = this.servicioEspectaculo.listarEspectadoresRegistradosAFuncion(idF);
+        } catch (Exception e) {
+            
+        }
+        return espectadores;
     }
 }
