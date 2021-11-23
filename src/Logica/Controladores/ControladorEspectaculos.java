@@ -865,4 +865,25 @@ public class ControladorEspectaculos implements IControladorEspectaculo {
             return false;
         }
     }
+    
+     public  boolean checkFavorito(int usuario_id, int espec_id){
+         if(servicioEspectaculo.checkFavorito(usuario_id, espec_id)){
+             return true;
+         }else{
+             return false;
+         }
+     }
+     public  boolean yaEsFavorito(int usuario_id, int espec_id){
+         if(servicioEspectaculo.yaEsFavorito(usuario_id, espec_id)){
+             return true;
+         }else{
+             return false;
+         }
+     }
+    public void marcarEspectaculoFavorito(String nickname, String espec){
+        servicioEspectaculo.marcarEspectaculoFavorito(nickname, espec);
+    }
+    public void desmarcarFavorito(String nickname, String espec){
+        servicioEspectaculo.desmarcarFavorito(nickname, espec);
+    }
 }
