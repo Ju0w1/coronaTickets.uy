@@ -447,4 +447,10 @@ public class ControladorUsuario implements IControladorUsuario {
         }
         return id;
     }
+    
+    public boolean checkearSorteo(String nickArtista, String nombreFuncion){
+        boolean resultado = false;
+        resultado = this.servicioArtista.checkearSorteo(nickArtista, nombreFuncion);
+        return resultado;
+    }
 }

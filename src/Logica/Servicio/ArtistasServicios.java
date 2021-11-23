@@ -101,4 +101,56 @@ public class ArtistasServicios {
         }
         return resultado;
     }
+    
+    public boolean checkearSorteo(String nickArtista, String nombreFuncion){
+        int id = obtenerIdArtistaPorNick(nickArtista);
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT funcion.* FROM funcion, artistas, funcion_artista WHERE funcion_artista.funart_art_id=artistas.art_id AND funcion.fun_id=funcion_artista.funart_fun_id AND artistas.art_id=?");
+            status.setInt(1, id);
+            ResultSet rs = status.executeQuery();
+            if(rs.next()) { // EL ARTISTA ES DEUNIO DE LA FUNCION
+                PreparedStatement status2 = conexion.prepareStatement("SELECT * from funcion WHERE funcion.fun_fecha_inicio < now() AND funcion.fun_id=?");
+                status2.setInt(1, rs.getInt("fun_id"));
+                ResultSet rs2 = status.executeQuery();
+                if(rs2.next()) { // FUNCION YA SE REALIZO
+                    PreparedStatement status3 = conexion.prepareStatement("SELECT * FROM funcion, premios_espectadores WHERE funcion.fun_id=premios_espectadores.id_funcion AND funcion.fun_id=?");
+                    status3.setInt(1, rs.getInt("fun_id"));
+                    ResultSet rs3 = status3.executeQuery();
+                    if(rs3.next()) { // YA SE SORETO PREMIO EN ESTA FUNCION
+                        return false;
+                    } else { // SE CUMPLE TODO
+                        return true;
+                    }
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public int obtenerIdArtistaPorNick(String nick){
+        int id = -1;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT artistas.art_id FROM artistas, usuario WHERE usuario.usu_id=artistas.art_usu AND usuario.usu_nick=?");
+            status.setString(1, nick);
+
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
+    
+    
+    
+    
+    
 }

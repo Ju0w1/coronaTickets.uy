@@ -49,5 +49,6 @@ public interface IControladorUsuario {
     public abstract int getSeguidores(int idUser); //Nuevo API-REST MILTON
     public abstract int getSeguidos(int idUser); //Nuevo API-REST MILTON
     public abstract int getEspectadorIdPorNick(String nick);
+    public abstract boolean checkearSorteo(String nickArtista, String nombreFuncion); // Verifica que la funcion sea del artista y que no se haya realizado sorteo.
     
 }
