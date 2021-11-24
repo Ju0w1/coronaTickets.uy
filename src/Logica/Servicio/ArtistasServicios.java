@@ -111,7 +111,7 @@ public class ArtistasServicios {
             if(rs.next()) { // EL ARTISTA ES DEUNIO DE LA FUNCION
                 PreparedStatement status2 = conexion.prepareStatement("SELECT * from funcion WHERE funcion.fun_fecha_inicio < now() AND funcion.fun_id=?");
                 status2.setInt(1, rs.getInt("fun_id"));
-                ResultSet rs2 = status.executeQuery();
+                ResultSet rs2 = status2.executeQuery();
                 if(rs2.next()) { // FUNCION YA SE REALIZO
                     PreparedStatement status3 = conexion.prepareStatement("SELECT * FROM funcion, premios_espectadores WHERE funcion.fun_id=premios_espectadores.id_funcion AND funcion.fun_id=?");
                     status3.setInt(1, rs.getInt("fun_id"));
