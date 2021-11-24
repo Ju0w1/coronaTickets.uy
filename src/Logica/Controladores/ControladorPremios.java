@@ -65,6 +65,13 @@ public class ControladorPremios implements IControladorPremio {
         }
     }
     
+    public void otorgarPremio(String nomFuncion, String nickEspectador){
+        try {
+            this.servicioPremios.premiarEspectador(nomFuncion, nickEspectador);
+        } catch (Exception e) {
+        }
+    }
+    
     @Override
     public List<String> getFuncionesArtistaRealizadas(String nickArtista, String nomEspectaculo){ //Devuleve una lista de las funciones del artista que ya ocurrieron
         List<String> funciones = new ArrayList<>();
