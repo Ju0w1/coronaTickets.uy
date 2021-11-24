@@ -10,6 +10,7 @@ import Logica.Clases.Espectador;
 import Logica.Clases.Usuario;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.table.DefaultTableModel;
 public interface IControladorUsuario {
     //public abstract Map<String, Usuario> getUsuarios();
@@ -50,5 +51,6 @@ public interface IControladorUsuario {
     public abstract int getSeguidos(int idUser); //Nuevo API-REST MILTON
     public abstract int getEspectadorIdPorNick(String nick);
     public abstract boolean checkearSorteo(String nickArtista, String nombreFuncion); // Verifica que la funcion sea del artista y que no se haya realizado sorteo.
+    public abstract List<Usuario> obtenerEspectadoresRegistrados(String nombreFuncion);
     
 }

@@ -39,6 +39,13 @@ public class Usuario implements Serializable{
     public Usuario(String string, String string0) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public Usuario(String nickname, String nombre, String url_imagen) {
+        this.nickname = nickname;
+        this.nombre = nombre;
+        this.url_imagen = url_imagen;
+    }
+    
     
     public void setNickname(String nickname){
         this.nickname= nickname;

@@ -159,4 +159,9 @@ public class ControladorFuncion implements IControladorFuncion{
 //            return funciones;
 //        }
 //    }
+    public int obtenerCantidadDePremiosASortear(String nombreFuncion){
+        return this.servicioFunciones.obtenerCantidadDePremiosASortear(nombreFuncion);
+        
+    }
+    
 }

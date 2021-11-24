@@ -457,4 +457,20 @@ public class FuncionServicios {
         
     }
     
+    //SELECT premios.premio_cantidad FROM premios, funcion WHERE funcion.fun_espec_id=premios.id_espectaculo AND funcion.fun_nombre="30 anios - 1"
+    public int obtenerCantidadDePremiosASortear(String nombreFuncion){
+        int cantidad = 0;
+        try {
+            PreparedStatement status1 = conexion.prepareStatement("SELECT premios.premio_cantidad FROM premios, funcion WHERE funcion.fun_espec_id=premios.id_espectaculo AND funcion.fun_nombre=?");
+            status1.setString(1, nombreFuncion);
+            ResultSet rs = status1.executeQuery();
+            if(rs.next()) {
+                cantidad = rs.getInt("premio_cantidad");
+            }
+            return cantidad;
+        } catch (SQLException ex1) {
+            return -1;
+        }
+    }
+    
 }

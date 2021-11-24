@@ -27,4 +27,5 @@ public interface IControladorFuncion {
     public abstract boolean checkearFuncionExistenteWeb(String nombre);
     public abstract List<String> artistasDeFuncion(String nombreFuncion); //WEB VERSION PABLO
     public abstract void addFuncionWEBV2(String nombreEspec, String nombre, String fecha_registro, String hora_inicio, String fecha_comienzo,List<String> artistas, String urlImagen);
+    public abstract int obtenerCantidadDePremiosASortear(String nombreFuncion);
 }

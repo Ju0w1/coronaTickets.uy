@@ -21,6 +21,7 @@ import Logica.Clases.Artista;
 import Logica.Clases.Espectador;
 import Logica.Clases.Usuario;
 import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author LucasCiceri
@@ -631,5 +632,36 @@ public class UsuariosServicios {
         }
     }
     
+    
+    public List<Usuario> obtenerEspectadoresRegistrados(String nombreFuncion){
+        int idFuncion = obtenerIdfuncionPorNick(nombreFuncion);
+        List<Usuario> listUsers = new ArrayList<>();
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT usuario.* FROM usuario, usuario_funcion WHERE usuario_funcion.usu_id=usuario.usu_id AND usuario_funcion.funcion_id=?");
+            status.setInt(1, idFuncion);
+            ResultSet rs = status.executeQuery();
+            while (rs.next()) {
+                listUsers.add(new Usuario(rs.getString("usu_nick"), rs.getString("usu_nombre"), rs.getString("usu_imagen")));
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listUsers;
+    }
+    
+    public int obtenerIdfuncionPorNick(String funcion){
+        int id = -1;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT funcion.fun_id FROM funcion WHERE funcion.fun_nombre=?");
+            status.setString(1, funcion);
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
     
 }
