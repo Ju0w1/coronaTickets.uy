@@ -104,9 +104,12 @@ public class ArtistasServicios {
     
     public boolean checkearSorteo(String nickArtista, String nombreFuncion){
         int id = obtenerIdArtistaPorNick(nickArtista);
+        int funcionId = obtenerIdfuncionPorNick(nombreFuncion);
+        
         try {
-            PreparedStatement status = conexion.prepareStatement("SELECT funcion.* FROM funcion, artistas, funcion_artista WHERE funcion_artista.funart_art_id=artistas.art_id AND funcion.fun_id=funcion_artista.funart_fun_id AND artistas.art_id=?");
+            PreparedStatement status = conexion.prepareStatement("SELECT funcion.* FROM funcion, artistas, espetaculos WHERE espetaculos.espec_artista=artistas.art_id AND funcion.fun_espec_id=espetaculos.espec_id AND espetaculos.espec_artista=artistas.art_id AND artistas.art_id=? AND funcion.fun_id=?");
             status.setInt(1, id);
+            status.setInt(2, funcionId);
             ResultSet rs = status.executeQuery();
             if(rs.next()) { // EL ARTISTA ES DEUNIO DE LA FUNCION
                 PreparedStatement status2 = conexion.prepareStatement("SELECT * from funcion WHERE funcion.fun_fecha_inicio < now() AND funcion.fun_id=?");
@@ -139,6 +142,20 @@ public class ArtistasServicios {
             PreparedStatement status = conexion.prepareStatement("SELECT artistas.art_id FROM artistas, usuario WHERE usuario.usu_id=artistas.art_usu AND usuario.usu_nick=?");
             status.setString(1, nick);
 
+            ResultSet rs = status.executeQuery();
+            if (rs.next()) {
+                id = rs.getInt(1);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return id;
+    }
+    public int obtenerIdfuncionPorNick(String funcion){
+        int id = -1;
+        try {
+            PreparedStatement status = conexion.prepareStatement("SELECT funcion.fun_id FROM funcion WHERE funcion.fun_nombre=?");
+            status.setString(1, funcion);
             ResultSet rs = status.executeQuery();
             if (rs.next()) {
                 id = rs.getInt(1);
